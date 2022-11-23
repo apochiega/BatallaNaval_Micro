@@ -31,6 +31,21 @@ typedef struct
 		} RGBled;
 		
 
+typedef struct  
+		{
+			RGBled color;
+			Barco barco;
+			bool disparado;
+		} MatrizJugador;
+		
+
+typedef struct  
+		{
+			bool xy;
+			bool positivo;
+		} Barco;
+		
+
 
 typedef RGBled (*P2RGB) ;
 
@@ -44,9 +59,11 @@ RGBled Azul={0,0,30};
 RGBled Amarillo={30,30,0};
 RGBled Apagado={0,0,0};	
 RGBled display_rgb[8][8];	
+
+
 	
 
-		
+0		
 // Assembly function
 extern void init_ws2812(void);
 extern void wrt_ws2812(P2RGB);
