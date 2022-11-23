@@ -1,0 +1,661 @@
+   1               		.file	"init.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.Ltext0:
+   9               		.cfi_sections	.debug_frame
+  10               		.section	.text.board_init,"ax",@progbits
+  11               	.global	board_init
+  13               	board_init:
+  14               	.LFB65:
+  15               		.file 1 "../src/ASF/mega/boards/atmega328p_xplained_mini/init.c"
+   1:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c **** /**
+   2:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * \file
+   3:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  *
+   4:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * \brief ATMEGA328P Xplained mini board init.
+   5:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  *
+   6:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * To use this board, define BOARD=ATMEGA328P_XPLAINED_MINI.
+   7:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  *
+   8:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * Copyright (c) 2015-2018 Microchip Technology Inc. and its subsidiaries.
+   9:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  *
+  10:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * \asf_license_start
+  11:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  *
+  12:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * \page License
+  13:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  *
+  14:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * Subject to your compliance with these terms, you may use Microchip
+  15:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * software and any derivatives exclusively with Microchip products.
+  16:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * It is your responsibility to comply with third party license terms applicable
+  17:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * to your use of third party software (including open source software) that
+  18:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * may accompany Microchip software.
+  19:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  *
+  20:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES,
+  21:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * WHETHER EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE,
+  22:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * INCLUDING ANY IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY,
+  23:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT WILL MICROCHIP BE
+  24:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, INCIDENTAL OR CONSEQUENTIAL
+  25:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND WHATSOEVER RELATED TO THE
+  26:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS BEEN ADVISED OF THE
+  27:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * POSSIBILITY OR THE DAMAGES ARE FORESEEABLE.  TO THE FULLEST EXTENT
+  28:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN ANY WAY
+  29:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
+  30:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+  31:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  *
+  32:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * \asf_license_stop
+  33:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  *
+  34:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  */
+  35:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c **** /*
+  36:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  * Support and FAQ: visit <a href="https://www.microchip.com/support/">Microchip Support</a>
+  37:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c ****  */
+  38:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c **** #include <board.h>
+  39:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c **** #include <compiler.h>
+  40:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c **** #include <conf_board.h>
+  41:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c **** #include "gpio.h"
+  42:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c **** #include "led.h"
+  43:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c **** 
+  44:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c **** void board_init(void)
+  45:../src/ASF/mega/boards/atmega328p_xplained_mini/init.c **** {
+  16               		.loc 1 45 0
+  17               		.cfi_startproc
+  18               	/* prologue: function */
+  19               	/* frame size = 0 */
+  20               	/* stack size = 0 */
+  21               	.L__stack_usage = 0
+  22               	.LVL0:
+  23               	.LBB32:
+  24               	.LBB33:
+  25               	.LBB34:
+  26               		.file 2 "../src/ASF/common/services/ioport/mega/ioport.h"
+   1:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+   2:../src/ASF/common/services/ioport/mega/ioport.h ****  * \file
+   3:../src/ASF/common/services/ioport/mega/ioport.h ****  *
+   4:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief MEGA and MEGA_RF architecture specific IOPORT service implementation
+   5:../src/ASF/common/services/ioport/mega/ioport.h ****  * header file.
+   6:../src/ASF/common/services/ioport/mega/ioport.h ****  *
+   7:../src/ASF/common/services/ioport/mega/ioport.h ****  * Copyright (c) 2012-2018 Microchip Technology Inc. and its subsidiaries.
+   8:../src/ASF/common/services/ioport/mega/ioport.h ****  *
+   9:../src/ASF/common/services/ioport/mega/ioport.h ****  * \asf_license_start
+  10:../src/ASF/common/services/ioport/mega/ioport.h ****  *
+  11:../src/ASF/common/services/ioport/mega/ioport.h ****  * \page License
+  12:../src/ASF/common/services/ioport/mega/ioport.h ****  *
+  13:../src/ASF/common/services/ioport/mega/ioport.h ****  * Subject to your compliance with these terms, you may use Microchip
+  14:../src/ASF/common/services/ioport/mega/ioport.h ****  * software and any derivatives exclusively with Microchip products.
+  15:../src/ASF/common/services/ioport/mega/ioport.h ****  * It is your responsibility to comply with third party license terms applicable
+  16:../src/ASF/common/services/ioport/mega/ioport.h ****  * to your use of third party software (including open source software) that
+  17:../src/ASF/common/services/ioport/mega/ioport.h ****  * may accompany Microchip software.
+  18:../src/ASF/common/services/ioport/mega/ioport.h ****  *
+  19:../src/ASF/common/services/ioport/mega/ioport.h ****  * THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES,
+  20:../src/ASF/common/services/ioport/mega/ioport.h ****  * WHETHER EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE,
+  21:../src/ASF/common/services/ioport/mega/ioport.h ****  * INCLUDING ANY IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY,
+  22:../src/ASF/common/services/ioport/mega/ioport.h ****  * AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT WILL MICROCHIP BE
+  23:../src/ASF/common/services/ioport/mega/ioport.h ****  * LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, INCIDENTAL OR CONSEQUENTIAL
+  24:../src/ASF/common/services/ioport/mega/ioport.h ****  * LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND WHATSOEVER RELATED TO THE
+  25:../src/ASF/common/services/ioport/mega/ioport.h ****  * SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP HAS BEEN ADVISED OF THE
+  26:../src/ASF/common/services/ioport/mega/ioport.h ****  * POSSIBILITY OR THE DAMAGES ARE FORESEEABLE.  TO THE FULLEST EXTENT
+  27:../src/ASF/common/services/ioport/mega/ioport.h ****  * ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL CLAIMS IN ANY WAY
+  28:../src/ASF/common/services/ioport/mega/ioport.h ****  * RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT OF FEES, IF ANY,
+  29:../src/ASF/common/services/ioport/mega/ioport.h ****  * THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS SOFTWARE.
+  30:../src/ASF/common/services/ioport/mega/ioport.h ****  *
+  31:../src/ASF/common/services/ioport/mega/ioport.h ****  * \asf_license_stop
+  32:../src/ASF/common/services/ioport/mega/ioport.h ****  *
+  33:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+  34:../src/ASF/common/services/ioport/mega/ioport.h **** /*
+  35:../src/ASF/common/services/ioport/mega/ioport.h ****  * Support and FAQ: visit <a href="https://www.microchip.com/support/">Microchip Support</a>
+  36:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+  37:../src/ASF/common/services/ioport/mega/ioport.h **** #ifndef IOPORT_MEGA_RF_H
+  38:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_MEGA_RF_H
+  39:../src/ASF/common/services/ioport/mega/ioport.h **** 
+  40:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_CREATE_PIN(port, pin) ((IOPORT_ ## port) * 8 + (pin))
+  41:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_BASE_ADDRESS 0x20
+  42:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_PORT_OFFSET  0x03
+  43:../src/ASF/common/services/ioport/mega/ioport.h **** 
+  44:../src/ASF/common/services/ioport/mega/ioport.h **** /** \name IOPORT port numbers */
+  45:../src/ASF/common/services/ioport/mega/ioport.h **** /** @{ */
+  46:../src/ASF/common/services/ioport/mega/ioport.h **** 
+  47:../src/ASF/common/services/ioport/mega/ioport.h **** #if MEGA_XX0_1 || MEGA_RF || MEGA_UNSPECIFIED || MEGA_XX4 || MEGA_XX4_A
+  48:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_PORTA    0 /* not connected to pins for megaRF*/
+  49:../src/ASF/common/services/ioport/mega/ioport.h **** #endif
+  50:../src/ASF/common/services/ioport/mega/ioport.h **** 
+  51:../src/ASF/common/services/ioport/mega/ioport.h **** #if MEGA_XX0_1 || MEGA_RF || MEGA_UNSPECIFIED || MEGA_XX8 || MEGA_XX8_A || \
+  52:../src/ASF/common/services/ioport/mega/ioport.h **** 	MEGA_XX4 || MEGA_XX4_A
+  53:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_PORTB    1
+  54:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_PORTC    2 /* not connected to pins for megaRF*/
+  55:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_PORTD    3
+  56:../src/ASF/common/services/ioport/mega/ioport.h **** #endif
+  57:../src/ASF/common/services/ioport/mega/ioport.h **** 
+  58:../src/ASF/common/services/ioport/mega/ioport.h **** #if AVR8_PART_IS_DEFINED(ATmega328PB) || AVR8_PART_IS_DEFINED(ATmega324PB)
+  59:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_PORTE    4
+  60:../src/ASF/common/services/ioport/mega/ioport.h **** #endif
+  61:../src/ASF/common/services/ioport/mega/ioport.h **** 
+  62:../src/ASF/common/services/ioport/mega/ioport.h **** #if MEGA_XX0_1 || MEGA_RF
+  63:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_PORTE    4
+  64:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_PORTF    5
+  65:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_PORTG    6
+  66:../src/ASF/common/services/ioport/mega/ioport.h **** #endif
+  67:../src/ASF/common/services/ioport/mega/ioport.h **** 
+  68:../src/ASF/common/services/ioport/mega/ioport.h **** #if MEGA_XX0
+  69:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_PORTH    74
+  70:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_PORTJ    75
+  71:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_PORTK    76
+  72:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_PORTL    77
+  73:../src/ASF/common/services/ioport/mega/ioport.h **** 
+  74:../src/ASF/common/services/ioport/mega/ioport.h **** // base address for ports with addresses greater 0x100
+  75:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_BASE_ADDRESS_H 0x100
+  76:../src/ASF/common/services/ioport/mega/ioport.h **** #endif
+  77:../src/ASF/common/services/ioport/mega/ioport.h **** /** @} */
+  78:../src/ASF/common/services/ioport/mega/ioport.h **** 
+  79:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+  80:../src/ASF/common/services/ioport/mega/ioport.h ****  * \weakgroup ioport_service_group
+  81:../src/ASF/common/services/ioport/mega/ioport.h ****  * \section ioport_modes IOPORT Modes
+  82:../src/ASF/common/services/ioport/mega/ioport.h ****  *
+  83:../src/ASF/common/services/ioport/mega/ioport.h ****  * For details on these please see the megaRF Manual.
+  84:../src/ASF/common/services/ioport/mega/ioport.h ****  *
+  85:../src/ASF/common/services/ioport/mega/ioport.h ****  * @{
+  86:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+  87:../src/ASF/common/services/ioport/mega/ioport.h **** 
+  88:../src/ASF/common/services/ioport/mega/ioport.h **** /** \name IOPORT Mode bit definitions */
+  89:../src/ASF/common/services/ioport/mega/ioport.h **** /** @{ */
+  90:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_MODE_PULLDOWN        (0x01) /*!< Pull-down */
+  91:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_MODE_PULLUP          (0x00) /*!< Pull-up */
+  92:../src/ASF/common/services/ioport/mega/ioport.h **** /** @} */
+  93:../src/ASF/common/services/ioport/mega/ioport.h **** 
+  94:../src/ASF/common/services/ioport/mega/ioport.h **** typedef uint8_t ioport_mode_t;
+  95:../src/ASF/common/services/ioport/mega/ioport.h **** typedef uint16_t ioport_pin_t;
+  96:../src/ASF/common/services/ioport/mega/ioport.h **** typedef uint8_t ioport_port_t;
+  97:../src/ASF/common/services/ioport/mega/ioport.h **** typedef uint8_t ioport_port_mask_t;
+  98:../src/ASF/common/services/ioport/mega/ioport.h **** 
+  99:../src/ASF/common/services/ioport/mega/ioport.h **** /* I/O Ports */
+ 100:../src/ASF/common/services/ioport/mega/ioport.h **** typedef struct PORT_struct {
+ 101:../src/ASF/common/services/ioport/mega/ioport.h **** 	volatile uint8_t PINCRL;         /* I/O Port PIN DATA READ ONLY */
+ 102:../src/ASF/common/services/ioport/mega/ioport.h **** 	volatile uint8_t DIR;            /* I/O Port Data Direction Set */
+ 103:../src/ASF/common/services/ioport/mega/ioport.h **** 	volatile uint8_t PORTDATA;       /* I/O Port DATA register */
+ 104:../src/ASF/common/services/ioport/mega/ioport.h **** } PORT_t;
+ 105:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 106:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 107:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief A pin mask
+ 108:../src/ASF/common/services/ioport/mega/ioport.h ****  *
+ 109:../src/ASF/common/services/ioport/mega/ioport.h ****  * This type is used to describe the port pin mask on the part.
+ 110:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 111:../src/ASF/common/services/ioport/mega/ioport.h **** typedef uint8_t pin_mask_t;
+ 112:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 113:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 114:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief A PORT pin
+ 115:../src/ASF/common/services/ioport/mega/ioport.h ****  *
+ 116:../src/ASF/common/services/ioport/mega/ioport.h ****  * This type is used to describe the PORT pins on the part.
+ 117:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 118:../src/ASF/common/services/ioport/mega/ioport.h **** typedef uint8_t port_pin_t;
+ 119:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 120:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 121:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief Pin configuration flags
+ 122:../src/ASF/common/services/ioport/mega/ioport.h ****  *
+ 123:../src/ASF/common/services/ioport/mega/ioport.h ****  * This is a bitmask containing configuration flags for the pins that shall be
+ 124:../src/ASF/common/services/ioport/mega/ioport.h ****  * configured.
+ 125:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 126:../src/ASF/common/services/ioport/mega/ioport.h **** typedef uint16_t port_pin_flags_t;
+ 127:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 128:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 129:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief A port id
+ 130:../src/ASF/common/services/ioport/mega/ioport.h ****  *
+ 131:../src/ASF/common/services/ioport/mega/ioport.h ****  * This type is used to describe the port id on the part (0 is PORTA).
+ 132:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 133:../src/ASF/common/services/ioport/mega/ioport.h **** typedef uint8_t port_id_t;
+ 134:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 135:../src/ASF/common/services/ioport/mega/ioport.h **** /** \name Initial Output State Flags */
+ 136:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 137:../src/ASF/common/services/ioport/mega/ioport.h **** /*With Port as input port the initial status is either tri state
+ 138:../src/ASF/common/services/ioport/mega/ioport.h ****  * or pulled high, based on PORTX value, and check the PUD value to make
+ 139:../src/ASF/common/services/ioport/mega/ioport.h ****  * sure pull up resistance is not disabled*/
+ 140:../src/ASF/common/services/ioport/mega/ioport.h **** /** @{ */
+ 141:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_INIT_LOW           0 << 1  /*!< Initial Output State Low */
+ 142:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_INIT_HIGH          1 << 1 /*!< Initial Output State High */
+ 143:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 144:../src/ASF/common/services/ioport/mega/ioport.h **** /** @} */
+ 145:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 146:../src/ASF/common/services/ioport/mega/ioport.h **** /** \name Output and Pull Configuration Flags */
+ 147:../src/ASF/common/services/ioport/mega/ioport.h **** /** @{ */
+ 148:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_PULL_DOWN          (0 << 2) /*!< Pull-Down (when input) */
+ 149:../src/ASF/common/services/ioport/mega/ioport.h **** #define IOPORT_PULL_UP            (1 << 2) /*!< Pull-Up (when input) */
+ 150:../src/ASF/common/services/ioport/mega/ioport.h **** /** @} */
+ 151:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 152:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 153:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief: To get the port number from pin nuber
+ 154:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param: pin. the pin number defined by IOPORT_CREATE_PIN
+ 155:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 156:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static inline ioport_port_t arch_ioport_pin_to_port_id(
+ 157:../src/ASF/common/services/ioport/mega/ioport.h **** 		uint8_t pin)
+ 158:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 159:../src/ASF/common/services/ioport/mega/ioport.h **** 	return pin >> 3;
+ 160:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 161:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 162:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 163:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief: To get the base address of port number
+ 164:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param: port number e.g. IOPORT_PORTB
+ 165:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 166:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static PORT_t *arch_ioport_port_to_base(uint8_t port)
+ 167:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 168:../src/ASF/common/services/ioport/mega/ioport.h **** #ifdef IOPORT_BASE_ADDRESS_H	
+ 169:../src/ASF/common/services/ioport/mega/ioport.h **** 	if (port >= IOPORT_PORTH) {
+ 170:../src/ASF/common/services/ioport/mega/ioport.h **** 	    return (PORT_t *)((uintptr_t)(IOPORT_BASE_ADDRESS_H  + ((port - IOPORT_PORTH) * IOPORT_PORT_OF
+ 171:../src/ASF/common/services/ioport/mega/ioport.h **** 	} else 
+ 172:../src/ASF/common/services/ioport/mega/ioport.h **** #endif
+ 173:../src/ASF/common/services/ioport/mega/ioport.h **** 	{
+ 174:../src/ASF/common/services/ioport/mega/ioport.h **** 	    return (PORT_t *)((uintptr_t)(IOPORT_BASE_ADDRESS + (port * IOPORT_PORT_OFFSET)));
+ 175:../src/ASF/common/services/ioport/mega/ioport.h **** 	}
+ 176:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 177:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 178:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 179:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief: To get the base address of port number from defined pin
+ 180:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param: pin. the pin number defined by IOPORT_CREATE_PIN
+ 181:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 182:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static PORT_t *arch_ioport_pin_to_base(ioport_pin_t pin)
+ 183:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 184:../src/ASF/common/services/ioport/mega/ioport.h **** 	return arch_ioport_port_to_base(pin >> 3);
+ 185:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 186:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 187:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 188:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief: To get the 8-bit pin mask for pin
+ 189:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param: pin. the pin number defined by IOPORT_CREATE_PIN
+ 190:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 191:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static ioport_port_mask_t arch_ioport_pin_to_mask
+ 192:../src/ASF/common/services/ioport/mega/ioport.h **** 	(ioport_pin_t pin)
+ 193:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 194:../src/ASF/common/services/ioport/mega/ioport.h **** 	return 1U << (pin & 0x07);
+ 195:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 196:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 197:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 198:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief Set multiple pin modes in a single GPIO port, such as pull-up,
+ 199:../src/ASF/common/services/ioport/mega/ioport.h ****  * pull-down, etc. configuration.
+ 200:../src/ASF/common/services/ioport/mega/ioport.h ****  *
+ 201:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param port GPIO port to configure  e.g. IOPORT_PORTB
+ 202:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param mask Pin mask of pins to configure
+ 203:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param mode Mode masks to configure for the specified pins (\ref
+ 204:../src/ASF/common/services/ioport/mega/ioport.h ****  * ioport_modes)
+ 205:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 206:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static void arch_ioport_set_port_mode(ioport_port_t port,
+ 207:../src/ASF/common/services/ioport/mega/ioport.h **** 		ioport_port_mask_t mask, ioport_mode_t mode)
+ 208:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 209:../src/ASF/common/services/ioport/mega/ioport.h **** #ifdef MEGA_RF
+ 210:../src/ASF/common/services/ioport/mega/ioport.h **** 	PORT_t *base = arch_ioport_port_to_base(port);
+ 211:../src/ASF/common/services/ioport/mega/ioport.h **** 	if (mode == IOPORT_MODE_PULLUP) {
+ 212:../src/ASF/common/services/ioport/mega/ioport.h **** 		base->PORTDATA = mask;
+ 213:../src/ASF/common/services/ioport/mega/ioport.h **** 	} else if (mode == IOPORT_MODE_PULLDOWN) {
+ 214:../src/ASF/common/services/ioport/mega/ioport.h **** 		base->PORTDATA = ~mask;
+ 215:../src/ASF/common/services/ioport/mega/ioport.h **** 	}
+ 216:../src/ASF/common/services/ioport/mega/ioport.h **** #endif
+ 217:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 218:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 219:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 220:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief Set multiple pin modes in a single GPIO port, such as pull-up,
+ 221:../src/ASF/common/services/ioport/mega/ioport.h ****  * pull-down, etc. configuration.
+ 222:../src/ASF/common/services/ioport/mega/ioport.h ****  *
+ 223:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param: pin. the pin number defined by IOPORT_CREATE_PIN
+ 224:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param mask Pin mask of pins to configure
+ 225:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param mode Mode masks to configure for the specified pins (\ref
+ 226:../src/ASF/common/services/ioport/mega/ioport.h ****  * ioport_modes)
+ 227:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 228:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static void arch_ioport_set_pin_mode(ioport_pin_t pin,
+ 229:../src/ASF/common/services/ioport/mega/ioport.h **** 		ioport_mode_t mode)
+ 230:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 231:../src/ASF/common/services/ioport/mega/ioport.h **** #ifdef MEGA_RF
+ 232:../src/ASF/common/services/ioport/mega/ioport.h **** 	PORT_t *base = arch_ioport_pin_to_base(pin);
+ 233:../src/ASF/common/services/ioport/mega/ioport.h **** 	ioport_pin_t mask_pin = arch_ioport_pin_to_mask(pin);
+ 234:../src/ASF/common/services/ioport/mega/ioport.h **** 	if (mode == IOPORT_MODE_PULLUP) {
+ 235:../src/ASF/common/services/ioport/mega/ioport.h **** 		base->PORTDATA |=  mask_pin;
+ 236:../src/ASF/common/services/ioport/mega/ioport.h **** 	} else if (mode == IOPORT_MODE_PULLDOWN) {
+ 237:../src/ASF/common/services/ioport/mega/ioport.h **** 		base->PORTDATA &= ~mask_pin;
+ 238:../src/ASF/common/services/ioport/mega/ioport.h **** 	}
+ 239:../src/ASF/common/services/ioport/mega/ioport.h **** #endif
+ 240:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 241:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 242:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 243:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief : Set port direction as input or output.
+ 244:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param port GPIO port to configure  e.g. IOPORT_PORTB
+ 245:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param mask Pin mask of pins to configure
+ 246:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param mode dir, \refer ioport_direction
+ 247:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 248:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static void arch_ioport_set_port_dir(ioport_port_t port,
+ 249:../src/ASF/common/services/ioport/mega/ioport.h **** 		ioport_port_mask_t mask, enum ioport_direction dir)
+ 250:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 251:../src/ASF/common/services/ioport/mega/ioport.h **** 	PORT_t *base = arch_ioport_port_to_base(port);
+ 252:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 253:../src/ASF/common/services/ioport/mega/ioport.h **** 	if (dir == IOPORT_DIR_OUTPUT) {
+ 254:../src/ASF/common/services/ioport/mega/ioport.h **** 		base->DIR = mask;
+ 255:../src/ASF/common/services/ioport/mega/ioport.h **** 	} else if (dir == IOPORT_DIR_INPUT) {
+ 256:../src/ASF/common/services/ioport/mega/ioport.h **** 		base->DIR = ~mask;
+ 257:../src/ASF/common/services/ioport/mega/ioport.h **** 	}
+ 258:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 259:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 260:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 261:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief : Set pin direction as input or output.
+ 262:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param: pin. the pin number defined by IOPORT_CREATE_PIN
+ 263:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param mask Pin mask of pins to configure
+ 264:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param mode dir, \refer ioport_direction
+ 265:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 266:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static void arch_ioport_set_pin_dir(ioport_pin_t pin,
+ 267:../src/ASF/common/services/ioport/mega/ioport.h **** 		enum ioport_direction dir)
+ 268:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 269:../src/ASF/common/services/ioport/mega/ioport.h **** 	PORT_t *base = arch_ioport_pin_to_base(pin);
+ 270:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 271:../src/ASF/common/services/ioport/mega/ioport.h **** 	if (dir == IOPORT_DIR_OUTPUT) {
+ 272:../src/ASF/common/services/ioport/mega/ioport.h **** 		base->DIR |= arch_ioport_pin_to_mask(pin);
+ 273:../src/ASF/common/services/ioport/mega/ioport.h **** 	} else if (dir == IOPORT_DIR_INPUT) {
+ 274:../src/ASF/common/services/ioport/mega/ioport.h **** 		base->DIR &=  ~arch_ioport_pin_to_mask(pin);
+ 275:../src/ASF/common/services/ioport/mega/ioport.h **** 	}
+ 276:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 277:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 278:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 279:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief : Set pin level to high or low.
+ 280:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param: pin. the pin number defined by IOPORT_CREATE_PIN
+ 281:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param: level high/low
+ 282:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 283:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static void arch_ioport_set_pin_level(ioport_pin_t pin,
+ 284:../src/ASF/common/services/ioport/mega/ioport.h **** 		bool level)
+ 285:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 286:../src/ASF/common/services/ioport/mega/ioport.h **** 	PORT_t *base_add = arch_ioport_port_to_base(pin >> 3);
+ 287:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 288:../src/ASF/common/services/ioport/mega/ioport.h **** 	if (level) {
+ 289:../src/ASF/common/services/ioport/mega/ioport.h **** 		base_add->PORTDATA
+ 290:../src/ASF/common/services/ioport/mega/ioport.h **** 			= (base_add->PORTDATA  | arch_ioport_pin_to_mask
+ 291:../src/ASF/common/services/ioport/mega/ioport.h **** 					(pin));
+ 292:../src/ASF/common/services/ioport/mega/ioport.h **** 	} else {
+ 293:../src/ASF/common/services/ioport/mega/ioport.h **** 		base_add->PORTDATA
+ 294:../src/ASF/common/services/ioport/mega/ioport.h **** 			= (base_add->PORTDATA  & (~arch_ioport_pin_to_mask
+ 295:../src/ASF/common/services/ioport/mega/ioport.h **** 					(pin)));
+ 296:../src/ASF/common/services/ioport/mega/ioport.h **** 	}
+ 297:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 298:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 299:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 300:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief : Set port multiple pins level to high or low.
+ 301:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param port GPIO port to configure  e.g. IOPORT_PORTB
+ 302:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param: mask Pin mask of pins to configure.
+ 303:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param: level high/low
+ 304:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 305:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static void arch_ioport_set_port_level(ioport_port_t port,
+ 306:../src/ASF/common/services/ioport/mega/ioport.h **** 		ioport_port_mask_t mask, enum ioport_value level)
+ 307:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 308:../src/ASF/common/services/ioport/mega/ioport.h **** 	PORT_t *base = arch_ioport_port_to_base(port);
+ 309:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 310:../src/ASF/common/services/ioport/mega/ioport.h **** 	if (level) {
+ 311:../src/ASF/common/services/ioport/mega/ioport.h **** 		base->PORTDATA |= mask;
+ 312:../src/ASF/common/services/ioport/mega/ioport.h **** 	} else {
+ 313:../src/ASF/common/services/ioport/mega/ioport.h **** 		base->PORTDATA &= ~mask;
+ 314:../src/ASF/common/services/ioport/mega/ioport.h **** 	}
+ 315:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 316:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 317:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 318:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief : Get pin level of pin.
+ 319:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param: pin. the pin number defined by IOPORT_CREATE_PIN
+ 320:../src/ASF/common/services/ioport/mega/ioport.h ****  * \return: level high/low
+ 321:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 322:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static bool arch_ioport_get_pin_level(ioport_pin_t pin)
+ 323:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 324:../src/ASF/common/services/ioport/mega/ioport.h **** 	PORT_t *base = arch_ioport_pin_to_base(pin);
+ 325:../src/ASF/common/services/ioport/mega/ioport.h **** 	return base->PINCRL & arch_ioport_pin_to_mask(pin);
+ 326:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 327:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 328:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 329:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief : Get multiple pins level of single port.
+ 330:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param port GPIO port to configure  e.g. IOPORT_PORTB
+ 331:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param mask Pin mask of pins to read data.
+ 332:../src/ASF/common/services/ioport/mega/ioport.h ****  * \return: 8 bit value based on level voltage on pins.
+ 333:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 334:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static ioport_port_mask_t arch_ioport_get_port_level(
+ 335:../src/ASF/common/services/ioport/mega/ioport.h **** 		ioport_port_t port, ioport_port_mask_t mask)
+ 336:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 337:../src/ASF/common/services/ioport/mega/ioport.h **** 	PORT_t *base = arch_ioport_port_to_base(port);
+ 338:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 339:../src/ASF/common/services/ioport/mega/ioport.h **** 	return (base->PINCRL & mask);
+ 340:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 341:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 342:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 343:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief : To toggle the pin
+ 344:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param: pin. the pin number defined by IOPORT_CREATE_PIN
+ 345:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 346:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static void arch_ioport_toggle_pin_level(ioport_pin_t pin)
+ 347:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 348:../src/ASF/common/services/ioport/mega/ioport.h **** 	PORT_t *base = arch_ioport_pin_to_base(pin);
+ 349:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 350:../src/ASF/common/services/ioport/mega/ioport.h **** 	base->PINCRL = arch_ioport_pin_to_mask(pin);
+ 351:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 352:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 353:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 354:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief : To toggle the multiple pins on a single port.
+ 355:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param port GPIO port to toggle  e.g. IOPORT_PORTB
+ 356:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param mask Pin mask of pins to read data.
+ 357:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 358:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 359:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static void arch_ioport_toggle_port_level(ioport_port_t port,
+ 360:../src/ASF/common/services/ioport/mega/ioport.h **** 		ioport_port_mask_t mask)
+ 361:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 362:../src/ASF/common/services/ioport/mega/ioport.h **** 	PORT_t *base = arch_ioport_port_to_base(port);
+ 363:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 364:../src/ASF/common/services/ioport/mega/ioport.h **** 	base->PINCRL = mask;
+ 365:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 366:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 367:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 368:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief : To configure a single GPIO pin for trigger modes:
+ 369:../src/ASF/common/services/ioport/mega/ioport.h ****  *  sense the edge/level/both trigger.
+ 370:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param: pin. the pin number defined by IOPORT_CREATE_PIN
+ 371:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param pin_sense, refer to \ioport_sense.
+ 372:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 373:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 374:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static void arch_ioport_set_pin_sense_mode(ioport_pin_t pin,
+ 375:../src/ASF/common/services/ioport/mega/ioport.h **** 		enum ioport_sense pin_sense)
+ 376:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 377:../src/ASF/common/services/ioport/mega/ioport.h **** 	uint8_t flags = cpu_irq_save();
+ 378:../src/ASF/common/services/ioport/mega/ioport.h **** 	port_id_t port_id = arch_ioport_pin_to_port_id(pin);
+ 379:../src/ASF/common/services/ioport/mega/ioport.h **** #if  MEGA_XX0_1 || MEGA_RF
+ 380:../src/ASF/common/services/ioport/mega/ioport.h **** 	if (port_id == IOPORT_PORTD && ((pin & 0x07) < 0x04)) {
+ 381:../src/ASF/common/services/ioport/mega/ioport.h **** 		EICRA &= ~((0x03) << ((pin & 0x03) * 2));
+ 382:../src/ASF/common/services/ioport/mega/ioport.h **** 		EICRA |= pin_sense << ((pin & 0x03) * 2);
+ 383:../src/ASF/common/services/ioport/mega/ioport.h **** 	} else if (port_id == IOPORT_PORTE && ((pin & 0x07) > 0x03)) {
+ 384:../src/ASF/common/services/ioport/mega/ioport.h **** 		EICRB &= ~((0x03) << ((pin & 0x03) * 2));
+ 385:../src/ASF/common/services/ioport/mega/ioport.h **** 		EICRB |= pin_sense << ((pin & 0x03) * 2);
+ 386:../src/ASF/common/services/ioport/mega/ioport.h **** 	}
+ 387:../src/ASF/common/services/ioport/mega/ioport.h **** #endif
+ 388:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 389:../src/ASF/common/services/ioport/mega/ioport.h **** #if  MEGA_XX8
+ 390:../src/ASF/common/services/ioport/mega/ioport.h **** 	if (port_id == IOPORT_PORTD &&
+ 391:../src/ASF/common/services/ioport/mega/ioport.h **** 			((pin & 0x07) == 2 || (pin & 0x07) == 3)) {
+ 392:../src/ASF/common/services/ioport/mega/ioport.h **** 		EICRA &= ~((0x03) << (((pin & 0x03) - 2) * 2));
+ 393:../src/ASF/common/services/ioport/mega/ioport.h **** 		EICRA |= pin_sense << (((pin & 0x03) - 2) * 2);
+ 394:../src/ASF/common/services/ioport/mega/ioport.h **** 	}
+ 395:../src/ASF/common/services/ioport/mega/ioport.h **** #endif
+ 396:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 397:../src/ASF/common/services/ioport/mega/ioport.h **** #if  MEGA_XX4
+ 398:../src/ASF/common/services/ioport/mega/ioport.h **** 	if (port_id == IOPORT_PORTD &&
+ 399:../src/ASF/common/services/ioport/mega/ioport.h **** 			((pin & 0x07) == 2 || (pin & 0x07) == 3)) {
+ 400:../src/ASF/common/services/ioport/mega/ioport.h **** 		EICRA &= ~((0x03) << (((pin & 0x03) - 2) * 2));
+ 401:../src/ASF/common/services/ioport/mega/ioport.h **** 		EICRA |= pin_sense << (((pin & 0x03) - 2) * 2);
+ 402:../src/ASF/common/services/ioport/mega/ioport.h **** 	}
+ 403:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 404:../src/ASF/common/services/ioport/mega/ioport.h **** 	if (port_id == IOPORT_PORTB && ((pin & 0x07) == 2)) {
+ 405:../src/ASF/common/services/ioport/mega/ioport.h **** 		EICRA &= ~((0x03) << 4);
+ 406:../src/ASF/common/services/ioport/mega/ioport.h **** 		EICRA |= pin_sense << 4;
+ 407:../src/ASF/common/services/ioport/mega/ioport.h **** 	}
+ 408:../src/ASF/common/services/ioport/mega/ioport.h **** #endif
+ 409:../src/ASF/common/services/ioport/mega/ioport.h **** 	cpu_irq_restore(flags);
+ 410:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 411:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 412:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 413:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief : To configure a multiple pins for trigger modes: sense the edge/
+ 414:../src/ASF/common/services/ioport/mega/ioport.h ****  *  level/both trigger.
+ 415:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param: pin. the pin number defined by IOPORT_CREATE_PIN
+ 416:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param pin_sense, refer to \ioport_sense.
+ 417:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 418:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static void arch_ioport_set_port_sense_mode(ioport_port_t port,
+ 419:../src/ASF/common/services/ioport/mega/ioport.h **** 		ioport_port_mask_t mask, enum ioport_sense pin_sense)
+ 420:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 421:../src/ASF/common/services/ioport/mega/ioport.h **** 	uint8_t flags = cpu_irq_save();
+ 422:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 423:../src/ASF/common/services/ioport/mega/ioport.h **** #if  !MEGA_UNSPECIFIED
+ 424:../src/ASF/common/services/ioport/mega/ioport.h **** 	if (port == IOPORT_PORTD) {
+ 425:../src/ASF/common/services/ioport/mega/ioport.h **** 		EICRA =  mask;
+ 426:../src/ASF/common/services/ioport/mega/ioport.h **** 		EICRA &= (pin_sense << 6) || (pin_sense << 4) ||
+ 427:../src/ASF/common/services/ioport/mega/ioport.h **** 				(pin_sense << 2) ||
+ 428:../src/ASF/common/services/ioport/mega/ioport.h **** 				(pin_sense);
+ 429:../src/ASF/common/services/ioport/mega/ioport.h **** 	}
+ 430:../src/ASF/common/services/ioport/mega/ioport.h **** #endif
+ 431:../src/ASF/common/services/ioport/mega/ioport.h **** #if  MEGA_XX8
+ 432:../src/ASF/common/services/ioport/mega/ioport.h **** 	if (port == IOPORT_PORTD) {
+ 433:../src/ASF/common/services/ioport/mega/ioport.h **** 		EICRA = mask;
+ 434:../src/ASF/common/services/ioport/mega/ioport.h **** 		EICRA &= (pin_sense << 2) || (pin_sense);
+ 435:../src/ASF/common/services/ioport/mega/ioport.h **** 	}
+ 436:../src/ASF/common/services/ioport/mega/ioport.h **** #endif
+ 437:../src/ASF/common/services/ioport/mega/ioport.h **** #if  MEGA_XX0_1 || MEGA_RF
+ 438:../src/ASF/common/services/ioport/mega/ioport.h **** 	else if (port == IOPORT_PORTE) {
+ 439:../src/ASF/common/services/ioport/mega/ioport.h **** 		EICRB = mask;
+ 440:../src/ASF/common/services/ioport/mega/ioport.h **** 		EICRB &= (pin_sense << 6) || (pin_sense << 4) ||
+ 441:../src/ASF/common/services/ioport/mega/ioport.h **** 				(pin_sense << 2) ||
+ 442:../src/ASF/common/services/ioport/mega/ioport.h **** 				(pin_sense);
+ 443:../src/ASF/common/services/ioport/mega/ioport.h **** 	}
+ 444:../src/ASF/common/services/ioport/mega/ioport.h **** #endif
+ 445:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 446:../src/ASF/common/services/ioport/mega/ioport.h **** 	cpu_irq_restore(flags);
+ 447:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 448:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 449:../src/ASF/common/services/ioport/mega/ioport.h **** /****************************************************************************
+ 450:../src/ASF/common/services/ioport/mega/ioport.h ****  *
+ 451:../src/ASF/common/services/ioport/mega/ioport.h ****  * Functional register are not available for this architecture through
+ 452:../src/ASF/common/services/ioport/mega/ioport.h ****  * IOPORT register.
+ 453:../src/ASF/common/services/ioport/mega/ioport.h ****  *
+ 454:../src/ASF/common/services/ioport/mega/ioport.h ****  *****************************************************************************/
+ 455:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static void arch_ioport_init(void)
+ 456:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 457:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 458:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 459:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static void arch_ioport_enable_pin(ioport_pin_t pin)
+ 460:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 461:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 462:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 463:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static void arch_ioport_enable_port(ioport_port_t port,
+ 464:../src/ASF/common/services/ioport/mega/ioport.h **** 		ioport_port_mask_t mask)
+ 465:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 466:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 467:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 468:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static void arch_ioport_disable_pin(ioport_pin_t pin)
+ 469:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 470:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 471:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 472:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static void arch_ioport_disable_port(ioport_port_t port,
+ 473:../src/ASF/common/services/ioport/mega/ioport.h **** 		ioport_port_mask_t mask)
+ 474:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 475:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 476:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 477:../src/ASF/common/services/ioport/mega/ioport.h **** /****************************************************************************/
+ 478:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 479:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 480:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief : To get the port address pointer from pin
+ 481:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param: pin. the pin number defined by IOPORT_CREATE_PIN
+ 482:../src/ASF/common/services/ioport/mega/ioport.h ****  * \return pointer to base address of ports(8 bit)
+ 483:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 484:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static inline PORT_t *ioport_pin_to_port(port_pin_t pin)
+ 485:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 486:../src/ASF/common/services/ioport/mega/ioport.h **** 	return arch_ioport_pin_to_base(pin);
+ 487:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 488:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 489:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 490:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief : To get the port address pointer from port number
+ 491:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param port GPIO port to toggle  e.g. IOPORT_PORTB
+ 492:../src/ASF/common/services/ioport/mega/ioport.h ****  * \return pointer to base address of ports(8 bit)
+ 493:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 494:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 495:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static inline PORT_t *ioport_id_pin_to_port(port_id_t port)
+ 496:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 497:../src/ASF/common/services/ioport/mega/ioport.h **** 	return arch_ioport_port_to_base(port);
+ 498:../src/ASF/common/services/ioport/mega/ioport.h **** }
+ 499:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 500:../src/ASF/common/services/ioport/mega/ioport.h **** /**
+ 501:../src/ASF/common/services/ioport/mega/ioport.h ****  * \brief Configure the IO PORT pin function for a set of pins on a port
+ 502:../src/ASF/common/services/ioport/mega/ioport.h ****  *
+ 503:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param port Pointer to the port
+ 504:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param pin_mask Mask containing the pins that should be configured
+ 505:../src/ASF/common/services/ioport/mega/ioport.h ****  * \param flags Bitmask of flags specifying additional configuration
+ 506:../src/ASF/common/services/ioport/mega/ioport.h ****  * parameters.
+ 507:../src/ASF/common/services/ioport/mega/ioport.h ****  */
+ 508:../src/ASF/common/services/ioport/mega/ioport.h **** __always_inline static inline void ioport_configure_port_pin(void *port,
+ 509:../src/ASF/common/services/ioport/mega/ioport.h **** 		pin_mask_t pin_mask,
+ 510:../src/ASF/common/services/ioport/mega/ioport.h **** 		port_pin_flags_t flags)
+ 511:../src/ASF/common/services/ioport/mega/ioport.h **** {
+ 512:../src/ASF/common/services/ioport/mega/ioport.h **** 	/* Select direction and initial pin state */
+ 513:../src/ASF/common/services/ioport/mega/ioport.h **** 	if (flags & IOPORT_DIR_OUTPUT) {
+ 514:../src/ASF/common/services/ioport/mega/ioport.h **** 		if (flags & IOPORT_INIT_HIGH) {
+ 515:../src/ASF/common/services/ioport/mega/ioport.h **** 			*((uint8_t *)port + 2) |= pin_mask;
+  27               		.loc 2 515 0
+  28 0000 95B1      		in r25,0x5
+  29               	.LVL1:
+  30               	.LBE34:
+  31               	.LBE33:
+  32               	.LBE32:
+  33               	.LBB35:
+  34               	.LBB36:
+  35               	.LBB37:
+ 516:../src/ASF/common/services/ioport/mega/ioport.h **** 		} else {
+ 517:../src/ASF/common/services/ioport/mega/ioport.h **** 			*((uint8_t *)port + 2) &= ~pin_mask;
+ 518:../src/ASF/common/services/ioport/mega/ioport.h **** 		}
+ 519:../src/ASF/common/services/ioport/mega/ioport.h **** 
+ 520:../src/ASF/common/services/ioport/mega/ioport.h **** 		*((uint8_t *)port + 1) |= pin_mask;
+ 521:../src/ASF/common/services/ioport/mega/ioport.h **** 	} else {
+ 522:../src/ASF/common/services/ioport/mega/ioport.h **** 		*((uint8_t *)port + 1) &= ~pin_mask;
+  36               		.loc 2 522 0
+  37 0002 84B1      		in r24,0x4
+  38 0004 8062      		ori r24,lo8(32)
+  39 0006 8F77      		andi r24,lo8(127)
+  40 0008 84B9      		out 0x4,r24
+ 523:../src/ASF/common/services/ioport/mega/ioport.h **** 		if (flags & IOPORT_PULL_UP) {
+ 524:../src/ASF/common/services/ioport/mega/ioport.h **** 			*((uint8_t *)port + 2) |= pin_mask;
+  41               		.loc 2 524 0
+  42 000a 892F      		mov r24,r25
+  43 000c 806A      		ori r24,lo8(-96)
+  44 000e 85B9      		out 0x5,r24
+  45               	.LVL2:
+  46 0010 0895      		ret
+  47               	.LBE37:
+  48               	.LBE36:
+  49               	.LBE35:
+  50               		.cfi_endproc
+  51               	.LFE65:
+  53               		.text
+  54               	.Letext0:
+  55               		.file 3 "c:\\program files (x86)\\atmel\\studio\\7.0\\toolchain\\avr8\\avr8-gnu-toolchain\\avr\\in
+  56               		.file 4 "../src/ASF/common/services/ioport/ioport.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 init.c
+              init.s:2      *ABS*:0000003e __SP_H__
+              init.s:3      *ABS*:0000003d __SP_L__
+              init.s:4      *ABS*:0000003f __SREG__
+              init.s:5      *ABS*:00000000 __tmp_reg__
+              init.s:6      *ABS*:00000001 __zero_reg__
+              init.s:13     .text.board_init:00000000 board_init
+                           .group:00000000 wm4.sfr_defs.h.36.473802ecbcb5d4d38de6c7efbfcd3c60
+                           .group:00000000 wm4.stdint.h.41.052d062c327f27e210bb72c3d087afe5
+                           .group:00000000 wm4.inttypes.h.96.afb9c4be73a069861f8689c997efc518
+                           .group:00000000 wm4.sfr_defs.h.128.38ceebe2fb099c106e85a566519e0f1a
+                           .group:00000000 wm4.iom328p.h.44.29c929f46483155923fc58520c74ebf7
+                           .group:00000000 wm4.portpins.h.34.21289185946cbf62723ecc8db6cdc3ff
+                           .group:00000000 wm4.common.h.35.c7e66042b2128622b9d3bddccc9a39f4
+                           .group:00000000 wm4.version.h.54.85699b1a50c61c991a37d67b69e79e95
+                           .group:00000000 wm4.fuse.h.36.5c373c650020c0efef2cbaa98ea802c3
+                           .group:00000000 wm4.lock.h.36.51f311078904691e8f8c3d70111251d8
+                           .group:00000000 wm4.stdbool.h.29.07dce69c3b78884144b7f7bd19483461
+                           .group:00000000 wm4.stddef.h.39.99b5021e28f91cdb161c889e07266673
+                           .group:00000000 wm4.stdlib.h.40.248a6087ef49adb4f4328833c0282d4b
+                           .group:00000000 wm4.stddef.h.161.19e15733342b50ead2919490b095303e
+                           .group:00000000 wm4.stdlib.h.51.3a36e1d757b19eb9d8852fbf8bb7cd30
+                           .group:00000000 wm4.parts.h.38.424177e1c4c7502bdf2cd6eac0e66f1e
+                           .group:00000000 wm4.compiler.h.71.f9633126e8a32454fdb20497dc57808e
+                           .group:00000000 wm4.interrupt.h.36.b2193b640edda749ea0a45a8be5976c8
+                           .group:00000000 wm4.interrupt_avr8.h.89.988a0fb0a0728821bb2ce6a5fad9a217
+                           .group:00000000 wm4.pgmspace.h.83.7bf4a326041279617a872e0717310315
+                           .group:00000000 wm4.pgmspace.h.98.de80e653d80602932888d287eea24d43
+                           .group:00000000 wm4.progmem.h.56.1d8b28eb4bdbace2fba3d4aa9d1800d3
+                           .group:00000000 wm4.compiler.h.162.3bca7208a79b237ff211f6b945969fd5
+                           .group:00000000 wm4.board.h.62.052526d93e2d7862a07f04948a6ff648
+                           .group:00000000 wm4.ioport.h.38.48f501ae460febc49dd950c4a2361938
+                           .group:00000000 wm4.mega_gpio.h.43.3e8869bf7dde66f4dae42caccabdc28f
+                           .group:00000000 wm4.led.h.49.f70483782e1febf45298b25c5f4d1ffa
+                           .group:00000000 wm4.atmega328p_xplained_mini.h.47.411278661c63ad4794d5f415bca0f65b
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,197 @@
+   1               		.file	"ADC.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.Ltext0:
+   9               		.cfi_sections	.debug_frame
+  10               		.section	.text.adc_init,"ax",@progbits
+  11               	.global	adc_init
+  13               	adc_init:
+  14               	.LFB10:
+  15               		.file 1 "../src/ADC.c"
+   1:../src/ADC.c  **** /*
+   2:../src/ADC.c  ****  * ADC.c
+   3:../src/ADC.c  ****  *
+   4:../src/ADC.c  ****  * Created: 11/4/2022 6:44:57 PM
+   5:../src/ADC.c  ****  *  Author: jacoby
+   6:../src/ADC.c  ****  */ 
+   7:../src/ADC.c  **** #include <avr/io.h>
+   8:../src/ADC.c  **** #include "ADC.h"
+   9:../src/ADC.c  **** uint16_t adc_value;            //Variable used to store the value read from the ADC
+  10:../src/ADC.c  **** 
+  11:../src/ADC.c  **** #define F_CPU 16000000UL // Defining the CPU Frequency
+  12:../src/ADC.c  **** #include <util/delay.h>  // Generates a Blocking Delay
+  13:../src/ADC.c  **** #include "UART.h"
+  14:../src/ADC.c  **** #include "stdlib.h"
+  15:../src/ADC.c  **** void USART_putstring(char* StringPtr);
+  16:../src/ADC.c  **** 
+  17:../src/ADC.c  **** void adc_init(void){
+  16               		.loc 1 17 0
+  17               		.cfi_startproc
+  18               	/* prologue: function */
+  19               	/* frame size = 0 */
+  20               	/* stack size = 0 */
+  21               	.L__stack_usage = 0
+  18:../src/ADC.c  **** 	
+  19:../src/ADC.c  **** 	ADCSRA |= ((1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0));    //16Mhz/128 = 125Khz the ADC reference clock
+  22               		.loc 1 19 0
+  23 0000 EAE7      		ldi r30,lo8(122)
+  24 0002 F0E0      		ldi r31,0
+  25 0004 8081      		ld r24,Z
+  26 0006 8760      		ori r24,lo8(7)
+  27 0008 8083      		st Z,r24
+  20:../src/ADC.c  **** 	ADMUX |= (1<<REFS0);                //Voltage reference from Avcc (5v)
+  28               		.loc 1 20 0
+  29 000a ACE7      		ldi r26,lo8(124)
+  30 000c B0E0      		ldi r27,0
+  31 000e 8C91      		ld r24,X
+  32 0010 8064      		ori r24,lo8(64)
+  33 0012 8C93      		st X,r24
+  21:../src/ADC.c  **** 	ADCSRA |= (1<<ADEN);                //Turn on ADC
+  34               		.loc 1 21 0
+  35 0014 8081      		ld r24,Z
+  36 0016 8068      		ori r24,lo8(-128)
+  37 0018 8083      		st Z,r24
+  22:../src/ADC.c  **** 	ADCSRA |= (1<<ADSC);                //Do an initial conversion because this one is the slowest and
+  38               		.loc 1 22 0
+  39 001a 8081      		ld r24,Z
+  40 001c 8064      		ori r24,lo8(64)
+  41 001e 8083      		st Z,r24
+  42 0020 0895      		ret
+  43               		.cfi_endproc
+  44               	.LFE10:
+  46               		.section	.text.read_adc,"ax",@progbits
+  47               	.global	read_adc
+  49               	read_adc:
+  50               	.LFB11:
+  23:../src/ADC.c  **** }
+  24:../src/ADC.c  **** 
+  25:../src/ADC.c  **** uint16_t read_adc(uint8_t channel){
+  51               		.loc 1 25 0
+  52               		.cfi_startproc
+  53               	.LVL0:
+  54               	/* prologue: function */
+  55               	/* frame size = 0 */
+  56               	/* stack size = 0 */
+  57               	.L__stack_usage = 0
+  26:../src/ADC.c  **** 	ADMUX &= 0xF0;                    //Clear the older channel that was read
+  58               		.loc 1 26 0
+  59 0000 ECE7      		ldi r30,lo8(124)
+  60 0002 F0E0      		ldi r31,0
+  61 0004 9081      		ld r25,Z
+  62 0006 907F      		andi r25,lo8(-16)
+  63 0008 9083      		st Z,r25
+  27:../src/ADC.c  **** 	ADMUX |= channel;                //Defines the new ADC channel to be read
+  64               		.loc 1 27 0
+  65 000a 9081      		ld r25,Z
+  66 000c 892B      		or r24,r25
+  67               	.LVL1:
+  68 000e 8083      		st Z,r24
+  28:../src/ADC.c  **** 	ADCSRA |= (1<<ADSC);            //Starts a new conversion
+  69               		.loc 1 28 0
+  70 0010 EAE7      		ldi r30,lo8(122)
+  71 0012 F0E0      		ldi r31,0
+  72 0014 8081      		ld r24,Z
+  73 0016 8064      		ori r24,lo8(64)
+  74 0018 8083      		st Z,r24
+  75               	.L3:
+  29:../src/ADC.c  **** 	while(ADCSRA & (1<<ADSC));      //Wait until the conversion is done
+  76               		.loc 1 29 0 discriminator 1
+  77 001a 8081      		ld r24,Z
+  78               		.loc 1 29 0 discriminator 1
+  79 001c 86FD      		sbrc r24,6
+  80 001e 00C0      		rjmp .L3
+  30:../src/ADC.c  **** 	return ADCW;                    //Returns the ADC value of the chosen channel
+  81               		.loc 1 30 0
+  82 0020 8091 7800 		lds r24,120
+  83 0024 9091 7900 		lds r25,120+1
+  31:../src/ADC.c  **** }
+  84               		.loc 1 31 0
+  85 0028 0895      		ret
+  86               		.cfi_endproc
+  87               	.LFE11:
+  89               		.section	.text.read_VRY,"ax",@progbits
+  90               	.global	read_VRY
+  92               	read_VRY:
+  93               	.LFB12:
+  32:../src/ADC.c  **** 
+  33:../src/ADC.c  **** 
+  34:../src/ADC.c  **** 
+  35:../src/ADC.c  **** uint16_t read_VRY(void)
+  36:../src/ADC.c  **** {
+  94               		.loc 1 36 0
+  95               		.cfi_startproc
+  96               	/* prologue: function */
+  97               	/* frame size = 0 */
+  98               	/* stack size = 0 */
+  99               	.L__stack_usage = 0
+  37:../src/ADC.c  **** 	return read_adc(4);
+ 100               		.loc 1 37 0
+ 101 0000 84E0      		ldi r24,lo8(4)
+ 102 0002 0E94 0000 		call read_adc
+ 103               	.LVL2:
+  38:../src/ADC.c  **** } 
+ 104               		.loc 1 38 0
+ 105 0006 0895      		ret
+ 106               		.cfi_endproc
+ 107               	.LFE12:
+ 109               		.section	.text.read_VRX,"ax",@progbits
+ 110               	.global	read_VRX
+ 112               	read_VRX:
+ 113               	.LFB13:
+  39:../src/ADC.c  **** uint16_t read_VRX(void)
+  40:../src/ADC.c  **** {
+ 114               		.loc 1 40 0
+ 115               		.cfi_startproc
+ 116               	/* prologue: function */
+ 117               	/* frame size = 0 */
+ 118               	/* stack size = 0 */
+ 119               	.L__stack_usage = 0
+  41:../src/ADC.c  **** 	return read_adc(5);
+ 120               		.loc 1 41 0
+ 121 0000 85E0      		ldi r24,lo8(5)
+ 122 0002 0E94 0000 		call read_adc
+ 123               	.LVL3:
+  42:../src/ADC.c  **** }...
+ 124               		.loc 1 42 0
+ 125 0006 0895      		ret
+ 126               		.cfi_endproc
+ 127               	.LFE13:
+ 129               		.comm	adc_value,2,1
+ 130               		.text
+ 131               	.Letext0:
+ 132               		.file 2 "c:\\program files (x86)\\atmel\\studio\\7.0\\toolchain\\avr8\\avr8-gnu-toolchain\\avr\\in
+DEFINED SYMBOLS
+                            *ABS*:00000000 ADC.c
+               ADC.s:2      *ABS*:0000003e __SP_H__
+               ADC.s:3      *ABS*:0000003d __SP_L__
+               ADC.s:4      *ABS*:0000003f __SREG__
+               ADC.s:5      *ABS*:00000000 __tmp_reg__
+               ADC.s:6      *ABS*:00000001 __zero_reg__
+               ADC.s:13     .text.adc_init:00000000 adc_init
+               ADC.s:49     .text.read_adc:00000000 read_adc
+               ADC.s:92     .text.read_VRY:00000000 read_VRY
+               ADC.s:112    .text.read_VRX:00000000 read_VRX
+                            *COM*:00000002 adc_value
+                           .group:00000000 wm4.sfr_defs.h.36.473802ecbcb5d4d38de6c7efbfcd3c60
+                           .group:00000000 wm4.stdint.h.41.052d062c327f27e210bb72c3d087afe5
+                           .group:00000000 wm4.inttypes.h.96.afb9c4be73a069861f8689c997efc518
+                           .group:00000000 wm4.sfr_defs.h.128.38ceebe2fb099c106e85a566519e0f1a
+                           .group:00000000 wm4.iom328p.h.44.29c929f46483155923fc58520c74ebf7
+                           .group:00000000 wm4.portpins.h.34.21289185946cbf62723ecc8db6cdc3ff
+                           .group:00000000 wm4.common.h.35.c7e66042b2128622b9d3bddccc9a39f4
+                           .group:00000000 wm4.version.h.54.85699b1a50c61c991a37d67b69e79e95
+                           .group:00000000 wm4.fuse.h.36.5c373c650020c0efef2cbaa98ea802c3
+                           .group:00000000 wm4.lock.h.36.51f311078904691e8f8c3d70111251d8
+                           .group:00000000 wm4.ADC.h.10.4375d630963ad1b8b9d883a341299c49
+                           .group:00000000 wm4.delay.h.36.9b049a49ceee302c08fd72aec728bf54
+                           .group:00000000 wm4.math.h.49.c8a36eddb532146e0bb8ca9326ea4652
+                           .group:00000000 wm4.stdlib.h.40.248a6087ef49adb4f4328833c0282d4b
+                           .group:00000000 wm4.stddef.h.187.e1c83cba2098ce92b68f6311de19e6b1
+                           .group:00000000 wm4.stdlib.h.51.b17834f4e5b9352d53ab037638bd1f7b
+
+UNDEFINED SYMBOLS
+__do_clear_bss

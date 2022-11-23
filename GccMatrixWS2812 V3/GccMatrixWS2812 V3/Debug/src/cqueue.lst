@@ -1,0 +1,250 @@
+   1               		.file	"cqueue.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.Ltext0:
+   9               		.cfi_sections	.debug_frame
+  10               		.section	.text.QueueInit,"ax",@progbits
+  11               	.global	QueueInit
+  13               	QueueInit:
+  14               	.LFB0:
+  15               		.file 1 "../src/cqueue.c"
+   1:../src/cqueue.c **** /* Circular Queue */
+   2:../src/cqueue.c **** 
+   3:../src/cqueue.c **** 
+   4:../src/cqueue.c **** 
+   5:../src/cqueue.c **** #include "cqueue.h"
+   6:../src/cqueue.c **** #define QSIZE  20	// Queue size (must be less than 0xFF)	
+   7:../src/cqueue.c **** 
+   8:../src/cqueue.c **** 
+   9:../src/cqueue.c **** static unsigned char buffer[QSIZE];  // storage for circuar queue
+  10:../src/cqueue.c **** static unsigned char news;	    // How many "news" are remaining in Queue
+  11:../src/cqueue.c **** static unsigned char *pin,*pout;     // input and output pointers 	
+  12:../src/cqueue.c **** 
+  13:../src/cqueue.c **** 
+  14:../src/cqueue.c **** 
+  15:../src/cqueue.c **** 
+  16:../src/cqueue.c **** 
+  17:../src/cqueue.c **** /*
+  18:../src/cqueue.c ****  Initialize queue 
+  19:../src/cqueue.c **** */
+  20:../src/cqueue.c **** void QueueInit(void)
+  21:../src/cqueue.c **** 
+  22:../src/cqueue.c **** {
+  16               		.loc 1 22 0
+  17               		.cfi_startproc
+  18               	/* prologue: function */
+  19               	/* frame size = 0 */
+  20               	/* stack size = 0 */
+  21               	.L__stack_usage = 0
+  23:../src/cqueue.c **** 
+  24:../src/cqueue.c **** 	pin=buffer;	//set up pin,pout and "news" counter 	
+  22               		.loc 1 24 0
+  23 0000 80E0      		ldi r24,lo8(buffer)
+  24 0002 90E0      		ldi r25,hi8(buffer)
+  25 0004 9093 0000 		sts pin+1,r25
+  26 0008 8093 0000 		sts pin,r24
+  25:../src/cqueue.c **** 	pout=buffer;
+  27               		.loc 1 25 0
+  28 000c 9093 0000 		sts pout+1,r25
+  29 0010 8093 0000 		sts pout,r24
+  26:../src/cqueue.c **** 	news=0;
+  30               		.loc 1 26 0
+  31 0014 1092 0000 		sts news,__zero_reg__
+  32 0018 0895      		ret
+  33               		.cfi_endproc
+  34               	.LFE0:
+  36               		.section	.text.PushQueue,"ax",@progbits
+  37               	.global	PushQueue
+  39               	PushQueue:
+  40               	.LFB1:
+  27:../src/cqueue.c **** 
+  28:../src/cqueue.c **** }
+  29:../src/cqueue.c **** 
+  30:../src/cqueue.c **** /*
+  31:../src/cqueue.c ****   Push data on queue 
+  32:../src/cqueue.c **** */
+  33:../src/cqueue.c **** unsigned char PushQueue(unsigned char data)
+  34:../src/cqueue.c **** 
+  35:../src/cqueue.c **** {
+  41               		.loc 1 35 0
+  42               		.cfi_startproc
+  43               	.LVL0:
+  44               	/* prologue: function */
+  45               	/* frame size = 0 */
+  46               	/* stack size = 0 */
+  47               	.L__stack_usage = 0
+  36:../src/cqueue.c **** 	
+  37:../src/cqueue.c **** 	if (news > QSIZE-1)		//test for Queue overflow
+  48               		.loc 1 37 0
+  49 0000 9091 0000 		lds r25,news
+  50 0004 9431      		cpi r25,lo8(20)
+  51 0006 00F0      		brlo .L3
+  38:../src/cqueue.c **** 	{
+  39:../src/cqueue.c **** 		news=QOVERFLOW;		// inform queue has overflowed
+  52               		.loc 1 39 0
+  53 0008 8FEF      		ldi r24,lo8(-1)
+  54               	.LVL1:
+  55 000a 8093 0000 		sts news,r24
+  40:../src/cqueue.c **** 		return (news);		
+  56               		.loc 1 40 0
+  57 000e 0895      		ret
+  58               	.LVL2:
+  59               	.L3:
+  41:../src/cqueue.c **** 	}	
+  42:../src/cqueue.c **** 
+  43:../src/cqueue.c **** 	*pin++=data;			// pull data
+  60               		.loc 1 43 0
+  61 0010 E091 0000 		lds r30,pin
+  62 0014 F091 0000 		lds r31,pin+1
+  63 0018 9F01      		movw r18,r30
+  64 001a 2F5F      		subi r18,-1
+  65 001c 3F4F      		sbci r19,-1
+  66 001e 3093 0000 		sts pin+1,r19
+  67 0022 2093 0000 		sts pin,r18
+  68 0026 8083      		st Z,r24
+  44:../src/cqueue.c **** 	news++;				// update "news" counter
+  69               		.loc 1 44 0
+  70 0028 81E0      		ldi r24,lo8(1)
+  71               	.LVL3:
+  72 002a 890F      		add r24,r25
+  73 002c 8093 0000 		sts news,r24
+  45:../src/cqueue.c **** 
+  46:../src/cqueue.c **** 	if (pin == buffer+QSIZE)	// if queue size is exceded reset pointer
+  74               		.loc 1 46 0
+  75 0030 2050      		subi r18,lo8(buffer+20)
+  76 0032 3040      		sbci r19,hi8(buffer+20)
+  77 0034 01F4      		brne .L4
+  47:../src/cqueue.c **** 		pin=buffer;
+  78               		.loc 1 47 0
+  79 0036 20E0      		ldi r18,lo8(buffer)
+  80 0038 30E0      		ldi r19,hi8(buffer)
+  81 003a 3093 0000 		sts pin+1,r19
+  82 003e 2093 0000 		sts pin,r18
+  83               	.L4:
+  48:../src/cqueue.c **** 
+  49:../src/cqueue.c **** 	return(news);			// inform Queue state
+  50:../src/cqueue.c **** }
+  84               		.loc 1 50 0
+  85 0042 0895      		ret
+  86               		.cfi_endproc
+  87               	.LFE1:
+  89               		.section	.text.PullQueue,"ax",@progbits
+  90               	.global	PullQueue
+  92               	PullQueue:
+  93               	.LFB2:
+  51:../src/cqueue.c **** 
+  52:../src/cqueue.c **** /*
+  53:../src/cqueue.c ****   Retrieve data from queue 
+  54:../src/cqueue.c **** */
+  55:../src/cqueue.c **** unsigned char PullQueue(void)
+  56:../src/cqueue.c **** 
+  57:../src/cqueue.c **** {
+  94               		.loc 1 57 0
+  95               		.cfi_startproc
+  96               	/* prologue: function */
+  97               	/* frame size = 0 */
+  98               	/* stack size = 0 */
+  99               	.L__stack_usage = 0
+  58:../src/cqueue.c **** unsigned char data;
+  59:../src/cqueue.c **** 
+  60:../src/cqueue.c **** 	data=*pout++;			// pull data
+ 100               		.loc 1 60 0
+ 101 0000 E091 0000 		lds r30,pout
+ 102 0004 F091 0000 		lds r31,pout+1
+ 103 0008 9F01      		movw r18,r30
+ 104 000a 2F5F      		subi r18,-1
+ 105 000c 3F4F      		sbci r19,-1
+ 106 000e 3093 0000 		sts pout+1,r19
+ 107 0012 2093 0000 		sts pout,r18
+ 108 0016 8081      		ld r24,Z
+ 109               	.LVL4:
+  61:../src/cqueue.c **** 	news--;				// update "news" counter
+ 110               		.loc 1 61 0
+ 111 0018 9091 0000 		lds r25,news
+ 112 001c 9150      		subi r25,lo8(-(-1))
+ 113 001e 9093 0000 		sts news,r25
+  62:../src/cqueue.c **** 
+  63:../src/cqueue.c **** 	if (pout == buffer+QSIZE)	// Check for Queue boundaries
+ 114               		.loc 1 63 0
+ 115 0022 2050      		subi r18,lo8(buffer+20)
+ 116 0024 3040      		sbci r19,hi8(buffer+20)
+ 117 0026 01F4      		brne .L6
+  64:../src/cqueue.c **** 		pout=buffer;		// if queue size is exceded reset pointer
+ 118               		.loc 1 64 0
+ 119 0028 20E0      		ldi r18,lo8(buffer)
+ 120 002a 30E0      		ldi r19,hi8(buffer)
+ 121 002c 3093 0000 		sts pout+1,r19
+ 122 0030 2093 0000 		sts pout,r18
+ 123               	.L6:
+  65:../src/cqueue.c **** 	return (data);			// rerturn retrieved data
+  66:../src/cqueue.c **** }
+ 124               		.loc 1 66 0
+ 125 0034 0895      		ret
+ 126               		.cfi_endproc
+ 127               	.LFE2:
+ 129               		.section	.text.QueueStatus,"ax",@progbits
+ 130               	.global	QueueStatus
+ 132               	QueueStatus:
+ 133               	.LFB3:
+  67:../src/cqueue.c **** 
+  68:../src/cqueue.c **** /*
+  69:../src/cqueue.c ****   Get queue Status
+  70:../src/cqueue.c **** */
+  71:../src/cqueue.c **** unsigned char QueueStatus(void)
+  72:../src/cqueue.c **** 
+  73:../src/cqueue.c **** {
+ 134               		.loc 1 73 0
+ 135               		.cfi_startproc
+ 136               	/* prologue: function */
+ 137               	/* frame size = 0 */
+ 138               	/* stack size = 0 */
+ 139               	.L__stack_usage = 0
+  74:../src/cqueue.c **** 	
+  75:../src/cqueue.c **** 	return (news);			// Retrieve "news" counter		
+  76:../src/cqueue.c **** }
+ 140               		.loc 1 76 0
+ 141 0000 8091 0000 		lds r24,news
+ 142 0004 0895      		ret
+ 143               		.cfi_endproc
+ 144               	.LFE3:
+ 146               		.section	.bss.pout,"aw",@nobits
+ 149               	pout:
+ 150 0000 0000      		.zero	2
+ 151               		.section	.bss.pin,"aw",@nobits
+ 154               	pin:
+ 155 0000 0000      		.zero	2
+ 156               		.section	.bss.news,"aw",@nobits
+ 159               	news:
+ 160 0000 00        		.zero	1
+ 161               		.section	.bss.buffer,"aw",@nobits
+ 164               	buffer:
+ 165 0000 0000 0000 		.zero	20
+ 165      0000 0000 
+ 165      0000 0000 
+ 165      0000 0000 
+ 165      0000 0000 
+ 166               		.text
+ 167               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 cqueue.c
+            cqueue.s:2      *ABS*:0000003e __SP_H__
+            cqueue.s:3      *ABS*:0000003d __SP_L__
+            cqueue.s:4      *ABS*:0000003f __SREG__
+            cqueue.s:5      *ABS*:00000000 __tmp_reg__
+            cqueue.s:6      *ABS*:00000001 __zero_reg__
+            cqueue.s:13     .text.QueueInit:00000000 QueueInit
+            cqueue.s:164    .bss.buffer:00000000 buffer
+            cqueue.s:154    .bss.pin:00000000 pin
+            cqueue.s:149    .bss.pout:00000000 pout
+            cqueue.s:159    .bss.news:00000000 news
+            cqueue.s:39     .text.PushQueue:00000000 PushQueue
+            cqueue.s:92     .text.PullQueue:00000000 PullQueue
+            cqueue.s:132    .text.QueueStatus:00000000 QueueStatus
+                           .group:00000000 wm4.cqueue.h.2.ddb4abc33b3476710e33c1abf058974f
+
+UNDEFINED SYMBOLS
+__do_clear_bss

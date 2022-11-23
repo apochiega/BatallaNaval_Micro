@@ -1,0 +1,271 @@
+   1               		.file	"Timer.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.Ltext0:
+   9               		.cfi_sections	.debug_frame
+  10               		.section	.text.init_RTI,"ax",@progbits
+  11               	.global	init_RTI
+  13               	init_RTI:
+  14               	.LFB66:
+  15               		.file 1 "../src/Timer.c"
+   1:../src/Timer.c **** 
+   2:../src/Timer.c **** #include <asf.h>
+   3:../src/Timer.c **** #include <stdint.h>				//Standard types
+   4:../src/Timer.c **** #include <avr/interrupt.h>
+   5:../src/Timer.c **** #include "Timer.h"
+   6:../src/Timer.c **** #define LED (1<<5)				//Led1 on PB5
+   7:../src/Timer.c **** 
+   8:../src/Timer.c **** 
+   9:../src/Timer.c **** 
+  10:../src/Timer.c **** 
+  11:../src/Timer.c **** // Timer Prescaler definitions //
+  12:../src/Timer.c **** 
+  13:../src/Timer.c **** #define divx1 (0<<CS02)|(0<<CS01)|(1<<CS00)
+  14:../src/Timer.c **** #define	divx8 (0<<CS02)|(1<<CS01)|(0<<CS00)
+  15:../src/Timer.c **** #define	divx64 (0<<CS02)|(1<<CS01)|(1<<CS00)
+  16:../src/Timer.c **** #define	divx256 (1<<CS02)|(0<<CS01)|(0<<CS00)
+  17:../src/Timer.c **** #define	divx1024 (1<<CS02)|(0<<CS01)|(1<<CS00)
+  18:../src/Timer.c **** 
+  19:../src/Timer.c **** // Select Prescaler value
+  20:../src/Timer.c **** #define	PRESCALER divx256	//Timer prescaler / divider
+  21:../src/Timer.c **** 
+  22:../src/Timer.c **** 
+  23:../src/Timer.c **** int Timer_TB (void)
+  24:../src/Timer.c **** {
+  25:../src/Timer.c **** 
+  26:../src/Timer.c **** 	DDRB=LED;
+  27:../src/Timer.c **** 	PORTB=(LED)^(LED);
+  28:../src/Timer.c **** 	
+  29:../src/Timer.c **** 	init_RTI();				//Init Periodic Real Time Interrupt
+  30:../src/Timer.c **** 	
+  31:../src/Timer.c **** 	sei();					// Enable global Interrupts
+  32:../src/Timer.c **** 
+  33:../src/Timer.c **** 
+  34:../src/Timer.c **** 	while(1);				//Endless Loop
+  35:../src/Timer.c **** 
+  36:../src/Timer.c **** 
+  37:../src/Timer.c **** }
+  38:../src/Timer.c **** 
+  39:../src/Timer.c **** 
+  40:../src/Timer.c **** 
+  41:../src/Timer.c **** 
+  42:../src/Timer.c **** void init_RTI(void)
+  43:../src/Timer.c **** {
+  16               		.loc 1 43 0
+  17               		.cfi_startproc
+  18               	/* prologue: function */
+  19               	/* frame size = 0 */
+  20               	/* stack size = 0 */
+  21               	.L__stack_usage = 0
+  44:../src/Timer.c **** 	
+  45:../src/Timer.c **** 	//  Interrupt Source: Hardware Timer 0 using OCR0A (Output Compare Register A)
+  46:../src/Timer.c **** 	//  Waveform Generation Mode:Clear Timer on Compare Match (CTC)(WGM02=0,WGM01=1,WGM0=0)(Non PWM Mo
+  47:../src/Timer.c **** 	//  COM0A1=0,COM0A0=0 Normal port operation, OC0A disconnected.
+  48:../src/Timer.c **** 	//
+  49:../src/Timer.c **** 
+  50:../src/Timer.c **** 
+  51:../src/Timer.c **** 	// 1-Timer Mode: CTC
+  52:../src/Timer.c **** 	TCCR0A=(0<<COM0A1)|(0<<COM0A0)|(0<<COM0B1)|(0<<COM0B0)|(1<<WGM01)|(0<<WGM00);
+  22               		.loc 1 52 0
+  23 0000 82E0      		ldi r24,lo8(2)
+  24 0002 84BD      		out 0x24,r24
+  53:../src/Timer.c **** 	
+  54:../src/Timer.c **** 	
+  55:../src/Timer.c **** 
+  56:../src/Timer.c **** 	// 2-Clock select:Prescaler=1024
+  57:../src/Timer.c **** 	TCCR0B=(0<<FOC0A)|(0<<FOC0B)|(0<<WGM02)|PRESCALER;
+  25               		.loc 1 57 0
+  26 0004 94E0      		ldi r25,lo8(4)
+  27 0006 95BD      		out 0x25,r25
+  58:../src/Timer.c **** 	
+  59:../src/Timer.c **** 
+  60:../src/Timer.c **** 	// 3-Set OCR
+  61:../src/Timer.c **** 	OCR0A=125;
+  28               		.loc 1 61 0
+  29 0008 9DE7      		ldi r25,lo8(125)
+  30 000a 97BD      		out 0x27,r25
+  62:../src/Timer.c **** 
+  63:../src/Timer.c **** 
+  64:../src/Timer.c **** 	// 4-Timer/Counter0 Output Compare Match A Interrupt Enable
+  65:../src/Timer.c **** 	TIMSK0=(0<<OCIE0B)|(1<<OCIE0A)|(0<<TOIE0);
+  31               		.loc 1 65 0
+  32 000c 8093 6E00 		sts 110,r24
+  66:../src/Timer.c **** 	
+  67:../src/Timer.c **** 	// This is for testing purposes (Blinking Led)
+  68:../src/Timer.c **** 
+  69:../src/Timer.c **** 	DDRB|=LED;
+  33               		.loc 1 69 0
+  34 0010 259A      		sbi 0x4,5
+  70:../src/Timer.c **** 	PORTB&=~(LED);
+  35               		.loc 1 70 0
+  36 0012 2D98      		cbi 0x5,5
+  37 0014 0895      		ret
+  38               		.cfi_endproc
+  39               	.LFE66:
+  41               		.section	.text.Timer_TB,"ax",@progbits
+  42               	.global	Timer_TB
+  44               	Timer_TB:
+  45               	.LFB65:
+  24:../src/Timer.c **** 
+  46               		.loc 1 24 0
+  47               		.cfi_startproc
+  48               	/* prologue: function */
+  49               	/* frame size = 0 */
+  50               	/* stack size = 0 */
+  51               	.L__stack_usage = 0
+  26:../src/Timer.c **** 	PORTB=(LED)^(LED);
+  52               		.loc 1 26 0
+  53 0000 80E2      		ldi r24,lo8(32)
+  54 0002 84B9      		out 0x4,r24
+  27:../src/Timer.c **** 	
+  55               		.loc 1 27 0
+  56 0004 15B8      		out 0x5,__zero_reg__
+  29:../src/Timer.c **** 	
+  57               		.loc 1 29 0
+  58 0006 0E94 0000 		call init_RTI
+  59               	.LVL0:
+  31:../src/Timer.c **** 
+  60               		.loc 1 31 0
+  61               	/* #APP */
+  62               	 ;  31 "../src/Timer.c" 1
+  63 000a 7894      		sei
+  64               	 ;  0 "" 2
+  65               	/* #NOAPP */
+  66               	.L3:
+  67 000c 00C0      		rjmp .L3
+  68               		.cfi_endproc
+  69               	.LFE65:
+  71               		.section	.text.__vector_14,"ax",@progbits
+  72               	.global	__vector_14
+  74               	__vector_14:
+  75               	.LFB67:
+  71:../src/Timer.c **** 
+  72:../src/Timer.c **** }
+  73:../src/Timer.c **** 
+  74:../src/Timer.c **** //Interrupt service routine (ISR) for Timer 0
+  75:../src/Timer.c **** // Timer int happens every (16MHz)^(-1)*1024*125 = 62.5ns*1024*125 = 64 * 125 useg = 8mseg
+  76:../src/Timer.c **** ISR(TIMER0_COMPA_vect)
+  77:../src/Timer.c **** {
+  76               		.loc 1 77 0
+  77               		.cfi_startproc
+  78 0000 1F92      		push r1
+  79               	.LCFI0:
+  80               		.cfi_def_cfa_offset 3
+  81               		.cfi_offset 1, -2
+  82 0002 0F92      		push r0
+  83               	.LCFI1:
+  84               		.cfi_def_cfa_offset 4
+  85               		.cfi_offset 0, -3
+  86 0004 0FB6      		in r0,__SREG__
+  87 0006 0F92      		push r0
+  88 0008 1124      		clr __zero_reg__
+  89 000a 8F93      		push r24
+  90               	.LCFI2:
+  91               		.cfi_def_cfa_offset 5
+  92               		.cfi_offset 24, -4
+  93 000c 9F93      		push r25
+  94               	.LCFI3:
+  95               		.cfi_def_cfa_offset 6
+  96               		.cfi_offset 25, -5
+  97               	/* prologue: Signal */
+  98               	/* frame size = 0 */
+  99               	/* stack size = 5 */
+ 100               	.L__stack_usage = 5
+  78:../src/Timer.c **** 	volatile static int count=40;
+  79:../src/Timer.c **** 	
+  80:../src/Timer.c **** 	if(count)			// 2mseg x 40= 80mseg
+ 101               		.loc 1 80 0
+ 102 000e 8091 0000 		lds r24,count.2218
+ 103 0012 9091 0000 		lds r25,count.2218+1
+ 104 0016 892B      		or r24,r25
+ 105 0018 01F0      		breq .L5
+  81:../src/Timer.c **** 	count--;
+ 106               		.loc 1 81 0
+ 107 001a 8091 0000 		lds r24,count.2218
+ 108 001e 9091 0000 		lds r25,count.2218+1
+ 109 0022 0197      		sbiw r24,1
+ 110 0024 9093 0000 		sts count.2218+1,r25
+ 111 0028 8093 0000 		sts count.2218,r24
+ 112 002c 00C0      		rjmp .L4
+ 113               	.L5:
+  82:../src/Timer.c **** 	else
+  83:../src/Timer.c **** 	{
+  84:../src/Timer.c **** 		count=40;
+ 114               		.loc 1 84 0
+ 115 002e 88E2      		ldi r24,lo8(40)
+ 116 0030 90E0      		ldi r25,0
+ 117 0032 9093 0000 		sts count.2218+1,r25
+ 118 0036 8093 0000 		sts count.2218,r24
+  85:../src/Timer.c **** 		PORTB^=LED;   	// This is for testing purposes (Blinking Led)
+ 119               		.loc 1 85 0
+ 120 003a 95B1      		in r25,0x5
+ 121 003c 80E2      		ldi r24,lo8(32)
+ 122 003e 8927      		eor r24,r25
+ 123 0040 85B9      		out 0x5,r24
+ 124               	.L4:
+ 125               	/* epilogue start */
+  86:../src/Timer.c **** 	}
+  87:../src/Timer.c **** 	
+  88:../src/Timer.c **** }...
+ 126               		.loc 1 88 0
+ 127 0042 9F91      		pop r25
+ 128 0044 8F91      		pop r24
+ 129 0046 0F90      		pop r0
+ 130 0048 0FBE      		out __SREG__,r0
+ 131 004a 0F90      		pop r0
+ 132 004c 1F90      		pop r1
+ 133 004e 1895      		reti
+ 134               		.cfi_endproc
+ 135               	.LFE67:
+ 137               		.section	.data.count.2218,"aw",@progbits
+ 140               	count.2218:
+ 141 0000 2800      		.word	40
+ 142               		.text
+ 143               	.Letext0:
+ 144               		.file 2 "c:\\program files (x86)\\atmel\\studio\\7.0\\toolchain\\avr8\\avr8-gnu-toolchain\\avr\\in
+DEFINED SYMBOLS
+                            *ABS*:00000000 Timer.c
+             Timer.s:2      *ABS*:0000003e __SP_H__
+             Timer.s:3      *ABS*:0000003d __SP_L__
+             Timer.s:4      *ABS*:0000003f __SREG__
+             Timer.s:5      *ABS*:00000000 __tmp_reg__
+             Timer.s:6      *ABS*:00000001 __zero_reg__
+             Timer.s:13     .text.init_RTI:00000000 init_RTI
+             Timer.s:44     .text.Timer_TB:00000000 Timer_TB
+             Timer.s:74     .text.__vector_14:00000000 __vector_14
+             Timer.s:140    .data.count.2218:00000000 count.2218
+                           .group:00000000 wm4.parts.h.38.424177e1c4c7502bdf2cd6eac0e66f1e
+                           .group:00000000 wm4.sfr_defs.h.36.473802ecbcb5d4d38de6c7efbfcd3c60
+                           .group:00000000 wm4.stdint.h.41.052d062c327f27e210bb72c3d087afe5
+                           .group:00000000 wm4.inttypes.h.96.afb9c4be73a069861f8689c997efc518
+                           .group:00000000 wm4.sfr_defs.h.128.38ceebe2fb099c106e85a566519e0f1a
+                           .group:00000000 wm4.iom328p.h.44.29c929f46483155923fc58520c74ebf7
+                           .group:00000000 wm4.portpins.h.34.21289185946cbf62723ecc8db6cdc3ff
+                           .group:00000000 wm4.common.h.35.c7e66042b2128622b9d3bddccc9a39f4
+                           .group:00000000 wm4.version.h.54.85699b1a50c61c991a37d67b69e79e95
+                           .group:00000000 wm4.fuse.h.36.5c373c650020c0efef2cbaa98ea802c3
+                           .group:00000000 wm4.lock.h.36.51f311078904691e8f8c3d70111251d8
+                           .group:00000000 wm4.stdbool.h.29.07dce69c3b78884144b7f7bd19483461
+                           .group:00000000 wm4.stddef.h.39.99b5021e28f91cdb161c889e07266673
+                           .group:00000000 wm4.stdlib.h.40.248a6087ef49adb4f4328833c0282d4b
+                           .group:00000000 wm4.stddef.h.161.19e15733342b50ead2919490b095303e
+                           .group:00000000 wm4.stdlib.h.51.3a36e1d757b19eb9d8852fbf8bb7cd30
+                           .group:00000000 wm4.compiler.h.71.f9633126e8a32454fdb20497dc57808e
+                           .group:00000000 wm4.interrupt.h.36.b2193b640edda749ea0a45a8be5976c8
+                           .group:00000000 wm4.interrupt_avr8.h.89.988a0fb0a0728821bb2ce6a5fad9a217
+                           .group:00000000 wm4.pgmspace.h.83.7bf4a326041279617a872e0717310315
+                           .group:00000000 wm4.pgmspace.h.98.de80e653d80602932888d287eea24d43
+                           .group:00000000 wm4.progmem.h.56.1d8b28eb4bdbace2fba3d4aa9d1800d3
+                           .group:00000000 wm4.compiler.h.162.3bca7208a79b237ff211f6b945969fd5
+                           .group:00000000 wm4.ioport.h.38.48f501ae460febc49dd950c4a2361938
+                           .group:00000000 wm4.mega_gpio.h.43.3e8869bf7dde66f4dae42caccabdc28f
+                           .group:00000000 wm4.board.h.41.2d9694df0f6b670341666b9015632b94
+                           .group:00000000 wm4.led.h.38.8c4408d5cc264ea8e7bbcc0ac6971d10
+                           .group:00000000 wm4.atmega328p_xplained_mini.h.47.411278661c63ad4794d5f415bca0f65b
+
+UNDEFINED SYMBOLS
+__do_copy_data
