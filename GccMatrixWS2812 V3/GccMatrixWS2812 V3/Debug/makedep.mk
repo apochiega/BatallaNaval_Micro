@@ -12,6 +12,8 @@ src\Timer.c
 
 src\UART.c
 
+src\wrt_Digit.s
+
 src\ASF\mega\boards\atmega328p_xplained_mini\init.c
 
 src\main.c

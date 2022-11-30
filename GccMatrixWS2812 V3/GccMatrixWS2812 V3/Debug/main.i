@@ -1,5 +1,5 @@
 # 1 "../src/main.c"
-# 1 "C:\\Users\\Bruno\\Desktop\\Micro\\BatallaNaval_Micro\\GccMatrixWS2812 V3\\GccMatrixWS2812 V3\\Debug//"
+# 1 "C:\\Users\\gusta\\Desktop\\MicroProy\\BatallaNaval_Micro-main\\GccMatrixWS2812 V3\\GccMatrixWS2812 V3\\Debug//"
 # 1 "<built-in>"
 #define __STDC__ 1
 #define __STDC_VERSION__ 199901L
@@ -5878,10 +5878,10 @@ typedef RGBled (*P2RGB) ;
 
 P2RGB p2disp;
 
-RGBled Verde={25,0,0};
-RGBled Rojo={0,30,0};
-RGBled Azul={0,0,30};
-RGBled Amarillo={30,30,0};
+RGBled GamePointer = {25,0,0};
+RGBled Hundido = {0,30,0};
+RGBled Agua = {0,0,30};
+RGBled Danado = {30,30,0};
 RGBled Apagado={0,0,0};
 RGBled display_rgb[8][8];
 
@@ -5892,7 +5892,12 @@ RGBled display_rgb[8][8];
 
 extern void init_ws2812(void);
 extern void wrt_ws2812(P2RGB);
+extern void wrt_Digit(uint8_t, uint8_t);
+extern void wrt_Digit_Init(void);
 
+
+
+void TB_joy1(void);
 
 void softdelay(void);
 void clear_disp(void);
@@ -5909,17 +5914,19 @@ int k,i;
    init_RTI();
    UART_Init();
    adc_init();
+   wrt_Digit_Init();
 
    p2disp=&display_rgb[0][0];
 
    
-# 92 "../src/main.c" 3
+# 98 "../src/main.c" 3
   __asm__ __volatile__ ("sei" ::: "memory")
-# 92 "../src/main.c"
+# 98 "../src/main.c"
        ;
 
    UART_putstring(msg);
 
+   wrt_Digit(4,3);
 
    clear_disp();
          wrt_ws2812(p2disp);
@@ -5929,11 +5936,11 @@ int k,i;
 
    for(k=0;k<=7;k++)
    {
-   display_rgb[k][0]=Rojo;
-   display_rgb[k][4]=Verde;
-   display_rgb[k][7]=Azul;
-   display_rgb[k][3]=Amarillo;
-   display_rgb[k][5]=Amarillo;
+   display_rgb[k][0]=Hundido;
+   display_rgb[k][4]=GamePointer;
+   display_rgb[k][7]=Agua;
+   display_rgb[k][3]=Danado;
+   display_rgb[k][5]=Danado;
    }
 
    wrt_ws2812(p2disp);
@@ -5944,10 +5951,10 @@ int k,i;
 
    for(i=0;i<=3;i++)
    {
-    display_rgb[3-i][3-i]=Rojo;
-    display_rgb[4+i][3-i]=Verde;
-    display_rgb[3-i][4+i]=Amarillo;
-    display_rgb[4+i][4+i]=Azul;
+    display_rgb[3-i][3-i]=Hundido;
+    display_rgb[4+i][3-i]=GamePointer;
+    display_rgb[3-i][4+i]=Danado;
+    display_rgb[4+i][4+i]=Agua;
 
     wrt_ws2812(p2disp);
 
@@ -5955,11 +5962,20 @@ int k,i;
     clear_disp();
    }
 
+while (1)
+{
+ TB_joy1();
+ _delay_ms(100);
+}
 
    ADCTestBench();
    uart_test();
 
-   while(1);
+   while(1)
+   {
+    wrt_Digit(4,4);
+    _delay_ms(4);
+   };
 }
 
 void clear_disp(void)
@@ -5998,5 +6014,27 @@ void ADCTestBench(void)
   UART_send_data('\n');
   _delay_ms(50);
  }
+
+}
+
+
+#define HI_LIM 600
+#define LO_LIM 400
+
+
+void TB_joy1(void)
+{
+
+ if(read_VRX() > 600)
+
+  UART_putstring((uint8_t *)"UP");
+
+ else if(read_VRX() < 400)
+  UART_putstring((uint8_t *)"DOWN");
+
+ else
+  UART_putstring((uint8_t *)"ok");
+
+
 
 }

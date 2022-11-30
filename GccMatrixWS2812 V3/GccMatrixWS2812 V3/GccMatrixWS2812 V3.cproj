@@ -291,6 +291,9 @@
     <Compile Include="src\UART.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\wrt_Digit.s">
+      <SubType>compile</SubType>
+    </Compile>
     <None Include="src\asf.h">
       <SubType>compile</SubType>
     </None>

@@ -3,8 +3,9 @@
  *
  *  Author: Franco
  *
- * 
+ *
  */ 
+
 #include <avr/io.h>
 .LIST	
 /* The following is needed to
@@ -62,8 +63,8 @@ subtract 0x20 from I/O addresses
 #define LATCH_CLOCK		B4	// PORT D
 #define SERIAL_DATA		B0	//PORT B
 
-#define ValueIn		R16
-#define DigitIn		R17
+#define ValueIn		R24
+#define DigitIn		R22
 
 #define SerialData	R18
 
@@ -92,7 +93,7 @@ wrt_Digit_Init:
 //*********************************************
 //	wrt_Digit
 //	Recibe un valor y el dígito y lo muestra en el display. Valor 10 para limpiar el dígito.
-//	Argumentos de entrada: valor (0:9 o 10) en r16 / dígito (1-4) en r17.
+//	Argumentos de entrada: valor (0:9 o 10) en r22 / dígito (1-4) en r24.
 //*********************************************
 wrt_Digit:
 	cpi ValueIn, 11	//Control para evitar ingresos mayores a 10
@@ -105,7 +106,7 @@ wrt_Digit:
 	rcall send_byte		//ingreso en r16
 
 	rcall digit_to_display	//ingreso y retorno en r17
-	mov r16, DigitIn
+	mov ValueIn, DigitIn
 	rcall send_byte
 
 	in PortOut, PIND
@@ -131,9 +132,8 @@ value_to_ss:
 	push ADCRegister
 	ldi ADCRegister, 0
   
-	ldi ZL, LOW(2*ss_value)
-	ldi ZH, HIGH(2*ss_value)
-
+	ldz ss_value
+	
 	add ZL, ValueIn	//Agregamos el valor ingresado, para que Z apunte al valor correspondiente de la lista
 	adc ZH, ADCRegister
 	
@@ -151,8 +151,7 @@ digit_to_display:
   push ADCRegister
   ldi ADCRegister, 0
 
-	ldi ZL, LOW(2*display_digit_value)
-	ldi ZH, HIGH(2*display_digit_value)
+	ldz display_digit_value
 
 	add ZL, DigitIn
 	adc ZH, ADCRegister
@@ -210,8 +209,9 @@ send_byte:
 
 //Código en hexa correspondiente al display de cada número (0:9 o 10 para borrar)
 ss_value:
-	.db 0x03, 0x9F, 0x25, 0x0D, 0x99, 0x49, 0x41, 0x1F, 0x01, 0x19, 0xFF, 0x00	//Se agrega 0x00 para evitar padding
+	.byte 0x03, 0x9F, 0x25, 0x0D, 0x99, 0x49, 0x41, 0x1F, 0x01, 0x19, 0xFF, 0x00	//Se agrega 0x00 para evitar padding
 
 //Código en hexa correspondiente al dígito (1:4)
 display_digit_value:
-	.db 0x80, 0x40, 0x20, 0x10
+	.byte 0x80, 0x40, 0x20, 0x10
+

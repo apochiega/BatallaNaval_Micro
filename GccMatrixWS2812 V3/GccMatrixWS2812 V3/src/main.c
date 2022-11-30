@@ -51,14 +51,14 @@ typedef struct
 
 typedef RGBled (*P2RGB) ;
 
-// Variables
+// Variables  
 
 P2RGB p2disp;
 
-RGBled Verde={25,0,0};
-RGBled Rojo={0,30,0};
-RGBled Azul={0,0,30};
-RGBled Amarillo={30,30,0};
+RGBled GamePointer = {25,0,0};	//Verde
+RGBled Hundido = {0,30,0};		//Rojo
+RGBled Agua = {0,0,30};			//Azul
+RGBled Danado = {30,30,0};		//Amarillo
 RGBled Apagado={0,0,0};	
 RGBled display_rgb[8][8];	
 
@@ -66,11 +66,16 @@ RGBled display_rgb[8][8];
 	
 
 		
-// Assembly function
+// Assembly functions
 extern void init_ws2812(void);
 extern void wrt_ws2812(P2RGB);
+extern void wrt_Digit(uint8_t, uint8_t);
+extern void wrt_Digit_Init(void);
 
 // Local prototypes
+
+void TB_joy1(void);
+
 void softdelay(void);
 void clear_disp(void);
 uint8_t msg[] = "Hello from ATmega328p\r\n  ";
@@ -86,13 +91,15 @@ int k,i;
 			init_RTI();			//Initialize Periodic Real Time Interrupt(Timer)
 			UART_Init();		//Initialize serial port driver (UART)
 			adc_init();			//Initialize Analog to digital converter (Joystick)
+			wrt_Digit_Init();
 		
 			p2disp=&display_rgb[0][0];
 			
 			sei();					// Enable global Interrupts
 
 			UART_putstring(msg);
-							
+			
+			wrt_Digit(4,3);
 
 			clear_disp();
 	        wrt_ws2812(p2disp);
@@ -102,11 +109,11 @@ int k,i;
 			
 			for(k=0;k<=7;k++)
 			{
-			display_rgb[k][0]=Rojo;
-			display_rgb[k][4]=Verde;
-			display_rgb[k][7]=Azul;
-			display_rgb[k][3]=Amarillo;
-			display_rgb[k][5]=Amarillo;
+			display_rgb[k][0]=Hundido;
+			display_rgb[k][4]=GamePointer;
+			display_rgb[k][7]=Agua;
+			display_rgb[k][3]=Danado;
+			display_rgb[k][5]=Danado;
 			}
 
 			wrt_ws2812(p2disp);
@@ -117,22 +124,31 @@ int k,i;
 			
 			for(i=0;i<=3;i++)
 			{
-				display_rgb[3-i][3-i]=Rojo;
-				display_rgb[4+i][3-i]=Verde;
-				display_rgb[3-i][4+i]=Amarillo;
-				display_rgb[4+i][4+i]=Azul;
+				display_rgb[3-i][3-i]=Hundido;
+				display_rgb[4+i][3-i]=GamePointer;
+				display_rgb[3-i][4+i]=Danado;
+				display_rgb[4+i][4+i]=Agua;
 		
 				wrt_ws2812(p2disp);
 		
 				_delay_ms(100);
-				clear_disp();
+				clear_disp();  
 			}
 
-
+while (1)
+{
+	TB_joy1();
+	_delay_ms(100);
+}
+			
 			ADCTestBench();
 			uart_test(); 
 			
-			while(1);		// Just in case....  
+			while(1)
+			{
+				wrt_Digit(4,4);
+				_delay_ms(4);
+			};		// Just in case....  
 }
 
 void clear_disp(void)
@@ -172,4 +188,28 @@ void ADCTestBench(void)
 		_delay_ms(50);
 	}
 	
+}
+
+
+#define HI_LIM 600
+#define LO_LIM 400
+
+
+void TB_joy1(void)
+{
+	
+	if(read_VRX() > HI_LIM)
+	
+		UART_putstring((uint8_t *)"UP");
+	
+	else if(read_VRX() < LO_LIM)
+		UART_putstring((uint8_t *)"DOWN");
+		
+	else
+		UART_putstring((uint8_t *)"ok");
+		
+	
+		
+		
+		
 }

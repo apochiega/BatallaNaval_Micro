@@ -13,7 +13,7 @@ __zero_reg__ = 1
 clear_disp:
 .LFB72:
 	.file 1 "../src/main.c"
-	.loc 1 139 0
+	.loc 1 155 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
@@ -27,9 +27,9 @@ clear_disp:
 	rjmp .L2
 .LVL1:
 .L3:
-.LBB18:
-.LBB19:
-	.loc 1 142 0 discriminator 3
+.LBB20:
+.LBB21:
+	.loc 1 158 0 discriminator 3
 	lds r24,Apagado
 	lds r25,Apagado+1
 	lds r26,Apagado+2
@@ -37,13 +37,13 @@ clear_disp:
 	st Z+,r25
 	st Z+,r26
 .LVL2:
-	.loc 1 141 0 discriminator 3
+	.loc 1 157 0 discriminator 3
 	cp r30,r18
 	cpc r31,r19
 	brne .L3
 	movw r30,r18
-.LBE19:
-	.loc 1 140 0 discriminator 2
+.LBE21:
+	.loc 1 156 0 discriminator 2
 	cp r20,r18
 	cpc r21,r19
 	breq .L1
@@ -56,7 +56,7 @@ clear_disp:
 .LVL4:
 .L1:
 	ret
-.LBE18:
+.LBE20:
 	.cfi_endproc
 .LFE72:
 	.size	clear_disp, .-clear_disp
@@ -65,7 +65,7 @@ clear_disp:
 	.type	softdelay, @function
 softdelay:
 .LFB73:
-	.loc 1 146 0
+	.loc 1 162 0
 	.cfi_startproc
 	push r28
 .LCFI0:
@@ -87,7 +87,7 @@ softdelay:
 /* frame size = 4 */
 /* stack size = 6 */
 .L__stack_usage = 6
-	.loc 1 149 0
+	.loc 1 165 0
 	ldi r24,lo8(-128)
 	ldi r25,lo8(26)
 	ldi r26,lo8(6)
@@ -105,7 +105,7 @@ softdelay:
 	or r24,r27
 	breq .L6
 .L9:
-	.loc 1 149 0 is_stmt 0 discriminator 3
+	.loc 1 165 0 is_stmt 0 discriminator 3
 	ldd r24,Y+1
 	ldd r25,Y+2
 	ldd r26,Y+3
@@ -127,7 +127,7 @@ softdelay:
 	brne .L9
 .L6:
 /* epilogue start */
-	.loc 1 153 0 is_stmt 1
+	.loc 1 169 0 is_stmt 1
 	pop __tmp_reg__
 	pop __tmp_reg__
 	pop __tmp_reg__
@@ -143,7 +143,7 @@ softdelay:
 	.type	ADCTestBench, @function
 ADCTestBench:
 .LFB74:
-	.loc 1 157 0
+	.loc 1 173 0
 	.cfi_startproc
 	push r28
 .LCFI4:
@@ -167,11 +167,11 @@ ADCTestBench:
 /* stack size = 7 */
 .L__stack_usage = 7
 .L12:
-	.loc 1 163 0 discriminator 1
+	.loc 1 179 0 discriminator 1
 	call read_VRX
 .LVL5:
-.LBB20:
-.LBB21:
+.LBB22:
+.LBB23:
 	.file 2 "c:\\program files (x86)\\atmel\\studio\\7.0\\toolchain\\avr8\\avr8-gnu-toolchain\\avr\\include\\stdlib.h"
 	.loc 2 439 0 discriminator 1
 	ldi r20,lo8(10)
@@ -180,26 +180,26 @@ ADCTestBench:
 	sbci r23,-1
 	call __itoa_ncheck
 .LVL6:
-.LBE21:
-.LBE20:
-	.loc 1 164 0 discriminator 1
+.LBE23:
+.LBE22:
+	.loc 1 180 0 discriminator 1
 	movw r24,r28
 	adiw r24,1
 	call UART_putstring
 .LVL7:
-	.loc 1 165 0 discriminator 1
+	.loc 1 181 0 discriminator 1
 	ldi r24,lo8(9)
 	call UART_send_data
 .LVL8:
-	.loc 1 166 0 discriminator 1
+	.loc 1 182 0 discriminator 1
 	ldi r24,lo8(9)
 	call UART_send_data
 .LVL9:
-	.loc 1 168 0 discriminator 1
+	.loc 1 184 0 discriminator 1
 	call read_VRY
 .LVL10:
-.LBB22:
-.LBB23:
+.LBB24:
+.LBB25:
 	.loc 2 439 0 discriminator 1
 	ldi r20,lo8(10)
 	movw r22,r28
@@ -207,23 +207,23 @@ ADCTestBench:
 	sbci r23,-1
 	call __itoa_ncheck
 .LVL11:
-.LBE23:
-.LBE22:
-	.loc 1 169 0 discriminator 1
+.LBE25:
+.LBE24:
+	.loc 1 185 0 discriminator 1
 	movw r24,r28
 	adiw r24,1
 	call UART_putstring
 .LVL12:
-	.loc 1 170 0 discriminator 1
+	.loc 1 186 0 discriminator 1
 	ldi r24,lo8(13)
 	call UART_send_data
 .LVL13:
-	.loc 1 171 0 discriminator 1
+	.loc 1 187 0 discriminator 1
 	ldi r24,lo8(10)
 	call UART_send_data
 .LVL14:
-.LBB24:
-.LBB25:
+.LBB26:
+.LBB27:
 	.file 3 "c:\\program files (x86)\\atmel\\studio\\7.0\\toolchain\\avr8\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h"
 	.loc 3 187 0 discriminator 1
 	ldi r18,lo8(159999)
@@ -236,60 +236,121 @@ ADCTestBench:
 	rjmp .
 	nop
 	rjmp .L12
-.LBE25:
-.LBE24:
+.LBE27:
+.LBE26:
 	.cfi_endproc
 .LFE74:
 	.size	ADCTestBench, .-ADCTestBench
-	.section	.text.main,"ax",@progbits
-.global	main
-	.type	main, @function
-main:
-.LFB71:
-	.loc 1 81 0
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.LC0:
+	.string	"UP"
+.LC1:
+	.string	"DOWN"
+.LC2:
+	.string	"ok"
+	.section	.text.TB_joy1,"ax",@progbits
+.global	TB_joy1
+	.type	TB_joy1, @function
+TB_joy1:
+.LFB75:
+	.loc 1 199 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-	.loc 1 85 0
-	call init_ws2812
+	.loc 1 201 0
+	call read_VRX
 .LVL15:
-	.loc 1 86 0
-	call init_RTI
+	cpi r24,89
+	sbci r25,2
+	brlo .L14
+	.loc 1 203 0
+	ldi r24,lo8(.LC0)
+	ldi r25,hi8(.LC0)
+	call UART_putstring
 .LVL16:
-	.loc 1 87 0
-	call UART_Init
+	ret
+.L14:
+	.loc 1 205 0
+	call read_VRX
 .LVL17:
-	.loc 1 88 0
-	call adc_init
+	cpi r24,-112
+	sbci r25,1
+	brsh .L16
+	.loc 1 206 0
+	ldi r24,lo8(.LC1)
+	ldi r25,hi8(.LC1)
+	call UART_putstring
 .LVL18:
+	ret
+.L16:
+	.loc 1 209 0
+	ldi r24,lo8(.LC2)
+	ldi r25,hi8(.LC2)
+	call UART_putstring
+.LVL19:
+	ret
+	.cfi_endproc
+.LFE75:
+	.size	TB_joy1, .-TB_joy1
+	.section	.text.main,"ax",@progbits
+.global	main
+	.type	main, @function
+main:
+.LFB71:
+	.loc 1 86 0
+	.cfi_startproc
+/* prologue: function */
+/* frame size = 0 */
+/* stack size = 0 */
+.L__stack_usage = 0
 	.loc 1 90 0
+	call init_ws2812
+.LVL20:
+	.loc 1 91 0
+	call init_RTI
+.LVL21:
+	.loc 1 92 0
+	call UART_Init
+.LVL22:
+	.loc 1 93 0
+	call adc_init
+.LVL23:
+	.loc 1 94 0
+	call wrt_Digit_Init
+.LVL24:
+	.loc 1 96 0
 	ldi r24,lo8(display_rgb)
 	ldi r25,hi8(display_rgb)
 	sts p2disp+1,r25
 	sts p2disp,r24
-	.loc 1 92 0
+	.loc 1 98 0
 /* #APP */
- ;  92 "../src/main.c" 1
+ ;  98 "../src/main.c" 1
 	sei
  ;  0 "" 2
-	.loc 1 94 0
+	.loc 1 100 0
 /* #NOAPP */
 	ldi r24,lo8(msg)
 	ldi r25,hi8(msg)
 	call UART_putstring
-.LVL19:
-	.loc 1 97 0
+.LVL25:
+	.loc 1 102 0
+	ldi r22,lo8(3)
+	ldi r24,lo8(4)
+	call wrt_Digit
+.LVL26:
+	.loc 1 104 0
 	call clear_disp
-.LVL20:
-	.loc 1 98 0
+.LVL27:
+	.loc 1 105 0
 	lds r24,p2disp
 	lds r25,p2disp+1
 	call wrt_ws2812
-.LVL21:
-.LBB26:
-.LBB27:
+.LVL28:
+.LBB28:
+.LBB29:
 	.loc 3 187 0
 	ldi r18,lo8(1599999)
 	ldi r24,hi8(1599999)
@@ -300,60 +361,64 @@ main:
 	brne 1b
 	rjmp .
 	nop
-.LVL22:
-	ldi r16,lo8(display_rgb)
-	ldi r17,hi8(display_rgb)
+.LVL29:
+	mov __tmp_reg__,r31
+	ldi r31,lo8(display_rgb)
+	mov r10,r31
+	ldi r31,hi8(display_rgb)
+	mov r11,r31
+	mov r31,__tmp_reg__
 	ldi r18,lo8(display_rgb+192)
 	ldi r19,hi8(display_rgb+192)
-	movw r30,r16
-.LVL23:
-.L14:
-.LBE27:
-.LBE26:
-	.loc 1 105 0 discriminator 3
-	lds r24,Rojo
-	lds r25,Rojo+1
-	lds r26,Rojo+2
+	movw r30,r10
+.LVL30:
+.L18:
+.LBE29:
+.LBE28:
+	.loc 1 112 0 discriminator 3
+	lds r24,Hundido
+	lds r25,Hundido+1
+	lds r26,Hundido+2
 	st Z,r24
 	std Z+1,r25
 	std Z+2,r26
-	.loc 1 106 0 discriminator 3
-	lds r24,Verde
-	lds r25,Verde+1
-	lds r26,Verde+2
+	.loc 1 113 0 discriminator 3
+	lds r24,GamePointer
+	lds r25,GamePointer+1
+	lds r26,GamePointer+2
 	std Z+12,r24
 	std Z+13,r25
 	std Z+14,r26
-	.loc 1 107 0 discriminator 3
-	lds r24,Azul
-	lds r25,Azul+1
-	lds r26,Azul+2
+	.loc 1 114 0 discriminator 3
+	lds r24,Agua
+	lds r25,Agua+1
+	lds r26,Agua+2
 	std Z+21,r24
 	std Z+22,r25
 	std Z+23,r26
-	.loc 1 108 0 discriminator 3
-	lds r24,Amarillo
-	lds r25,Amarillo+1
-	lds r26,Amarillo+2
+	.loc 1 115 0 discriminator 3
+	lds r24,Danado
+	lds r25,Danado+1
+	lds r26,Danado+2
 	std Z+9,r24
 	std Z+10,r25
 	std Z+11,r26
-	.loc 1 109 0 discriminator 3
+	.loc 1 116 0 discriminator 3
 	std Z+15,r24
 	std Z+16,r25
 	std Z+17,r26
 	adiw r30,24
-	.loc 1 103 0 discriminator 3
+	.loc 1 110 0 discriminator 3
 	cp r30,r18
 	cpc r31,r19
-	brne .L14
-	.loc 1 112 0
+	brne .L18
+	.loc 1 119 0
 	lds r24,p2disp
 	lds r25,p2disp+1
 	call wrt_ws2812
-.LVL24:
-.LBB28:
-.LBB29:
+.LVL31:
+.LBB30:
+.LBB31:
 	.loc 3 187 0
 	ldi r30,lo8(959999)
 	ldi r31,hi8(959999)
@@ -364,72 +429,68 @@ main:
 	brne 1b
 	rjmp .
 	nop
-.LVL25:
-.LBE29:
-.LBE28:
-	.loc 1 116 0
+.LVL32:
+.LBE31:
+.LBE30:
+	.loc 1 123 0
 	call clear_disp
-.LVL26:
+.LVL33:
 	mov __tmp_reg__,r31
 	ldi r31,lo8(display_rgb+81)
-	mov r10,r31
+	mov r12,r31
 	ldi r31,hi8(display_rgb+81)
-	mov r11,r31
+	mov r13,r31
 	mov r31,__tmp_reg__
 	mov __tmp_reg__,r31
 	ldi r31,lo8(display_rgb+105)
-	mov r12,r31
+	mov r14,r31
 	ldi r31,hi8(display_rgb+105)
-	mov r13,r31
+	mov r15,r31
 	mov r31,__tmp_reg__
 	ldi r28,lo8(display_rgb+84)
 	ldi r29,hi8(display_rgb+84)
-	mov __tmp_reg__,r31
-	ldi r31,lo8(display_rgb+108)
-	mov r14,r31
-	ldi r31,hi8(display_rgb+108)
-	mov r15,r31
-	mov r31,__tmp_reg__
-.LVL27:
-.L15:
-	.loc 1 120 0 discriminator 3
-	lds r24,Rojo
-	lds r25,Rojo+1
-	lds r26,Rojo+2
-	movw r30,r10
-	st Z,r24
-	std Z+1,r25
-	std Z+2,r26
-	.loc 1 121 0 discriminator 3
-	lds r24,Verde
-	lds r25,Verde+1
-	lds r26,Verde+2
+	ldi r16,lo8(display_rgb+108)
+	ldi r17,hi8(display_rgb+108)
+.LVL34:
+.L19:
+	.loc 1 127 0 discriminator 3
+	lds r24,Hundido
+	lds r25,Hundido+1
+	lds r26,Hundido+2
 	movw r30,r12
 	st Z,r24
 	std Z+1,r25
 	std Z+2,r26
-	.loc 1 122 0 discriminator 3
-	lds r24,Amarillo
-	lds r25,Amarillo+1
-	lds r26,Amarillo+2
-	st Y,r24
-	std Y+1,r25
-	std Y+2,r26
-	.loc 1 123 0 discriminator 3
-	lds r24,Azul
-	lds r25,Azul+1
-	lds r26,Azul+2
+	.loc 1 128 0 discriminator 3
+	lds r24,GamePointer
+	lds r25,GamePointer+1
+	lds r26,GamePointer+2
 	movw r30,r14
 	st Z,r24
 	std Z+1,r25
 	std Z+2,r26
-	.loc 1 125 0 discriminator 3
+	.loc 1 129 0 discriminator 3
+	lds r24,Danado
+	lds r25,Danado+1
+	lds r26,Danado+2
+	st Y,r24
+	std Y+1,r25
+	std Y+2,r26
+	.loc 1 130 0 discriminator 3
+	lds r24,Agua
+	lds r25,Agua+1
+	lds r26,Agua+2
+	movw r30,r16
+	st Z,r24
+	std Z+1,r25
+	std Z+2,r26
+	.loc 1 132 0 discriminator 3
 	lds r24,p2disp
 	lds r25,p2disp+1
 	call wrt_ws2812
-.LVL28:
-.LBB30:
-.LBB31:
+.LVL35:
+.LBB32:
+.LBB33:
 	.loc 3 187 0 discriminator 3
 	ldi r31,lo8(319999)
 	ldi r18,hi8(319999)
@@ -440,30 +501,45 @@ main:
 	brne 1b
 	rjmp .
 	nop
-.LVL29:
-.LBE31:
-.LBE30:
-	.loc 1 128 0 discriminator 3
+.LVL36:
+.LBE33:
+.LBE32:
+	.loc 1 135 0 discriminator 3
 	call clear_disp
-.LVL30:
+.LVL37:
 	ldi r25,27
-	sub r10,r25
-	sbc r11,__zero_reg__
+	sub r12,r25
+	sbc r13,__zero_reg__
 	ldi r30,21
-	add r12,r30
-	adc r13,__zero_reg__
-	sbiw r28,21
-	ldi r31,27
-	add r14,r31
+	add r14,r30
 	adc r15,__zero_reg__
-	.loc 1 118 0 discriminator 3
-	cp r16,r28
-	cpc r17,r29
+	sbiw r28,21
+	subi r16,-27
+	sbci r17,-1
+	.loc 1 125 0 discriminator 3
+	cp r10,r28
+	cpc r11,r29
 	breq .+2
-	rjmp .L15
-	.loc 1 132 0
-	call ADCTestBench
-.LVL31:
+	rjmp .L19
+.L23:
+	.loc 1 140 0 discriminator 1
+	call TB_joy1
+.LVL38:
+.LBB34:
+.LBB35:
+	.loc 3 187 0 discriminator 1
+	ldi r31,lo8(319999)
+	ldi r18,hi8(319999)
+	ldi r24,hlo8(319999)
+1:	subi r31,1
+	sbci r18,0
+	sbci r24,0
+	brne 1b
+	rjmp .
+	nop
+	rjmp .L23
+.LBE35:
+.LBE34:
 	.cfi_endproc
 .LFE71:
 	.size	main, .-main
@@ -480,35 +556,35 @@ msg:
 	.size	Apagado, 3
 Apagado:
 	.zero	3
-.global	Amarillo
-	.section	.data.Amarillo,"aw",@progbits
-	.type	Amarillo, @object
-	.size	Amarillo, 3
-Amarillo:
+.global	Danado
+	.section	.data.Danado,"aw",@progbits
+	.type	Danado, @object
+	.size	Danado, 3
+Danado:
 	.byte	30
 	.byte	30
 	.byte	0
-.global	Azul
-	.section	.data.Azul,"aw",@progbits
-	.type	Azul, @object
-	.size	Azul, 3
-Azul:
+.global	Agua
+	.section	.data.Agua,"aw",@progbits
+	.type	Agua, @object
+	.size	Agua, 3
+Agua:
 	.byte	0
 	.byte	0
 	.byte	30
-.global	Rojo
-	.section	.data.Rojo,"aw",@progbits
-	.type	Rojo, @object
-	.size	Rojo, 3
-Rojo:
+.global	Hundido
+	.section	.data.Hundido,"aw",@progbits
+	.type	Hundido, @object
+	.size	Hundido, 3
+Hundido:
 	.byte	0
 	.byte	30
 	.byte	0
-.global	Verde
-	.section	.data.Verde,"aw",@progbits
-	.type	Verde, @object
-	.size	Verde, 3
-Verde:
+.global	GamePointer
+	.section	.data.GamePointer,"aw",@progbits
+	.type	GamePointer, @object
+	.size	GamePointer, 3
+GamePointer:
 	.byte	25
 	.byte	0
 	.byte	0
@@ -521,15 +597,15 @@ Verde:
 	.file 7 "../src/Timer.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.long	0x63a
+	.long	0x72d
 	.word	0x2
 	.long	.Ldebug_abbrev0
 	.byte	0x4
 	.uleb128 0x1
-	.long	.LASF2193
+	.long	.LASF2198
 	.byte	0xc
-	.long	.LASF2194
-	.long	.LASF2195
+	.long	.LASF2199
+	.long	.LASF2200
 	.long	.Ldebug_ranges0+0
 	.long	0
 	.long	0
@@ -538,16 +614,16 @@ Verde:
 	.uleb128 0x2
 	.byte	0x1
 	.byte	0x6
-	.long	.LASF2152
+	.long	.LASF2154
 	.uleb128 0x3
-	.long	.LASF2156
+	.long	.LASF2158
 	.byte	0x4
 	.byte	0x7e
 	.long	0x3f
 	.uleb128 0x2
 	.byte	0x1
 	.byte	0x8
-	.long	.LASF2153
+	.long	.LASF2155
 	.uleb128 0x4
 	.byte	0x2
 	.byte	0x5
@@ -555,35 +631,35 @@ Verde:
 	.uleb128 0x2
 	.byte	0x2
 	.byte	0x7
-	.long	.LASF2154
+	.long	.LASF2156
 	.uleb128 0x2
 	.byte	0x4
 	.byte	0x5
-	.long	.LASF2155
-	.uleb128 0x3
 	.long	.LASF2157
+	.uleb128 0x3
+	.long	.LASF2159
 	.byte	0x4
 	.byte	0x82
 	.long	0x66
 	.uleb128 0x2
 	.byte	0x4
 	.byte	0x7
-	.long	.LASF2158
+	.long	.LASF2160
 	.uleb128 0x2
 	.byte	0x8
 	.byte	0x5
-	.long	.LASF2159
+	.long	.LASF2161
 	.uleb128 0x2
 	.byte	0x8
 	.byte	0x7
-	.long	.LASF2160
+	.long	.LASF2162
 	.uleb128 0x5
 	.byte	0x3
 	.byte	0x1
 	.byte	0x1a
 	.long	0xae
 	.uleb128 0x6
-	.long	.LASF2161
+	.long	.LASF2163
 	.byte	0x1
 	.byte	0x1c
 	.long	0x34
@@ -599,7 +675,7 @@ Verde:
 	.byte	0x23
 	.uleb128 0x1
 	.uleb128 0x6
-	.long	.LASF2162
+	.long	.LASF2164
 	.byte	0x1
 	.byte	0x1e
 	.long	0x34
@@ -608,12 +684,12 @@ Verde:
 	.uleb128 0x2
 	.byte	0
 	.uleb128 0x3
-	.long	.LASF2163
+	.long	.LASF2165
 	.byte	0x1
 	.byte	0x1f
 	.long	0x7b
 	.uleb128 0x3
-	.long	.LASF2164
+	.long	.LASF2166
 	.byte	0x1
 	.byte	0x34
 	.long	0xc4
@@ -621,30 +697,30 @@ Verde:
 	.byte	0x2
 	.long	0xae
 	.uleb128 0x9
-	.long	.LASF2196
+	.long	.LASF2201
 	.byte	0x3
 	.byte	0xa6
 	.byte	0x1
 	.byte	0x3
 	.long	0x103
 	.uleb128 0xa
-	.long	.LASF2168
+	.long	.LASF2170
 	.byte	0x3
 	.byte	0xa6
 	.long	0x103
 	.uleb128 0xb
-	.long	.LASF2165
+	.long	.LASF2167
 	.byte	0x3
 	.byte	0xa8
 	.long	0x103
 	.uleb128 0xb
-	.long	.LASF2166
+	.long	.LASF2168
 	.byte	0x3
 	.byte	0xac
 	.long	0x5b
 	.uleb128 0xc
 	.byte	0x1
-	.long	.LASF2197
+	.long	.LASF2202
 	.byte	0x3
 	.byte	0xad
 	.byte	0x1
@@ -653,10 +729,10 @@ Verde:
 	.uleb128 0x2
 	.byte	0x4
 	.byte	0x4
-	.long	.LASF2167
+	.long	.LASF2169
 	.uleb128 0xd
 	.byte	0x1
-	.long	.LASF2198
+	.long	.LASF2203
 	.byte	0x2
 	.word	0x1ad
 	.byte	0x1
@@ -664,7 +740,7 @@ Verde:
 	.byte	0x3
 	.long	0x178
 	.uleb128 0xe
-	.long	.LASF2169
+	.long	.LASF2171
 	.byte	0x2
 	.word	0x1ad
 	.long	0x46
@@ -674,7 +750,7 @@ Verde:
 	.word	0x1ad
 	.long	0x178
 	.uleb128 0xe
-	.long	.LASF2170
+	.long	.LASF2172
 	.byte	0x2
 	.word	0x1ad
 	.long	0x46
@@ -682,7 +758,7 @@ Verde:
 	.long	0x166
 	.uleb128 0x11
 	.byte	0x1
-	.long	.LASF2199
+	.long	.LASF2204
 	.byte	0x2
 	.word	0x1b0
 	.byte	0x1
@@ -699,7 +775,7 @@ Verde:
 	.uleb128 0x13
 	.uleb128 0x14
 	.byte	0x1
-	.long	.LASF2183
+	.long	.LASF2186
 	.byte	0x2
 	.word	0x1b6
 	.byte	0x1
@@ -713,12 +789,12 @@ Verde:
 	.uleb128 0x2
 	.byte	0x1
 	.byte	0x6
-	.long	.LASF2171
+	.long	.LASF2173
 	.uleb128 0x15
 	.byte	0x1
-	.long	.LASF2172
+	.long	.LASF2174
 	.byte	0x1
-	.byte	0x8a
+	.byte	0x9a
 	.byte	0x1
 	.long	.LFB72
 	.long	.LFE72
@@ -729,21 +805,21 @@ Verde:
 	.byte	0x1
 	.long	0x1ce
 	.uleb128 0x16
-	.long	.LBB18
-	.long	.LBE18
+	.long	.LBB20
+	.long	.LBE20
 	.uleb128 0x17
 	.string	"r"
 	.byte	0x1
-	.byte	0x8c
+	.byte	0x9c
 	.long	0x46
 	.long	.LLST0
 	.uleb128 0x16
-	.long	.LBB19
-	.long	.LBE19
+	.long	.LBB21
+	.long	.LBE21
 	.uleb128 0x17
 	.string	"c"
 	.byte	0x1
-	.byte	0x8d
+	.byte	0x9d
 	.long	0x46
 	.long	.LLST1
 	.byte	0
@@ -751,9 +827,9 @@ Verde:
 	.byte	0
 	.uleb128 0x18
 	.byte	0x1
-	.long	.LASF2173
+	.long	.LASF2175
 	.byte	0x1
-	.byte	0x91
+	.byte	0xa1
 	.byte	0x1
 	.long	.LFB73
 	.long	.LFE73
@@ -763,7 +839,7 @@ Verde:
 	.uleb128 0x19
 	.string	"d"
 	.byte	0x1
-	.byte	0x93
+	.byte	0xa3
 	.long	0x1f5
 	.byte	0x2
 	.byte	0x8c
@@ -773,9 +849,9 @@ Verde:
 	.long	0x54
 	.uleb128 0x1b
 	.byte	0x1
-	.long	.LASF2200
+	.long	.LASF2205
 	.byte	0x1
-	.byte	0x9c
+	.byte	0xac
 	.byte	0x1
 	.byte	0x1
 	.long	.LFB74
@@ -784,19 +860,19 @@ Verde:
 	.byte	0x1
 	.long	0x389
 	.uleb128 0x1c
-	.long	.LASF2174
+	.long	.LASF2176
 	.byte	0x1
-	.byte	0x9e
+	.byte	0xae
 	.long	0x389
 	.byte	0x2
 	.byte	0x8c
 	.sleb128 1
 	.uleb128 0x1d
 	.long	0x10a
-	.long	.LBB20
-	.long	.LBE20
+	.long	.LBB22
+	.long	.LBE22
 	.byte	0x1
-	.byte	0xa3
+	.byte	0xb3
 	.long	0x272
 	.uleb128 0x1e
 	.long	0x135
@@ -807,11 +883,11 @@ Verde:
 	.long	0x11d
 	.long	.LLST5
 	.uleb128 0x16
-	.long	.LBB21
-	.long	.LBE21
+	.long	.LBB23
+	.long	.LBE23
 	.uleb128 0x20
 	.long	.LVL6
-	.long	0x5ba
+	.long	0x693
 	.uleb128 0x21
 	.byte	0x6
 	.byte	0x66
@@ -833,10 +909,10 @@ Verde:
 	.byte	0
 	.uleb128 0x1d
 	.long	0x10a
-	.long	.LBB22
-	.long	.LBE22
+	.long	.LBB24
+	.long	.LBE24
 	.byte	0x1
-	.byte	0xa8
+	.byte	0xb8
 	.long	0x2c1
 	.uleb128 0x1e
 	.long	0x135
@@ -847,11 +923,11 @@ Verde:
 	.long	0x11d
 	.long	.LLST7
 	.uleb128 0x16
-	.long	.LBB23
-	.long	.LBE23
+	.long	.LBB25
+	.long	.LBE25
 	.uleb128 0x20
 	.long	.LVL11
-	.long	0x5ba
+	.long	0x693
 	.uleb128 0x21
 	.byte	0x6
 	.byte	0x66
@@ -873,18 +949,18 @@ Verde:
 	.byte	0
 	.uleb128 0x1d
 	.long	0xca
-	.long	.LBB24
-	.long	.LBE24
+	.long	.LBB26
+	.long	.LBE26
 	.byte	0x1
-	.byte	0xac
+	.byte	0xbc
 	.long	0x2fc
 	.uleb128 0x22
 	.long	0xd7
 	.byte	0x4
 	.long	0x42480000
 	.uleb128 0x16
-	.long	.LBB25
-	.long	.LBE25
+	.long	.LBB27
+	.long	.LBE27
 	.uleb128 0x23
 	.long	0xe2
 	.byte	0x4
@@ -896,10 +972,10 @@ Verde:
 	.byte	0
 	.uleb128 0x25
 	.long	.LVL5
-	.long	0x5c8
+	.long	0x6a1
 	.uleb128 0x26
 	.long	.LVL7
-	.long	0x5d5
+	.long	0x6ae
 	.long	0x31e
 	.uleb128 0x21
 	.byte	0x6
@@ -915,7 +991,7 @@ Verde:
 	.byte	0
 	.uleb128 0x26
 	.long	.LVL8
-	.long	0x5e2
+	.long	0x6bb
 	.long	0x331
 	.uleb128 0x21
 	.byte	0x1
@@ -925,7 +1001,7 @@ Verde:
 	.byte	0
 	.uleb128 0x26
 	.long	.LVL9
-	.long	0x5e2
+	.long	0x6bb
 	.long	0x344
 	.uleb128 0x21
 	.byte	0x1
@@ -935,10 +1011,10 @@ Verde:
 	.byte	0
 	.uleb128 0x25
 	.long	.LVL10
-	.long	0x5ef
+	.long	0x6c8
 	.uleb128 0x26
 	.long	.LVL12
-	.long	0x5d5
+	.long	0x6ae
 	.long	0x366
 	.uleb128 0x21
 	.byte	0x6
@@ -954,7 +1030,7 @@ Verde:
 	.byte	0
 	.uleb128 0x26
 	.long	.LVL13
-	.long	0x5e2
+	.long	0x6bb
 	.long	0x379
 	.uleb128 0x21
 	.byte	0x1
@@ -964,7 +1040,7 @@ Verde:
 	.byte	0
 	.uleb128 0x20
 	.long	.LVL14
-	.long	0x5e2
+	.long	0x6bb
 	.uleb128 0x21
 	.byte	0x1
 	.byte	0x68
@@ -982,12 +1058,80 @@ Verde:
 	.uleb128 0x2
 	.byte	0x2
 	.byte	0x7
-	.long	.LASF2175
+	.long	.LASF2177
+	.uleb128 0x15
+	.byte	0x1
+	.long	.LASF2178
+	.byte	0x1
+	.byte	0xc6
+	.byte	0x1
+	.long	.LFB75
+	.long	.LFE75
+	.byte	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 2
+	.byte	0x1
+	.long	0x41d
+	.uleb128 0x25
+	.long	.LVL15
+	.long	0x6a1
+	.uleb128 0x26
+	.long	.LVL16
+	.long	0x6ae
+	.long	0x3df
+	.uleb128 0x21
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x5
+	.byte	0x3
+	.long	.LC0
+	.byte	0
+	.uleb128 0x25
+	.long	.LVL17
+	.long	0x6a1
+	.uleb128 0x26
+	.long	.LVL18
+	.long	0x6ae
+	.long	0x404
+	.uleb128 0x21
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x5
+	.byte	0x3
+	.long	.LC1
+	.byte	0
+	.uleb128 0x20
+	.long	.LVL19
+	.long	0x6ae
+	.uleb128 0x21
+	.byte	0x6
+	.byte	0x68
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x69
+	.byte	0x93
+	.uleb128 0x1
+	.byte	0x5
+	.byte	0x3
+	.long	.LC2
+	.byte	0
+	.byte	0
 	.uleb128 0x29
 	.byte	0x1
-	.long	.LASF2201
+	.long	.LASF2206
 	.byte	0x1
-	.byte	0x50
+	.byte	0x55
 	.byte	0x1
 	.long	0x46
 	.byte	0x1
@@ -998,32 +1142,32 @@ Verde:
 	.uleb128 0x20
 	.sleb128 2
 	.byte	0x1
-	.long	0x504
+	.long	0x5dd
 	.uleb128 0x17
 	.string	"k"
 	.byte	0x1
-	.byte	0x53
+	.byte	0x58
 	.long	0x46
 	.long	.LLST8
 	.uleb128 0x17
 	.string	"i"
 	.byte	0x1
-	.byte	0x53
+	.byte	0x58
 	.long	0x46
 	.long	.LLST9
 	.uleb128 0x1d
 	.long	0xca
-	.long	.LBB26
-	.long	.LBE26
+	.long	.LBB28
+	.long	.LBE28
 	.byte	0x1
-	.byte	0x64
-	.long	0x412
+	.byte	0x6b
+	.long	0x48f
 	.uleb128 0x1e
 	.long	0xd7
 	.long	.LLST10
 	.uleb128 0x16
-	.long	.LBB27
-	.long	.LBE27
+	.long	.LBB29
+	.long	.LBE29
 	.uleb128 0x2a
 	.long	0xe2
 	.long	.LLST11
@@ -1034,17 +1178,17 @@ Verde:
 	.byte	0
 	.uleb128 0x1d
 	.long	0xca
-	.long	.LBB28
-	.long	.LBE28
+	.long	.LBB30
+	.long	.LBE30
 	.byte	0x1
-	.byte	0x73
-	.long	0x44b
+	.byte	0x7a
+	.long	0x4c8
 	.uleb128 0x1e
 	.long	0xd7
 	.long	.LLST13
 	.uleb128 0x16
-	.long	.LBB29
-	.long	.LBE29
+	.long	.LBB31
+	.long	.LBE31
 	.uleb128 0x2a
 	.long	0xe2
 	.long	.LLST14
@@ -1055,17 +1199,17 @@ Verde:
 	.byte	0
 	.uleb128 0x1d
 	.long	0xca
-	.long	.LBB30
-	.long	.LBE30
+	.long	.LBB32
+	.long	.LBE32
 	.byte	0x1
-	.byte	0x7f
-	.long	0x484
+	.byte	0x86
+	.long	0x501
 	.uleb128 0x1e
 	.long	0xd7
 	.long	.LLST16
 	.uleb128 0x16
-	.long	.LBB31
-	.long	.LBE31
+	.long	.LBB33
+	.long	.LBE33
 	.uleb128 0x2a
 	.long	0xe2
 	.long	.LLST17
@@ -1074,22 +1218,48 @@ Verde:
 	.long	.LLST18
 	.byte	0
 	.byte	0
+	.uleb128 0x1d
+	.long	0xca
+	.long	.LBB34
+	.long	.LBE34
+	.byte	0x1
+	.byte	0x8d
+	.long	0x53c
+	.uleb128 0x22
+	.long	0xd7
+	.byte	0x4
+	.long	0x42c80000
+	.uleb128 0x16
+	.long	.LBB35
+	.long	.LBE35
+	.uleb128 0x23
+	.long	0xe2
+	.byte	0x4
+	.long	0x49c35000
+	.uleb128 0x24
+	.long	0xed
+	.long	0x186a00
+	.byte	0
+	.byte	0
 	.uleb128 0x25
-	.long	.LVL15
-	.long	0x5fc
+	.long	.LVL20
+	.long	0x6d5
 	.uleb128 0x25
-	.long	.LVL16
-	.long	0x609
+	.long	.LVL21
+	.long	0x6e2
 	.uleb128 0x25
-	.long	.LVL17
-	.long	0x616
+	.long	.LVL22
+	.long	0x6ef
 	.uleb128 0x25
-	.long	.LVL18
-	.long	0x623
+	.long	.LVL23
+	.long	0x6fc
+	.uleb128 0x25
+	.long	.LVL24
+	.long	0x709
 	.uleb128 0x26
-	.long	.LVL19
-	.long	0x5d5
-	.long	0x4c4
+	.long	.LVL25
+	.long	0x6ae
+	.long	0x585
 	.uleb128 0x21
 	.byte	0x6
 	.byte	0x68
@@ -1102,30 +1272,45 @@ Verde:
 	.byte	0x3
 	.long	msg
 	.byte	0
-	.uleb128 0x25
-	.long	.LVL20
-	.long	0x185
-	.uleb128 0x25
-	.long	.LVL21
-	.long	0x630
-	.uleb128 0x25
-	.long	.LVL24
-	.long	0x630
-	.uleb128 0x25
+	.uleb128 0x26
 	.long	.LVL26
+	.long	0x716
+	.long	0x59d
+	.uleb128 0x21
+	.byte	0x1
+	.byte	0x68
+	.byte	0x1
+	.byte	0x34
+	.uleb128 0x21
+	.byte	0x1
+	.byte	0x66
+	.byte	0x1
+	.byte	0x33
+	.byte	0
+	.uleb128 0x25
+	.long	.LVL27
 	.long	0x185
 	.uleb128 0x25
 	.long	.LVL28
-	.long	0x630
-	.uleb128 0x25
-	.long	.LVL30
-	.long	0x185
+	.long	0x723
 	.uleb128 0x25
 	.long	.LVL31
-	.long	0x1fa
+	.long	0x723
+	.uleb128 0x25
+	.long	.LVL33
+	.long	0x185
+	.uleb128 0x25
+	.long	.LVL35
+	.long	0x723
+	.uleb128 0x25
+	.long	.LVL37
+	.long	0x185
+	.uleb128 0x25
+	.long	.LVL38
+	.long	0x3a0
 	.byte	0
 	.uleb128 0x2b
-	.long	.LASF2176
+	.long	.LASF2179
 	.byte	0x1
 	.byte	0x38
 	.long	0xb9
@@ -1134,43 +1319,43 @@ Verde:
 	.byte	0x3
 	.long	p2disp
 	.uleb128 0x2b
-	.long	.LASF2177
+	.long	.LASF2180
 	.byte	0x1
 	.byte	0x3a
 	.long	0xae
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
-	.long	Verde
+	.long	GamePointer
 	.uleb128 0x2b
-	.long	.LASF2178
+	.long	.LASF2181
 	.byte	0x1
 	.byte	0x3b
 	.long	0xae
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
-	.long	Rojo
+	.long	Hundido
 	.uleb128 0x2b
-	.long	.LASF2179
+	.long	.LASF2182
 	.byte	0x1
 	.byte	0x3c
 	.long	0xae
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
-	.long	Azul
+	.long	Agua
 	.uleb128 0x2b
-	.long	.LASF2180
+	.long	.LASF2183
 	.byte	0x1
 	.byte	0x3d
 	.long	0xae
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
-	.long	Amarillo
+	.long	Danado
 	.uleb128 0x2b
-	.long	.LASF2181
+	.long	.LASF2184
 	.byte	0x1
 	.byte	0x3e
 	.long	0xae
@@ -1180,7 +1365,7 @@ Verde:
 	.long	Apagado
 	.uleb128 0x27
 	.long	0xae
-	.long	0x586
+	.long	0x65f
 	.uleb128 0x28
 	.long	0x399
 	.byte	0x7
@@ -1189,17 +1374,17 @@ Verde:
 	.byte	0x7
 	.byte	0
 	.uleb128 0x2b
-	.long	.LASF2182
+	.long	.LASF2185
 	.byte	0x1
 	.byte	0x3f
-	.long	0x570
+	.long	0x649
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.long	display_rgb
 	.uleb128 0x27
 	.long	0x34
-	.long	0x5a8
+	.long	0x681
 	.uleb128 0x28
 	.long	0x399
 	.byte	0x19
@@ -1207,8 +1392,8 @@ Verde:
 	.uleb128 0x2c
 	.string	"msg"
 	.byte	0x1
-	.byte	0x4c
-	.long	0x598
+	.byte	0x51
+	.long	0x671
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -1216,71 +1401,85 @@ Verde:
 	.uleb128 0x2d
 	.byte	0x1
 	.byte	0x1
-	.long	.LASF2183
-	.long	.LASF2183
+	.long	.LASF2186
+	.long	.LASF2186
 	.byte	0x2
 	.word	0x1b6
 	.uleb128 0x2e
 	.byte	0x1
 	.byte	0x1
-	.long	.LASF2184
-	.long	.LASF2184
+	.long	.LASF2187
+	.long	.LASF2187
 	.byte	0x5
 	.byte	0x10
 	.uleb128 0x2e
 	.byte	0x1
 	.byte	0x1
-	.long	.LASF2185
-	.long	.LASF2185
+	.long	.LASF2188
+	.long	.LASF2188
 	.byte	0x6
 	.byte	0xf
 	.uleb128 0x2e
 	.byte	0x1
 	.byte	0x1
-	.long	.LASF2186
-	.long	.LASF2186
+	.long	.LASF2189
+	.long	.LASF2189
 	.byte	0x6
 	.byte	0xe
 	.uleb128 0x2e
 	.byte	0x1
 	.byte	0x1
-	.long	.LASF2187
-	.long	.LASF2187
+	.long	.LASF2190
+	.long	.LASF2190
 	.byte	0x5
 	.byte	0x11
 	.uleb128 0x2e
 	.byte	0x1
 	.byte	0x1
-	.long	.LASF2188
-	.long	.LASF2188
+	.long	.LASF2191
+	.long	.LASF2191
 	.byte	0x1
 	.byte	0x46
 	.uleb128 0x2e
 	.byte	0x1
 	.byte	0x1
-	.long	.LASF2189
-	.long	.LASF2189
+	.long	.LASF2192
+	.long	.LASF2192
 	.byte	0x7
 	.byte	0xb
 	.uleb128 0x2e
 	.byte	0x1
 	.byte	0x1
-	.long	.LASF2190
-	.long	.LASF2190
+	.long	.LASF2193
+	.long	.LASF2193
 	.byte	0x6
 	.byte	0xb
 	.uleb128 0x2e
 	.byte	0x1
 	.byte	0x1
-	.long	.LASF2191
-	.long	.LASF2191
+	.long	.LASF2194
+	.long	.LASF2194
 	.byte	0x5
 	.byte	0xe
 	.uleb128 0x2e
 	.byte	0x1
 	.byte	0x1
-	.long	.LASF2192
-	.long	.LASF2192
+	.long	.LASF2195
+	.long	.LASF2195
+	.byte	0x1
+	.byte	0x49
+	.uleb128 0x2e
+	.byte	0x1
+	.byte	0x1
+	.long	.LASF2196
+	.long	.LASF2196
+	.byte	0x1
+	.byte	0x48
+	.uleb128 0x2e
+	.byte	0x1
+	.byte	0x1
+	.long	.LASF2197
+	.long	.LASF2197
 	.byte	0x1
 	.byte	0x47
 	.byte	0
@@ -2044,24 +2243,24 @@ Verde:
 	.long	0
 	.long	0
 .LLST8:
-	.long	.LVL22
-	.long	.LVL23
+	.long	.LVL29
+	.long	.LVL30
 	.word	0x2
 	.byte	0x30
 	.byte	0x9f
 	.long	0
 	.long	0
 .LLST9:
-	.long	.LVL26
-	.long	.LVL27
+	.long	.LVL33
+	.long	.LVL34
 	.word	0x2
 	.byte	0x30
 	.byte	0x9f
 	.long	0
 	.long	0
 .LLST10:
-	.long	.LVL21
-	.long	.LVL22
+	.long	.LVL28
+	.long	.LVL29
 	.word	0x6
 	.byte	0x9e
 	.uleb128 0x4
@@ -2069,8 +2268,8 @@ Verde:
 	.long	0
 	.long	0
 .LLST11:
-	.long	.LVL21
-	.long	.LVL22
+	.long	.LVL28
+	.long	.LVL29
 	.word	0x6
 	.byte	0x9e
 	.uleb128 0x4
@@ -2078,8 +2277,8 @@ Verde:
 	.long	0
 	.long	0
 .LLST12:
-	.long	.LVL21
-	.long	.LVL22
+	.long	.LVL28
+	.long	.LVL29
 	.word	0x6
 	.byte	0xc
 	.long	0x7a1200
@@ -2087,8 +2286,8 @@ Verde:
 	.long	0
 	.long	0
 .LLST13:
-	.long	.LVL24
-	.long	.LVL25
+	.long	.LVL31
+	.long	.LVL32
 	.word	0x6
 	.byte	0x9e
 	.uleb128 0x4
@@ -2096,8 +2295,8 @@ Verde:
 	.long	0
 	.long	0
 .LLST14:
-	.long	.LVL24
-	.long	.LVL25
+	.long	.LVL31
+	.long	.LVL32
 	.word	0x6
 	.byte	0x9e
 	.uleb128 0x4
@@ -2105,8 +2304,8 @@ Verde:
 	.long	0
 	.long	0
 .LLST15:
-	.long	.LVL24
-	.long	.LVL25
+	.long	.LVL31
+	.long	.LVL32
 	.word	0x6
 	.byte	0xc
 	.long	0x493e00
@@ -2114,8 +2313,8 @@ Verde:
 	.long	0
 	.long	0
 .LLST16:
-	.long	.LVL28
-	.long	.LVL29
+	.long	.LVL35
+	.long	.LVL36
 	.word	0x6
 	.byte	0x9e
 	.uleb128 0x4
@@ -2123,8 +2322,8 @@ Verde:
 	.long	0
 	.long	0
 .LLST17:
-	.long	.LVL28
-	.long	.LVL29
+	.long	.LVL35
+	.long	.LVL36
 	.word	0x6
 	.byte	0x9e
 	.uleb128 0x4
@@ -2132,8 +2331,8 @@ Verde:
 	.long	0
 	.long	0
 .LLST18:
-	.long	.LVL28
-	.long	.LVL29
+	.long	.LVL35
+	.long	.LVL36
 	.word	0x6
 	.byte	0xc
 	.long	0x186a00
@@ -2141,7 +2340,7 @@ Verde:
 	.long	0
 	.long	0
 	.section	.debug_aranges,"",@progbits
-	.long	0x34
+	.long	0x3c
 	.word	0x2
 	.long	.Ldebug_info0
 	.byte	0x4
@@ -2154,6 +2353,8 @@ Verde:
 	.long	.LFE73-.LFB73
 	.long	.LFB74
 	.long	.LFE74-.LFB74
+	.long	.LFB75
+	.long	.LFE75-.LFB75
 	.long	.LFB71
 	.long	.LFE71-.LFB71
 	.long	0
@@ -2166,6 +2367,8 @@ Verde:
 	.long	.LFE73
 	.long	.LFB74
 	.long	.LFE74
+	.long	.LFB75
+	.long	.LFE75
 	.long	.LFB71
 	.long	.LFE71
 	.long	0
@@ -3797,8 +4000,14 @@ Verde:
 	.long	.LASF2150
 	.byte	0x4
 	.byte	0x5
-	.uleb128 0x4f
+	.uleb128 0x54
 	.long	.LASF2151
+	.byte	0x5
+	.uleb128 0xc2
+	.long	.LASF2152
+	.byte	0x5
+	.uleb128 0xc3
+	.long	.LASF2153
 	.byte	0x4
 	.byte	0
 	.section	.debug_macro,"G",@progbits,wm4.parts.h.38.424177e1c4c7502bdf2cd6eac0e66f1e,comdat
@@ -9148,6 +9357,8 @@ Verde:
 	.string	"TWIE 0"
 .LASF108:
 	.string	"__UINT16_C(c) c ## U"
+.LASF2149:
+	.string	"VRY 4"
 .LASF574:
 	.string	"SAMDA1G ( SAM_PART_IS_DEFINED(SAMDA1G14A) || SAM_PART_IS_DEFINED(SAMDA1G14B) || SAM_PART_IS_DEFINED(SAMDA1G15A) || SAM_PART_IS_DEFINED(SAMDA1G15B) || SAM_PART_IS_DEFINED(SAMDA1G16A) || SAM_PART_IS_DEFINED(SAMDA1G16B) )"
 .LASF1034:
@@ -9358,8 +9569,8 @@ Verde:
 	.string	"__UACCUM_EPSILON__ 0x1P-16UK"
 .LASF833:
 	.string	"PRIXPTR PRIX16"
-.LASF1825:
-	.string	"__always_optimize __attribute__((optimize(3)))"
+.LASF1572:
+	.string	"TIMER1_OVF_vect _VECTOR(13)"
 .LASF386:
 	.string	"__BUILTIN_AVR_COUNTLSULLR 1"
 .LASF596:
@@ -9392,8 +9603,8 @@ Verde:
 	.string	"UC3D3 ( AVR32_PART_IS_DEFINED(UC64D3) || AVR32_PART_IS_DEFINED(UC128D3) )"
 .LASF178:
 	.string	"__DEC64_MIN_EXP__ (-382)"
-.LASF1572:
-	.string	"TIMER1_OVF_vect _VECTOR(13)"
+.LASF1470:
+	.string	"TWD0 0"
 .LASF2071:
 	.string	"_LED_H_ "
 .LASF1747:
@@ -9435,7 +9646,7 @@ Verde:
 	.string	"PCINT0_vect_num 3"
 .LASF1909:
 	.string	"CLE64_TO_CPU_ENDIAN(x) (x)"
-.LASF2168:
+.LASF2170:
 	.string	"__ms"
 .LASF715:
 	.string	"INT16_MAX 0x7fff"
@@ -9511,8 +9722,10 @@ Verde:
 	.string	"GPIOR2 _SFR_IO8(0x2B)"
 .LASF1524:
 	.string	"UBRR0L _SFR_MEM8(0xC4)"
-.LASF1464:
-	.string	"TWA2 3"
+.LASF2153:
+	.string	"LO_LIM 400"
+.LASF1508:
+	.string	"RXEN0 4"
 .LASF1844:
 	.string	"ISR_NAKED __attribute__((naked))"
 .LASF145:
@@ -9568,7 +9781,7 @@ Verde:
 .LASF1866:
 	.ascii	"__LPM_dword_tiny__(addr) (__ext"
 	.string	"ension__({ uint16_t __addr16 = (uint16_t)(addr) + __AVR_TINY_PM_BASE_ADDRESS__; uint32_t __result; __asm__ ( \"ld %A0, z+\" \"\\n\\t\" \"ld %B0, z+\" \"\\n\\t\" \"ld %C0, z+\" \"\\n\\t\" \"ld %D0, z\" \"\\n\\t\" : \"=r\" (__result), \"=z\" (__addr16) : \"1\" (__addr16) ); __result; }))"
-.LASF2157:
+.LASF2159:
 	.string	"uint32_t"
 .LASF1109:
 	.string	"GPIOR26 6"
@@ -9598,6 +9811,8 @@ Verde:
 	.string	"ICR1H7 7"
 .LASF1434:
 	.string	"OCR2B _SFR_MEM8(0xB4)"
+.LASF1938:
+	.string	"IOPORT_PORTC 2"
 .LASF1882:
 	.string	"pgm_read_dword(address_short) pgm_read_dword_near(address_short)"
 .LASF2009:
@@ -9752,7 +9967,7 @@ Verde:
 	.string	"SPR0 0"
 .LASF1843:
 	.string	"ISR_NOBLOCK __attribute__((interrupt))"
-.LASF2164:
+.LASF2166:
 	.string	"P2RGB"
 .LASF2019:
 	.string	"SAMG53_XPLAINED_PRO 66"
@@ -9774,10 +9989,12 @@ Verde:
 	.string	"_UTIL_DELAY_BASIC_H_ 1"
 .LASF958:
 	.string	"PORTC6 6"
-.LASF2155:
+.LASF2157:
 	.string	"long int"
 .LASF1476:
 	.string	"TWD6 6"
+.LASF1796:
+	.string	"NULL"
 .LASF1869:
 	.ascii	"__LPM_float_tiny__(addr) (__"
 	.string	"extension__({ uint16_t __addr16 = (uint16_t)(addr) + __AVR_TINY_PM_BASE_ADDRESS__; float __result; __asm__ ( \"ld %A0, z+\" \"\\n\\t\" \"ld %B0, z+\" \"\\n\\t\" \"ld %C0, z+\" \"\\n\\t\" \"ld %D0, z\" \"\\n\\t\" : \"=r\" (__result), \"=z\" (__addr16) : \"1\" (__addr16) ); __result; }))"
@@ -9835,10 +10052,12 @@ Verde:
 	.string	"E2END 0x3FF"
 .LASF142:
 	.string	"__DBL_MANT_DIG__ 24"
-.LASF657:
-	.string	"SAM3XA (SAM3X4 || SAM3X8 || SAM3A4 || SAM3A8)"
+.LASF549:
+	.string	"SAMR35J ( SAM_PART_IS_DEFINED(SAMR35J18B) || SAM_PART_IS_DEFINED(SAMR35J17B) || SAM_PART_IS_DEFINED(SAMR35J16B) )"
 .LASF301:
 	.string	"__USA_FBIT__ 16"
+.LASF1430:
+	.string	"OCR2_4 4"
 .LASF847:
 	.string	"SCNdLEAST32 \"ld\""
 .LASF537:
@@ -9931,8 +10150,8 @@ Verde:
 	.string	"RZ600 31"
 .LASF272:
 	.string	"__QQ_IBIT__ 0"
-.LASF1929:
-	.string	"Swap64(u64) ((U64)(((U64)Swap32((U64)(u64) >> 32)) | ((U64)Swap32((U64)(u64)) << 32)))"
+.LASF1469:
+	.string	"TWDR _SFR_MEM8(0xBB)"
 .LASF827:
 	.string	"PRIX32 \"lX\""
 .LASF2082:
@@ -9961,9 +10180,9 @@ Verde:
 	.string	"SAMDA1 (SAMDA1J || SAMDA1G || SAMDA1E)"
 .LASF802:
 	.string	"PRIxFAST8 \"x\""
-.LASF2184:
-	.string	"read_VRX"
 .LASF2187:
+	.string	"read_VRX"
+.LASF2190:
 	.string	"read_VRY"
 .LASF2092:
 	.string	"__HAS_DELAY_CYCLES 1"
@@ -9983,8 +10202,6 @@ Verde:
 	.string	"PCINT5 5"
 .LASF425:
 	.string	"__BUILTIN_AVR_ULKBITS 1"
-.LASF2177:
-	.string	"Verde"
 .LASF440:
 	.string	"_GPIO_H_ "
 .LASF1110:
@@ -10075,7 +10292,7 @@ Verde:
 	.string	"ACBG 6"
 .LASF1403:
 	.string	"WGM20 0"
-.LASF2200:
+.LASF2205:
 	.string	"ADCTestBench"
 .LASF799:
 	.string	"PRIuFAST8 \"u\""
@@ -10115,7 +10332,7 @@ Verde:
 	.string	"SAM3S8 ( SAM_PART_IS_DEFINED(SAM3S8B) || SAM_PART_IS_DEFINED(SAM3S8C) )"
 .LASF319:
 	.string	"__GCC_ATOMIC_TEST_AND_SET_TRUEVAL 1"
-.LASF2183:
+.LASF2186:
 	.string	"__itoa_ncheck"
 .LASF205:
 	.string	"__FRACT_EPSILON__ 0x1P-15R"
@@ -10161,7 +10378,7 @@ Verde:
 	.string	"SPR1 1"
 .LASF426:
 	.string	"__BUILTIN_AVR_ULLKBITS 1"
-.LASF2153:
+.LASF2155:
 	.string	"unsigned char"
 .LASF895:
 	.string	"_SFR_IO_REG_P(sfr) (_SFR_MEM_ADDR(sfr) < 0x40 + __SFR_OFFSET)"
@@ -10262,8 +10479,8 @@ Verde:
 	.string	"_PTRDIFF_T "
 .LASF1949:
 	.string	"gpio_set_pin_low(io_id) ioport_set_value(io_id, 0)"
-.LASF1988:
-	.string	"SAM3N_EK 35"
+.LASF2196:
+	.string	"wrt_Digit"
 .LASF357:
 	.string	"__BUILTIN_AVR_ABSLR 1"
 .LASF2038:
@@ -10280,6 +10497,8 @@ Verde:
 	.string	"M_1_PI 0.31830988618379067154"
 .LASF580:
 	.string	"SAMC20E ( SAM_PART_IS_DEFINED(SAMC20E15A) || SAM_PART_IS_DEFINED(SAMC20E16A) || SAM_PART_IS_DEFINED(SAMC20E17A) || SAM_PART_IS_DEFINED(SAMC20E18A) )"
+.LASF1929:
+	.string	"Swap64(u64) ((U64)(((U64)Swap32((U64)(u64) >> 32)) | ((U64)Swap32((U64)(u64)) << 32)))"
 .LASF598:
 	.string	"SAM4C16 (SAM4C16_0 || SAM4C16_1)"
 .LASF522:
@@ -10302,7 +10521,7 @@ Verde:
 	.string	"MSB(u16) (((uint8_t* )&u16)[1])"
 .LASF371:
 	.string	"__BUILTIN_AVR_ROUNDHK 1"
-.LASF2162:
+.LASF2164:
 	.string	"blue"
 .LASF286:
 	.string	"__USQ_IBIT__ 0"
@@ -10419,8 +10638,6 @@ Verde:
 	.string	"__BUILTIN_AVR_COUNTLSULK 1"
 .LASF810:
 	.string	"PRIuLEAST16 \"u\""
-.LASF2178:
-	.string	"Rojo"
 .LASF257:
 	.string	"__ULACCUM_IBIT__ 32"
 .LASF835:
@@ -10432,7 +10649,7 @@ Verde:
 .LASF497:
 	.ascii	"MEGA_XX ( AVR8_PART_IS_DEFINED"
 	.string	"(ATmega16) || AVR8_PART_IS_DEFINED(ATmega16A) || AVR8_PART_IS_DEFINED(ATmega32) || AVR8_PART_IS_DEFINED(ATmega32A) || AVR8_PART_IS_DEFINED(ATmega64) || AVR8_PART_IS_DEFINED(ATmega64A) || AVR8_PART_IS_DEFINED(ATmega128) || AVR8_PART_IS_DEFINED(ATmega128A) )"
-.LASF2194:
+.LASF2199:
 	.string	"../src/main.c"
 .LASF1789:
 	.string	"_WCHAR_T_H "
@@ -10492,14 +10709,16 @@ Verde:
 	.string	"__BOOT_LOCK_BITS_1_EXIST "
 .LASF734:
 	.string	"INT_LEAST64_MIN INT64_MIN"
+.LASF2195:
+	.string	"wrt_Digit_Init"
 .LASF1404:
 	.string	"WGM21 1"
 .LASF678:
 	.string	"SAMC21 (SAMC21J || SAMC21G || SAMC21E)"
 .LASF1853:
 	.string	"__PGMSPACE_H_ 1"
-.LASF1470:
-	.string	"TWD0 0"
+.LASF1464:
+	.string	"TWA2 3"
 .LASF780:
 	.string	"PRId16 \"d\""
 .LASF361:
@@ -10524,7 +10743,7 @@ Verde:
 	.string	"_SFR_IO8(io_addr) _MMIO_BYTE((io_addr) + __SFR_OFFSET)"
 .LASF254:
 	.string	"__LACCUM_MAX__ 0X7FFFFFFFFFFFFFFFP-31LK"
-.LASF2189:
+.LASF2192:
 	.string	"init_RTI"
 .LASF1541:
 	.string	"UDR0_2 2"
@@ -10558,7 +10777,7 @@ Verde:
 	.string	"SAM3S_EK 32"
 .LASF1655:
 	.string	"DD2 2"
-.LASF2186:
+.LASF2189:
 	.string	"UART_send_data"
 .LASF1161:
 	.string	"PGERS 1"
@@ -10606,8 +10825,6 @@ Verde:
 	.string	"ATMEGA256RFR2_XPLAINED_PRO 52"
 .LASF583:
 	.string	"SAMC21E ( SAM_PART_IS_DEFINED(SAMC21E15A) || SAM_PART_IS_DEFINED(SAMC21E16A) || SAM_PART_IS_DEFINED(SAMC21E17A) || SAM_PART_IS_DEFINED(SAMC21E18A) )"
-.LASF2195:
-	.string	"C:\\\\Users\\\\Bruno\\\\Desktop\\\\Micro\\\\BatallaNaval_Micro\\\\GccMatrixWS2812 V3\\\\GccMatrixWS2812 V3\\\\Debug"
 .LASF1162:
 	.string	"PGWRT 2"
 .LASF402:
@@ -10647,8 +10864,8 @@ Verde:
 	.string	"__FRACT_MIN__ (-0.5R-0.5R)"
 .LASF2025:
 	.string	"SAM4CMS_DB 72"
-.LASF2179:
-	.string	"Azul"
+.LASF1891:
+	.string	"PROGMEM_PTR_T const *"
 .LASF1580:
 	.string	"SPI_STC_vect _VECTOR(17)"
 .LASF826:
@@ -10671,7 +10888,7 @@ Verde:
 	.string	"__BUILTIN_AVR_ROUNDFX 1"
 .LASF283:
 	.string	"__UHQ_FBIT__ 16"
-.LASF2156:
+.LASF2158:
 	.string	"uint8_t"
 .LASF2083:
 	.string	"USART_RX IOPORT_CREATE_PIN(PORTD, 0)"
@@ -10683,8 +10900,6 @@ Verde:
 	.string	"SAM4CMS16_0 ( SAM_PART_IS_DEFINED(SAM4CMS16C_0) )"
 .LASF1584:
 	.string	"USART_UDRE_vect _VECTOR(19)"
-.LASF1891:
-	.string	"PROGMEM_PTR_T const *"
 .LASF740:
 	.string	"INT_FAST16_MIN INT16_MIN"
 .LASF1681:
@@ -10863,7 +11078,7 @@ Verde:
 	.string	"__UTQ_IBIT__ 0"
 .LASF658:
 	.string	"SAM4S (SAM4S2 || SAM4S4 || SAM4S8 || SAM4S16 || SAM4SA16 || SAM4SD16 || SAM4SD32)"
-.LASF2173:
+.LASF2175:
 	.string	"softdelay"
 .LASF1614:
 	.string	"FUSE_CKDIV8 (unsigned char)~_BV(7)"
@@ -10883,7 +11098,7 @@ Verde:
 	.string	"nop() do { __asm__ __volatile__ (\"nop\"); } while (0)"
 .LASF818:
 	.string	"PRIo32 \"lo\""
-.LASF2199:
+.LASF2204:
 	.string	"__itoa"
 .LASF662:
 	.string	"SAMD09 (SAMD09C || SAMD09D)"
@@ -10915,7 +11130,7 @@ Verde:
 	.string	"SAMD21EXXL ( SAM_PART_IS_DEFINED(SAMD21E15L) || SAM_PART_IS_DEFINED(SAMD21E16L) || SAM_PART_IS_DEFINED(SAMD21E17L) )"
 .LASF141:
 	.string	"__FLT_HAS_QUIET_NAN__ 1"
-.LASF2193:
+.LASF2198:
 	.string	"GNU C99 5.4.0 -mn-flash=1 -mno-skip-bug -mrelax -mmcu=avr5 -g3 -O1 -std=gnu99 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -fno-strict-aliasing"
 .LASF773:
 	.string	"_GCC_WRAP_STDINT_H "
@@ -11073,16 +11288,14 @@ Verde:
 	.string	"ICR1H0 0"
 .LASF514:
 	.string	"SAM3U2 ( SAM_PART_IS_DEFINED(SAM3U2C) || SAM_PART_IS_DEFINED(SAM3U2E) )"
-.LASF763:
-	.string	"INT8_C(c) __INT8_C(c)"
-.LASF549:
-	.string	"SAMR35J ( SAM_PART_IS_DEFINED(SAMR35J18B) || SAM_PART_IS_DEFINED(SAMR35J17B) || SAM_PART_IS_DEFINED(SAMR35J16B) )"
+.LASF404:
+	.string	"__BUILTIN_AVR_BITSK 1"
 .LASF1502:
 	.string	"RXC0 7"
 .LASF9:
 	.string	"__ATOMIC_RELAXED 0"
-.LASF1938:
-	.string	"IOPORT_PORTC 2"
+.LASF2180:
+	.string	"GamePointer"
 .LASF1838:
 	.string	"EMPTY_INTERRUPT(vector) void vector (void) __attribute__ ((signal,naked,__INTR_ATTRS)); void vector (void) { __asm__ __volatile__ (\"reti\" ::); }"
 .LASF214:
@@ -11105,7 +11318,7 @@ Verde:
 	.string	"ICR1H _SFR_MEM8(0x87)"
 .LASF982:
 	.string	"PORTD4 4"
-.LASF2197:
+.LASF2202:
 	.string	"__builtin_avr_delay_cycles"
 .LASF204:
 	.string	"__FRACT_MAX__ 0X7FFFP-15R"
@@ -11143,6 +11356,8 @@ Verde:
 	.string	"TWGCE 0"
 .LASF934:
 	.string	"PORTB7 7"
+.LASF2181:
+	.string	"Hundido"
 .LASF990:
 	.string	"TIFR1 _SFR_IO8(0x16)"
 .LASF1649:
@@ -11218,7 +11433,7 @@ Verde:
 	.string	"UBRR0_3 3"
 .LASF1876:
 	.string	"pgm_read_word_near(address_short) __LPM_word((uint16_t)(address_short))"
-.LASF2169:
+.LASF2171:
 	.string	"__val"
 .LASF876:
 	.string	"SCNuLEAST32 \"lu\""
@@ -11228,7 +11443,7 @@ Verde:
 	.string	"PRIiLEAST32 \"li\""
 .LASF674:
 	.string	"SAMB11 (SAMB11G || BTLC1000)"
-.LASF2196:
+.LASF2201:
 	.string	"_delay_ms"
 .LASF754:
 	.string	"PTRDIFF_MAX INT16_MAX"
@@ -11236,7 +11451,7 @@ Verde:
 	.string	"SIZE_MAX UINT16_MAX"
 .LASF1859:
 	.string	"__LPM_classic__(addr) (__extension__({ uint16_t __addr16 = (uint16_t)(addr); uint8_t __result; __asm__ __volatile__ ( \"lpm\" \"\\n\\t\" \"mov %0, r0\" \"\\n\\t\" : \"=r\" (__result) : \"z\" (__addr16) : \"r0\" ); __result; }))"
-.LASF2165:
+.LASF2167:
 	.string	"__tmp"
 .LASF2035:
 	.string	"ATMEGA328P_XPLAINED_MINI 82"
@@ -11403,8 +11618,8 @@ Verde:
 	.string	"PRIX8 \"X\""
 .LASF1511:
 	.string	"RXCIE0 7"
-.LASF1999:
-	.string	"STK600_MEGA_RF 46"
+.LASF2182:
+	.string	"Agua"
 .LASF1401:
 	.string	"OCR1BH7 7"
 .LASF1247:
@@ -11415,8 +11630,6 @@ Verde:
 	.string	"__SQ_IBIT__ 0"
 .LASF424:
 	.string	"__BUILTIN_AVR_UKBITS 1"
-.LASF2052:
-	.string	"SAMB11ZR_SENSOR_TAG 101"
 .LASF451:
 	.string	"UC3C0 ( AVR32_PART_IS_DEFINED(UC3C064C) || AVR32_PART_IS_DEFINED(UC3C0128C) || AVR32_PART_IS_DEFINED(UC3C0256C) || AVR32_PART_IS_DEFINED(UC3C0512C) )"
 .LASF502:
@@ -11489,7 +11702,7 @@ Verde:
 	.string	"UTILS_PROGMEM_H "
 .LASF1099:
 	.string	"GPIOR15 5"
-.LASF2170:
+.LASF2172:
 	.string	"__radix"
 .LASF520:
 	.string	"SAM3N4 ( SAM_PART_IS_DEFINED(SAM3N4A) || SAM_PART_IS_DEFINED(SAM3N4B) || SAM_PART_IS_DEFINED(SAM3N4C) )"
@@ -11499,7 +11712,7 @@ Verde:
 	.string	"__ULLACCUM_MIN__ 0.0ULLK"
 .LASF807:
 	.string	"PRIoLEAST16 \"o\""
-.LASF2175:
+.LASF2177:
 	.string	"sizetype"
 .LASF182:
 	.string	"__DEC64_EPSILON__ 1E-15DD"
@@ -11553,7 +11766,7 @@ Verde:
 	.string	"PCINT10 2"
 .LASF1915:
 	.string	"convert_byte_array_to_16_bit(data) (*(uint16_t *)(data))"
-.LASF2152:
+.LASF2154:
 	.string	"signed char"
 .LASF1484:
 	.string	"TWEA 6"
@@ -11599,6 +11812,8 @@ Verde:
 	.string	"SAMB11G ( SAM_PART_IS_DEFINED(SAMB11G18A) || SAM_PART_IS_DEFINED(SAMB11ZR) )"
 .LASF1302:
 	.string	"ADC3D 3"
+.LASF2152:
+	.string	"HI_LIM 600"
 .LASF1179:
 	.string	"CLKPS1 1"
 .LASF2110:
@@ -11619,7 +11834,7 @@ Verde:
 	.string	"WDIF 7"
 .LASF2017:
 	.string	"SAM4C_EK 64"
-.LASF2161:
+.LASF2163:
 	.string	"green"
 .LASF1489:
 	.string	"TWAM2 2"
@@ -11691,7 +11906,7 @@ Verde:
 	.string	"fabsf fabs"
 .LASF948:
 	.string	"DDC4 4"
-.LASF2163:
+.LASF2165:
 	.string	"RGBled"
 .LASF1925:
 	.string	"PGM_READ_BYTE(x) pgm_read_byte(x)"
@@ -11717,6 +11932,8 @@ Verde:
 	.string	"ML21E17B) || SAM_PART_IS_DEFINED(SAML21E18B) || SAM_PART_IS_DEFINED(SAML21G16B) || SAM_PART_IS_DEFINED(SAML21G17B) || SAM_PART_IS_DEFINED(SAML21G18B) || SAM_PART_IS_DEFINED(SAML21J16B) || SAM_PART_IS_DEFINED(SAML21J17B) || SAM_PART_IS_DEFINED(SAML21J18B) )"
 .LASF1519:
 	.string	"UPM00 4"
+.LASF1999:
+	.string	"STK600_MEGA_RF 46"
 .LASF641:
 	.string	"SAMV70QB ( SAM_PART_IS_DEFINED(SAMV70Q19B) || SAM_PART_IS_DEFINED(SAMV70Q20B) )"
 .LASF167:
@@ -11926,6 +12143,8 @@ Verde:
 	.string	"PORT6 6"
 .LASF2066:
 	.string	"RZ600_AT86RF212 10"
+.LASF763:
+	.string	"INT8_C(c) __INT8_C(c)"
 .LASF689:
 	.string	"SAM4CP (SAM4CP16)"
 .LASF475:
@@ -12050,7 +12269,7 @@ Verde:
 	.string	"GPIOR01 1"
 .LASF1187:
 	.string	"PRTIM1 3"
-.LASF2166:
+.LASF2168:
 	.string	"__ticks_dc"
 .LASF1330:
 	.string	"TCNT1L2 2"
@@ -12072,7 +12291,7 @@ Verde:
 	.string	"PRIXFAST32 \"lX\""
 .LASF1892:
 	.string	"PROGMEM_BYTE_ARRAY_T uint8_t*"
-.LASF2191:
+.LASF2194:
 	.string	"adc_init"
 .LASF1734:
 	.string	"BLB0_MODE_1 (0xFF)"
@@ -12152,11 +12371,9 @@ Verde:
 	.string	"gpio_set_pin_high(io_id) ioport_set_value(io_id, 1)"
 .LASF510:
 	.string	"SAM3S4 ( SAM_PART_IS_DEFINED(SAM3S4A) || SAM_PART_IS_DEFINED(SAM3S4B) || SAM_PART_IS_DEFINED(SAM3S4C) )"
-.LASF1508:
-	.string	"RXEN0 4"
 .LASF341:
 	.string	"__FLASH 1"
-.LASF2171:
+.LASF2173:
 	.string	"char"
 .LASF581:
 	.string	"SAMC20G ( SAM_PART_IS_DEFINED(SAMC20G15A) || SAM_PART_IS_DEFINED(SAMC20G16A) || SAM_PART_IS_DEFINED(SAMC20G17A) || SAM_PART_IS_DEFINED(SAMC20G18A) )"
@@ -12184,7 +12401,7 @@ Verde:
 	.string	"PRIiFAST8 \"i\""
 .LASF2091:
 	.string	"_UTIL_DELAY_H_ 1"
-.LASF2172:
+.LASF2174:
 	.string	"clear_disp"
 .LASF15:
 	.string	"__OPTIMIZE__ 1"
@@ -12325,7 +12542,7 @@ Verde:
 	.string	"SCNuFAST8 \"hhu\""
 .LASF737:
 	.string	"INT_FAST8_MIN INT8_MIN"
-.LASF2174:
+.LASF2176:
 	.string	"buffer"
 .LASF1101:
 	.string	"GPIOR17 7"
@@ -12383,6 +12600,8 @@ Verde:
 	.string	"PRIXLEAST32 \"lX\""
 .LASF134:
 	.string	"__FLT_DECIMAL_DIG__ 9"
+.LASF2008:
+	.string	"ATMEGA256RFR2_ZIGBIT 55"
 .LASF44:
 	.string	"__INT32_TYPE__ long int"
 .LASF985:
@@ -12491,6 +12710,8 @@ Verde:
 	.string	"TWAM4 4"
 .LASF2006:
 	.string	"SAM4S_XPLAINED_PRO 53"
+.LASF1966:
+	.string	"STK600_RC100X 11"
 .LASF1745:
 	.string	"true 1"
 .LASF1012:
@@ -12525,7 +12746,7 @@ Verde:
 	.string	"SAMR34JXXB ( SAM_PART_IS_DEFINED(SAMR34J18B) || SAM_PART_IS_DEFINED(SAMR34J17B) || SAM_PART_IS_DEFINED(SAMR34J16B) )"
 .LASF792:
 	.string	"PRIdPTR PRId16"
-.LASF2201:
+.LASF2206:
 	.string	"main"
 .LASF1385:
 	.string	"OCR1BL0 0"
@@ -12559,8 +12780,8 @@ Verde:
 	.string	"__TQ_FBIT__ 127"
 .LASF712:
 	.string	"INT8_MAX 0x7f"
-.LASF1469:
-	.string	"TWDR _SFR_MEM8(0xBB)"
+.LASF1451:
+	.string	"TWBR7 7"
 .LASF333:
 	.string	"__AVR_HAVE_MUL__ 1"
 .LASF993:
@@ -12573,12 +12794,10 @@ Verde:
 	.string	"SAM4E16 ( SAM_PART_IS_DEFINED(SAM4E16C) || SAM_PART_IS_DEFINED(SAM4E16CB) || SAM_PART_IS_DEFINED(SAM4E16E) )"
 .LASF1082:
 	.string	"OCR0A_6 6"
-.LASF2167:
+.LASF2169:
 	.string	"double"
 .LASF1706:
 	.string	"ZL r30"
-.LASF1451:
-	.string	"TWBR7 7"
 .LASF1902:
 	.string	"CPU_ENDIAN_TO_LE32(x) (x)"
 .LASF388:
@@ -12617,7 +12836,7 @@ Verde:
 	.string	"EEPE 1"
 .LASF1748:
 	.string	"_STDDEF_H "
-.LASF2181:
+.LASF2184:
 	.string	"Apagado"
 .LASF639:
 	.string	"SAMV70NB ( SAM_PART_IS_DEFINED(SAMV70N19B) || SAM_PART_IS_DEFINED(SAMV70N20B) )"
@@ -12629,7 +12848,7 @@ Verde:
 	.string	"SAMHA1 (SAMHA1G || SAMHA1E)"
 .LASF1562:
 	.string	"TIMER2_COMPB_vect _VECTOR(8)"
-.LASF2182:
+.LASF2185:
 	.string	"display_rgb"
 .LASF1548:
 	.string	"INT0_vect _VECTOR(1)"
@@ -12661,8 +12880,8 @@ Verde:
 	.string	"PINC6 6"
 .LASF791:
 	.string	"PRIiFAST32 \"li\""
-.LASF1430:
-	.string	"OCR2_4 4"
+.LASF657:
+	.string	"SAM3XA (SAM3X4 || SAM3X8 || SAM3A4 || SAM3A8)"
 .LASF1042:
 	.string	"EEAR6 6"
 .LASF1072:
@@ -12834,7 +13053,7 @@ Verde:
 	.string	"AIN1D 1"
 .LASF180:
 	.string	"__DEC64_MIN__ 1E-383DD"
-.LASF2176:
+.LASF2179:
 	.string	"p2disp"
 .LASF100:
 	.string	"__INT16_C(c) c"
@@ -12862,7 +13081,7 @@ Verde:
 	.string	"UDR0_0 0"
 .LASF2133:
 	.string	"isnanf isnan"
-.LASF2160:
+.LASF2162:
 	.string	"long long unsigned int"
 .LASF20:
 	.string	"__SIZEOF_SHORT__ 2"
@@ -12874,7 +13093,7 @@ Verde:
 	.string	"UC3L0 ( AVR32_PART_IS_DEFINED(UC3L016) || AVR32_PART_IS_DEFINED(UC3L032) || AVR32_PART_IS_DEFINED(UC3L064) )"
 .LASF726:
 	.string	"UINT_LEAST8_MAX UINT8_MAX"
-.LASF2188:
+.LASF2191:
 	.string	"init_ws2812"
 .LASF1213:
 	.string	"ISC00 0"
@@ -13010,8 +13229,10 @@ Verde:
 	.string	"__LPM_word_tiny__(addr) (__extension__({ uint16_t __addr16 = (uint16_t)(addr) + __AVR_TINY_PM_BASE_ADDRESS__; uint16_t __result; __asm__ ( \"ld %A0, z+\" \"\\n\\t\" \"ld %B0, z\" \"\\n\\t\" : \"=r\" (__result), \"=z\" (__addr16) : \"1\" (__addr16) ); __result; }))"
 .LASF634:
 	.string	"SAMV71Q ( SAM_PART_IS_DEFINED(SAMV71Q19) || SAM_PART_IS_DEFINED(SAMV71Q20) || SAM_PART_IS_DEFINED(SAMV71Q21) )"
-.LASF2149:
-	.string	"VRY 4"
+.LASF2200:
+	.string	"C:\\\\Users\\\\gusta\\\\Desktop\\\\MicroProy\\\\BatallaNaval_Micro-main\\\\GccMatrixWS2812 V3\\\\GccMatrixWS2812 V3\\\\Debug"
+.LASF2183:
+	.string	"Danado"
 .LASF594:
 	.string	"SAM4C8_1 ( SAM_PART_IS_DEFINED(SAM4C8C_1) )"
 .LASF164:
@@ -13034,7 +13255,7 @@ Verde:
 	.string	"SCNiPTR SCNi16"
 .LASF163:
 	.string	"__LDBL_MAX__ 3.40282347e+38L"
-.LASF2190:
+.LASF2193:
 	.string	"UART_Init"
 .LASF2022:
 	.string	"SAMD21_XPLAINED_PRO 69"
@@ -13098,11 +13319,11 @@ Verde:
 	.string	"EEAR7 7"
 .LASF1073:
 	.string	"TCNT0_6 6"
-.LASF404:
-	.string	"__BUILTIN_AVR_BITSK 1"
+.LASF2052:
+	.string	"SAMB11ZR_SENSOR_TAG 101"
 .LASF920:
 	.string	"DDB2 2"
-.LASF2192:
+.LASF2197:
 	.string	"wrt_ws2812"
 .LASF1151:
 	.string	"WDRF 3"
@@ -13134,7 +13355,7 @@ Verde:
 	.string	"ADCH2 2"
 .LASF855:
 	.string	"SCNoLEAST8 \"hho\""
-.LASF2159:
+.LASF2161:
 	.string	"long long int"
 .LASF1714:
 	.string	"AVR_STACK_POINTER_HI_ADDR _SFR_IO_ADDR(SPH)"
@@ -13218,7 +13439,7 @@ Verde:
 	.string	"UCSZ01 2"
 .LASF155:
 	.string	"__DBL_HAS_QUIET_NAN__ 1"
-.LASF2185:
+.LASF2188:
 	.string	"UART_putstring"
 .LASF1062:
 	.string	"CS02 2"
@@ -13248,7 +13469,7 @@ Verde:
 	.string	"WGM12 3"
 .LASF1979:
 	.string	"UC3_L0_QT600 26"
-.LASF2158:
+.LASF2160:
 	.string	"long unsigned int"
 .LASF343:
 	.string	"__BUILTIN_AVR_NOP 1"
@@ -13296,8 +13517,6 @@ Verde:
 	.string	"__WINT_MAX__ 0x7fff"
 .LASF1493:
 	.string	"TWAM6 6"
-.LASF2180:
-	.string	"Amarillo"
 .LASF139:
 	.string	"__FLT_HAS_DENORM__ 1"
 .LASF1982:
@@ -13336,8 +13555,8 @@ Verde:
 	.string	"SAML21 (SAML21J || SAML21G || SAML21E)"
 .LASF21:
 	.string	"__SIZEOF_FLOAT__ 4"
-.LASF2008:
-	.string	"ATMEGA256RFR2_ZIGBIT 55"
+.LASF1988:
+	.string	"SAM3N_EK 35"
 .LASF721:
 	.string	"INT64_MAX 0x7fffffffffffffffLL"
 .LASF189:
@@ -13358,7 +13577,7 @@ Verde:
 	.string	"__UINT_LEAST8_TYPE__ unsigned char"
 .LASF1474:
 	.string	"TWD4 4"
-.LASF2198:
+.LASF2203:
 	.string	"itoa"
 .LASF1874:
 	.string	"__LPM_float(addr) __LPM_float_enhanced__(addr)"
@@ -13378,11 +13597,11 @@ Verde:
 	.string	"MEMCPY_ENDIAN memcpy"
 .LASF2004:
 	.string	"SAM4E_EK 51"
-.LASF1966:
-	.string	"STK600_RC100X 11"
+.LASF1825:
+	.string	"__always_optimize __attribute__((optimize(3)))"
 .LASF529:
 	.string	"SAM4SA16 ( SAM_PART_IS_DEFINED(SAM4SA16B) || SAM_PART_IS_DEFINED(SAM4SA16C) )"
-.LASF2154:
+.LASF2156:
 	.string	"unsigned int"
 .LASF2014:
 	.string	"SAM4N_XPLAINED_PRO 61"
@@ -13434,8 +13653,8 @@ Verde:
 	.string	"__WINT_TYPE__ int"
 .LASF436:
 	.string	"__AVR_DEV_LIB_NAME__ m328p"
-.LASF1796:
-	.string	"NULL"
+.LASF2178:
+	.string	"TB_joy1"
 .LASF2018:
 	.string	"RCB256RFR2_XPRO 65"
 .LASF1547:

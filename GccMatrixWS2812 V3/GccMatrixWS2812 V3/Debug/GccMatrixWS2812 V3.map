@@ -47,6 +47,8 @@ Discarded input sections
  .text          0x00000000        0x0 src/ADC.o
  .data          0x00000000        0x0 src/ADC.o
  .bss           0x00000000        0x0 src/ADC.o
+ .text.read_VRY
+                0x00000000        0x8 src/ADC.o
  COMMON         0x00000000        0x2 src/ADC.o
  .group         0x00000000        0x8 src/cqueue.o
  .text          0x00000000        0x0 src/cqueue.o
@@ -125,6 +127,8 @@ Discarded input sections
                 0x00000000        0x6 src/UART.o
  .text.UART_ReceivePolling
                 0x00000000       0x10 src/UART.o
+ .text.UART_send_data
+                0x00000000        0x6 src/UART.o
  .text.uart_test
                 0x00000000       0x14 src/UART.o
  .text.UART_TransmitInterrupt
@@ -143,6 +147,8 @@ Discarded input sections
  .debug_macro   0x00000000      0x166 src/UART.o
  .debug_macro   0x00000000       0x69 src/UART.o
  .debug_macro   0x00000000       0x10 src/UART.o
+ .data          0x00000000        0x0 src/wrt_Digit.o
+ .bss           0x00000000        0x0 src/wrt_Digit.o
  .group         0x00000000        0x8 src/ASF/mega/boards/atmega328p_xplained_mini/init.o
  .group         0x00000000        0x8 src/ASF/mega/boards/atmega328p_xplained_mini/init.o
  .group         0x00000000        0x8 src/ASF/mega/boards/atmega328p_xplained_mini/init.o
@@ -251,6 +257,8 @@ Discarded input sections
  .bss           0x00000000        0x0 src/main.o
  .text.softdelay
                 0x00000000       0x60 src/main.o
+ .text.ADCTestBench
+                0x00000000       0x6a src/main.o
  .debug_macro   0x00000000      0x71d src/main.o
  .debug_macro   0x00000000       0x10 src/main.o
  .debug_macro   0x00000000      0x1c9 src/main.o
@@ -332,12 +340,18 @@ Discarded input sections
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(itoa_ncheck.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(itoa_ncheck.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(itoa_ncheck.o)
+ .text.avr-libc
+                0x00000000       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(itoa_ncheck.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(utoa_ncheck.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(utoa_ncheck.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(utoa_ncheck.o)
+ .text.avr-libc
+                0x00000000       0x34 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(utoa_ncheck.o)
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strrev.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strrev.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strrev.o)
+ .text.avr-libc
+                0x00000000       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strrev.o)
 
 Memory Configuration
 
@@ -360,6 +374,7 @@ LOAD src/cqueue.o
 LOAD src/DrvWs2812.o
 LOAD src/Timer.o
 LOAD src/UART.o
+LOAD src/wrt_Digit.o
 LOAD src/ASF/mega/boards/atmega328p_xplained_mini/init.o
 LOAD src/main.o
 START GROUP
@@ -471,7 +486,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x5ac
+.text           0x00000000      0x5ce
  *(.vectors)
  .vectors       0x00000000       0x68 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -556,74 +571,60 @@ END GROUP
  .text          0x000000a0       0xb7 src/DrvWs2812.o
                 0x000000a0                init_ws2812
                 0x000000b4                wrt_ws2812
-                0x00000158                . = ALIGN (0x2)
- *fill*         0x00000157        0x1 
+ .text          0x00000157       0xa6 src/wrt_Digit.o
+                0x00000157                wrt_Digit_Init
+                0x00000169                wrt_Digit
+                0x000001fe                . = ALIGN (0x2)
+ *fill*         0x000001fd        0x1 
  *(.text.*)
  .text.adc_init
-                0x00000158       0x22 src/ADC.o
-                0x00000158                adc_init
+                0x000001fe       0x22 src/ADC.o
+                0x000001fe                adc_init
  .text.read_adc
-                0x0000017a       0x2a src/ADC.o
-                0x0000017a                read_adc
- .text.read_VRY
-                0x000001a4        0x6 src/ADC.o
-                0x000001a4                read_VRY
+                0x00000220       0x2a src/ADC.o
+                0x00000220                read_adc
  .text.read_VRX
-                0x000001aa        0x6 src/ADC.o
-                0x000001aa                read_VRX
+                0x0000024a        0x6 src/ADC.o
+                0x0000024a                read_VRX
  .text.QueueInit
-                0x000001b0       0x1a src/cqueue.o
-                0x000001b0                QueueInit
+                0x00000250       0x1a src/cqueue.o
+                0x00000250                QueueInit
  .text.PushQueue
-                0x000001ca       0x44 src/cqueue.o
-                0x000001ca                PushQueue
+                0x0000026a       0x44 src/cqueue.o
+                0x0000026a                PushQueue
  .text.init_RTI
-                0x0000020e       0x16 src/Timer.o
-                0x0000020e                init_RTI
+                0x000002ae       0x16 src/Timer.o
+                0x000002ae                init_RTI
  .text.__vector_14
-                0x00000224       0x50 src/Timer.o
-                0x00000224                __vector_14
+                0x000002c4       0x50 src/Timer.o
+                0x000002c4                __vector_14
  .text.UART_Init
-                0x00000274       0x2e src/UART.o
-                0x00000274                UART_Init
+                0x00000314       0x2e src/UART.o
+                0x00000314                UART_Init
  .text.UART_TransmitPolling
-                0x000002a2       0x10 src/UART.o
-                0x000002a2                UART_TransmitPolling
- .text.UART_send_data
-                0x000002b2        0x4 src/UART.o
-                0x000002b2                UART_send_data
+                0x00000342       0x10 src/UART.o
+                0x00000342                UART_TransmitPolling
  .text.UART_putstring
-                0x000002b6       0x1c src/UART.o
-                0x000002b6                UART_putstring
+                0x00000352       0x1c src/UART.o
+                0x00000352                UART_putstring
  .text.__vector_19
-                0x000002d2       0x32 src/UART.o
-                0x000002d2                __vector_19
+                0x0000036e       0x32 src/UART.o
+                0x0000036e                __vector_19
  .text.__vector_18
-                0x00000304       0x4a src/UART.o
-                0x00000304                __vector_18
+                0x000003a0       0x4a src/UART.o
+                0x000003a0                __vector_18
  .text.clear_disp
-                0x0000034e       0x34 src/main.o
-                0x0000034e                clear_disp
- .text.ADCTestBench
-                0x00000382       0x56 src/main.o
-                0x00000382                ADCTestBench
- .text.main     0x000003d8      0x16a src/main.o
-                0x000003d8                main
- .text.avr-libc
-                0x00000542       0x14 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(itoa_ncheck.o)
-                0x00000542                __itoa_ncheck
- .text.avr-libc
-                0x00000556       0x32 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(utoa_ncheck.o)
-                0x00000556                __utoa_ncheck
-                0x00000558                __utoa_common
- .text.avr-libc
-                0x00000588       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strrev.o)
-                0x00000588                strrev
-                0x000005a8                . = ALIGN (0x2)
+                0x000003ea       0x34 src/main.o
+                0x000003ea                clear_disp
+ .text.TB_joy1  0x0000041e       0x28 src/main.o
+                0x0000041e                TB_joy1
+ .text.main     0x00000446      0x184 src/main.o
+                0x00000446                main
+                0x000005ca                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000005a8        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x000005a8                _exit
-                0x000005a8                exit
+ .fini9         0x000005ca        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x000005ca                _exit
+                0x000005ca                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -642,11 +643,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000005a8        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x000005ca        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x000005ac                _etext = .
+                0x000005ce                _etext = .
 
-.data           0x00800100       0x28 load address 0x000005ac
+.data           0x00800100       0x34 load address 0x000005ce
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -654,49 +655,52 @@ END GROUP
                 0x00800100        0x2 src/Timer.o
  .data.msg      0x00800102       0x1a src/main.o
                 0x00800102                msg
- .data.Amarillo
-                0x0080011c        0x3 src/main.o
-                0x0080011c                Amarillo
- .data.Azul     0x0080011f        0x3 src/main.o
-                0x0080011f                Azul
- .data.Rojo     0x00800122        0x3 src/main.o
-                0x00800122                Rojo
- .data.Verde    0x00800125        0x3 src/main.o
-                0x00800125                Verde
+ .data.Danado   0x0080011c        0x3 src/main.o
+                0x0080011c                Danado
+ .data.Agua     0x0080011f        0x3 src/main.o
+                0x0080011f                Agua
+ .data.Hundido  0x00800122        0x3 src/main.o
+                0x00800122                Hundido
+ .data.GamePointer
+                0x00800125        0x3 src/main.o
+                0x00800125                GamePointer
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
+ .rodata.str1.1
+                0x00800128        0xb src/main.o
  *(.gnu.linkonce.r*)
-                0x00800128                . = ALIGN (0x2)
-                0x00800128                _edata = .
-                0x00800128                PROVIDE (__data_end, .)
+                0x00800134                . = ALIGN (0x2)
+ *fill*         0x00800133        0x1 
+                0x00800134                _edata = .
+                0x00800134                PROVIDE (__data_end, .)
 
-.bss            0x00800128       0xe0
-                0x00800128                PROVIDE (__bss_start, .)
+.bss            0x00800134       0xe0
+                0x00800134                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.pout      0x00800128        0x2 src/cqueue.o
- .bss.pin       0x0080012a        0x2 src/cqueue.o
- .bss.news      0x0080012c        0x1 src/cqueue.o
- .bss.buffer    0x0080012d       0x14 src/cqueue.o
- .bss.Apagado   0x00800141        0x3 src/main.o
-                0x00800141                Apagado
+ .bss.pout      0x00800134        0x2 src/cqueue.o
+ .bss.pin       0x00800136        0x2 src/cqueue.o
+ .bss.news      0x00800138        0x1 src/cqueue.o
+ .bss.buffer    0x00800139       0x14 src/cqueue.o
+ .bss.Apagado   0x0080014d        0x3 src/main.o
+                0x0080014d                Apagado
  *(COMMON)
- COMMON         0x00800144        0x2 src/UART.o
-                0x00800144                USART_ReceiveBuffer
-                0x00800145                USART_TransmitBuffer
- COMMON         0x00800146       0xc2 src/main.o
-                0x00800146                display_rgb
-                0x00800206                p2disp
-                0x00800208                PROVIDE (__bss_end, .)
-                0x000005ac                __data_load_start = LOADADDR (.data)
-                0x000005d4                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00800150        0x2 src/UART.o
+                0x00800150                USART_ReceiveBuffer
+                0x00800151                USART_TransmitBuffer
+ COMMON         0x00800152       0xc2 src/main.o
+                0x00800152                display_rgb
+                0x00800212                p2disp
+                0x00800214                PROVIDE (__bss_end, .)
+                0x000005ce                __data_load_start = LOADADDR (.data)
+                0x00000602                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800208        0x0
+.noinit         0x00800214        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800208                _end = .
+                0x00800214                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -765,7 +769,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x168
+.debug_aranges  0x00000000      0x190
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x38 src/ADC.o
@@ -778,12 +782,14 @@ END GROUP
  .debug_aranges
                 0x000000c0       0x70 src/UART.o
  .debug_aranges
-                0x00000130       0x38 src/main.o
+                0x00000130       0x20 src/wrt_Digit.o
+ .debug_aranges
+                0x00000150       0x40 src/main.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x13a3
+.debug_info     0x00000000     0x1534
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_info    0x000005f4      0x12e src/ADC.o
@@ -791,9 +797,10 @@ END GROUP
  .debug_info    0x00000842       0x8d src/DrvWs2812.o
  .debug_info    0x000008cf       0xe1 src/Timer.o
  .debug_info    0x000009b0      0x3b5 src/UART.o
- .debug_info    0x00000d65      0x63e src/main.o
+ .debug_info    0x00000d65       0x9e src/wrt_Digit.o
+ .debug_info    0x00000e03      0x731 src/main.o
 
-.debug_abbrev   0x00000000      0xc46
+.debug_abbrev   0x00000000      0xc5a
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x5a2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_abbrev  0x000005a2       0xa7 src/ADC.o
@@ -801,9 +808,10 @@ END GROUP
  .debug_abbrev  0x00000703       0x14 src/DrvWs2812.o
  .debug_abbrev  0x00000717       0xae src/Timer.o
  .debug_abbrev  0x000007c5      0x1f4 src/UART.o
- .debug_abbrev  0x000009b9      0x28d src/main.o
+ .debug_abbrev  0x000009b9       0x14 src/wrt_Digit.o
+ .debug_abbrev  0x000009cd      0x28d src/main.o
 
-.debug_line     0x00000000     0x1779
+.debug_line     0x00000000     0x19b4
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x134 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_line    0x00000134      0x363 src/ADC.o
@@ -811,17 +819,18 @@ END GROUP
  .debug_line    0x00000577      0x1eb src/DrvWs2812.o
  .debug_line    0x00000762      0x4e2 src/Timer.o
  .debug_line    0x00000c44      0x465 src/UART.o
- .debug_line    0x000010a9      0x6d0 src/main.o
+ .debug_line    0x000010a9      0x1f1 src/wrt_Digit.o
+ .debug_line    0x0000129a      0x71a src/main.o
 
-.debug_frame    0x00000000      0x2c4
+.debug_frame    0x00000000      0x2d4
  *(.debug_frame)
  .debug_frame   0x00000000       0x54 src/ADC.o
  .debug_frame   0x00000054       0x54 src/cqueue.o
  .debug_frame   0x000000a8       0x5c src/Timer.o
  .debug_frame   0x00000104      0x144 src/UART.o
- .debug_frame   0x00000248       0x7c src/main.o
+ .debug_frame   0x00000248       0x8c src/main.o
 
-.debug_str      0x00000000    0x11386
+.debug_str      0x00000000    0x113cd
  *(.debug_str)
  .debug_str     0x00000000      0x208 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_str     0x00000208     0x6ea5 src/ADC.o
@@ -832,8 +841,8 @@ END GROUP
                               0x10a39 (size before relaxing)
  .debug_str     0x00010f7c      0x2eb src/UART.o
                                0x7220 (size before relaxing)
- .debug_str     0x00011267      0x11f src/main.o
-                              0x10e8c (size before relaxing)
+ .debug_str     0x00011267      0x166 src/main.o
+                              0x10ed3 (size before relaxing)
 
 .debug_loc      0x00000000      0x51e
  *(.debug_loc)
@@ -861,15 +870,15 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0xf8
+.debug_ranges   0x00000000      0x100
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x28 src/ADC.o
  .debug_ranges  0x00000028       0x28 src/cqueue.o
  .debug_ranges  0x00000050       0x20 src/Timer.o
  .debug_ranges  0x00000070       0x60 src/UART.o
- .debug_ranges  0x000000d0       0x28 src/main.o
+ .debug_ranges  0x000000d0       0x30 src/main.o
 
-.debug_macro    0x00000000     0x6fdb
+.debug_macro    0x00000000     0x6fe9
  *(.debug_macro)
  .debug_macro   0x00000000      0xc4b src/ADC.o
  .debug_macro   0x00000c4b       0x10 src/ADC.o
@@ -909,7 +918,7 @@ END GROUP
  .debug_macro   0x0000542a       0x1c src/Timer.o
  .debug_macro   0x00005446       0x58 src/Timer.o
  .debug_macro   0x0000549e      0xca3 src/UART.o
- .debug_macro   0x00006141      0xd3a src/main.o
- .debug_macro   0x00006e7b      0x160 src/main.o
+ .debug_macro   0x00006141      0xd48 src/main.o
+ .debug_macro   0x00006e89      0x160 src/main.o
 OUTPUT(GccMatrixWS2812 V3.elf elf32-avr)
 LOAD linker stubs

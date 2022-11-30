@@ -65,7 +65,8 @@ C_SRCS +=  \
 
 
 PREPROCESSING_SRCS +=  \
-../src/DrvWs2812.s
+../src/DrvWs2812.s \
+../src/wrt_Digit.s
 
 
 ASM_SRCS += 
@@ -77,6 +78,7 @@ src/cqueue.o \
 src/DrvWs2812.o \
 src/Timer.o \
 src/UART.o \
+src/wrt_Digit.o \
 src/ASF/mega/boards/atmega328p_xplained_mini/init.o \
 src/main.o
 
@@ -86,6 +88,7 @@ src/cqueue.o \
 src/DrvWs2812.o \
 src/Timer.o \
 src/UART.o \
+src/wrt_Digit.o \
 src/ASF/mega/boards/atmega328p_xplained_mini/init.o \
 src/main.o
 
@@ -95,6 +98,7 @@ src/cqueue.d \
 src/DrvWs2812.d \
 src/Timer.d \
 src/UART.d \
+src/wrt_Digit.d \
 src/ASF/mega/boards/atmega328p_xplained_mini/init.d \
 src/main.d
 
@@ -104,6 +108,7 @@ src/cqueue.d \
 src/DrvWs2812.d \
 src/Timer.d \
 src/UART.d \
+src/wrt_Digit.d \
 src/ASF/mega/boards/atmega328p_xplained_mini/init.d \
 src/main.d
 
@@ -172,6 +177,13 @@ src/main.o: ../src/main.c
 
 # AVR32/GNU Assembler
 src/DrvWs2812.o: ../src/DrvWs2812.s
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU Assembler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -Wa,-gdwarf2 -x assembler-with-cpp -c -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -mrelax -DBOARD=ATMEGA328P_XPLAINED_MINI -I "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I "../src/ASF/common/boards" -I "../src/ASF/mega/utils/preprocessor" -I "../src/ASF/mega/utils" -I "../src/ASF/common/utils" -I "../src/ASF/mega/boards" -I "../src/ASF/mega/boards/atmega328p_xplained_mini" -I "../src/ASF/common/services/gpio" -I "../src/ASF/common/services/ioport" -I "../src" -I "../src/config"  -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -Wa,-g   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+src/wrt_Digit.o: ../src/wrt_Digit.s
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU Assembler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -Wa,-gdwarf2 -x assembler-with-cpp -c -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -mrelax -DBOARD=ATMEGA328P_XPLAINED_MINI -I "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I "../src/ASF/common/boards" -I "../src/ASF/mega/utils/preprocessor" -I "../src/ASF/mega/utils" -I "../src/ASF/common/utils" -I "../src/ASF/mega/boards" -I "../src/ASF/mega/boards/atmega328p_xplained_mini" -I "../src/ASF/common/services/gpio" -I "../src/ASF/common/services/ioport" -I "../src" -I "../src/config"  -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -Wa,-g   -o "$@" "$<" 
