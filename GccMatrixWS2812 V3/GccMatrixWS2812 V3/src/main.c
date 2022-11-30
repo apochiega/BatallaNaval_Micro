@@ -34,15 +34,17 @@ typedef struct
 typedef struct  
 		{
 			RGBled color;
-			Barco barco;
-			bool disparado;
-		} MatrizJugador;
+			uint8_t barco;			//	int simulando Bool type
+			uint8_t disparado;		//	int simulando Bool type
+		} CasillaDeMatriz;
 		
 
 typedef struct  
 		{
-			bool xy;
-			bool positivo;
+			uint8_t x;		//	Coordenadas
+			uint8_t y;
+			uint8_t largoX;		//Largo del barco
+			uint8_t largoY;
 		} Barco;
 		
 
@@ -63,7 +65,7 @@ RGBled display_rgb[8][8];
 
 	
 
-0		
+		
 // Assembly function
 extern void init_ws2812(void);
 extern void wrt_ws2812(P2RGB);

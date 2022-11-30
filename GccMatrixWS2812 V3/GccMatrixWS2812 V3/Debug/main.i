@@ -1,5 +1,5 @@
 # 1 "../src/main.c"
-# 1 "C:\\Users\\pijua\\Desktop\\Julián\\ucu\\Micro\\GccMatrixWS2812 V3\\GccMatrixWS2812 V3\\Debug//"
+# 1 "C:\\Users\\Bruno\\Desktop\\Micro\\BatallaNaval_Micro\\GccMatrixWS2812 V3\\GccMatrixWS2812 V3\\Debug//"
 # 1 "<built-in>"
 #define __STDC__ 1
 #define __STDC_VERSION__ 199901L
@@ -5854,6 +5854,23 @@ typedef struct
   } RGBled;
 
 
+typedef struct
+  {
+   RGBled color;
+   uint8_t barco;
+   uint8_t disparado;
+  } CasillaDeMatriz;
+
+
+typedef struct
+  {
+   uint8_t x;
+   uint8_t y;
+   uint8_t largoX;
+   uint8_t largoY;
+  } Barco;
+
+
 
 typedef RGBled (*P2RGB) ;
 
@@ -5867,6 +5884,8 @@ RGBled Azul={0,0,30};
 RGBled Amarillo={30,30,0};
 RGBled Apagado={0,0,0};
 RGBled display_rgb[8][8];
+
+
 
 
 
@@ -5894,9 +5913,9 @@ int k,i;
    p2disp=&display_rgb[0][0];
 
    
-# 73 "../src/main.c" 3
+# 92 "../src/main.c" 3
   __asm__ __volatile__ ("sei" ::: "memory")
-# 73 "../src/main.c"
+# 92 "../src/main.c"
        ;
 
    UART_putstring(msg);

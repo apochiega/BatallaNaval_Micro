@@ -13,7 +13,7 @@ __zero_reg__ = 1
 clear_disp:
 .LFB72:
 	.file 1 "../src/main.c"
-	.loc 1 120 0
+	.loc 1 139 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
@@ -29,7 +29,7 @@ clear_disp:
 .L3:
 .LBB18:
 .LBB19:
-	.loc 1 123 0 discriminator 3
+	.loc 1 142 0 discriminator 3
 	lds r24,Apagado
 	lds r25,Apagado+1
 	lds r26,Apagado+2
@@ -37,13 +37,13 @@ clear_disp:
 	st Z+,r25
 	st Z+,r26
 .LVL2:
-	.loc 1 122 0 discriminator 3
+	.loc 1 141 0 discriminator 3
 	cp r30,r18
 	cpc r31,r19
 	brne .L3
 	movw r30,r18
 .LBE19:
-	.loc 1 121 0 discriminator 2
+	.loc 1 140 0 discriminator 2
 	cp r20,r18
 	cpc r21,r19
 	breq .L1
@@ -65,7 +65,7 @@ clear_disp:
 	.type	softdelay, @function
 softdelay:
 .LFB73:
-	.loc 1 127 0
+	.loc 1 146 0
 	.cfi_startproc
 	push r28
 .LCFI0:
@@ -87,7 +87,7 @@ softdelay:
 /* frame size = 4 */
 /* stack size = 6 */
 .L__stack_usage = 6
-	.loc 1 130 0
+	.loc 1 149 0
 	ldi r24,lo8(-128)
 	ldi r25,lo8(26)
 	ldi r26,lo8(6)
@@ -105,7 +105,7 @@ softdelay:
 	or r24,r27
 	breq .L6
 .L9:
-	.loc 1 130 0 is_stmt 0 discriminator 3
+	.loc 1 149 0 is_stmt 0 discriminator 3
 	ldd r24,Y+1
 	ldd r25,Y+2
 	ldd r26,Y+3
@@ -127,7 +127,7 @@ softdelay:
 	brne .L9
 .L6:
 /* epilogue start */
-	.loc 1 134 0 is_stmt 1
+	.loc 1 153 0 is_stmt 1
 	pop __tmp_reg__
 	pop __tmp_reg__
 	pop __tmp_reg__
@@ -143,7 +143,7 @@ softdelay:
 	.type	ADCTestBench, @function
 ADCTestBench:
 .LFB74:
-	.loc 1 138 0
+	.loc 1 157 0
 	.cfi_startproc
 	push r28
 .LCFI4:
@@ -167,7 +167,7 @@ ADCTestBench:
 /* stack size = 7 */
 .L__stack_usage = 7
 .L12:
-	.loc 1 144 0 discriminator 1
+	.loc 1 163 0 discriminator 1
 	call read_VRX
 .LVL5:
 .LBB20:
@@ -182,20 +182,20 @@ ADCTestBench:
 .LVL6:
 .LBE21:
 .LBE20:
-	.loc 1 145 0 discriminator 1
+	.loc 1 164 0 discriminator 1
 	movw r24,r28
 	adiw r24,1
 	call UART_putstring
 .LVL7:
-	.loc 1 146 0 discriminator 1
+	.loc 1 165 0 discriminator 1
 	ldi r24,lo8(9)
 	call UART_send_data
 .LVL8:
-	.loc 1 147 0 discriminator 1
+	.loc 1 166 0 discriminator 1
 	ldi r24,lo8(9)
 	call UART_send_data
 .LVL9:
-	.loc 1 149 0 discriminator 1
+	.loc 1 168 0 discriminator 1
 	call read_VRY
 .LVL10:
 .LBB22:
@@ -209,16 +209,16 @@ ADCTestBench:
 .LVL11:
 .LBE23:
 .LBE22:
-	.loc 1 150 0 discriminator 1
+	.loc 1 169 0 discriminator 1
 	movw r24,r28
 	adiw r24,1
 	call UART_putstring
 .LVL12:
-	.loc 1 151 0 discriminator 1
+	.loc 1 170 0 discriminator 1
 	ldi r24,lo8(13)
 	call UART_send_data
 .LVL13:
-	.loc 1 152 0 discriminator 1
+	.loc 1 171 0 discriminator 1
 	ldi r24,lo8(10)
 	call UART_send_data
 .LVL14:
@@ -246,44 +246,44 @@ ADCTestBench:
 	.type	main, @function
 main:
 .LFB71:
-	.loc 1 62 0
+	.loc 1 81 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-	.loc 1 66 0
+	.loc 1 85 0
 	call init_ws2812
 .LVL15:
-	.loc 1 67 0
+	.loc 1 86 0
 	call init_RTI
 .LVL16:
-	.loc 1 68 0
+	.loc 1 87 0
 	call UART_Init
 .LVL17:
-	.loc 1 69 0
+	.loc 1 88 0
 	call adc_init
 .LVL18:
-	.loc 1 71 0
+	.loc 1 90 0
 	ldi r24,lo8(display_rgb)
 	ldi r25,hi8(display_rgb)
 	sts p2disp+1,r25
 	sts p2disp,r24
-	.loc 1 73 0
+	.loc 1 92 0
 /* #APP */
- ;  73 "../src/main.c" 1
+ ;  92 "../src/main.c" 1
 	sei
  ;  0 "" 2
-	.loc 1 75 0
+	.loc 1 94 0
 /* #NOAPP */
 	ldi r24,lo8(msg)
 	ldi r25,hi8(msg)
 	call UART_putstring
 .LVL19:
-	.loc 1 78 0
+	.loc 1 97 0
 	call clear_disp
 .LVL20:
-	.loc 1 79 0
+	.loc 1 98 0
 	lds r24,p2disp
 	lds r25,p2disp+1
 	call wrt_ws2812
@@ -310,44 +310,44 @@ main:
 .L14:
 .LBE27:
 .LBE26:
-	.loc 1 86 0 discriminator 3
+	.loc 1 105 0 discriminator 3
 	lds r24,Rojo
 	lds r25,Rojo+1
 	lds r26,Rojo+2
 	st Z,r24
 	std Z+1,r25
 	std Z+2,r26
-	.loc 1 87 0 discriminator 3
+	.loc 1 106 0 discriminator 3
 	lds r24,Verde
 	lds r25,Verde+1
 	lds r26,Verde+2
 	std Z+12,r24
 	std Z+13,r25
 	std Z+14,r26
-	.loc 1 88 0 discriminator 3
+	.loc 1 107 0 discriminator 3
 	lds r24,Azul
 	lds r25,Azul+1
 	lds r26,Azul+2
 	std Z+21,r24
 	std Z+22,r25
 	std Z+23,r26
-	.loc 1 89 0 discriminator 3
+	.loc 1 108 0 discriminator 3
 	lds r24,Amarillo
 	lds r25,Amarillo+1
 	lds r26,Amarillo+2
 	std Z+9,r24
 	std Z+10,r25
 	std Z+11,r26
-	.loc 1 90 0 discriminator 3
+	.loc 1 109 0 discriminator 3
 	std Z+15,r24
 	std Z+16,r25
 	std Z+17,r26
 	adiw r30,24
-	.loc 1 84 0 discriminator 3
+	.loc 1 103 0 discriminator 3
 	cp r30,r18
 	cpc r31,r19
 	brne .L14
-	.loc 1 93 0
+	.loc 1 112 0
 	lds r24,p2disp
 	lds r25,p2disp+1
 	call wrt_ws2812
@@ -367,7 +367,7 @@ main:
 .LVL25:
 .LBE29:
 .LBE28:
-	.loc 1 97 0
+	.loc 1 116 0
 	call clear_disp
 .LVL26:
 	mov __tmp_reg__,r31
@@ -392,7 +392,7 @@ main:
 	mov r31,__tmp_reg__
 .LVL27:
 .L15:
-	.loc 1 101 0 discriminator 3
+	.loc 1 120 0 discriminator 3
 	lds r24,Rojo
 	lds r25,Rojo+1
 	lds r26,Rojo+2
@@ -400,7 +400,7 @@ main:
 	st Z,r24
 	std Z+1,r25
 	std Z+2,r26
-	.loc 1 102 0 discriminator 3
+	.loc 1 121 0 discriminator 3
 	lds r24,Verde
 	lds r25,Verde+1
 	lds r26,Verde+2
@@ -408,14 +408,14 @@ main:
 	st Z,r24
 	std Z+1,r25
 	std Z+2,r26
-	.loc 1 103 0 discriminator 3
+	.loc 1 122 0 discriminator 3
 	lds r24,Amarillo
 	lds r25,Amarillo+1
 	lds r26,Amarillo+2
 	st Y,r24
 	std Y+1,r25
 	std Y+2,r26
-	.loc 1 104 0 discriminator 3
+	.loc 1 123 0 discriminator 3
 	lds r24,Azul
 	lds r25,Azul+1
 	lds r26,Azul+2
@@ -423,7 +423,7 @@ main:
 	st Z,r24
 	std Z+1,r25
 	std Z+2,r26
-	.loc 1 106 0 discriminator 3
+	.loc 1 125 0 discriminator 3
 	lds r24,p2disp
 	lds r25,p2disp+1
 	call wrt_ws2812
@@ -443,7 +443,7 @@ main:
 .LVL29:
 .LBE31:
 .LBE30:
-	.loc 1 109 0 discriminator 3
+	.loc 1 128 0 discriminator 3
 	call clear_disp
 .LVL30:
 	ldi r25,27
@@ -456,12 +456,12 @@ main:
 	ldi r31,27
 	add r14,r31
 	adc r15,__zero_reg__
-	.loc 1 99 0 discriminator 3
+	.loc 1 118 0 discriminator 3
 	cp r16,r28
 	cpc r17,r29
 	breq .+2
 	rjmp .L15
-	.loc 1 113 0
+	.loc 1 132 0
 	call ADCTestBench
 .LVL31:
 	.cfi_endproc
@@ -615,7 +615,7 @@ Verde:
 	.uleb128 0x3
 	.long	.LASF2164
 	.byte	0x1
-	.byte	0x23
+	.byte	0x34
 	.long	0xc4
 	.uleb128 0x8
 	.byte	0x2
@@ -718,7 +718,7 @@ Verde:
 	.byte	0x1
 	.long	.LASF2172
 	.byte	0x1
-	.byte	0x77
+	.byte	0x8a
 	.byte	0x1
 	.long	.LFB72
 	.long	.LFE72
@@ -734,7 +734,7 @@ Verde:
 	.uleb128 0x17
 	.string	"r"
 	.byte	0x1
-	.byte	0x79
+	.byte	0x8c
 	.long	0x46
 	.long	.LLST0
 	.uleb128 0x16
@@ -743,7 +743,7 @@ Verde:
 	.uleb128 0x17
 	.string	"c"
 	.byte	0x1
-	.byte	0x7a
+	.byte	0x8d
 	.long	0x46
 	.long	.LLST1
 	.byte	0
@@ -753,7 +753,7 @@ Verde:
 	.byte	0x1
 	.long	.LASF2173
 	.byte	0x1
-	.byte	0x7e
+	.byte	0x91
 	.byte	0x1
 	.long	.LFB73
 	.long	.LFE73
@@ -763,7 +763,7 @@ Verde:
 	.uleb128 0x19
 	.string	"d"
 	.byte	0x1
-	.byte	0x80
+	.byte	0x93
 	.long	0x1f5
 	.byte	0x2
 	.byte	0x8c
@@ -775,7 +775,7 @@ Verde:
 	.byte	0x1
 	.long	.LASF2200
 	.byte	0x1
-	.byte	0x89
+	.byte	0x9c
 	.byte	0x1
 	.byte	0x1
 	.long	.LFB74
@@ -786,7 +786,7 @@ Verde:
 	.uleb128 0x1c
 	.long	.LASF2174
 	.byte	0x1
-	.byte	0x8b
+	.byte	0x9e
 	.long	0x389
 	.byte	0x2
 	.byte	0x8c
@@ -796,7 +796,7 @@ Verde:
 	.long	.LBB20
 	.long	.LBE20
 	.byte	0x1
-	.byte	0x90
+	.byte	0xa3
 	.long	0x272
 	.uleb128 0x1e
 	.long	0x135
@@ -836,7 +836,7 @@ Verde:
 	.long	.LBB22
 	.long	.LBE22
 	.byte	0x1
-	.byte	0x95
+	.byte	0xa8
 	.long	0x2c1
 	.uleb128 0x1e
 	.long	0x135
@@ -876,7 +876,7 @@ Verde:
 	.long	.LBB24
 	.long	.LBE24
 	.byte	0x1
-	.byte	0x99
+	.byte	0xac
 	.long	0x2fc
 	.uleb128 0x22
 	.long	0xd7
@@ -987,7 +987,7 @@ Verde:
 	.byte	0x1
 	.long	.LASF2201
 	.byte	0x1
-	.byte	0x3d
+	.byte	0x50
 	.byte	0x1
 	.long	0x46
 	.byte	0x1
@@ -1002,13 +1002,13 @@ Verde:
 	.uleb128 0x17
 	.string	"k"
 	.byte	0x1
-	.byte	0x40
+	.byte	0x53
 	.long	0x46
 	.long	.LLST8
 	.uleb128 0x17
 	.string	"i"
 	.byte	0x1
-	.byte	0x40
+	.byte	0x53
 	.long	0x46
 	.long	.LLST9
 	.uleb128 0x1d
@@ -1016,7 +1016,7 @@ Verde:
 	.long	.LBB26
 	.long	.LBE26
 	.byte	0x1
-	.byte	0x51
+	.byte	0x64
 	.long	0x412
 	.uleb128 0x1e
 	.long	0xd7
@@ -1037,7 +1037,7 @@ Verde:
 	.long	.LBB28
 	.long	.LBE28
 	.byte	0x1
-	.byte	0x60
+	.byte	0x73
 	.long	0x44b
 	.uleb128 0x1e
 	.long	0xd7
@@ -1058,7 +1058,7 @@ Verde:
 	.long	.LBB30
 	.long	.LBE30
 	.byte	0x1
-	.byte	0x6c
+	.byte	0x7f
 	.long	0x484
 	.uleb128 0x1e
 	.long	0xd7
@@ -1127,7 +1127,7 @@ Verde:
 	.uleb128 0x2b
 	.long	.LASF2176
 	.byte	0x1
-	.byte	0x27
+	.byte	0x38
 	.long	0xb9
 	.byte	0x1
 	.byte	0x5
@@ -1136,7 +1136,7 @@ Verde:
 	.uleb128 0x2b
 	.long	.LASF2177
 	.byte	0x1
-	.byte	0x29
+	.byte	0x3a
 	.long	0xae
 	.byte	0x1
 	.byte	0x5
@@ -1145,7 +1145,7 @@ Verde:
 	.uleb128 0x2b
 	.long	.LASF2178
 	.byte	0x1
-	.byte	0x2a
+	.byte	0x3b
 	.long	0xae
 	.byte	0x1
 	.byte	0x5
@@ -1154,7 +1154,7 @@ Verde:
 	.uleb128 0x2b
 	.long	.LASF2179
 	.byte	0x1
-	.byte	0x2b
+	.byte	0x3c
 	.long	0xae
 	.byte	0x1
 	.byte	0x5
@@ -1163,7 +1163,7 @@ Verde:
 	.uleb128 0x2b
 	.long	.LASF2180
 	.byte	0x1
-	.byte	0x2c
+	.byte	0x3d
 	.long	0xae
 	.byte	0x1
 	.byte	0x5
@@ -1172,7 +1172,7 @@ Verde:
 	.uleb128 0x2b
 	.long	.LASF2181
 	.byte	0x1
-	.byte	0x2d
+	.byte	0x3e
 	.long	0xae
 	.byte	0x1
 	.byte	0x5
@@ -1191,7 +1191,7 @@ Verde:
 	.uleb128 0x2b
 	.long	.LASF2182
 	.byte	0x1
-	.byte	0x2e
+	.byte	0x3f
 	.long	0x570
 	.byte	0x1
 	.byte	0x5
@@ -1207,7 +1207,7 @@ Verde:
 	.uleb128 0x2c
 	.string	"msg"
 	.byte	0x1
-	.byte	0x39
+	.byte	0x4c
 	.long	0x598
 	.byte	0x1
 	.byte	0x5
@@ -1254,7 +1254,7 @@ Verde:
 	.long	.LASF2188
 	.long	.LASF2188
 	.byte	0x1
-	.byte	0x33
+	.byte	0x46
 	.uleb128 0x2e
 	.byte	0x1
 	.byte	0x1
@@ -1282,7 +1282,7 @@ Verde:
 	.long	.LASF2192
 	.long	.LASF2192
 	.byte	0x1
-	.byte	0x34
+	.byte	0x47
 	.byte	0
 	.section	.debug_abbrev,"",@progbits
 .Ldebug_abbrev0:
@@ -3797,7 +3797,7 @@ Verde:
 	.long	.LASF2150
 	.byte	0x4
 	.byte	0x5
-	.uleb128 0x3c
+	.uleb128 0x4f
 	.long	.LASF2151
 	.byte	0x4
 	.byte	0
@@ -9835,12 +9835,10 @@ Verde:
 	.string	"E2END 0x3FF"
 .LASF142:
 	.string	"__DBL_MANT_DIG__ 24"
-.LASF549:
-	.string	"SAMR35J ( SAM_PART_IS_DEFINED(SAMR35J18B) || SAM_PART_IS_DEFINED(SAMR35J17B) || SAM_PART_IS_DEFINED(SAMR35J16B) )"
+.LASF657:
+	.string	"SAM3XA (SAM3X4 || SAM3X8 || SAM3A4 || SAM3A8)"
 .LASF301:
 	.string	"__USA_FBIT__ 16"
-.LASF1430:
-	.string	"OCR2_4 4"
 .LASF847:
 	.string	"SCNdLEAST32 \"ld\""
 .LASF537:
@@ -10608,6 +10606,8 @@ Verde:
 	.string	"ATMEGA256RFR2_XPLAINED_PRO 52"
 .LASF583:
 	.string	"SAMC21E ( SAM_PART_IS_DEFINED(SAMC21E15A) || SAM_PART_IS_DEFINED(SAMC21E16A) || SAM_PART_IS_DEFINED(SAMC21E17A) || SAM_PART_IS_DEFINED(SAMC21E18A) )"
+.LASF2195:
+	.string	"C:\\\\Users\\\\Bruno\\\\Desktop\\\\Micro\\\\BatallaNaval_Micro\\\\GccMatrixWS2812 V3\\\\GccMatrixWS2812 V3\\\\Debug"
 .LASF1162:
 	.string	"PGWRT 2"
 .LASF402:
@@ -11075,6 +11075,8 @@ Verde:
 	.string	"SAM3U2 ( SAM_PART_IS_DEFINED(SAM3U2C) || SAM_PART_IS_DEFINED(SAM3U2E) )"
 .LASF763:
 	.string	"INT8_C(c) __INT8_C(c)"
+.LASF549:
+	.string	"SAMR35J ( SAM_PART_IS_DEFINED(SAMR35J18B) || SAM_PART_IS_DEFINED(SAMR35J17B) || SAM_PART_IS_DEFINED(SAMR35J16B) )"
 .LASF1502:
 	.string	"RXC0 7"
 .LASF9:
@@ -12012,8 +12014,6 @@ Verde:
 	.string	"OCR1BL _SFR_MEM8(0x8A)"
 .LASF156:
 	.string	"__LDBL_MANT_DIG__ 24"
-.LASF2195:
-	.string	"C:\\\\Users\\\\pijua\\\\Desktop\\\\Juli\341n\\\\ucu\\\\Micro\\\\GccMatrixWS2812 V3\\\\GccMatrixWS2812 V3\\\\Debug"
 .LASF32:
 	.string	"__SIZEOF_POINTER__ 2"
 .LASF1186:
@@ -12661,8 +12661,8 @@ Verde:
 	.string	"PINC6 6"
 .LASF791:
 	.string	"PRIiFAST32 \"li\""
-.LASF657:
-	.string	"SAM3XA (SAM3X4 || SAM3X8 || SAM3A4 || SAM3A8)"
+.LASF1430:
+	.string	"OCR2_4 4"
 .LASF1042:
 	.string	"EEAR6 6"
 .LASF1072:

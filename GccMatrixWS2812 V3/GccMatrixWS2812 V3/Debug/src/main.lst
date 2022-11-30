@@ -45,94 +45,113 @@
   31:../src/main.c **** 		} RGBled;
   32:../src/main.c **** 		
   33:../src/main.c **** 
-  34:../src/main.c **** 
-  35:../src/main.c **** typedef RGBled (*P2RGB) ;
-  36:../src/main.c **** 
-  37:../src/main.c **** // Variables
-  38:../src/main.c **** 
-  39:../src/main.c **** P2RGB p2disp;
-  40:../src/main.c **** 
-  41:../src/main.c **** RGBled Verde={25,0,0};
-  42:../src/main.c **** RGBled Rojo={0,30,0};
-  43:../src/main.c **** RGBled Azul={0,0,30};
-  44:../src/main.c **** RGBled Amarillo={30,30,0};
-  45:../src/main.c **** RGBled Apagado={0,0,0};	
-  46:../src/main.c **** RGBled display_rgb[8][8];	
-  47:../src/main.c **** 	
-  48:../src/main.c **** 
+  34:../src/main.c **** typedef struct  
+  35:../src/main.c **** 		{
+  36:../src/main.c **** 			RGBled color;
+  37:../src/main.c **** 			uint8_t barco;			//	int simulando Bool type
+  38:../src/main.c **** 			uint8_t disparado;		//	int simulando Bool type
+  39:../src/main.c **** 		} CasillaDeMatriz;
+  40:../src/main.c **** 		
+  41:../src/main.c **** 
+  42:../src/main.c **** typedef struct  
+  43:../src/main.c **** 		{
+  44:../src/main.c **** 			uint8_t x;		//	Coordenadas
+  45:../src/main.c **** 			uint8_t y;
+  46:../src/main.c **** 			uint8_t largoX;		//Largo del barco
+  47:../src/main.c **** 			uint8_t largoY;
+  48:../src/main.c **** 		} Barco;
   49:../src/main.c **** 		
-  50:../src/main.c **** // Assembly function
-  51:../src/main.c **** extern void init_ws2812(void);
-  52:../src/main.c **** extern void wrt_ws2812(P2RGB);
+  50:../src/main.c **** 
+  51:../src/main.c **** 
+  52:../src/main.c **** typedef RGBled (*P2RGB) ;
   53:../src/main.c **** 
-  54:../src/main.c **** // Local prototypes
-  55:../src/main.c **** void softdelay(void);
-  56:../src/main.c **** void clear_disp(void);
-  57:../src/main.c **** uint8_t msg[] = "Hello from ATmega328p\r\n  ";
-  58:../src/main.c **** 
-  59:../src/main.c **** void ADCTestBench(void);
-  60:../src/main.c **** #define LED (1<<5)				//Led
-  61:../src/main.c **** int main (void)
-  62:../src/main.c **** {
-  63:../src/main.c **** //volatile	int k;
-  64:../src/main.c **** int k,i;
-  65:../src/main.c **** 				
-  66:../src/main.c **** 			init_ws2812();		//Initialize RGB Display driver
-  67:../src/main.c **** 			init_RTI();			//Initialize Periodic Real Time Interrupt(Timer)
-  68:../src/main.c **** 			UART_Init();		//Initialize serial port driver (UART)
-  69:../src/main.c **** 			adc_init();			//Initialize Analog to digital converter (Joystick)
-  70:../src/main.c **** 		
-  71:../src/main.c **** 			p2disp=&display_rgb[0][0];
-  72:../src/main.c **** 			
-  73:../src/main.c **** 			sei();					// Enable global Interrupts
-  74:../src/main.c **** 
-  75:../src/main.c **** 			UART_putstring(msg);
-  76:../src/main.c **** 							
+  54:../src/main.c **** // Variables
+  55:../src/main.c **** 
+  56:../src/main.c **** P2RGB p2disp;
+  57:../src/main.c **** 
+  58:../src/main.c **** RGBled Verde={25,0,0};
+  59:../src/main.c **** RGBled Rojo={0,30,0};
+  60:../src/main.c **** RGBled Azul={0,0,30};
+  61:../src/main.c **** RGBled Amarillo={30,30,0};
+  62:../src/main.c **** RGBled Apagado={0,0,0};	
+  63:../src/main.c **** RGBled display_rgb[8][8];	
+  64:../src/main.c **** 
+  65:../src/main.c **** 
+  66:../src/main.c **** 	
+  67:../src/main.c **** 
+  68:../src/main.c **** 		
+  69:../src/main.c **** // Assembly function
+  70:../src/main.c **** extern void init_ws2812(void);
+  71:../src/main.c **** extern void wrt_ws2812(P2RGB);
+  72:../src/main.c **** 
+  73:../src/main.c **** // Local prototypes
+  74:../src/main.c **** void softdelay(void);
+  75:../src/main.c **** void clear_disp(void);
+  76:../src/main.c **** uint8_t msg[] = "Hello from ATmega328p\r\n  ";
   77:../src/main.c **** 
-  78:../src/main.c **** 			clear_disp();
-  79:../src/main.c **** 	        wrt_ws2812(p2disp);
-  80:../src/main.c **** 			
-  81:../src/main.c **** 			_delay_ms(500);
-  82:../src/main.c **** 			
-  83:../src/main.c **** 			
-  84:../src/main.c **** 			for(k=0;k<=7;k++)
-  85:../src/main.c **** 			{
-  86:../src/main.c **** 			display_rgb[k][0]=Rojo;
-  87:../src/main.c **** 			display_rgb[k][4]=Verde;
-  88:../src/main.c **** 			display_rgb[k][7]=Azul;
-  89:../src/main.c **** 			display_rgb[k][3]=Amarillo;
-  90:../src/main.c **** 			display_rgb[k][5]=Amarillo;
-  91:../src/main.c **** 			}
-  92:../src/main.c **** 
-  93:../src/main.c **** 			wrt_ws2812(p2disp);
-  94:../src/main.c **** 			
-  95:../src/main.c **** 			
-  96:../src/main.c **** 			_delay_ms(300);
+  78:../src/main.c **** void ADCTestBench(void);
+  79:../src/main.c **** #define LED (1<<5)				//Led
+  80:../src/main.c **** int main (void)
+  81:../src/main.c **** {
+  82:../src/main.c **** //volatile	int k;
+  83:../src/main.c **** int k,i;
+  84:../src/main.c **** 				
+  85:../src/main.c **** 			init_ws2812();		//Initialize RGB Display driver
+  86:../src/main.c **** 			init_RTI();			//Initialize Periodic Real Time Interrupt(Timer)
+  87:../src/main.c **** 			UART_Init();		//Initialize serial port driver (UART)
+  88:../src/main.c **** 			adc_init();			//Initialize Analog to digital converter (Joystick)
+  89:../src/main.c **** 		
+  90:../src/main.c **** 			p2disp=&display_rgb[0][0];
+  91:../src/main.c **** 			
+  92:../src/main.c **** 			sei();					// Enable global Interrupts
+  93:../src/main.c **** 
+  94:../src/main.c **** 			UART_putstring(msg);
+  95:../src/main.c **** 							
+  96:../src/main.c **** 
   97:../src/main.c **** 			clear_disp();
-  98:../src/main.c **** 			
-  99:../src/main.c **** 			for(i=0;i<=3;i++)
- 100:../src/main.c **** 			{
- 101:../src/main.c **** 				display_rgb[3-i][3-i]=Rojo;
- 102:../src/main.c **** 				display_rgb[4+i][3-i]=Verde;
- 103:../src/main.c **** 				display_rgb[3-i][4+i]=Amarillo;
- 104:../src/main.c **** 				display_rgb[4+i][4+i]=Azul;
- 105:../src/main.c **** 		
- 106:../src/main.c **** 				wrt_ws2812(p2disp);
- 107:../src/main.c **** 		
- 108:../src/main.c **** 				_delay_ms(100);
- 109:../src/main.c **** 				clear_disp();
+  98:../src/main.c **** 	        wrt_ws2812(p2disp);
+  99:../src/main.c **** 			
+ 100:../src/main.c **** 			_delay_ms(500);
+ 101:../src/main.c **** 			
+ 102:../src/main.c **** 			
+ 103:../src/main.c **** 			for(k=0;k<=7;k++)
+ 104:../src/main.c **** 			{
+ 105:../src/main.c **** 			display_rgb[k][0]=Rojo;
+ 106:../src/main.c **** 			display_rgb[k][4]=Verde;
+ 107:../src/main.c **** 			display_rgb[k][7]=Azul;
+ 108:../src/main.c **** 			display_rgb[k][3]=Amarillo;
+ 109:../src/main.c **** 			display_rgb[k][5]=Amarillo;
  110:../src/main.c **** 			}
  111:../src/main.c **** 
- 112:../src/main.c **** 
- 113:../src/main.c **** 			ADCTestBench();
- 114:../src/main.c **** 			uart_test(); 
- 115:../src/main.c **** 			
- 116:../src/main.c **** 			while(1);		// Just in case....  
- 117:../src/main.c **** }
- 118:../src/main.c **** 
- 119:../src/main.c **** void clear_disp(void)
- 120:../src/main.c **** {
-  16               		.loc 1 120 0
+ 112:../src/main.c **** 			wrt_ws2812(p2disp);
+ 113:../src/main.c **** 			
+ 114:../src/main.c **** 			
+ 115:../src/main.c **** 			_delay_ms(300);
+ 116:../src/main.c **** 			clear_disp();
+ 117:../src/main.c **** 			
+ 118:../src/main.c **** 			for(i=0;i<=3;i++)
+ 119:../src/main.c **** 			{
+ 120:../src/main.c **** 				display_rgb[3-i][3-i]=Rojo;
+ 121:../src/main.c **** 				display_rgb[4+i][3-i]=Verde;
+ 122:../src/main.c **** 				display_rgb[3-i][4+i]=Amarillo;
+ 123:../src/main.c **** 				display_rgb[4+i][4+i]=Azul;
+ 124:../src/main.c **** 		
+ 125:../src/main.c **** 				wrt_ws2812(p2disp);
+ 126:../src/main.c **** 		
+ 127:../src/main.c **** 				_delay_ms(100);
+ 128:../src/main.c **** 				clear_disp();
+ 129:../src/main.c **** 			}
+ 130:../src/main.c **** 
+ 131:../src/main.c **** 
+ 132:../src/main.c **** 			ADCTestBench();
+ 133:../src/main.c **** 			uart_test(); 
+ 134:../src/main.c **** 			
+ 135:../src/main.c **** 			while(1);		// Just in case....  
+ 136:../src/main.c **** }
+ 137:../src/main.c **** 
+ 138:../src/main.c **** void clear_disp(void)
+ 139:../src/main.c **** {
+  16               		.loc 1 139 0
   17               		.cfi_startproc
   18               	/* prologue: function */
   19               	/* frame size = 0 */
@@ -148,10 +167,10 @@
   29               	.L3:
   30               	.LBB18:
   31               	.LBB19:
- 121:../src/main.c **** 	for(int r=0;r<=7;r++)
- 122:../src/main.c **** 		for(int c=0;c<=7;c++)
- 123:../src/main.c **** 				display_rgb[r][c]=Apagado;
-  32               		.loc 1 123 0 discriminator 3
+ 140:../src/main.c **** 	for(int r=0;r<=7;r++)
+ 141:../src/main.c **** 		for(int c=0;c<=7;c++)
+ 142:../src/main.c **** 				display_rgb[r][c]=Apagado;
+  32               		.loc 1 142 0 discriminator 3
   33 000a 8091 0000 		lds r24,Apagado
   34 000e 9091 0000 		lds r25,Apagado+1
   35 0012 A091 0000 		lds r26,Apagado+2
@@ -159,15 +178,15 @@
   37 0018 9193      		st Z+,r25
   38 001a A193      		st Z+,r26
   39               	.LVL2:
- 122:../src/main.c **** 				display_rgb[r][c]=Apagado;
-  40               		.loc 1 122 0 discriminator 3
+ 141:../src/main.c **** 				display_rgb[r][c]=Apagado;
+  40               		.loc 1 141 0 discriminator 3
   41 001c E217      		cp r30,r18
   42 001e F307      		cpc r31,r19
   43 0020 01F4      		brne .L3
   44 0022 F901      		movw r30,r18
   45               	.LBE19:
- 121:../src/main.c **** 	for(int r=0;r<=7;r++)
-  46               		.loc 1 121 0 discriminator 2
+ 140:../src/main.c **** 	for(int r=0;r<=7;r++)
+  46               		.loc 1 140 0 discriminator 2
   47 0024 4217      		cp r20,r18
   48 0026 5307      		cpc r21,r19
   49 0028 01F0      		breq .L1
@@ -187,11 +206,11 @@
   64               	.global	softdelay
   66               	softdelay:
   67               	.LFB73:
- 124:../src/main.c **** }
- 125:../src/main.c **** 
- 126:../src/main.c **** void softdelay(void)
- 127:../src/main.c **** {
-  68               		.loc 1 127 0
+ 143:../src/main.c **** }
+ 144:../src/main.c **** 
+ 145:../src/main.c **** void softdelay(void)
+ 146:../src/main.c **** {
+  68               		.loc 1 146 0
   69               		.cfi_startproc
   70 0000 CF93      		push r28
   71               	.LCFI0:
@@ -213,10 +232,10 @@
   87               	/* frame size = 4 */
   88               	/* stack size = 6 */
   89               	.L__stack_usage = 6
- 128:../src/main.c **** 	volatile long int d;
- 129:../src/main.c **** 	
- 130:../src/main.c **** 	for (d=400000;d;d--)
-  90               		.loc 1 130 0
+ 147:../src/main.c **** 	volatile long int d;
+ 148:../src/main.c **** 	
+ 149:../src/main.c **** 	for (d=400000;d;d--)
+  90               		.loc 1 149 0
   91 000c 80E8      		ldi r24,lo8(-128)
   92 000e 9AE1      		ldi r25,lo8(26)
   93 0010 A6E0      		ldi r26,lo8(6)
@@ -234,7 +253,7 @@
  105 0028 8B2B      		or r24,r27
  106 002a 01F0      		breq .L6
  107               	.L9:
- 108               		.loc 1 130 0 is_stmt 0 discriminator 3
+ 108               		.loc 1 149 0 is_stmt 0 discriminator 3
  109 002c 8981      		ldd r24,Y+1
  110 002e 9A81      		ldd r25,Y+2
  111 0030 AB81      		ldd r26,Y+3
@@ -256,11 +275,11 @@
  127 0050 01F4      		brne .L9
  128               	.L6:
  129               	/* epilogue start */
- 131:../src/main.c **** 	{
- 132:../src/main.c **** 	};
- 133:../src/main.c **** 	
- 134:../src/main.c **** }
- 130               		.loc 1 134 0 is_stmt 1
+ 150:../src/main.c **** 	{
+ 151:../src/main.c **** 	};
+ 152:../src/main.c **** 	
+ 153:../src/main.c **** }
+ 130               		.loc 1 153 0 is_stmt 1
  131 0052 0F90      		pop __tmp_reg__
  132 0054 0F90      		pop __tmp_reg__
  133 0056 0F90      		pop __tmp_reg__
@@ -274,11 +293,11 @@
  142               	.global	ADCTestBench
  144               	ADCTestBench:
  145               	.LFB74:
- 135:../src/main.c **** 
- 136:../src/main.c **** 
- 137:../src/main.c **** void ADCTestBench(void)
- 138:../src/main.c **** {
- 146               		.loc 1 138 0
+ 154:../src/main.c **** 
+ 155:../src/main.c **** 
+ 156:../src/main.c **** void ADCTestBench(void)
+ 157:../src/main.c **** {
+ 146               		.loc 1 157 0
  147               		.cfi_startproc
  148 0000 CF93      		push r28
  149               	.LCFI4:
@@ -302,13 +321,13 @@
  167               	/* stack size = 7 */
  168               	.L__stack_usage = 7
  169               	.L12:
- 139:../src/main.c **** 	uint8_t buffer[5];
- 140:../src/main.c **** 	
- 141:../src/main.c **** 	while(1){
- 142:../src/main.c **** 		
- 143:../src/main.c **** 		//Read VX
- 144:../src/main.c **** 		itoa(read_VRX(),(char*)buffer, 10);
- 170               		.loc 1 144 0 discriminator 1
+ 158:../src/main.c **** 	uint8_t buffer[5];
+ 159:../src/main.c **** 	
+ 160:../src/main.c **** 	while(1){
+ 161:../src/main.c **** 		
+ 162:../src/main.c **** 		//Read VX
+ 163:../src/main.c **** 		itoa(read_VRX(),(char*)buffer, 10);
+ 170               		.loc 1 163 0 discriminator 1
  171 000e 0E94 0000 		call read_VRX
  172               	.LVL5:
  173               	.LBB20:
@@ -762,25 +781,25 @@
  182               	.LVL6:
  183               	.LBE21:
  184               	.LBE20:
- 145:../src/main.c **** 		UART_putstring(buffer);
- 185               		.loc 1 145 0 discriminator 1
+ 164:../src/main.c **** 		UART_putstring(buffer);
+ 185               		.loc 1 164 0 discriminator 1
  186 001e CE01      		movw r24,r28
  187 0020 0196      		adiw r24,1
  188 0022 0E94 0000 		call UART_putstring
  189               	.LVL7:
- 146:../src/main.c **** 		UART_send_data('\t');
- 190               		.loc 1 146 0 discriminator 1
+ 165:../src/main.c **** 		UART_send_data('\t');
+ 190               		.loc 1 165 0 discriminator 1
  191 0026 89E0      		ldi r24,lo8(9)
  192 0028 0E94 0000 		call UART_send_data
  193               	.LVL8:
- 147:../src/main.c **** 		UART_send_data('\t');
- 194               		.loc 1 147 0 discriminator 1
+ 166:../src/main.c **** 		UART_send_data('\t');
+ 194               		.loc 1 166 0 discriminator 1
  195 002c 89E0      		ldi r24,lo8(9)
  196 002e 0E94 0000 		call UART_send_data
  197               	.LVL9:
- 148:../src/main.c **** 		//Read VY
- 149:../src/main.c **** 		itoa(read_VRY(), (char *)buffer, 10);
- 198               		.loc 1 149 0 discriminator 1
+ 167:../src/main.c **** 		//Read VY
+ 168:../src/main.c **** 		itoa(read_VRY(), (char *)buffer, 10);
+ 198               		.loc 1 168 0 discriminator 1
  199 0032 0E94 0000 		call read_VRY
  200               	.LVL10:
  201               	.LBB22:
@@ -794,19 +813,19 @@
  209               	.LVL11:
  210               	.LBE23:
  211               	.LBE22:
- 150:../src/main.c **** 		UART_putstring(buffer);
- 212               		.loc 1 150 0 discriminator 1
+ 169:../src/main.c **** 		UART_putstring(buffer);
+ 212               		.loc 1 169 0 discriminator 1
  213 0042 CE01      		movw r24,r28
  214 0044 0196      		adiw r24,1
  215 0046 0E94 0000 		call UART_putstring
  216               	.LVL12:
- 151:../src/main.c **** 		UART_send_data('\r');
- 217               		.loc 1 151 0 discriminator 1
+ 170:../src/main.c **** 		UART_send_data('\r');
+ 217               		.loc 1 170 0 discriminator 1
  218 004a 8DE0      		ldi r24,lo8(13)
  219 004c 0E94 0000 		call UART_send_data
  220               	.LVL13:
- 152:../src/main.c **** 		UART_send_data('\n');
- 221               		.loc 1 152 0 discriminator 1
+ 171:../src/main.c **** 		UART_send_data('\n');
+ 221               		.loc 1 171 0 discriminator 1
  222 0050 8AE0      		ldi r24,lo8(10)
  223 0052 0E94 0000 		call UART_send_data
  224               	.LVL14:
@@ -1019,54 +1038,54 @@
  245               	.global	main
  247               	main:
  248               	.LFB71:
-  62:../src/main.c **** //volatile	int k;
- 249               		.loc 1 62 0
+  81:../src/main.c **** //volatile	int k;
+ 249               		.loc 1 81 0
  250               		.cfi_startproc
  251               	/* prologue: function */
  252               	/* frame size = 0 */
  253               	/* stack size = 0 */
  254               	.L__stack_usage = 0
-  66:../src/main.c **** 			init_RTI();			//Initialize Periodic Real Time Interrupt(Timer)
- 255               		.loc 1 66 0
+  85:../src/main.c **** 			init_RTI();			//Initialize Periodic Real Time Interrupt(Timer)
+ 255               		.loc 1 85 0
  256 0000 0E94 0000 		call init_ws2812
  257               	.LVL15:
-  67:../src/main.c **** 			UART_Init();		//Initialize serial port driver (UART)
- 258               		.loc 1 67 0
+  86:../src/main.c **** 			UART_Init();		//Initialize serial port driver (UART)
+ 258               		.loc 1 86 0
  259 0004 0E94 0000 		call init_RTI
  260               	.LVL16:
-  68:../src/main.c **** 			adc_init();			//Initialize Analog to digital converter (Joystick)
- 261               		.loc 1 68 0
+  87:../src/main.c **** 			adc_init();			//Initialize Analog to digital converter (Joystick)
+ 261               		.loc 1 87 0
  262 0008 0E94 0000 		call UART_Init
  263               	.LVL17:
-  69:../src/main.c **** 		
- 264               		.loc 1 69 0
+  88:../src/main.c **** 		
+ 264               		.loc 1 88 0
  265 000c 0E94 0000 		call adc_init
  266               	.LVL18:
-  71:../src/main.c **** 			
- 267               		.loc 1 71 0
+  90:../src/main.c **** 			
+ 267               		.loc 1 90 0
  268 0010 80E0      		ldi r24,lo8(display_rgb)
  269 0012 90E0      		ldi r25,hi8(display_rgb)
  270 0014 9093 0000 		sts p2disp+1,r25
  271 0018 8093 0000 		sts p2disp,r24
-  73:../src/main.c **** 
- 272               		.loc 1 73 0
+  92:../src/main.c **** 
+ 272               		.loc 1 92 0
  273               	/* #APP */
- 274               	 ;  73 "../src/main.c" 1
+ 274               	 ;  92 "../src/main.c" 1
  275 001c 7894      		sei
  276               	 ;  0 "" 2
-  75:../src/main.c **** 							
- 277               		.loc 1 75 0
+  94:../src/main.c **** 							
+ 277               		.loc 1 94 0
  278               	/* #NOAPP */
  279 001e 80E0      		ldi r24,lo8(msg)
  280 0020 90E0      		ldi r25,hi8(msg)
  281 0022 0E94 0000 		call UART_putstring
  282               	.LVL19:
-  78:../src/main.c **** 	        wrt_ws2812(p2disp);
- 283               		.loc 1 78 0
+  97:../src/main.c **** 	        wrt_ws2812(p2disp);
+ 283               		.loc 1 97 0
  284 0026 0E94 0000 		call clear_disp
  285               	.LVL20:
-  79:../src/main.c **** 			
- 286               		.loc 1 79 0
+  98:../src/main.c **** 			
+ 286               		.loc 1 98 0
  287 002a 8091 0000 		lds r24,p2disp
  288 002e 9091 0000 		lds r25,p2disp+1
  289 0032 0E94 0000 		call wrt_ws2812
@@ -1093,51 +1112,51 @@
  310               	.L14:
  311               	.LBE27:
  312               	.LBE26:
-  86:../src/main.c **** 			display_rgb[k][4]=Verde;
- 313               		.loc 1 86 0 discriminator 3
+ 105:../src/main.c **** 			display_rgb[k][4]=Verde;
+ 313               		.loc 1 105 0 discriminator 3
  314 0052 8091 0000 		lds r24,Rojo
  315 0056 9091 0000 		lds r25,Rojo+1
  316 005a A091 0000 		lds r26,Rojo+2
  317 005e 8083      		st Z,r24
  318 0060 9183      		std Z+1,r25
  319 0062 A283      		std Z+2,r26
-  87:../src/main.c **** 			display_rgb[k][7]=Azul;
- 320               		.loc 1 87 0 discriminator 3
+ 106:../src/main.c **** 			display_rgb[k][7]=Azul;
+ 320               		.loc 1 106 0 discriminator 3
  321 0064 8091 0000 		lds r24,Verde
  322 0068 9091 0000 		lds r25,Verde+1
  323 006c A091 0000 		lds r26,Verde+2
  324 0070 8487      		std Z+12,r24
  325 0072 9587      		std Z+13,r25
  326 0074 A687      		std Z+14,r26
-  88:../src/main.c **** 			display_rgb[k][3]=Amarillo;
- 327               		.loc 1 88 0 discriminator 3
+ 107:../src/main.c **** 			display_rgb[k][3]=Amarillo;
+ 327               		.loc 1 107 0 discriminator 3
  328 0076 8091 0000 		lds r24,Azul
  329 007a 9091 0000 		lds r25,Azul+1
  330 007e A091 0000 		lds r26,Azul+2
  331 0082 858B      		std Z+21,r24
  332 0084 968B      		std Z+22,r25
  333 0086 A78B      		std Z+23,r26
-  89:../src/main.c **** 			display_rgb[k][5]=Amarillo;
- 334               		.loc 1 89 0 discriminator 3
+ 108:../src/main.c **** 			display_rgb[k][5]=Amarillo;
+ 334               		.loc 1 108 0 discriminator 3
  335 0088 8091 0000 		lds r24,Amarillo
  336 008c 9091 0000 		lds r25,Amarillo+1
  337 0090 A091 0000 		lds r26,Amarillo+2
  338 0094 8187      		std Z+9,r24
  339 0096 9287      		std Z+10,r25
  340 0098 A387      		std Z+11,r26
-  90:../src/main.c **** 			}
- 341               		.loc 1 90 0 discriminator 3
+ 109:../src/main.c **** 			}
+ 341               		.loc 1 109 0 discriminator 3
  342 009a 8787      		std Z+15,r24
  343 009c 908B      		std Z+16,r25
  344 009e A18B      		std Z+17,r26
  345 00a0 7896      		adiw r30,24
-  84:../src/main.c **** 			{
- 346               		.loc 1 84 0 discriminator 3
+ 103:../src/main.c **** 			{
+ 346               		.loc 1 103 0 discriminator 3
  347 00a2 E217      		cp r30,r18
  348 00a4 F307      		cpc r31,r19
  349 00a6 01F4      		brne .L14
-  93:../src/main.c **** 			
- 350               		.loc 1 93 0
+ 112:../src/main.c **** 			
+ 350               		.loc 1 112 0
  351 00a8 8091 0000 		lds r24,p2disp
  352 00ac 9091 0000 		lds r25,p2disp+1
  353 00b0 0E94 0000 		call wrt_ws2812
@@ -1157,8 +1176,8 @@
  367               	.LVL25:
  368               	.LBE29:
  369               	.LBE28:
-  97:../src/main.c **** 			
- 370               		.loc 1 97 0
+ 116:../src/main.c **** 			
+ 370               		.loc 1 116 0
  371 00c6 0E94 0000 		call clear_disp
  372               	.LVL26:
  373 00ca 0F2E      		mov __tmp_reg__,r31
@@ -1183,8 +1202,8 @@
  392 00f0 F02D      		mov r31,__tmp_reg__
  393               	.LVL27:
  394               	.L15:
- 101:../src/main.c **** 				display_rgb[4+i][3-i]=Verde;
- 395               		.loc 1 101 0 discriminator 3
+ 120:../src/main.c **** 				display_rgb[4+i][3-i]=Verde;
+ 395               		.loc 1 120 0 discriminator 3
  396 00f2 8091 0000 		lds r24,Rojo
  397 00f6 9091 0000 		lds r25,Rojo+1
  398 00fa A091 0000 		lds r26,Rojo+2
@@ -1192,8 +1211,8 @@
  400 0100 8083      		st Z,r24
  401 0102 9183      		std Z+1,r25
  402 0104 A283      		std Z+2,r26
- 102:../src/main.c **** 				display_rgb[3-i][4+i]=Amarillo;
- 403               		.loc 1 102 0 discriminator 3
+ 121:../src/main.c **** 				display_rgb[3-i][4+i]=Amarillo;
+ 403               		.loc 1 121 0 discriminator 3
  404 0106 8091 0000 		lds r24,Verde
  405 010a 9091 0000 		lds r25,Verde+1
  406 010e A091 0000 		lds r26,Verde+2
@@ -1201,16 +1220,16 @@
  408 0114 8083      		st Z,r24
  409 0116 9183      		std Z+1,r25
  410 0118 A283      		std Z+2,r26
- 103:../src/main.c **** 				display_rgb[4+i][4+i]=Azul;
- 411               		.loc 1 103 0 discriminator 3
+ 122:../src/main.c **** 				display_rgb[4+i][4+i]=Azul;
+ 411               		.loc 1 122 0 discriminator 3
  412 011a 8091 0000 		lds r24,Amarillo
  413 011e 9091 0000 		lds r25,Amarillo+1
  414 0122 A091 0000 		lds r26,Amarillo+2
  415 0126 8883      		st Y,r24
  416 0128 9983      		std Y+1,r25
  417 012a AA83      		std Y+2,r26
- 104:../src/main.c **** 		
- 418               		.loc 1 104 0 discriminator 3
+ 123:../src/main.c **** 		
+ 418               		.loc 1 123 0 discriminator 3
  419 012c 8091 0000 		lds r24,Azul
  420 0130 9091 0000 		lds r25,Azul+1
  421 0134 A091 0000 		lds r26,Azul+2
@@ -1218,8 +1237,8 @@
  423 013a 8083      		st Z,r24
  424 013c 9183      		std Z+1,r25
  425 013e A283      		std Z+2,r26
- 106:../src/main.c **** 		
- 426               		.loc 1 106 0 discriminator 3
+ 125:../src/main.c **** 		
+ 426               		.loc 1 125 0 discriminator 3
  427 0140 8091 0000 		lds r24,p2disp
  428 0144 9091 0000 		lds r25,p2disp+1
  429 0148 0E94 0000 		call wrt_ws2812
@@ -1239,8 +1258,8 @@
  443               	.LVL29:
  444               	.LBE31:
  445               	.LBE30:
- 109:../src/main.c **** 			}
- 446               		.loc 1 109 0 discriminator 3
+ 128:../src/main.c **** 			}
+ 446               		.loc 1 128 0 discriminator 3
  447 015e 0E94 0000 		call clear_disp
  448               	.LVL30:
  449 0162 9BE1      		ldi r25,27
@@ -1253,14 +1272,14 @@
  456 0170 FBE1      		ldi r31,27
  457 0172 EF0E      		add r14,r31
  458 0174 F11C      		adc r15,__zero_reg__
-  99:../src/main.c **** 			{
- 459               		.loc 1 99 0 discriminator 3
+ 118:../src/main.c **** 			{
+ 459               		.loc 1 118 0 discriminator 3
  460 0176 0C17      		cp r16,r28
  461 0178 1D07      		cpc r17,r29
  462 017a 01F0      		breq .+2
  463 017c 00C0      		rjmp .L15
- 113:../src/main.c **** 			uart_test(); 
- 464               		.loc 1 113 0
+ 132:../src/main.c **** 			uart_test(); 
+ 464               		.loc 1 132 0
  465 017e 0E94 0000 		call ADCTestBench
  466               	.LVL31:
  467               		.cfi_endproc

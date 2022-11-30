@@ -19,17 +19,17 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00000c46  00000000  00000000  00001be3  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000177a  00000000  00000000  00002829  2**0
+  8 .debug_line   00001779  00000000  00000000  00002829  2**0
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  000002c4  00000000  00000000  00003fa4  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00011322  00000000  00000000  00004268  2**0
+ 10 .debug_str    00011386  00000000  00000000  00004268  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000051e  00000000  00000000  0001558a  2**0
+ 11 .debug_loc    0000051e  00000000  00000000  000155ee  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000f8  00000000  00000000  00015aa8  2**0
+ 12 .debug_ranges 000000f8  00000000  00000000  00015b0c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_macro  00006fdb  00000000  00000000  00015ba0  2**0
+ 13 .debug_macro  00006fdb  00000000  00000000  00015c04  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -129,223 +129,102 @@ Disassembly of section .text:
   9e:	b0 cf       	rjmp	.-160    	; 0x0 <__vectors>
 
 000000a0 <init_ws2812>:
-//		lpm	r18,Z+					;Load byte from source 
-//
-// Assembler Manual /// https://sourceware.org/binutils/docs/as/index.html
-///////////////////////////////////////////////////////////////////////////
-
-		push r23
   a0:	7f 93       	push	r23
-
-		in	r23,DDRB			// DDRB|=PIXEL_PIN;
   a2:	74 b1       	in	r23, 0x04	; 4
-        ori r23,PIXEL_PIN
   a4:	72 60       	ori	r23, 0x02	; 2
-        out DDRB,r23
   a6:	74 b9       	out	0x04, r23	; 4
-
-		in	r23,PORTB
   a8:	75 b1       	in	r23, 0x05	; 5
-		andi r23,~(PIXEL_PIN)		// PORTB&=~(PIXEL_PIN)
   aa:	7d 7f       	andi	r23, 0xFD	; 253
-        out PORTB, r23
   ac:	75 b9       	out	0x05, r23	; 5
-		call	delay
   ae:	3d d0       	rcall	.+122    	; 0x12a <delay>
-
-		pop r23
   b0:	7f 91       	pop	r23
-		ret	
   b2:	08 95       	ret
 
 000000b4 <wrt_ws2812>:
-
-
-wrt_ws2812:
-		cli
   b4:	f8 94       	cli
-		push pixdata
   b6:	0f 93       	push	r16
-		push grb_count
   b8:	1f 93       	push	r17
-
-		push BitCount
   ba:	4f 93       	push	r20
 
 000000bc <donext>:
-
-
-donext:
-		ldi r23,64  //numled
   bc:	70 e4       	ldi	r23, 0x40	; 64
-		mov	ZL,r24
   be:	e8 2f       	mov	r30, r24
-		mov	ZH,r25
-loopg:
-
-		call WritePix
   c0:	f9 2f       	mov	r31, r25
 
 000000c2 <loopg>:
   c2:	07 d0       	rcall	.+14     	; 0xd2 <WritePix>
-		dec r23
   c4:	7a 95       	dec	r23
-		brne	loopg
   c6:	e9 f7       	brne	.-6      	; 0xc2 <loopg>
-
-//		call delay
-//		call delay
-
-		pop	BitCount
   c8:	4f 91       	pop	r20
-		pop grb_count
   ca:	1f 91       	pop	r17
-		pop pixdata
   cc:	0f 91       	pop	r16
-		sei
   ce:	78 94       	sei
-		ret
   d0:	08 95       	ret
 
 000000d2 <WritePix>:
-* area in GRB order
-* Registers used: R16-R21
-*
-********************/
-WritePix:
-		push r23
   d2:	7f 93       	push	r23
-		ldi     grb_count,3		; 3 leds / pixel [Green Red Blue]
   d4:	13 e0       	ldi	r17, 0x03	; 3
 
 000000d6 <next_led>:
-
-next_led:
-		ld		pixdata,Z+				; load led data (GRB)
   d6:	01 91       	ld	r16, Z+
-		ldi		BitCount,8				; 8 bits / color
   d8:	48 e0       	ldi	r20, 0x08	; 8
 
 000000da <nextbit>:
-nextbit:
-
-		in	r23,PORTB					//SetHI
   da:	75 b1       	in	r23, 0x05	; 5
-		ori r23,(PIXEL_PIN)				// PORTB|=PIXEL_PIN;
   dc:	72 60       	ori	r23, 0x02	; 2
-		out	PORTB,r23
   de:	75 b9       	out	0x05, r23	; 5
-
-		rol		pixdata		;[1]		//Next bit
   e0:	00 1f       	adc	r16, r16
-		brcs	ES1		;[1/2]
   e2:	78 f0       	brcs	.+30     	; 0x102 <ES1>
 
 000000e4 <ES0>:
-
-ES0:	Delay1
   e4:	00 00       	nop
-
-		in	r23,PORTB					// SetLO
   e6:	75 b1       	in	r23, 0x05	; 5
-		andi r23,~(PIXEL_PIN)			// PORTB&=~(PIXEL_PIN)
   e8:	7d 7f       	andi	r23, 0xFD	; 253
-		out	PORTB,r23
   ea:	75 b9       	out	0x05, r23	; 5
 	...
-
-		Delay8
-		dec		BitCount
   fc:	4a 95       	dec	r20
-		brne	nextbit
   fe:	69 f7       	brne	.-38     	; 0xda <nextbit>
-		rjmp	txend					//All bits sent -> done!!
  100:	10 c0       	rjmp	.+32     	; 0x122 <txend>
 
 00000102 <ES1>:
 	...
-
-ES1:
-		Delay9
  112:	00 00       	nop
-
-		in	r23,PORTB					//SetLO
  114:	75 b1       	in	r23, 0x05	; 5
-		andi r23,~(PIXEL_PIN)			// PORTB&=~(PIXEL_PIN)
  116:	7d 7f       	andi	r23, 0xFD	; 253
-		out	PORTB,r23
  118:	75 b9       	out	0x05, r23	; 5
-
-
-		Delay1                       
  11a:	00 00       	nop
-		dec		BitCount
  11c:	4a 95       	dec	r20
-		brne	nextbit
  11e:	e9 f6       	brne	.-70     	; 0xda <nextbit>
 	...
 
 00000122 <txend>:
-		nop
-
-txend:	dec		grb_count
  122:	1a 95       	dec	r17
-		brne	next_led				// Next Led (color)
  124:	c1 f6       	brne	.-80     	; 0xd6 <next_led>
 
 00000126 <txdone>:
-	 
-
-txdone:	pop	r23
  126:	7f 91       	pop	r23
-		ret
  128:	08 95       	ret
 
 0000012a <delay>:
-
-
-
-
-delay:  
-		push r19
  12a:	3f 93       	push	r19
-		push r20
  12c:	4f 93       	push	r20
-		push r21
  12e:	5f 93       	push	r21
-		 
-		ldi  r21, 50
  130:	52 e3       	ldi	r21, 0x32	; 50
-		ldi  r19, TFAST	
  132:	3f ef       	ldi	r19, 0xFF	; 255
-		ldi  r20, TSLOW
  134:	4f ef       	ldi	r20, 0xFF	; 255
 
 00000136 <reload>:
-reload:	dec  r19
  136:	3a 95       	dec	r19
-		brne reload
  138:	f1 f7       	brne	.-4      	; 0x136 <reload>
-		ldi	r19,TFAST
  13a:	3f ef       	ldi	r19, 0xFF	; 255
-		dec  r20
  13c:	4a 95       	dec	r20
-		brne reload
  13e:	d9 f7       	brne	.-10     	; 0x136 <reload>
-		ldi  r20, TSLOW
  140:	4f ef       	ldi	r20, 0xFF	; 255
-		dec	 r21
  142:	5a 95       	dec	r21
-		brne reload
  144:	c1 f7       	brne	.-16     	; 0x136 <reload>
-
-		pop  r21
  146:	5f 91       	pop	r21
-		pop  r20
  148:	4f 91       	pop	r20
-		pop  r19
  14a:	3f 91       	pop	r19
-		ret
  14c:	08 95       	ret
 
 0000014e <GLed_table>:
@@ -453,12 +332,6 @@ reload:	dec  r19
  20c:	08 95       	ret
 
 0000020e <init_RTI>:
-	DDRB=LED;
-	PORTB=(LED)^(LED);
-	
-	init_RTI();				//Init Periodic Real Time Interrupt
-	
-	sei();					// Enable global Interrupts
  20e:	82 e0       	ldi	r24, 0x02	; 2
  210:	84 bd       	out	0x24, r24	; 36
  212:	94 e0       	ldi	r25, 0x04	; 4
@@ -471,12 +344,6 @@ reload:	dec  r19
  222:	08 95       	ret
 
 00000224 <__vector_14>:
-}
-
-//Interrupt service routine (ISR) for Timer 0
-// Timer int happens every (16MHz)^(-1)*1024*125 = 62.5ns*1024*125 = 64 * 125 useg = 8mseg
-ISR(TIMER0_COMPA_vect)
-{
  224:	1f 92       	push	r1
  226:	0f 92       	push	r0
  228:	0f b6       	in	r0, 0x3f	; 63
@@ -484,34 +351,24 @@ ISR(TIMER0_COMPA_vect)
  22c:	11 24       	eor	r1, r1
  22e:	8f 93       	push	r24
  230:	9f 93       	push	r25
-	volatile static int count=40;
-	
-	if(count)			// 2mseg x 40= 80mseg
  232:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
  236:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
  23a:	89 2b       	or	r24, r25
  23c:	51 f0       	breq	.+20     	; 0x252 <__vector_14+0x2e>
-	count--;
  23e:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
  242:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
  246:	01 97       	sbiw	r24, 0x01	; 1
  248:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
  24c:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
  250:	0a c0       	rjmp	.+20     	; 0x266 <__vector_14+0x42>
-	else
-	{
-		count=40;
  252:	88 e2       	ldi	r24, 0x28	; 40
  254:	90 e0       	ldi	r25, 0x00	; 0
  256:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
  25a:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
-		PORTB^=LED;   	// This is for testing purposes (Blinking Led)
  25e:	95 b1       	in	r25, 0x05	; 5
  260:	80 e2       	ldi	r24, 0x20	; 32
  262:	89 27       	eor	r24, r25
  264:	85 b9       	out	0x05, r24	; 5
-	}
-	
  266:	9f 91       	pop	r25
  268:	8f 91       	pop	r24
  26a:	0f 90       	pop	r0

@@ -803,7 +803,7 @@ END GROUP
  .debug_abbrev  0x000007c5      0x1f4 src/UART.o
  .debug_abbrev  0x000009b9      0x28d src/main.o
 
-.debug_line     0x00000000     0x177a
+.debug_line     0x00000000     0x1779
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x134 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_line    0x00000134      0x363 src/ADC.o
@@ -811,7 +811,7 @@ END GROUP
  .debug_line    0x00000577      0x1eb src/DrvWs2812.o
  .debug_line    0x00000762      0x4e2 src/Timer.o
  .debug_line    0x00000c44      0x465 src/UART.o
- .debug_line    0x000010a9      0x6d1 src/main.o
+ .debug_line    0x000010a9      0x6d0 src/main.o
 
 .debug_frame    0x00000000      0x2c4
  *(.debug_frame)
@@ -821,7 +821,7 @@ END GROUP
  .debug_frame   0x00000104      0x144 src/UART.o
  .debug_frame   0x00000248       0x7c src/main.o
 
-.debug_str      0x00000000    0x11322
+.debug_str      0x00000000    0x11386
  *(.debug_str)
  .debug_str     0x00000000      0x208 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_str     0x00000208     0x6ea5 src/ADC.o
@@ -832,8 +832,8 @@ END GROUP
                               0x10a39 (size before relaxing)
  .debug_str     0x00010f7c      0x2eb src/UART.o
                                0x7220 (size before relaxing)
- .debug_str     0x00011267       0xbb src/main.o
-                              0x10e85 (size before relaxing)
+ .debug_str     0x00011267      0x11f src/main.o
+                              0x10e8c (size before relaxing)
 
 .debug_loc      0x00000000      0x51e
  *(.debug_loc)
