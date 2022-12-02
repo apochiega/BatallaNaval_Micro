@@ -6593,8 +6593,6 @@ read_VRX:
 	.string	"PC0 PORTC0"
 .LASF1430:
 	.string	"SREG_Z (1)"
-.LASF1609:
-	.string	"C:\\\\Users\\\\Bruno\\\\Desktop\\\\Micro\\\\BatallaNaval_Micro\\\\GccMatrixWS2812 V3\\\\GccMatrixWS2812 V3\\\\Debug"
 .LASF897:
 	.string	"PGWRT 2"
 .LASF402:
@@ -6621,6 +6619,8 @@ read_VRX:
 	.string	"LB_MODE_2 (0xFE)"
 .LASF203:
 	.string	"__FRACT_MIN__ (-0.5R-0.5R)"
+.LASF1609:
+	.string	"C:\\\\Users\\\\pijua\\\\Desktop\\\\BatallaNaval_Micro-main\\\\BatallaNaval_Micro-main\\\\GccMatrixWS2812 V3\\\\GccMatrixWS2812 V3\\\\Debug"
 .LASF1366:
 	.string	"__BOOT_LOCK_BITS_1_EXIST "
 .LASF561:

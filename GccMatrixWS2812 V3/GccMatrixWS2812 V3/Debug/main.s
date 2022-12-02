@@ -13,25 +13,7 @@ __zero_reg__ = 1
 checkPlayer1Win:
 .LFB75:
 	.file 1 "../src/main.c"
-	.loc 1 233 0
-	.cfi_startproc
-/* prologue: function */
-/* frame size = 0 */
-/* stack size = 0 */
-.L__stack_usage = 0
-.LVL0:
-	.loc 1 262 0
-	ldi r24,0
-	ret
-	.cfi_endproc
-.LFE75:
-	.size	checkPlayer1Win, .-checkPlayer1Win
-	.section	.text.checkPlayer2Win,"ax",@progbits
-.global	checkPlayer2Win
-	.type	checkPlayer2Win, @function
-checkPlayer2Win:
-.LFB76:
-	.loc 1 266 0
+	.loc 1 234 0
 	.cfi_startproc
 	push r28
 .LCFI0:
@@ -57,7 +39,7 @@ checkPlayer2Win:
 /* frame size = 7 */
 /* stack size = 9 */
 .L__stack_usage = 9
-	.loc 1 267 0
+	.loc 1 235 0
 	movw r26,r28
 	adiw r26,1
 	ldi r24,lo8(7)
@@ -66,115 +48,278 @@ checkPlayer2Win:
 	st Z+,__zero_reg__
 	dec r24
 	brne 0b
-.LVL1:
-	ldi r30,lo8(submarinosJugador1)
-	ldi r31,hi8(submarinosJugador1)
-	ldi r18,lo8(submarinosJugador1+9)
-	ldi r19,hi8(submarinosJugador1+9)
+.LVL0:
+	ldi r30,lo8(submarinosJugador2)
+	ldi r31,hi8(submarinosJugador2)
+	ldi r18,lo8(submarinosJugador2+9)
+	ldi r19,hi8(submarinosJugador2+9)
 .LBB10:
-	.loc 1 271 0
+	.loc 1 239 0
 	ldi r25,lo8(1)
-.LVL2:
-.L4:
-	.loc 1 270 0
+.LVL1:
+.L3:
+	.loc 1 238 0
 	ldd r24,Z+2
 	cpi r24,lo8(1)
-	brne .L3
-	.loc 1 271 0
+	brne .L2
+	.loc 1 239 0
 	st X,r25
-.L3:
-.LVL3:
+.L2:
+.LVL2:
 	adiw r30,3
 	adiw r26,1
-.LVL4:
-	.loc 1 268 0 discriminator 2
+.LVL3:
+	.loc 1 236 0 discriminator 2
 	cp r30,r18
 	cpc r31,r19
-	brne .L4
-.LVL5:
+	brne .L3
+.LVL4:
 .LBE10:
 .LBB11:
-	.loc 1 275 0
-	lds r24,carguerosJugador1+2
+	.loc 1 243 0
+	lds r24,carguerosJugador2+2
+	cpi r24,lo8(1)
+	brne .L4
+	.loc 1 245 0
+	std Y+4,r24
+.L4:
+	.loc 1 247 0
+	lds r24,carguerosJugador2+5
 	cpi r24,lo8(1)
 	brne .L5
-	.loc 1 277 0
-	std Y+4,r24
+	.loc 1 249 0
+	std Y+6,r24
 .L5:
-	.loc 1 279 0
-	lds r24,carguerosJugador1+5
+.LVL5:
+	.loc 1 243 0
+	lds r24,carguerosJugador2+8
 	cpi r24,lo8(1)
 	brne .L6
-	.loc 1 281 0
-	std Y+6,r24
+	.loc 1 245 0
+	std Y+5,r24
 .L6:
-.LVL6:
-	.loc 1 275 0
-	lds r24,carguerosJugador1+8
+	.loc 1 247 0
+	lds r24,carguerosJugador2+11
 	cpi r24,lo8(1)
 	brne .L7
-	.loc 1 277 0
-	std Y+5,r24
-.L7:
-	.loc 1 279 0
-	lds r24,carguerosJugador1+11
-	cpi r24,lo8(1)
-	brne .L8
-	.loc 1 281 0
+	.loc 1 249 0
 	std Y+7,r24
-.L8:
-.LVL7:
+.L7:
+.LVL6:
 .LBE11:
-	.loc 1 288 0 discriminator 2
+	.loc 1 255 0 discriminator 2
 	ldi r19,lo8(1)
 	ldd r24,Y+1
 	cpi r24,lo8(1)
-	breq .L9
+	breq .L8
 	ldi r19,0
-.L9:
+.L8:
 	ldi r24,lo8(1)
 	ldd r25,Y+2
 	cpi r25,lo8(1)
-	breq .L10
+	breq .L9
 	ldi r24,0
-.L10:
+.L9:
 	and r24,r19
 	ldi r19,lo8(1)
 	ldd r25,Y+3
 	cpi r25,lo8(1)
-	breq .L11
+	breq .L10
 	ldi r19,0
-.L11:
+.L10:
 	and r24,r19
 	ldi r18,lo8(1)
 	ldd r25,Y+4
 	cpi r25,lo8(1)
-	breq .L12
+	breq .L11
 	ldi r18,0
-.L12:
+.L11:
 	mov r25,r24
 	and r25,r18
 	ldi r24,lo8(1)
 	ldd r18,Y+5
 	cpi r18,lo8(1)
-	breq .L13
+	breq .L12
 	ldi r24,0
-.L13:
+.L12:
 	and r24,r25
 	ldi r25,lo8(1)
 	ldd r18,Y+6
 	cpi r18,lo8(1)
-	breq .L14
+	breq .L13
 	ldi r25,0
-.L14:
+.L13:
 	and r25,r24
 	ldi r24,lo8(1)
 	ldd r18,Y+7
 	cpi r18,lo8(1)
-	breq .L15
+	breq .L14
 	ldi r24,0
-.L15:
-	.loc 1 294 0 discriminator 2
+.L14:
+	.loc 1 261 0 discriminator 2
+	and r24,r25
+/* epilogue start */
+	adiw r28,7
+	in __tmp_reg__,__SREG__
+	cli
+	out __SP_H__,r29
+	out __SREG__,__tmp_reg__
+	out __SP_L__,r28
+	pop r29
+	pop r28
+	ret
+	.cfi_endproc
+.LFE75:
+	.size	checkPlayer1Win, .-checkPlayer1Win
+	.section	.text.checkPlayer2Win,"ax",@progbits
+.global	checkPlayer2Win
+	.type	checkPlayer2Win, @function
+checkPlayer2Win:
+.LFB76:
+	.loc 1 265 0
+	.cfi_startproc
+	push r28
+.LCFI4:
+	.cfi_def_cfa_offset 3
+	.cfi_offset 28, -2
+	push r29
+.LCFI5:
+	.cfi_def_cfa_offset 4
+	.cfi_offset 29, -3
+	in r28,__SP_L__
+	in r29,__SP_H__
+.LCFI6:
+	.cfi_def_cfa_register 28
+	sbiw r28,7
+.LCFI7:
+	.cfi_def_cfa_offset 11
+	in __tmp_reg__,__SREG__
+	cli
+	out __SP_H__,r29
+	out __SREG__,__tmp_reg__
+	out __SP_L__,r28
+/* prologue: function */
+/* frame size = 7 */
+/* stack size = 9 */
+.L__stack_usage = 9
+	.loc 1 266 0
+	movw r26,r28
+	adiw r26,1
+	ldi r24,lo8(7)
+	movw r30,r26
+	0:
+	st Z+,__zero_reg__
+	dec r24
+	brne 0b
+.LVL7:
+	ldi r30,lo8(submarinosJugador1)
+	ldi r31,hi8(submarinosJugador1)
+	ldi r18,lo8(submarinosJugador1+9)
+	ldi r19,hi8(submarinosJugador1+9)
+.LBB12:
+	.loc 1 270 0
+	ldi r25,lo8(1)
+.LVL8:
+.L18:
+	.loc 1 269 0
+	ldd r24,Z+2
+	cpi r24,lo8(1)
+	brne .L17
+	.loc 1 270 0
+	st X,r25
+.L17:
+.LVL9:
+	adiw r30,3
+	adiw r26,1
+.LVL10:
+	.loc 1 267 0 discriminator 2
+	cp r30,r18
+	cpc r31,r19
+	brne .L18
+.LVL11:
+.LBE12:
+.LBB13:
+	.loc 1 274 0
+	lds r24,carguerosJugador1+2
+	cpi r24,lo8(1)
+	brne .L19
+	.loc 1 276 0
+	std Y+4,r24
+.L19:
+	.loc 1 278 0
+	lds r24,carguerosJugador1+5
+	cpi r24,lo8(1)
+	brne .L20
+	.loc 1 280 0
+	std Y+6,r24
+.L20:
+.LVL12:
+	.loc 1 274 0
+	lds r24,carguerosJugador1+8
+	cpi r24,lo8(1)
+	brne .L21
+	.loc 1 276 0
+	std Y+5,r24
+.L21:
+	.loc 1 278 0
+	lds r24,carguerosJugador1+11
+	cpi r24,lo8(1)
+	brne .L22
+	.loc 1 280 0
+	std Y+7,r24
+.L22:
+.LVL13:
+.LBE13:
+	.loc 1 286 0 discriminator 2
+	ldi r19,lo8(1)
+	ldd r24,Y+1
+	cpi r24,lo8(1)
+	breq .L23
+	ldi r19,0
+.L23:
+	ldi r24,lo8(1)
+	ldd r25,Y+2
+	cpi r25,lo8(1)
+	breq .L24
+	ldi r24,0
+.L24:
+	and r24,r19
+	ldi r19,lo8(1)
+	ldd r25,Y+3
+	cpi r25,lo8(1)
+	breq .L25
+	ldi r19,0
+.L25:
+	and r24,r19
+	ldi r18,lo8(1)
+	ldd r25,Y+4
+	cpi r25,lo8(1)
+	breq .L26
+	ldi r18,0
+.L26:
+	mov r25,r24
+	and r25,r18
+	ldi r24,lo8(1)
+	ldd r18,Y+5
+	cpi r18,lo8(1)
+	breq .L27
+	ldi r24,0
+.L27:
+	and r24,r25
+	ldi r25,lo8(1)
+	ldd r18,Y+6
+	cpi r18,lo8(1)
+	breq .L28
+	ldi r25,0
+.L28:
+	and r25,r24
+	ldi r24,lo8(1)
+	ldd r18,Y+7
+	cpi r18,lo8(1)
+	breq .L29
+	ldi r24,0
+.L29:
+	.loc 1 292 0 discriminator 2
 	and r24,r25
 /* epilogue start */
 	adiw r28,7
@@ -194,26 +339,26 @@ checkPlayer2Win:
 	.type	delaySeconds, @function
 delaySeconds:
 .LFB77:
-	.loc 1 298 0
+	.loc 1 296 0
 	.cfi_startproc
-.LVL8:
+.LVL14:
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-.LBB12:
-	.loc 1 299 0
+.LBB14:
+	.loc 1 297 0
 	mov r20,r24
 	ldi r21,0
 	cp __zero_reg__,r20
 	cpc __zero_reg__,r21
-	brge .L17
+	brge .L31
 	ldi r25,lo8(1)
-.LVL9:
-.L19:
-.LBB13:
-.LBB14:
+.LVL15:
+.L33:
 .LBB15:
+.LBB16:
+.LBB17:
 	.file 2 "c:\\program files (x86)\\atmel\\studio\\7.0\\toolchain\\avr8\\avr8-gnu-toolchain\\avr\\include\\util\\delay.h"
 	.loc 2 187 0 discriminator 1
 	ldi r18,lo8(799999)
@@ -225,7 +370,7 @@ delaySeconds:
 	brne 1b
 	rjmp .
 	nop
-.LVL10:
+.LVL16:
 	ldi r18,lo8(799999)
 	ldi r19,hi8(799999)
 	ldi r24,hlo8(799999)
@@ -235,7 +380,7 @@ delaySeconds:
 	brne 1b
 	rjmp .
 	nop
-.LVL11:
+.LVL17:
 	ldi r18,lo8(799999)
 	ldi r19,hi8(799999)
 	ldi r24,hlo8(799999)
@@ -245,7 +390,7 @@ delaySeconds:
 	brne 1b
 	rjmp .
 	nop
-.LVL12:
+.LVL18:
 	ldi r18,lo8(799999)
 	ldi r19,hi8(799999)
 	ldi r24,hlo8(799999)
@@ -255,24 +400,24 @@ delaySeconds:
 	brne 1b
 	rjmp .
 	nop
-.LVL13:
+.LVL19:
 	subi r25,lo8(-(1))
-.LVL14:
+.LVL20:
+.LBE17:
+.LBE16:
 .LBE15:
-.LBE14:
-.LBE13:
-	.loc 1 299 0 discriminator 1
+	.loc 1 297 0 discriminator 1
 	mov r18,r25
 	mov __tmp_reg__,r25
 	lsl r0
 	sbc r19,r19
 	cp r20,r18
 	cpc r21,r19
-	brge .L19
-.LVL15:
-.L17:
+	brge .L33
+.LVL21:
+.L31:
 	ret
-.LBE12:
+.LBE14:
 	.cfi_endproc
 .LFE77:
 	.size	delaySeconds, .-delaySeconds
@@ -281,64 +426,64 @@ delaySeconds:
 	.type	copyArrayOf1, @function
 copyArrayOf1:
 .LFB78:
-	.loc 1 310 0
+	.loc 1 308 0
 	.cfi_startproc
 	push r28
-.LCFI4:
+.LCFI8:
 	.cfi_def_cfa_offset 3
 	.cfi_offset 28, -2
 	push r29
-.LCFI5:
+.LCFI9:
 	.cfi_def_cfa_offset 4
 	.cfi_offset 29, -3
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 2 */
 .L__stack_usage = 2
-.LVL16:
+.LVL22:
 	ldi r30,lo8(matrizJugador1)
 	ldi r31,hi8(matrizJugador1)
 	ldi r22,lo8(display_rgb)
 	ldi r23,hi8(display_rgb)
 	ldi r28,lo8(matrizJugador1+192)
 	ldi r29,hi8(matrizJugador1+192)
-	rjmp .L22
-.LVL17:
-.L23:
-.LBB16:
-.LBB17:
-	.loc 1 313 0 discriminator 3
+	rjmp .L36
+.LVL23:
+.L37:
+.LBB18:
+.LBB19:
+	.loc 1 311 0 discriminator 3
 	ld r18,Z+
 	ld r19,Z+
 	ld r20,Z+
 	st X+,r18
 	st X+,r19
 	st X+,r20
-.LVL18:
-	.loc 1 312 0 discriminator 3
+.LVL24:
+	.loc 1 310 0 discriminator 3
 	cp r30,r24
 	cpc r31,r25
-	brne .L23
+	brne .L37
 	subi r22,-24
 	sbci r23,-1
 	movw r30,r24
-.LBE17:
-	.loc 1 311 0 discriminator 2
+.LBE19:
+	.loc 1 309 0 discriminator 2
 	cp r28,r24
 	cpc r29,r25
-	breq .L21
-.L22:
-.LVL19:
+	breq .L35
+.L36:
+.LVL25:
 	movw r24,r30
 	adiw r24,24
-.LBE16:
-	.loc 1 310 0 discriminator 1
+.LBE18:
+	.loc 1 308 0 discriminator 1
 	movw r26,r22
-	rjmp .L23
-.LVL20:
-.L21:
+	rjmp .L37
+.LVL26:
+.L35:
 /* epilogue start */
-	.loc 1 314 0
+	.loc 1 312 0
 	pop r29
 	pop r28
 	ret
@@ -350,64 +495,64 @@ copyArrayOf1:
 	.type	copyArrayOf2, @function
 copyArrayOf2:
 .LFB79:
-	.loc 1 318 0
+	.loc 1 316 0
 	.cfi_startproc
 	push r28
-.LCFI6:
+.LCFI10:
 	.cfi_def_cfa_offset 3
 	.cfi_offset 28, -2
 	push r29
-.LCFI7:
+.LCFI11:
 	.cfi_def_cfa_offset 4
 	.cfi_offset 29, -3
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 2 */
 .L__stack_usage = 2
-.LVL21:
+.LVL27:
 	ldi r30,lo8(matrizJugador2)
 	ldi r31,hi8(matrizJugador2)
 	ldi r22,lo8(display_rgb)
 	ldi r23,hi8(display_rgb)
 	ldi r28,lo8(matrizJugador2+192)
 	ldi r29,hi8(matrizJugador2+192)
-	rjmp .L27
-.LVL22:
-.L28:
-.LBB18:
-.LBB19:
-	.loc 1 321 0 discriminator 3
+	rjmp .L41
+.LVL28:
+.L42:
+.LBB20:
+.LBB21:
+	.loc 1 319 0 discriminator 3
 	ld r18,Z+
 	ld r19,Z+
 	ld r20,Z+
 	st X+,r18
 	st X+,r19
 	st X+,r20
-.LVL23:
-	.loc 1 320 0 discriminator 3
+.LVL29:
+	.loc 1 318 0 discriminator 3
 	cp r30,r24
 	cpc r31,r25
-	brne .L28
+	brne .L42
 	subi r22,-24
 	sbci r23,-1
 	movw r30,r24
-.LBE19:
-	.loc 1 319 0 discriminator 2
+.LBE21:
+	.loc 1 317 0 discriminator 2
 	cp r28,r24
 	cpc r29,r25
-	breq .L26
-.L27:
-.LVL24:
+	breq .L40
+.L41:
+.LVL30:
 	movw r24,r30
 	adiw r24,24
-.LBE18:
-	.loc 1 318 0 discriminator 1
+.LBE20:
+	.loc 1 316 0 discriminator 1
 	movw r26,r22
-	rjmp .L28
-.LVL25:
-.L26:
+	rjmp .L42
+.LVL31:
+.L40:
 /* epilogue start */
-	.loc 1 322 0
+	.loc 1 320 0
 	pop r29
 	pop r28
 	ret
@@ -419,60 +564,60 @@ copyArrayOf2:
 	.type	scanSubmarinos1, @function
 scanSubmarinos1:
 .LFB82:
-	.loc 1 343 0
+	.loc 1 341 0
 	.cfi_startproc
-.LVL26:
+.LVL32:
 	push r10
-.LCFI8:
+.LCFI12:
 	.cfi_def_cfa_offset 3
 	.cfi_offset 10, -2
 	push r11
-.LCFI9:
+.LCFI13:
 	.cfi_def_cfa_offset 4
 	.cfi_offset 11, -3
 	push r12
-.LCFI10:
+.LCFI14:
 	.cfi_def_cfa_offset 5
 	.cfi_offset 12, -4
 	push r13
-.LCFI11:
+.LCFI15:
 	.cfi_def_cfa_offset 6
 	.cfi_offset 13, -5
 	push r14
-.LCFI12:
+.LCFI16:
 	.cfi_def_cfa_offset 7
 	.cfi_offset 14, -6
 	push r15
-.LCFI13:
+.LCFI17:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 15, -7
 	push r16
-.LCFI14:
+.LCFI18:
 	.cfi_def_cfa_offset 9
 	.cfi_offset 16, -8
 	push r17
-.LCFI15:
+.LCFI19:
 	.cfi_def_cfa_offset 10
 	.cfi_offset 17, -9
 	push r28
-.LCFI16:
+.LCFI20:
 	.cfi_def_cfa_offset 11
 	.cfi_offset 28, -10
 	push r29
-.LCFI17:
+.LCFI21:
 	.cfi_def_cfa_offset 12
 	.cfi_offset 29, -11
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 10 */
 .L__stack_usage = 10
-.LVL27:
+.LVL33:
 	ldi r30,lo8(submarinosJugador1)
 	ldi r31,hi8(submarinosJugador1)
 	ldi r28,lo8(submarinosJugador1+9)
 	ldi r29,hi8(submarinosJugador1+9)
-.LBB20:
-	.loc 1 346 0
+.LBB22:
+	.loc 1 344 0
 	mov r20,r24
 	lsl r24
 	sbc r21,r21
@@ -480,9 +625,9 @@ scanSubmarinos1:
 	lsl r0
 	sbc r23,r23
 	ldi r24,lo8(1)
-.LVL28:
+.LVL34:
 	mov r15,__zero_reg__
-	.loc 1 349 0
+	.loc 1 347 0
 	movw r26,r22
 	lsl r26
 	rol r27
@@ -506,20 +651,20 @@ scanSubmarinos1:
 	subi r18,lo8(-(matrizJugador1))
 	sbci r19,hi8(-(matrizJugador1))
 	movw r10,r18
-.LVL29:
-.L35:
+.LVL35:
+.L49:
 	movw r16,r30
-	.loc 1 346 0
+	.loc 1 344 0
 	ld r18,Z
 	ldi r19,0
 	mov r25,r24
 	cp r18,r20
 	cpc r19,r21
-	breq .L33
+	breq .L47
 	mov r25,r15
-.L33:
+.L47:
 	tst r25
-	breq .L32
+	breq .L46
 	movw r26,r16
 	adiw r26,1
 	ld r18,X
@@ -527,16 +672,16 @@ scanSubmarinos1:
 	mov r25,r24
 	cp r18,r22
 	cpc r19,r23
-	breq .L34
+	breq .L48
 	mov r25,r15
-.L34:
+.L48:
 	tst r25
-	breq .L32
-	.loc 1 348 0
+	breq .L46
+	.loc 1 346 0
 	movw r26,r16
 	adiw r26,2
 	st X,r24
-	.loc 1 349 0
+	.loc 1 347 0
 	lds r12,Hundido
 	lds r13,Hundido+1
 	lds r14,Hundido+2
@@ -544,15 +689,15 @@ scanSubmarinos1:
 	st X+,r12
 	st X+,r13
 	st X,r14
-.L32:
+.L46:
 	adiw r30,3
-	.loc 1 344 0 discriminator 2
+	.loc 1 342 0 discriminator 2
 	cp r30,r28
 	cpc r31,r29
-	brne .L35
+	brne .L49
 /* epilogue start */
-.LBE20:
-	.loc 1 352 0
+.LBE22:
+	.loc 1 350 0
 	pop r29
 	pop r28
 	pop r17
@@ -572,60 +717,60 @@ scanSubmarinos1:
 	.type	scanSubmarinos2, @function
 scanSubmarinos2:
 .LFB83:
-	.loc 1 357 0
+	.loc 1 355 0
 	.cfi_startproc
-.LVL30:
+.LVL36:
 	push r10
-.LCFI18:
+.LCFI22:
 	.cfi_def_cfa_offset 3
 	.cfi_offset 10, -2
 	push r11
-.LCFI19:
+.LCFI23:
 	.cfi_def_cfa_offset 4
 	.cfi_offset 11, -3
 	push r12
-.LCFI20:
+.LCFI24:
 	.cfi_def_cfa_offset 5
 	.cfi_offset 12, -4
 	push r13
-.LCFI21:
+.LCFI25:
 	.cfi_def_cfa_offset 6
 	.cfi_offset 13, -5
 	push r14
-.LCFI22:
+.LCFI26:
 	.cfi_def_cfa_offset 7
 	.cfi_offset 14, -6
 	push r15
-.LCFI23:
+.LCFI27:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 15, -7
 	push r16
-.LCFI24:
+.LCFI28:
 	.cfi_def_cfa_offset 9
 	.cfi_offset 16, -8
 	push r17
-.LCFI25:
+.LCFI29:
 	.cfi_def_cfa_offset 10
 	.cfi_offset 17, -9
 	push r28
-.LCFI26:
+.LCFI30:
 	.cfi_def_cfa_offset 11
 	.cfi_offset 28, -10
 	push r29
-.LCFI27:
+.LCFI31:
 	.cfi_def_cfa_offset 12
 	.cfi_offset 29, -11
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 10 */
 .L__stack_usage = 10
-.LVL31:
+.LVL37:
 	ldi r30,lo8(submarinosJugador2)
 	ldi r31,hi8(submarinosJugador2)
 	ldi r28,lo8(submarinosJugador2+9)
 	ldi r29,hi8(submarinosJugador2+9)
-.LBB21:
-	.loc 1 360 0
+.LBB23:
+	.loc 1 358 0
 	mov r20,r24
 	lsl r24
 	sbc r21,r21
@@ -633,9 +778,9 @@ scanSubmarinos2:
 	lsl r0
 	sbc r23,r23
 	ldi r24,lo8(1)
-.LVL32:
+.LVL38:
 	mov r15,__zero_reg__
-	.loc 1 363 0
+	.loc 1 361 0
 	movw r26,r22
 	lsl r26
 	rol r27
@@ -659,20 +804,20 @@ scanSubmarinos2:
 	subi r18,lo8(-(matrizJugador2))
 	sbci r19,hi8(-(matrizJugador2))
 	movw r10,r18
-.LVL33:
-.L41:
+.LVL39:
+.L55:
 	movw r16,r30
-	.loc 1 360 0
+	.loc 1 358 0
 	ld r18,Z
 	ldi r19,0
 	mov r25,r24
 	cp r18,r20
 	cpc r19,r21
-	breq .L39
+	breq .L53
 	mov r25,r15
-.L39:
+.L53:
 	tst r25
-	breq .L38
+	breq .L52
 	movw r26,r16
 	adiw r26,1
 	ld r18,X
@@ -680,16 +825,16 @@ scanSubmarinos2:
 	mov r25,r24
 	cp r18,r22
 	cpc r19,r23
-	breq .L40
+	breq .L54
 	mov r25,r15
-.L40:
+.L54:
 	tst r25
-	breq .L38
-	.loc 1 362 0
+	breq .L52
+	.loc 1 360 0
 	movw r26,r16
 	adiw r26,2
 	st X,r24
-	.loc 1 363 0
+	.loc 1 361 0
 	lds r12,Hundido
 	lds r13,Hundido+1
 	lds r14,Hundido+2
@@ -697,15 +842,15 @@ scanSubmarinos2:
 	st X+,r12
 	st X+,r13
 	st X,r14
-.L38:
+.L52:
 	adiw r30,3
-	.loc 1 358 0 discriminator 2
+	.loc 1 356 0 discriminator 2
 	cp r30,r28
 	cpc r31,r29
-	brne .L41
+	brne .L55
 /* epilogue start */
-.LBE21:
-	.loc 1 366 0
+.LBE23:
+	.loc 1 364 0
 	pop r29
 	pop r28
 	pop r17
@@ -725,74 +870,74 @@ scanSubmarinos2:
 	.type	scanCargueros1, @function
 scanCargueros1:
 .LFB84:
-	.loc 1 371 0
+	.loc 1 369 0
 	.cfi_startproc
-.LVL34:
+.LVL40:
 	push r4
-.LCFI28:
+.LCFI32:
 	.cfi_def_cfa_offset 3
 	.cfi_offset 4, -2
 	push r5
-.LCFI29:
+.LCFI33:
 	.cfi_def_cfa_offset 4
 	.cfi_offset 5, -3
 	push r6
-.LCFI30:
+.LCFI34:
 	.cfi_def_cfa_offset 5
 	.cfi_offset 6, -4
 	push r7
-.LCFI31:
+.LCFI35:
 	.cfi_def_cfa_offset 6
 	.cfi_offset 7, -5
 	push r8
-.LCFI32:
+.LCFI36:
 	.cfi_def_cfa_offset 7
 	.cfi_offset 8, -6
 	push r10
-.LCFI33:
+.LCFI37:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 10, -7
 	push r11
-.LCFI34:
+.LCFI38:
 	.cfi_def_cfa_offset 9
 	.cfi_offset 11, -8
 	push r12
-.LCFI35:
+.LCFI39:
 	.cfi_def_cfa_offset 10
 	.cfi_offset 12, -9
 	push r13
-.LCFI36:
+.LCFI40:
 	.cfi_def_cfa_offset 11
 	.cfi_offset 13, -10
 	push r14
-.LCFI37:
+.LCFI41:
 	.cfi_def_cfa_offset 12
 	.cfi_offset 14, -11
 	push r15
-.LCFI38:
+.LCFI42:
 	.cfi_def_cfa_offset 13
 	.cfi_offset 15, -12
 	push r16
-.LCFI39:
+.LCFI43:
 	.cfi_def_cfa_offset 14
 	.cfi_offset 16, -13
 	push r17
-.LCFI40:
+.LCFI44:
 	.cfi_def_cfa_offset 15
 	.cfi_offset 17, -14
 	push r28
-.LCFI41:
+.LCFI45:
 	.cfi_def_cfa_offset 16
 	.cfi_offset 28, -15
 	push r29
-.LCFI42:
+.LCFI46:
 	.cfi_def_cfa_offset 17
 	.cfi_offset 29, -16
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 15 */
 .L__stack_usage = 15
-.LVL35:
+.LVL41:
 	ldi r30,lo8(carguerosJugador1)
 	ldi r31,hi8(carguerosJugador1)
 	mov __tmp_reg__,r31
@@ -801,8 +946,8 @@ scanCargueros1:
 	ldi r31,hi8(carguerosJugador1+12)
 	mov r15,r31
 	mov r31,__tmp_reg__
-.LBB22:
-	.loc 1 374 0
+.LBB24:
+	.loc 1 372 0
 	mov __tmp_reg__,r24
 	lsl r0
 	sbc r25,r25
@@ -812,7 +957,7 @@ scanCargueros1:
 	clr r11
 	inc r11
 	mov r10,__zero_reg__
-	.loc 1 394 0
+	.loc 1 392 0
 	movw r18,r22
 	lsl r18
 	rol r19
@@ -836,10 +981,10 @@ scanCargueros1:
 	subi r20,lo8(-(matrizJugador1))
 	sbci r21,hi8(-(matrizJugador1))
 	movw r4,r20
-.LVL36:
-.L52:
+.LVL42:
+.L66:
 	movw r28,r30
-	.loc 1 374 0
+	.loc 1 372 0
 	ld r18,Z
 	ldi r19,0
 	ldd r20,Z+1
@@ -847,28 +992,28 @@ scanCargueros1:
 	mov r17,r11
 	cp r18,r24
 	cpc r19,r25
-	breq .L45
+	breq .L59
 	mov r17,r10
-.L45:
+.L59:
 	tst r17
 	brne .+2
-	rjmp .L44
+	rjmp .L58
 	mov r17,r11
 	cp r20,r22
 	cpc r21,r23
-	breq .L46
+	breq .L60
 	mov r17,r10
-.L46:
+.L60:
 	tst r17
 	brne .+2
-	rjmp .L44
-	.loc 1 376 0
+	rjmp .L58
+	.loc 1 374 0
 	std Y+2,r11
-	.loc 1 377 0
+	.loc 1 375 0
 	ldd r17,Y+5
 	cpi r17,lo8(1)
-	brne .L47
-	.loc 1 379 0
+	brne .L61
+	.loc 1 377 0
 	movw r16,r20
 	lsl r16
 	rol r17
@@ -896,7 +1041,7 @@ scanCargueros1:
 	st X+,r6
 	st X+,r7
 	st X,r8
-	.loc 1 380 0
+	.loc 1 378 0
 	ldd r20,Y+4
 	ldi r21,0
 	ldd r18,Y+3
@@ -925,9 +1070,9 @@ scanCargueros1:
 	st Y,r6
 	std Y+1,r7
 	std Y+2,r8
-	rjmp .L48
-.L47:
-	.loc 1 383 0
+	rjmp .L62
+.L61:
+	.loc 1 381 0
 	lds r18,Danado
 	lds r19,Danado+1
 	lds r20,Danado+2
@@ -935,9 +1080,9 @@ scanCargueros1:
 	st X+,r18
 	st X+,r19
 	st X,r20
-	rjmp .L48
-.L44:
-	.loc 1 385 0
+	rjmp .L62
+.L58:
+	.loc 1 383 0
 	ldd r16,Y+3
 	ldi r17,0
 	ldd r12,Y+4
@@ -945,28 +1090,28 @@ scanCargueros1:
 	mov r8,r11
 	cp r24,r16
 	cpc r25,r17
-	breq .L49
+	breq .L63
 	mov r8,r10
-.L49:
+.L63:
 	tst r8
 	brne .+2
-	rjmp .L48
+	rjmp .L62
 	mov r8,r11
 	cp r22,r12
 	cpc r23,r13
-	breq .L50
+	breq .L64
 	mov r8,r10
-.L50:
+.L64:
 	tst r8
 	brne .+2
-	rjmp .L48
-	.loc 1 387 0
+	rjmp .L62
+	.loc 1 385 0
 	std Y+5,r11
-	.loc 1 388 0
+	.loc 1 386 0
 	ldd r28,Y+2
 	cpi r28,lo8(1)
-	brne .L51
-	.loc 1 390 0
+	brne .L65
+	.loc 1 388 0
 	movw r28,r20
 	lsl r28
 	rol r29
@@ -994,7 +1139,7 @@ scanCargueros1:
 	st Y,r18
 	std Y+1,r19
 	std Y+2,r20
-	.loc 1 391 0
+	.loc 1 389 0
 	movw r28,r12
 	lsl r28
 	rol r29
@@ -1018,9 +1163,9 @@ scanCargueros1:
 	st Y,r18
 	std Y+1,r19
 	std Y+2,r20
-	rjmp .L48
-.L51:
-	.loc 1 394 0
+	rjmp .L62
+.L65:
+	.loc 1 392 0
 	lds r18,Danado
 	lds r19,Danado+1
 	lds r20,Danado+2
@@ -1028,16 +1173,16 @@ scanCargueros1:
 	st X+,r18
 	st X+,r19
 	st X,r20
-.L48:
+.L62:
 	adiw r30,6
-	.loc 1 372 0 discriminator 2
+	.loc 1 370 0 discriminator 2
 	cp r30,r14
 	cpc r31,r15
 	breq .+2
-	rjmp .L52
+	rjmp .L66
 /* epilogue start */
-.LBE22:
-	.loc 1 397 0
+.LBE24:
+	.loc 1 395 0
 	pop r29
 	pop r28
 	pop r17
@@ -1062,15 +1207,15 @@ scanCargueros1:
 	.type	shootPlayer1, @function
 shootPlayer1:
 .LFB80:
-	.loc 1 326 0
+	.loc 1 324 0
 	.cfi_startproc
-.LVL37:
+.LVL43:
 	push r28
-.LCFI43:
+.LCFI47:
 	.cfi_def_cfa_offset 3
 	.cfi_offset 28, -2
 	push r29
-.LCFI44:
+.LCFI48:
 	.cfi_def_cfa_offset 4
 	.cfi_offset 29, -3
 /* prologue: function */
@@ -1079,7 +1224,7 @@ shootPlayer1:
 .L__stack_usage = 2
 	mov r28,r24
 	mov r29,r22
-	.loc 1 327 0
+	.loc 1 325 0
 	mov r30,r22
 	mov __tmp_reg__,r22
 	lsl r0
@@ -1087,7 +1232,7 @@ shootPlayer1:
 	mov __tmp_reg__,r24
 	lsl r0
 	sbc r25,r25
-.LVL38:
+.LVL44:
 	movw r18,r30
 	lsl r18
 	rol r19
@@ -1114,21 +1259,21 @@ shootPlayer1:
 	st Z,r24
 	std Z+1,r25
 	std Z+2,r26
-	.loc 1 328 0
+	.loc 1 326 0
 	mov r24,r28
 	call scanSubmarinos1
-.LVL39:
-	.loc 1 329 0
+.LVL45:
+	.loc 1 327 0
 	mov r22,r29
 	mov r24,r28
 	call scanCargueros1
-.LVL40:
+.LVL46:
 /* epilogue start */
-	.loc 1 330 0
+	.loc 1 328 0
 	pop r29
-.LVL41:
+.LVL47:
 	pop r28
-.LVL42:
+.LVL48:
 	ret
 	.cfi_endproc
 .LFE80:
@@ -1138,58 +1283,58 @@ shootPlayer1:
 	.type	playPlayer2, @function
 playPlayer2:
 .LFB74:
-	.loc 1 193 0
+	.loc 1 194 0
 	.cfi_startproc
 	push r16
-.LCFI45:
+.LCFI49:
 	.cfi_def_cfa_offset 3
 	.cfi_offset 16, -2
 	push r17
-.LCFI46:
+.LCFI50:
 	.cfi_def_cfa_offset 4
 	.cfi_offset 17, -3
 	push r28
-.LCFI47:
+.LCFI51:
 	.cfi_def_cfa_offset 5
 	.cfi_offset 28, -4
 	push r29
-.LCFI48:
+.LCFI52:
 	.cfi_def_cfa_offset 6
 	.cfi_offset 29, -5
 	rcall .
-.LCFI49:
+.LCFI53:
 	.cfi_def_cfa_offset 8
 	in r28,__SP_L__
 	in r29,__SP_H__
-.LCFI50:
+.LCFI54:
 	.cfi_def_cfa_register 28
 /* prologue: function */
 /* frame size = 2 */
 /* stack size = 6 */
 .L__stack_usage = 6
-	.loc 1 195 0
+	.loc 1 196 0
 	ldi r24,lo8(20)
 	ldi r25,0
 	std Y+2,r25
 	std Y+1,r24
-	.loc 1 197 0
+	.loc 1 198 0
 	lds r24,jButton
 	tst r24
 	brne .+2
-	rjmp .L56
-	.loc 1 203 0
+	rjmp .L70
+	.loc 1 204 0
 	ldi r16,lo8(20)
 	ldi r17,0
-.L61:
-	.loc 1 199 0
+.L75:
+	.loc 1 200 0
 	ldd r24,Y+1
 	ldd r25,Y+2
 	or r24,r25
-	brne .L57
-	.loc 1 201 0
-	call copyArrayOf1
-.LVL43:
+	brne .L71
 	.loc 1 202 0
+	call copyArrayOf1
+.LVL49:
+	.loc 1 203 0
 	lds r30,yMovement
 	ldi r31,0
 	lds r24,xMovement
@@ -1220,20 +1365,20 @@ playPlayer2:
 	st Z,r24
 	std Z+1,r25
 	std Z+2,r26
-	.loc 1 203 0
+	.loc 1 204 0
 	std Y+2,r17
 	std Y+1,r16
-	rjmp .L58
-.L57:
-	.loc 1 205 0
+	rjmp .L72
+.L71:
+	.loc 1 206 0
 	ldd r24,Y+1
 	ldd r25,Y+2
 	sbiw r24,10
-	brlt .L59
-	.loc 1 207 0
-	call copyArrayOf1
-.LVL44:
+	brlt .L73
 	.loc 1 208 0
+	call copyArrayOf1
+.LVL50:
+	.loc 1 209 0
 	lds r30,yMovement
 	ldi r31,0
 	lds r24,xMovement
@@ -1264,68 +1409,71 @@ playPlayer2:
 	st Z,r24
 	std Z+1,r25
 	std Z+2,r26
-	.loc 1 209 0
+	.loc 1 210 0
 	ldd r24,Y+1
 	ldd r25,Y+2
 	sbiw r24,1
 	std Y+2,r25
 	std Y+1,r24
-	rjmp .L58
-.L59:
-	.loc 1 213 0
-	call copyArrayOf1
-.LVL45:
+	rjmp .L72
+.L73:
 	.loc 1 214 0
+	call copyArrayOf1
+.LVL51:
+	.loc 1 215 0
 	ldd r24,Y+1
 	ldd r25,Y+2
 	sbiw r24,1
 	std Y+2,r25
 	std Y+1,r24
-.L58:
-	.loc 1 217 0
+.L72:
+	.loc 1 218 0
 	lds r24,p2disp
 	lds r25,p2disp+1
 	call wrt_ws2812
-.LVL46:
-.LBB23:
-.LBB24:
+.LVL52:
+.LBB25:
+.LBB26:
 	.loc 2 187 0
-	ldi r24,lo8(-25537)
-	ldi r25,hi8(-25537)
-1:	sbiw r24,1
+	ldi r18,lo8(63999)
+	ldi r24,hi8(63999)
+	ldi r25,hlo8(63999)
+1:	subi r18,1
+	sbci r24,0
+	sbci r25,0
 	brne 1b
 	rjmp .
 	nop
-.LBE24:
-.LBE23:
-	.loc 1 197 0
+.LBE26:
+.LBE25:
+	.loc 1 198 0
 	lds r24,jButton
 	cpse r24,__zero_reg__
-	rjmp .L61
-.LVL47:
-.L56:
-	.loc 1 222 0
+	rjmp .L75
+.LVL53:
+.L70:
+	.loc 1 223 0
 	lds r22,yMovement
 	lds r24,xMovement
 	call shootPlayer1
-.LVL48:
-	.loc 1 224 0
-	call copyArrayOf1
-.LVL49:
+.LVL54:
 	.loc 1 225 0
+	call copyArrayOf1
+.LVL55:
+	.loc 1 226 0
 	lds r24,p2disp
 	lds r25,p2disp+1
 	call wrt_ws2812
-.LVL50:
-	.loc 1 227 0
-	ldi r24,0
-	call delaySeconds
-.LVL51:
+.LVL56:
 	.loc 1 228 0
+	ldi r24,lo8(3)
+	call delaySeconds
+.LVL57:
+	.loc 1 229 0
 	ldi r24,lo8(1)
 	sts playerTurn,r24
 /* epilogue start */
-	.loc 1 229 0
+	.loc 1 230 0
 	pop __tmp_reg__
 	pop __tmp_reg__
 	pop r29
@@ -1341,74 +1489,74 @@ playPlayer2:
 	.type	scanCargueros2, @function
 scanCargueros2:
 .LFB85:
-	.loc 1 402 0
+	.loc 1 400 0
 	.cfi_startproc
-.LVL52:
+.LVL58:
 	push r4
-.LCFI51:
+.LCFI55:
 	.cfi_def_cfa_offset 3
 	.cfi_offset 4, -2
 	push r5
-.LCFI52:
+.LCFI56:
 	.cfi_def_cfa_offset 4
 	.cfi_offset 5, -3
 	push r6
-.LCFI53:
+.LCFI57:
 	.cfi_def_cfa_offset 5
 	.cfi_offset 6, -4
 	push r7
-.LCFI54:
+.LCFI58:
 	.cfi_def_cfa_offset 6
 	.cfi_offset 7, -5
 	push r8
-.LCFI55:
+.LCFI59:
 	.cfi_def_cfa_offset 7
 	.cfi_offset 8, -6
 	push r10
-.LCFI56:
+.LCFI60:
 	.cfi_def_cfa_offset 8
 	.cfi_offset 10, -7
 	push r11
-.LCFI57:
+.LCFI61:
 	.cfi_def_cfa_offset 9
 	.cfi_offset 11, -8
 	push r12
-.LCFI58:
+.LCFI62:
 	.cfi_def_cfa_offset 10
 	.cfi_offset 12, -9
 	push r13
-.LCFI59:
+.LCFI63:
 	.cfi_def_cfa_offset 11
 	.cfi_offset 13, -10
 	push r14
-.LCFI60:
+.LCFI64:
 	.cfi_def_cfa_offset 12
 	.cfi_offset 14, -11
 	push r15
-.LCFI61:
+.LCFI65:
 	.cfi_def_cfa_offset 13
 	.cfi_offset 15, -12
 	push r16
-.LCFI62:
+.LCFI66:
 	.cfi_def_cfa_offset 14
 	.cfi_offset 16, -13
 	push r17
-.LCFI63:
+.LCFI67:
 	.cfi_def_cfa_offset 15
 	.cfi_offset 17, -14
 	push r28
-.LCFI64:
+.LCFI68:
 	.cfi_def_cfa_offset 16
 	.cfi_offset 28, -15
 	push r29
-.LCFI65:
+.LCFI69:
 	.cfi_def_cfa_offset 17
 	.cfi_offset 29, -16
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 15 */
 .L__stack_usage = 15
-.LVL53:
+.LVL59:
 	ldi r30,lo8(carguerosJugador2)
 	ldi r31,hi8(carguerosJugador2)
 	mov __tmp_reg__,r31
@@ -1417,8 +1565,8 @@ scanCargueros2:
 	ldi r31,hi8(carguerosJugador2+12)
 	mov r15,r31
 	mov r31,__tmp_reg__
-.LBB25:
-	.loc 1 405 0
+.LBB27:
+	.loc 1 403 0
 	mov __tmp_reg__,r24
 	lsl r0
 	sbc r25,r25
@@ -1428,7 +1576,7 @@ scanCargueros2:
 	clr r11
 	inc r11
 	mov r10,__zero_reg__
-	.loc 1 425 0
+	.loc 1 423 0
 	movw r18,r22
 	lsl r18
 	rol r19
@@ -1452,10 +1600,10 @@ scanCargueros2:
 	subi r20,lo8(-(matrizJugador2))
 	sbci r21,hi8(-(matrizJugador2))
 	movw r4,r20
-.LVL54:
-.L72:
+.LVL60:
+.L86:
 	movw r28,r30
-	.loc 1 405 0
+	.loc 1 403 0
 	ld r18,Z
 	ldi r19,0
 	ldd r20,Z+1
@@ -1463,28 +1611,28 @@ scanCargueros2:
 	mov r17,r11
 	cp r18,r24
 	cpc r19,r25
-	breq .L65
+	breq .L79
 	mov r17,r10
-.L65:
+.L79:
 	tst r17
 	brne .+2
-	rjmp .L64
+	rjmp .L78
 	mov r17,r11
 	cp r20,r22
 	cpc r21,r23
-	breq .L66
+	breq .L80
 	mov r17,r10
-.L66:
+.L80:
 	tst r17
 	brne .+2
-	rjmp .L64
-	.loc 1 407 0
+	rjmp .L78
+	.loc 1 405 0
 	std Y+2,r11
-	.loc 1 408 0
+	.loc 1 406 0
 	ldd r17,Y+5
 	cpi r17,lo8(1)
-	brne .L67
-	.loc 1 410 0
+	brne .L81
+	.loc 1 408 0
 	movw r16,r20
 	lsl r16
 	rol r17
@@ -1512,7 +1660,7 @@ scanCargueros2:
 	st X+,r6
 	st X+,r7
 	st X,r8
-	.loc 1 411 0
+	.loc 1 409 0
 	ldd r20,Y+4
 	ldi r21,0
 	ldd r18,Y+3
@@ -1541,9 +1689,9 @@ scanCargueros2:
 	st Y,r6
 	std Y+1,r7
 	std Y+2,r8
-	rjmp .L68
-.L67:
-	.loc 1 414 0
+	rjmp .L82
+.L81:
+	.loc 1 412 0
 	lds r18,Danado
 	lds r19,Danado+1
 	lds r20,Danado+2
@@ -1551,9 +1699,9 @@ scanCargueros2:
 	st X+,r18
 	st X+,r19
 	st X,r20
-	rjmp .L68
-.L64:
-	.loc 1 416 0
+	rjmp .L82
+.L78:
+	.loc 1 414 0
 	ldd r16,Y+3
 	ldi r17,0
 	ldd r12,Y+4
@@ -1561,28 +1709,28 @@ scanCargueros2:
 	mov r8,r11
 	cp r24,r16
 	cpc r25,r17
-	breq .L69
+	breq .L83
 	mov r8,r10
-.L69:
+.L83:
 	tst r8
 	brne .+2
-	rjmp .L68
+	rjmp .L82
 	mov r8,r11
 	cp r22,r12
 	cpc r23,r13
-	breq .L70
+	breq .L84
 	mov r8,r10
-.L70:
+.L84:
 	tst r8
 	brne .+2
-	rjmp .L68
-	.loc 1 418 0
+	rjmp .L82
+	.loc 1 416 0
 	std Y+5,r11
-	.loc 1 419 0
+	.loc 1 417 0
 	ldd r28,Y+2
 	cpi r28,lo8(1)
-	brne .L71
-	.loc 1 421 0
+	brne .L85
+	.loc 1 419 0
 	movw r28,r20
 	lsl r28
 	rol r29
@@ -1610,7 +1758,7 @@ scanCargueros2:
 	st Y,r18
 	std Y+1,r19
 	std Y+2,r20
-	.loc 1 422 0
+	.loc 1 420 0
 	movw r28,r12
 	lsl r28
 	rol r29
@@ -1634,9 +1782,9 @@ scanCargueros2:
 	st Y,r18
 	std Y+1,r19
 	std Y+2,r20
-	rjmp .L68
-.L71:
-	.loc 1 425 0
+	rjmp .L82
+.L85:
+	.loc 1 423 0
 	lds r18,Danado
 	lds r19,Danado+1
 	lds r20,Danado+2
@@ -1644,16 +1792,16 @@ scanCargueros2:
 	st X+,r18
 	st X+,r19
 	st X,r20
-.L68:
+.L82:
 	adiw r30,6
-	.loc 1 403 0 discriminator 2
+	.loc 1 401 0 discriminator 2
 	cp r30,r14
 	cpc r31,r15
 	breq .+2
-	rjmp .L72
+	rjmp .L86
 /* epilogue start */
-.LBE25:
-	.loc 1 428 0
+.LBE27:
+	.loc 1 426 0
 	pop r29
 	pop r28
 	pop r17
@@ -1678,15 +1826,15 @@ scanCargueros2:
 	.type	shootPlayer2, @function
 shootPlayer2:
 .LFB81:
-	.loc 1 334 0
+	.loc 1 332 0
 	.cfi_startproc
-.LVL55:
+.LVL61:
 	push r28
-.LCFI66:
+.LCFI70:
 	.cfi_def_cfa_offset 3
 	.cfi_offset 28, -2
 	push r29
-.LCFI67:
+.LCFI71:
 	.cfi_def_cfa_offset 4
 	.cfi_offset 29, -3
 /* prologue: function */
@@ -1695,7 +1843,7 @@ shootPlayer2:
 .L__stack_usage = 2
 	mov r28,r24
 	mov r29,r22
-	.loc 1 335 0
+	.loc 1 333 0
 	mov r30,r22
 	mov __tmp_reg__,r22
 	lsl r0
@@ -1703,7 +1851,7 @@ shootPlayer2:
 	mov __tmp_reg__,r24
 	lsl r0
 	sbc r25,r25
-.LVL56:
+.LVL62:
 	movw r18,r30
 	lsl r18
 	rol r19
@@ -1730,21 +1878,21 @@ shootPlayer2:
 	st Z,r24
 	std Z+1,r25
 	std Z+2,r26
-	.loc 1 336 0
+	.loc 1 334 0
 	mov r24,r28
 	call scanSubmarinos2
-.LVL57:
-	.loc 1 337 0
+.LVL63:
+	.loc 1 335 0
 	mov r22,r29
 	mov r24,r28
 	call scanCargueros2
-.LVL58:
+.LVL64:
 /* epilogue start */
-	.loc 1 338 0
+	.loc 1 336 0
 	pop r29
-.LVL59:
+.LVL65:
 	pop r28
-.LVL60:
+.LVL66:
 	ret
 	.cfi_endproc
 .LFE81:
@@ -1754,58 +1902,58 @@ shootPlayer2:
 	.type	playPlayer1, @function
 playPlayer1:
 .LFB73:
-	.loc 1 153 0
+	.loc 1 154 0
 	.cfi_startproc
 	push r16
-.LCFI68:
+.LCFI72:
 	.cfi_def_cfa_offset 3
 	.cfi_offset 16, -2
 	push r17
-.LCFI69:
+.LCFI73:
 	.cfi_def_cfa_offset 4
 	.cfi_offset 17, -3
 	push r28
-.LCFI70:
+.LCFI74:
 	.cfi_def_cfa_offset 5
 	.cfi_offset 28, -4
 	push r29
-.LCFI71:
+.LCFI75:
 	.cfi_def_cfa_offset 6
 	.cfi_offset 29, -5
 	rcall .
-.LCFI72:
+.LCFI76:
 	.cfi_def_cfa_offset 8
 	in r28,__SP_L__
 	in r29,__SP_H__
-.LCFI73:
+.LCFI77:
 	.cfi_def_cfa_register 28
 /* prologue: function */
 /* frame size = 2 */
 /* stack size = 6 */
 .L__stack_usage = 6
-	.loc 1 155 0
+	.loc 1 156 0
 	ldi r24,lo8(20)
 	ldi r25,0
 	std Y+2,r25
 	std Y+1,r24
-	.loc 1 157 0
+	.loc 1 158 0
 	lds r24,jButton
 	tst r24
 	brne .+2
-	rjmp .L76
-	.loc 1 163 0
+	rjmp .L90
+	.loc 1 164 0
 	ldi r16,lo8(20)
 	ldi r17,0
-.L81:
-	.loc 1 159 0
+.L95:
+	.loc 1 160 0
 	ldd r24,Y+1
 	ldd r25,Y+2
 	or r24,r25
-	brne .L77
-	.loc 1 161 0
-	call copyArrayOf2
-.LVL61:
+	brne .L91
 	.loc 1 162 0
+	call copyArrayOf2
+.LVL67:
+	.loc 1 163 0
 	lds r30,yMovement
 	ldi r31,0
 	lds r24,xMovement
@@ -1836,20 +1984,20 @@ playPlayer1:
 	st Z,r24
 	std Z+1,r25
 	std Z+2,r26
-	.loc 1 163 0
+	.loc 1 164 0
 	std Y+2,r17
 	std Y+1,r16
-	rjmp .L78
-.L77:
-	.loc 1 165 0
+	rjmp .L92
+.L91:
+	.loc 1 166 0
 	ldd r24,Y+1
 	ldd r25,Y+2
 	sbiw r24,10
-	brlt .L79
-	.loc 1 167 0
-	call copyArrayOf2
-.LVL62:
+	brlt .L93
 	.loc 1 168 0
+	call copyArrayOf2
+.LVL68:
+	.loc 1 169 0
 	lds r30,yMovement
 	ldi r31,0
 	lds r24,xMovement
@@ -1880,68 +2028,71 @@ playPlayer1:
 	st Z,r24
 	std Z+1,r25
 	std Z+2,r26
-	.loc 1 169 0
+	.loc 1 170 0
 	ldd r24,Y+1
 	ldd r25,Y+2
 	sbiw r24,1
 	std Y+2,r25
 	std Y+1,r24
-	rjmp .L78
-.L79:
-	.loc 1 173 0
-	call copyArrayOf2
-.LVL63:
+	rjmp .L92
+.L93:
 	.loc 1 174 0
+	call copyArrayOf2
+.LVL69:
+	.loc 1 175 0
 	ldd r24,Y+1
 	ldd r25,Y+2
 	sbiw r24,1
 	std Y+2,r25
 	std Y+1,r24
-.L78:
-	.loc 1 177 0
+.L92:
+	.loc 1 178 0
 	lds r24,p2disp
 	lds r25,p2disp+1
 	call wrt_ws2812
-.LVL64:
-.LBB26:
-.LBB27:
+.LVL70:
+.LBB28:
+.LBB29:
 	.loc 2 187 0
-	ldi r24,lo8(-25537)
-	ldi r25,hi8(-25537)
-1:	sbiw r24,1
+	ldi r18,lo8(63999)
+	ldi r24,hi8(63999)
+	ldi r25,hlo8(63999)
+1:	subi r18,1
+	sbci r24,0
+	sbci r25,0
 	brne 1b
 	rjmp .
 	nop
-.LBE27:
-.LBE26:
-	.loc 1 157 0
+.LBE29:
+.LBE28:
+	.loc 1 158 0
 	lds r24,jButton
 	cpse r24,__zero_reg__
-	rjmp .L81
-.LVL65:
-.L76:
-	.loc 1 182 0
+	rjmp .L95
+.LVL71:
+.L90:
+	.loc 1 183 0
 	lds r22,yMovement
 	lds r24,xMovement
 	call shootPlayer2
-.LVL66:
-	.loc 1 184 0
-	call copyArrayOf2
-.LVL67:
+.LVL72:
 	.loc 1 185 0
+	call copyArrayOf2
+.LVL73:
+	.loc 1 186 0
 	lds r24,p2disp
 	lds r25,p2disp+1
 	call wrt_ws2812
-.LVL68:
-	.loc 1 187 0
-	ldi r24,0
-	call delaySeconds
-.LVL69:
+.LVL74:
 	.loc 1 188 0
+	ldi r24,lo8(3)
+	call delaySeconds
+.LVL75:
+	.loc 1 189 0
 	ldi r24,lo8(2)
 	sts playerTurn,r24
 /* epilogue start */
-	.loc 1 189 0
+	.loc 1 190 0
 	pop __tmp_reg__
 	pop __tmp_reg__
 	pop r29
@@ -1957,70 +2108,70 @@ playPlayer1:
 	.type	gameOn, @function
 gameOn:
 .LFB72:
-	.loc 1 129 0
+	.loc 1 130 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-	.loc 1 136 0
+	.loc 1 137 0
 	ldi r29,lo8(3)
-	.loc 1 142 0
+	.loc 1 143 0
 	ldi r28,lo8(4)
-	.loc 1 130 0
-	rjmp .L89
-.L93:
-	.loc 1 133 0
+	.loc 1 131 0
+	rjmp .L103
+.L107:
+	.loc 1 134 0
 	call playPlayer1
-.LVL70:
-	.loc 1 132 0
+.LVL76:
+	.loc 1 133 0
 	lds r24,playerTurn
 	cpi r24,lo8(1)
-	breq .L93
-.L91:
-	.loc 1 135 0
-	call checkPlayer1Win
-.LVL71:
-	cpi r24,lo8(1)
-	brne .L86
+	breq .L107
+.L105:
 	.loc 1 136 0
-	sts playerTurn,r29
-	rjmp .L87
-.L86:
-	.loc 1 138 0
-	lds r24,playerTurn
-	cpi r24,lo8(2)
-	brne .L87
-.L92:
-	.loc 1 139 0
-	call playPlayer2
-.LVL72:
-	.loc 1 138 0
-	lds r24,playerTurn
-	cpi r24,lo8(2)
-	breq .L92
-.L87:
-	.loc 1 141 0
-	call checkPlayer2Win
-.LVL73:
+	call checkPlayer1Win
+.LVL77:
 	cpi r24,lo8(1)
-	brne .L89
+	brne .L100
+	.loc 1 137 0
+	sts playerTurn,r29
+	rjmp .L101
+.L100:
+	.loc 1 139 0
+	lds r24,playerTurn
+	cpi r24,lo8(2)
+	brne .L101
+.L106:
+	.loc 1 140 0
+	call playPlayer2
+.LVL78:
+	.loc 1 139 0
+	lds r24,playerTurn
+	cpi r24,lo8(2)
+	breq .L106
+.L101:
 	.loc 1 142 0
+	call checkPlayer2Win
+.LVL79:
+	cpi r24,lo8(1)
+	brne .L103
+	.loc 1 143 0
 	sts playerTurn,r28
-.L89:
-	.loc 1 130 0
+.L103:
+	.loc 1 131 0
 	lds r24,playerTurn
 	ldi r25,lo8(-1)
 	add r25,r24
 	cpi r25,lo8(2)
-	brsh .L90
-	.loc 1 132 0
+	brsh .L104
+	.loc 1 133 0
 	cpi r24,lo8(1)
-	breq .L93
-	rjmp .L91
-.L90:
-.L97:
-	rjmp .L97
+	breq .L107
+	rjmp .L105
+.L104:
+.L111:
+	rjmp .L111
 	.cfi_endproc
 .LFE72:
 	.size	gameOn, .-gameOn
@@ -2029,116 +2180,116 @@ gameOn:
 	.type	main, @function
 main:
 .LFB71:
-	.loc 1 105 0
+	.loc 1 106 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-	.loc 1 106 0
-	call init_ws2812
-.LVL74:
 	.loc 1 107 0
-	call init_RTI
-.LVL75:
+	call init_ws2812
+.LVL80:
 	.loc 1 108 0
-	call UART_Init
-.LVL76:
+	call init_RTI
+.LVL81:
 	.loc 1 109 0
-	call adc_init
-.LVL77:
+	call UART_Init
+.LVL82:
 	.loc 1 110 0
-	call wrt_Digit_Init
-.LVL78:
+	call adc_init
+.LVL83:
 	.loc 1 111 0
+	call wrt_Digit_Init
+.LVL84:
+	.loc 1 112 0
 	ldi r24,lo8(1)
 	sts playerTurn,r24
-	.loc 1 113 0
+	.loc 1 114 0
 	ldi r24,lo8(display_rgb)
 	ldi r25,hi8(display_rgb)
 	sts p2disp+1,r25
 	sts p2disp,r24
-.LVL79:
+.LVL85:
 	ldi r30,lo8(matrizJugador1)
 	ldi r31,hi8(matrizJugador1)
 	ldi r20,lo8(matrizJugador1+192)
 	ldi r21,hi8(matrizJugador1+192)
-	rjmp .L99
-.LVL80:
-.L100:
-.LBB28:
-.LBB29:
-	.loc 1 117 0 discriminator 3
+	rjmp .L113
+.LVL86:
+.L114:
+.LBB30:
+.LBB31:
+	.loc 1 118 0 discriminator 3
 	lds r24,Apagado
 	lds r25,Apagado+1
 	lds r26,Apagado+2
 	st Z+,r24
 	st Z+,r25
 	st Z+,r26
-.LVL81:
-	.loc 1 116 0 discriminator 3
+.LVL87:
+	.loc 1 117 0 discriminator 3
 	cp r30,r18
 	cpc r31,r19
-	brne .L100
+	brne .L114
 	movw r30,r18
-.LBE29:
-	.loc 1 115 0 discriminator 2
+.LBE31:
+	.loc 1 116 0 discriminator 2
 	cp r20,r18
 	cpc r21,r19
-	brne .L99
+	brne .L113
 	ldi r30,lo8(matrizJugador2)
 	ldi r31,hi8(matrizJugador2)
 	ldi r20,lo8(matrizJugador2+192)
 	ldi r21,hi8(matrizJugador2+192)
-	rjmp .L101
-.L99:
-.LVL82:
+	rjmp .L115
+.L113:
+.LVL88:
 	movw r18,r30
 	subi r18,-24
 	sbci r19,-1
-	rjmp .L100
-.LVL83:
-.L102:
-.LBE28:
-.LBB30:
-.LBB31:
-	.loc 1 121 0 discriminator 3
+	rjmp .L114
+.LVL89:
+.L116:
+.LBE30:
+.LBB32:
+.LBB33:
+	.loc 1 122 0 discriminator 3
 	lds r24,Apagado
 	lds r25,Apagado+1
 	lds r26,Apagado+2
 	st Z+,r24
 	st Z+,r25
 	st Z+,r26
-.LVL84:
-	.loc 1 120 0 discriminator 3
+.LVL90:
+	.loc 1 121 0 discriminator 3
 	cp r30,r18
 	cpc r31,r19
-	brne .L102
-.LVL85:
+	brne .L116
+.LVL91:
 	movw r30,r18
-.LBE31:
-	.loc 1 119 0 discriminator 2
+.LBE33:
+	.loc 1 120 0 discriminator 2
 	cp r20,r18
 	cpc r21,r19
-	breq .L103
-.L101:
-.LVL86:
+	breq .L117
+.L115:
+.LVL92:
 	movw r18,r30
 	subi r18,-24
 	sbci r19,-1
-	rjmp .L102
-.LVL87:
-.L103:
-.LBE30:
-	.loc 1 123 0
+	rjmp .L116
+.LVL93:
+.L117:
+.LBE32:
+	.loc 1 124 0
 /* #APP */
- ;  123 "../src/main.c" 1
+ ;  124 "../src/main.c" 1
 	sei
  ;  0 "" 2
-	.loc 1 125 0
+	.loc 1 126 0
 /* #NOAPP */
 	call gameOn
-.LVL88:
+.LVL94:
 	.cfi_endproc
 .LFE71:
 	.size	main, .-main
@@ -2147,50 +2298,50 @@ main:
 	.type	clear_disp, @function
 clear_disp:
 .LFB86:
-	.loc 1 431 0
+	.loc 1 429 0
 	.cfi_startproc
 /* prologue: function */
 /* frame size = 0 */
 /* stack size = 0 */
 .L__stack_usage = 0
-.LVL89:
+.LVL95:
 	ldi r30,lo8(display_rgb)
 	ldi r31,hi8(display_rgb)
 	ldi r20,lo8(display_rgb+192)
 	ldi r21,hi8(display_rgb+192)
-	rjmp .L108
-.LVL90:
-.L109:
-.LBB32:
-.LBB33:
-	.loc 1 434 0 discriminator 3
+	rjmp .L122
+.LVL96:
+.L123:
+.LBB34:
+.LBB35:
+	.loc 1 432 0 discriminator 3
 	lds r24,Apagado
 	lds r25,Apagado+1
 	lds r26,Apagado+2
 	st Z+,r24
 	st Z+,r25
 	st Z+,r26
-.LVL91:
-	.loc 1 433 0 discriminator 3
+.LVL97:
+	.loc 1 431 0 discriminator 3
 	cp r30,r18
 	cpc r31,r19
-	brne .L109
+	brne .L123
 	movw r30,r18
-.LBE33:
-	.loc 1 432 0 discriminator 2
+.LBE35:
+	.loc 1 430 0 discriminator 2
 	cp r20,r18
 	cpc r21,r19
-	breq .L107
-.L108:
-.LVL92:
+	breq .L121
+.L122:
+.LVL98:
 	movw r18,r30
 	subi r18,-24
 	sbci r19,-1
-	rjmp .L109
-.LVL93:
-.L107:
+	rjmp .L123
+.LVL99:
+.L121:
 	ret
-.LBE32:
+.LBE34:
 	.cfi_endproc
 .LFE86:
 	.size	clear_disp, .-clear_disp
@@ -2199,29 +2350,29 @@ clear_disp:
 	.type	softdelay, @function
 softdelay:
 .LFB87:
-	.loc 1 439 0
+	.loc 1 437 0
 	.cfi_startproc
 	push r28
-.LCFI74:
+.LCFI78:
 	.cfi_def_cfa_offset 3
 	.cfi_offset 28, -2
 	push r29
-.LCFI75:
+.LCFI79:
 	.cfi_def_cfa_offset 4
 	.cfi_offset 29, -3
 	rcall .
 	rcall .
-.LCFI76:
+.LCFI80:
 	.cfi_def_cfa_offset 8
 	in r28,__SP_L__
 	in r29,__SP_H__
-.LCFI77:
+.LCFI81:
 	.cfi_def_cfa_register 28
 /* prologue: function */
 /* frame size = 4 */
 /* stack size = 6 */
 .L__stack_usage = 6
-	.loc 1 442 0
+	.loc 1 440 0
 	ldi r24,lo8(-128)
 	ldi r25,lo8(26)
 	ldi r26,lo8(6)
@@ -2237,9 +2388,9 @@ softdelay:
 	or r24,r25
 	or r24,r26
 	or r24,r27
-	breq .L112
-.L115:
-	.loc 1 442 0 is_stmt 0 discriminator 3
+	breq .L126
+.L129:
+	.loc 1 440 0 is_stmt 0 discriminator 3
 	ldd r24,Y+1
 	ldd r25,Y+2
 	ldd r26,Y+3
@@ -2258,10 +2409,10 @@ softdelay:
 	or r24,r25
 	or r24,r26
 	or r24,r27
-	brne .L115
-.L112:
+	brne .L129
+.L126:
 /* epilogue start */
-	.loc 1 446 0 is_stmt 1
+	.loc 1 444 0 is_stmt 1
 	pop __tmp_reg__
 	pop __tmp_reg__
 	pop __tmp_reg__
@@ -2391,7 +2542,7 @@ GamePointer:
 	.file 7 "../src/ADC.h"
 	.section	.debug_info,"",@progbits
 .Ldebug_info0:
-	.long	0xa28
+	.long	0xa52
 	.word	0x2
 	.long	.Ldebug_abbrev0
 	.byte	0x4
@@ -2406,23 +2557,23 @@ GamePointer:
 	.long	.Ldebug_line0
 	.long	.Ldebug_macro0
 	.uleb128 0x2
-	.long	.LASF2156
+	.long	.LASF2157
 	.byte	0x3
 	.byte	0x7d
 	.long	0x38
 	.uleb128 0x3
 	.byte	0x1
 	.byte	0x6
-	.long	.LASF2158
+	.long	.LASF2159
 	.uleb128 0x2
-	.long	.LASF2157
+	.long	.LASF2158
 	.byte	0x3
 	.byte	0x7e
 	.long	0x4a
 	.uleb128 0x3
 	.byte	0x1
 	.byte	0x8
-	.long	.LASF2159
+	.long	.LASF2160
 	.uleb128 0x4
 	.byte	0x2
 	.byte	0x5
@@ -2430,35 +2581,35 @@ GamePointer:
 	.uleb128 0x3
 	.byte	0x2
 	.byte	0x7
-	.long	.LASF2160
+	.long	.LASF2161
 	.uleb128 0x3
 	.byte	0x4
 	.byte	0x5
-	.long	.LASF2161
-	.uleb128 0x2
 	.long	.LASF2162
+	.uleb128 0x2
+	.long	.LASF2163
 	.byte	0x3
 	.byte	0x82
 	.long	0x71
 	.uleb128 0x3
 	.byte	0x4
 	.byte	0x7
-	.long	.LASF2163
-	.uleb128 0x3
-	.byte	0x8
-	.byte	0x5
 	.long	.LASF2164
 	.uleb128 0x3
 	.byte	0x8
-	.byte	0x7
+	.byte	0x5
 	.long	.LASF2165
+	.uleb128 0x3
+	.byte	0x8
+	.byte	0x7
+	.long	.LASF2166
 	.uleb128 0x5
 	.byte	0x3
 	.byte	0x1
 	.byte	0x1b
 	.long	0xb9
 	.uleb128 0x6
-	.long	.LASF2166
+	.long	.LASF2167
 	.byte	0x1
 	.byte	0x1d
 	.long	0x3f
@@ -2474,7 +2625,7 @@ GamePointer:
 	.byte	0x23
 	.uleb128 0x1
 	.uleb128 0x6
-	.long	.LASF2167
+	.long	.LASF2168
 	.byte	0x1
 	.byte	0x1f
 	.long	0x3f
@@ -2483,7 +2634,7 @@ GamePointer:
 	.uleb128 0x2
 	.byte	0
 	.uleb128 0x2
-	.long	.LASF2168
+	.long	.LASF2169
 	.byte	0x1
 	.byte	0x20
 	.long	0x86
@@ -2509,7 +2660,7 @@ GamePointer:
 	.byte	0x23
 	.uleb128 0x1
 	.uleb128 0x6
-	.long	.LASF2169
+	.long	.LASF2170
 	.byte	0x1
 	.byte	0x27
 	.long	0x3f
@@ -2518,7 +2669,7 @@ GamePointer:
 	.uleb128 0x2
 	.byte	0
 	.uleb128 0x2
-	.long	.LASF2170
+	.long	.LASF2171
 	.byte	0x1
 	.byte	0x28
 	.long	0xc4
@@ -2544,7 +2695,7 @@ GamePointer:
 	.byte	0x23
 	.uleb128 0x1
 	.uleb128 0x6
-	.long	.LASF2171
+	.long	.LASF2172
 	.byte	0x1
 	.byte	0x2e
 	.long	0x3f
@@ -2568,7 +2719,7 @@ GamePointer:
 	.byte	0x23
 	.uleb128 0x4
 	.uleb128 0x6
-	.long	.LASF2172
+	.long	.LASF2173
 	.byte	0x1
 	.byte	0x31
 	.long	0x3f
@@ -2577,12 +2728,12 @@ GamePointer:
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x2
-	.long	.LASF2173
+	.long	.LASF2174
 	.byte	0x1
 	.byte	0x32
 	.long	0x100
 	.uleb128 0x2
-	.long	.LASF2174
+	.long	.LASF2175
 	.byte	0x1
 	.byte	0x36
 	.long	0x16f
@@ -2602,12 +2753,12 @@ GamePointer:
 	.byte	0xa6
 	.long	0x1ae
 	.uleb128 0xb
-	.long	.LASF2175
+	.long	.LASF2176
 	.byte	0x2
 	.byte	0xa8
 	.long	0x1ae
 	.uleb128 0xb
-	.long	.LASF2176
+	.long	.LASF2177
 	.byte	0x2
 	.byte	0xac
 	.long	0x66
@@ -2622,91 +2773,107 @@ GamePointer:
 	.uleb128 0x3
 	.byte	0x4
 	.byte	0x4
-	.long	.LASF2177
+	.long	.LASF2178
 	.uleb128 0xd
 	.byte	0x1
 	.long	.LASF2181
 	.byte	0x1
-	.byte	0xe8
+	.byte	0xe9
 	.byte	0x1
 	.long	0x3f
 	.long	.LFB75
 	.long	.LFE75
-	.byte	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 2
+	.long	.LLST0
 	.byte	0x1
-	.long	0x1ea
-	.uleb128 0xb
-	.long	.LASF2178
-	.byte	0x1
-	.byte	0xea
-	.long	0x1ea
-	.uleb128 0xb
+	.long	0x214
+	.uleb128 0xe
 	.long	.LASF2179
 	.byte	0x1
 	.byte	0xeb
-	.long	0x1ea
-	.byte	0
-	.uleb128 0xe
-	.long	0x3f
-	.long	0x1fa
+	.long	0x214
+	.byte	0x2
+	.byte	0x8c
+	.sleb128 1
 	.uleb128 0xf
-	.long	0x1fa
+	.long	.LBB10
+	.long	.LBE10
+	.long	0x1fc
+	.uleb128 0x10
+	.string	"c"
+	.byte	0x1
+	.byte	0xec
+	.long	0x3f
+	.long	.LLST1
+	.byte	0
+	.uleb128 0x11
+	.long	.LBB11
+	.long	.LBE11
+	.uleb128 0x10
+	.string	"c"
+	.byte	0x1
+	.byte	0xf1
+	.long	0x3f
+	.long	.LLST2
+	.byte	0
+	.byte	0
+	.uleb128 0x12
+	.long	0x3f
+	.long	0x224
+	.uleb128 0x13
+	.long	0x224
 	.byte	0x6
 	.byte	0
 	.uleb128 0x3
 	.byte	0x2
 	.byte	0x7
 	.long	.LASF2180
-	.uleb128 0x10
+	.uleb128 0x14
 	.byte	0x1
 	.long	.LASF2182
 	.byte	0x1
-	.word	0x109
+	.word	0x108
 	.byte	0x1
 	.long	0x3f
 	.long	.LFB76
 	.long	.LFE76
-	.long	.LLST0
+	.long	.LLST3
 	.byte	0x1
-	.long	0x264
-	.uleb128 0x11
-	.long	.LASF2178
+	.long	0x28e
+	.uleb128 0x15
+	.long	.LASF2179
 	.byte	0x1
-	.word	0x10b
-	.long	0x1ea
+	.word	0x10a
+	.long	0x214
 	.byte	0x2
 	.byte	0x8c
 	.sleb128 1
-	.uleb128 0x12
-	.long	.LBB10
-	.long	.LBE10
-	.long	0x24b
-	.uleb128 0x13
+	.uleb128 0xf
+	.long	.LBB12
+	.long	.LBE12
+	.long	0x275
+	.uleb128 0x16
 	.string	"c"
 	.byte	0x1
-	.word	0x10c
+	.word	0x10b
 	.long	0x3f
-	.long	.LLST1
+	.long	.LLST4
 	.byte	0
-	.uleb128 0x14
-	.long	.LBB11
-	.long	.LBE11
-	.uleb128 0x13
+	.uleb128 0x11
+	.long	.LBB13
+	.long	.LBE13
+	.uleb128 0x16
 	.string	"c"
 	.byte	0x1
-	.word	0x111
+	.word	0x110
 	.long	0x3f
-	.long	.LLST2
+	.long	.LLST5
 	.byte	0
 	.byte	0
-	.uleb128 0x15
+	.uleb128 0x17
 	.byte	0x1
 	.long	.LASF2183
 	.byte	0x1
-	.word	0x129
+	.word	0x127
 	.byte	0x1
 	.long	.LFB77
 	.long	.LFE77
@@ -2715,274 +2882,274 @@ GamePointer:
 	.uleb128 0x20
 	.sleb128 2
 	.byte	0x1
-	.long	0x2f6
-	.uleb128 0x16
+	.long	0x320
+	.uleb128 0x18
 	.long	.LASF2187
 	.byte	0x1
-	.word	0x129
+	.word	0x127
 	.long	0x3f
-	.long	.LLST3
-	.uleb128 0x14
-	.long	.LBB12
-	.long	.LBE12
-	.uleb128 0x13
+	.long	.LLST6
+	.uleb128 0x11
+	.long	.LBB14
+	.long	.LBE14
+	.uleb128 0x16
+	.string	"i"
+	.byte	0x1
+	.word	0x129
+	.long	0x2d
+	.long	.LLST7
+	.uleb128 0x11
+	.long	.LBB15
+	.long	.LBE15
+	.uleb128 0x16
 	.string	"i"
 	.byte	0x1
 	.word	0x12b
 	.long	0x2d
-	.long	.LLST4
-	.uleb128 0x14
-	.long	.LBB13
-	.long	.LBE13
-	.uleb128 0x13
-	.string	"i"
-	.byte	0x1
-	.word	0x12d
-	.long	0x2d
-	.long	.LLST5
-	.uleb128 0x17
-	.long	0x175
-	.long	.LBB14
-	.long	.LBE14
-	.byte	0x1
-	.word	0x12f
-	.uleb128 0x18
-	.long	0x182
-	.long	.LLST6
-	.uleb128 0x14
-	.long	.LBB15
-	.long	.LBE15
-	.uleb128 0x19
-	.long	0x18d
-	.long	.LLST7
-	.uleb128 0x19
-	.long	0x198
 	.long	.LLST8
-	.byte	0
-	.byte	0
-	.byte	0
-	.byte	0
-	.byte	0
-	.uleb128 0x1a
-	.byte	0x1
-	.long	.LASF2184
-	.byte	0x1
-	.word	0x135
-	.byte	0x1
-	.long	.LFB78
-	.long	.LFE78
-	.long	.LLST9
-	.byte	0x1
-	.long	0x342
-	.uleb128 0x14
+	.uleb128 0x19
+	.long	0x175
 	.long	.LBB16
 	.long	.LBE16
-	.uleb128 0x13
-	.string	"i"
 	.byte	0x1
-	.word	0x137
-	.long	0x51
-	.long	.LLST10
-	.uleb128 0x14
+	.word	0x12d
+	.uleb128 0x1a
+	.long	0x182
+	.long	.LLST9
+	.uleb128 0x11
 	.long	.LBB17
 	.long	.LBE17
-	.uleb128 0x13
-	.string	"j"
-	.byte	0x1
-	.word	0x138
-	.long	0x51
+	.uleb128 0x1b
+	.long	0x18d
+	.long	.LLST10
+	.uleb128 0x1b
+	.long	0x198
 	.long	.LLST11
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x1a
+	.byte	0
+	.byte	0
+	.uleb128 0x1c
 	.byte	0x1
-	.long	.LASF2185
+	.long	.LASF2184
 	.byte	0x1
-	.word	0x13d
+	.word	0x133
 	.byte	0x1
-	.long	.LFB79
-	.long	.LFE79
+	.long	.LFB78
+	.long	.LFE78
 	.long	.LLST12
 	.byte	0x1
-	.long	0x38e
-	.uleb128 0x14
+	.long	0x36c
+	.uleb128 0x11
 	.long	.LBB18
 	.long	.LBE18
-	.uleb128 0x13
+	.uleb128 0x16
 	.string	"i"
 	.byte	0x1
-	.word	0x13f
+	.word	0x135
 	.long	0x51
 	.long	.LLST13
-	.uleb128 0x14
+	.uleb128 0x11
 	.long	.LBB19
 	.long	.LBE19
-	.uleb128 0x13
+	.uleb128 0x16
 	.string	"j"
 	.byte	0x1
-	.word	0x140
+	.word	0x136
 	.long	0x51
 	.long	.LLST14
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x1a
+	.uleb128 0x1c
 	.byte	0x1
-	.long	.LASF2186
+	.long	.LASF2185
 	.byte	0x1
-	.word	0x156
+	.word	0x13b
 	.byte	0x1
-	.long	.LFB82
-	.long	.LFE82
+	.long	.LFB79
+	.long	.LFE79
 	.long	.LLST15
 	.byte	0x1
-	.long	0x3dc
-	.uleb128 0x1b
-	.string	"x"
-	.byte	0x1
-	.word	0x156
-	.long	0x2d
-	.long	.LLST16
-	.uleb128 0x1c
-	.string	"y"
-	.byte	0x1
-	.word	0x156
-	.long	0x2d
-	.byte	0x1
-	.byte	0x66
-	.uleb128 0x14
+	.long	0x3b8
+	.uleb128 0x11
 	.long	.LBB20
 	.long	.LBE20
-	.uleb128 0x13
+	.uleb128 0x16
 	.string	"i"
 	.byte	0x1
-	.word	0x158
+	.word	0x13d
+	.long	0x51
+	.long	.LLST16
+	.uleb128 0x11
+	.long	.LBB21
+	.long	.LBE21
+	.uleb128 0x16
+	.string	"j"
+	.byte	0x1
+	.word	0x13e
 	.long	0x51
 	.long	.LLST17
 	.byte	0
 	.byte	0
-	.uleb128 0x1a
+	.byte	0
+	.uleb128 0x1c
 	.byte	0x1
-	.long	.LASF2188
+	.long	.LASF2186
 	.byte	0x1
-	.word	0x164
+	.word	0x154
 	.byte	0x1
-	.long	.LFB83
-	.long	.LFE83
+	.long	.LFB82
+	.long	.LFE82
 	.long	.LLST18
 	.byte	0x1
-	.long	0x42a
-	.uleb128 0x1b
+	.long	0x406
+	.uleb128 0x1d
 	.string	"x"
 	.byte	0x1
-	.word	0x164
+	.word	0x154
 	.long	0x2d
 	.long	.LLST19
-	.uleb128 0x1c
+	.uleb128 0x1e
 	.string	"y"
 	.byte	0x1
-	.word	0x164
+	.word	0x154
 	.long	0x2d
 	.byte	0x1
 	.byte	0x66
-	.uleb128 0x14
-	.long	.LBB21
-	.long	.LBE21
-	.uleb128 0x13
+	.uleb128 0x11
+	.long	.LBB22
+	.long	.LBE22
+	.uleb128 0x16
 	.string	"i"
 	.byte	0x1
-	.word	0x166
+	.word	0x156
 	.long	0x51
 	.long	.LLST20
 	.byte	0
 	.byte	0
-	.uleb128 0x1a
+	.uleb128 0x1c
+	.byte	0x1
+	.long	.LASF2188
+	.byte	0x1
+	.word	0x162
+	.byte	0x1
+	.long	.LFB83
+	.long	.LFE83
+	.long	.LLST21
+	.byte	0x1
+	.long	0x454
+	.uleb128 0x1d
+	.string	"x"
+	.byte	0x1
+	.word	0x162
+	.long	0x2d
+	.long	.LLST22
+	.uleb128 0x1e
+	.string	"y"
+	.byte	0x1
+	.word	0x162
+	.long	0x2d
+	.byte	0x1
+	.byte	0x66
+	.uleb128 0x11
+	.long	.LBB23
+	.long	.LBE23
+	.uleb128 0x16
+	.string	"i"
+	.byte	0x1
+	.word	0x164
+	.long	0x51
+	.long	.LLST23
+	.byte	0
+	.byte	0
+	.uleb128 0x1c
 	.byte	0x1
 	.long	.LASF2189
 	.byte	0x1
-	.word	0x172
+	.word	0x170
 	.byte	0x1
 	.long	.LFB84
 	.long	.LFE84
-	.long	.LLST21
+	.long	.LLST24
 	.byte	0x1
-	.long	0x476
-	.uleb128 0x1c
+	.long	0x4a0
+	.uleb128 0x1e
 	.string	"x"
 	.byte	0x1
-	.word	0x172
+	.word	0x170
 	.long	0x2d
 	.byte	0x1
 	.byte	0x68
-	.uleb128 0x1c
+	.uleb128 0x1e
 	.string	"y"
 	.byte	0x1
-	.word	0x172
+	.word	0x170
 	.long	0x2d
 	.byte	0x1
 	.byte	0x66
-	.uleb128 0x14
-	.long	.LBB22
-	.long	.LBE22
-	.uleb128 0x13
+	.uleb128 0x11
+	.long	.LBB24
+	.long	.LBE24
+	.uleb128 0x16
 	.string	"i"
 	.byte	0x1
-	.word	0x174
+	.word	0x172
 	.long	0x51
-	.long	.LLST22
+	.long	.LLST25
 	.byte	0
 	.byte	0
-	.uleb128 0x1a
+	.uleb128 0x1c
 	.byte	0x1
 	.long	.LASF2190
 	.byte	0x1
-	.word	0x145
+	.word	0x143
 	.byte	0x1
 	.long	.LFB80
 	.long	.LFE80
-	.long	.LLST23
+	.long	.LLST26
 	.byte	0x1
-	.long	0x4de
-	.uleb128 0x1b
+	.long	0x508
+	.uleb128 0x1d
 	.string	"x"
 	.byte	0x1
-	.word	0x145
+	.word	0x143
 	.long	0x2d
-	.long	.LLST24
-	.uleb128 0x1b
+	.long	.LLST27
+	.uleb128 0x1d
 	.string	"y"
 	.byte	0x1
-	.word	0x145
+	.word	0x143
 	.long	0x2d
-	.long	.LLST25
-	.uleb128 0x1d
-	.long	.LVL39
-	.long	0x38e
-	.long	0x4c7
-	.uleb128 0x1e
-	.byte	0x1
-	.byte	0x68
-	.byte	0x2
-	.byte	0x8c
-	.sleb128 0
-	.uleb128 0x1e
-	.byte	0x1
-	.byte	0x66
-	.byte	0x2
-	.byte	0x8d
-	.sleb128 0
-	.byte	0
+	.long	.LLST28
 	.uleb128 0x1f
-	.long	.LVL40
-	.long	0x42a
-	.uleb128 0x1e
+	.long	.LVL45
+	.long	0x3b8
+	.long	0x4f1
+	.uleb128 0x20
 	.byte	0x1
 	.byte	0x68
 	.byte	0x2
 	.byte	0x8c
 	.sleb128 0
-	.uleb128 0x1e
+	.uleb128 0x20
+	.byte	0x1
+	.byte	0x66
+	.byte	0x2
+	.byte	0x8d
+	.sleb128 0
+	.byte	0
+	.uleb128 0x21
+	.long	.LVL46
+	.long	0x454
+	.uleb128 0x20
+	.byte	0x1
+	.byte	0x68
+	.byte	0x2
+	.byte	0x8c
+	.sleb128 0
+	.uleb128 0x20
 	.byte	0x1
 	.byte	0x66
 	.byte	0x2
@@ -2990,248 +3157,248 @@ GamePointer:
 	.sleb128 0
 	.byte	0
 	.byte	0
-	.uleb128 0x20
+	.uleb128 0x22
 	.byte	0x1
 	.long	.LASF2191
 	.byte	0x1
-	.byte	0xc0
+	.byte	0xc1
 	.byte	0x1
 	.long	.LFB74
 	.long	.LFE74
-	.long	.LLST26
+	.long	.LLST29
 	.byte	0x1
-	.long	0x58e
-	.uleb128 0x21
+	.long	0x5b8
+	.uleb128 0xe
 	.long	.LASF2192
 	.byte	0x1
-	.byte	0xc3
-	.long	0x58e
+	.byte	0xc4
+	.long	0x5b8
 	.byte	0x2
 	.byte	0x8c
 	.sleb128 1
-	.uleb128 0x22
+	.uleb128 0x23
 	.long	0x175
-	.long	.LBB23
-	.long	.LBE23
+	.long	.LBB25
+	.long	.LBE25
 	.byte	0x1
-	.byte	0xdb
-	.long	0x53f
-	.uleb128 0x18
+	.byte	0xdc
+	.long	0x569
+	.uleb128 0x1a
 	.long	0x182
-	.long	.LLST27
-	.uleb128 0x14
-	.long	.LBB24
-	.long	.LBE24
-	.uleb128 0x19
+	.long	.LLST30
+	.uleb128 0x11
+	.long	.LBB26
+	.long	.LBE26
+	.uleb128 0x1b
 	.long	0x18d
-	.long	.LLST28
-	.uleb128 0x19
+	.long	.LLST31
+	.uleb128 0x1b
 	.long	0x198
-	.long	.LLST29
-	.byte	0
-	.byte	0
-	.uleb128 0x23
-	.long	.LVL43
-	.long	0x2f6
-	.uleb128 0x23
-	.long	.LVL44
-	.long	0x2f6
-	.uleb128 0x23
-	.long	.LVL45
-	.long	0x2f6
-	.uleb128 0x23
-	.long	.LVL46
-	.long	0x9dd
-	.uleb128 0x23
-	.long	.LVL48
-	.long	0x476
-	.uleb128 0x23
-	.long	.LVL49
-	.long	0x2f6
-	.uleb128 0x23
-	.long	.LVL50
-	.long	0x9dd
-	.uleb128 0x1f
-	.long	.LVL51
-	.long	0x264
-	.uleb128 0x1e
-	.byte	0x1
-	.byte	0x68
-	.byte	0x1
-	.byte	0x30
+	.long	.LLST32
 	.byte	0
 	.byte	0
 	.uleb128 0x24
-	.long	0x51
-	.uleb128 0x1a
-	.byte	0x1
-	.long	.LASF2193
-	.byte	0x1
-	.word	0x191
-	.byte	0x1
-	.long	.LFB85
-	.long	.LFE85
-	.long	.LLST30
-	.byte	0x1
-	.long	0x5df
-	.uleb128 0x1c
-	.string	"x"
-	.byte	0x1
-	.word	0x191
-	.long	0x2d
-	.byte	0x1
-	.byte	0x68
-	.uleb128 0x1c
-	.string	"y"
-	.byte	0x1
-	.word	0x191
-	.long	0x2d
-	.byte	0x1
-	.byte	0x66
-	.uleb128 0x14
-	.long	.LBB25
-	.long	.LBE25
-	.uleb128 0x13
-	.string	"i"
-	.byte	0x1
-	.word	0x193
-	.long	0x51
-	.long	.LLST31
-	.byte	0
-	.byte	0
-	.uleb128 0x1a
-	.byte	0x1
-	.long	.LASF2194
-	.byte	0x1
-	.word	0x14d
-	.byte	0x1
-	.long	.LFB81
-	.long	.LFE81
-	.long	.LLST32
-	.byte	0x1
-	.long	0x647
-	.uleb128 0x1b
-	.string	"x"
-	.byte	0x1
-	.word	0x14d
-	.long	0x2d
-	.long	.LLST33
-	.uleb128 0x1b
-	.string	"y"
-	.byte	0x1
-	.word	0x14d
-	.long	0x2d
-	.long	.LLST34
-	.uleb128 0x1d
+	.long	.LVL49
+	.long	0x320
+	.uleb128 0x24
+	.long	.LVL50
+	.long	0x320
+	.uleb128 0x24
+	.long	.LVL51
+	.long	0x320
+	.uleb128 0x24
+	.long	.LVL52
+	.long	0xa07
+	.uleb128 0x24
+	.long	.LVL54
+	.long	0x4a0
+	.uleb128 0x24
+	.long	.LVL55
+	.long	0x320
+	.uleb128 0x24
+	.long	.LVL56
+	.long	0xa07
+	.uleb128 0x21
 	.long	.LVL57
-	.long	0x3dc
-	.long	0x630
-	.uleb128 0x1e
-	.byte	0x1
-	.byte	0x68
-	.byte	0x2
-	.byte	0x8c
-	.sleb128 0
-	.uleb128 0x1e
-	.byte	0x1
-	.byte	0x66
-	.byte	0x2
-	.byte	0x8d
-	.sleb128 0
-	.byte	0
-	.uleb128 0x1f
-	.long	.LVL58
-	.long	0x593
-	.uleb128 0x1e
-	.byte	0x1
-	.byte	0x68
-	.byte	0x2
-	.byte	0x8c
-	.sleb128 0
-	.uleb128 0x1e
-	.byte	0x1
-	.byte	0x66
-	.byte	0x2
-	.byte	0x8d
-	.sleb128 0
-	.byte	0
-	.byte	0
+	.long	0x28e
 	.uleb128 0x20
 	.byte	0x1
-	.long	.LASF2195
-	.byte	0x1
-	.byte	0x98
-	.byte	0x1
-	.long	.LFB73
-	.long	.LFE73
-	.long	.LLST35
-	.byte	0x1
-	.long	0x6f7
-	.uleb128 0x21
-	.long	.LASF2192
-	.byte	0x1
-	.byte	0x9b
-	.long	0x58e
-	.byte	0x2
-	.byte	0x8c
-	.sleb128 1
-	.uleb128 0x22
-	.long	0x175
-	.long	.LBB26
-	.long	.LBE26
-	.byte	0x1
-	.byte	0xb3
-	.long	0x6a8
-	.uleb128 0x18
-	.long	0x182
-	.long	.LLST36
-	.uleb128 0x14
-	.long	.LBB27
-	.long	.LBE27
-	.uleb128 0x19
-	.long	0x18d
-	.long	.LLST37
-	.uleb128 0x19
-	.long	0x198
-	.long	.LLST38
-	.byte	0
-	.byte	0
-	.uleb128 0x23
-	.long	.LVL61
-	.long	0x342
-	.uleb128 0x23
-	.long	.LVL62
-	.long	0x342
-	.uleb128 0x23
-	.long	.LVL63
-	.long	0x342
-	.uleb128 0x23
-	.long	.LVL64
-	.long	0x9dd
-	.uleb128 0x23
-	.long	.LVL66
-	.long	0x5df
-	.uleb128 0x23
-	.long	.LVL67
-	.long	0x342
-	.uleb128 0x23
-	.long	.LVL68
-	.long	0x9dd
-	.uleb128 0x1f
-	.long	.LVL69
-	.long	0x264
-	.uleb128 0x1e
-	.byte	0x1
 	.byte	0x68
 	.byte	0x1
-	.byte	0x30
+	.byte	0x33
 	.byte	0
 	.byte	0
 	.uleb128 0x25
+	.long	0x51
+	.uleb128 0x1c
+	.byte	0x1
+	.long	.LASF2193
+	.byte	0x1
+	.word	0x18f
+	.byte	0x1
+	.long	.LFB85
+	.long	.LFE85
+	.long	.LLST33
+	.byte	0x1
+	.long	0x609
+	.uleb128 0x1e
+	.string	"x"
+	.byte	0x1
+	.word	0x18f
+	.long	0x2d
+	.byte	0x1
+	.byte	0x68
+	.uleb128 0x1e
+	.string	"y"
+	.byte	0x1
+	.word	0x18f
+	.long	0x2d
+	.byte	0x1
+	.byte	0x66
+	.uleb128 0x11
+	.long	.LBB27
+	.long	.LBE27
+	.uleb128 0x16
+	.string	"i"
+	.byte	0x1
+	.word	0x191
+	.long	0x51
+	.long	.LLST34
+	.byte	0
+	.byte	0
+	.uleb128 0x1c
+	.byte	0x1
+	.long	.LASF2194
+	.byte	0x1
+	.word	0x14b
+	.byte	0x1
+	.long	.LFB81
+	.long	.LFE81
+	.long	.LLST35
+	.byte	0x1
+	.long	0x671
+	.uleb128 0x1d
+	.string	"x"
+	.byte	0x1
+	.word	0x14b
+	.long	0x2d
+	.long	.LLST36
+	.uleb128 0x1d
+	.string	"y"
+	.byte	0x1
+	.word	0x14b
+	.long	0x2d
+	.long	.LLST37
+	.uleb128 0x1f
+	.long	.LVL63
+	.long	0x406
+	.long	0x65a
+	.uleb128 0x20
+	.byte	0x1
+	.byte	0x68
+	.byte	0x2
+	.byte	0x8c
+	.sleb128 0
+	.uleb128 0x20
+	.byte	0x1
+	.byte	0x66
+	.byte	0x2
+	.byte	0x8d
+	.sleb128 0
+	.byte	0
+	.uleb128 0x21
+	.long	.LVL64
+	.long	0x5bd
+	.uleb128 0x20
+	.byte	0x1
+	.byte	0x68
+	.byte	0x2
+	.byte	0x8c
+	.sleb128 0
+	.uleb128 0x20
+	.byte	0x1
+	.byte	0x66
+	.byte	0x2
+	.byte	0x8d
+	.sleb128 0
+	.byte	0
+	.byte	0
+	.uleb128 0x22
+	.byte	0x1
+	.long	.LASF2195
+	.byte	0x1
+	.byte	0x99
+	.byte	0x1
+	.long	.LFB73
+	.long	.LFE73
+	.long	.LLST38
+	.byte	0x1
+	.long	0x721
+	.uleb128 0xe
+	.long	.LASF2192
+	.byte	0x1
+	.byte	0x9c
+	.long	0x5b8
+	.byte	0x2
+	.byte	0x8c
+	.sleb128 1
+	.uleb128 0x23
+	.long	0x175
+	.long	.LBB28
+	.long	.LBE28
+	.byte	0x1
+	.byte	0xb4
+	.long	0x6d2
+	.uleb128 0x1a
+	.long	0x182
+	.long	.LLST39
+	.uleb128 0x11
+	.long	.LBB29
+	.long	.LBE29
+	.uleb128 0x1b
+	.long	0x18d
+	.long	.LLST40
+	.uleb128 0x1b
+	.long	0x198
+	.long	.LLST41
+	.byte	0
+	.byte	0
+	.uleb128 0x24
+	.long	.LVL67
+	.long	0x36c
+	.uleb128 0x24
+	.long	.LVL68
+	.long	0x36c
+	.uleb128 0x24
+	.long	.LVL69
+	.long	0x36c
+	.uleb128 0x24
+	.long	.LVL70
+	.long	0xa07
+	.uleb128 0x24
+	.long	.LVL72
+	.long	0x609
+	.uleb128 0x24
+	.long	.LVL73
+	.long	0x36c
+	.uleb128 0x24
+	.long	.LVL74
+	.long	0xa07
+	.uleb128 0x21
+	.long	.LVL75
+	.long	0x28e
+	.uleb128 0x20
+	.byte	0x1
+	.byte	0x68
+	.byte	0x1
+	.byte	0x33
+	.byte	0
+	.byte	0
+	.uleb128 0x26
 	.byte	0x1
 	.long	.LASF2196
 	.byte	0x1
-	.byte	0x80
+	.byte	0x81
 	.byte	0x1
 	.byte	0x1
 	.long	.LFB72
@@ -3241,25 +3408,25 @@ GamePointer:
 	.uleb128 0x20
 	.sleb128 2
 	.byte	0x1
-	.long	0x737
-	.uleb128 0x23
-	.long	.LVL70
-	.long	0x647
-	.uleb128 0x23
-	.long	.LVL71
+	.long	0x761
+	.uleb128 0x24
+	.long	.LVL76
+	.long	0x671
+	.uleb128 0x24
+	.long	.LVL77
 	.long	0x1b5
-	.uleb128 0x23
-	.long	.LVL72
-	.long	0x4de
-	.uleb128 0x23
-	.long	.LVL73
-	.long	0x201
+	.uleb128 0x24
+	.long	.LVL78
+	.long	0x508
+	.uleb128 0x24
+	.long	.LVL79
+	.long	0x22b
 	.byte	0
-	.uleb128 0x26
+	.uleb128 0x27
 	.byte	0x1
 	.long	.LASF2228
 	.byte	0x1
-	.byte	0x68
+	.byte	0x69
 	.byte	0x1
 	.long	0x51
 	.byte	0x1
@@ -3270,72 +3437,72 @@ GamePointer:
 	.uleb128 0x20
 	.sleb128 2
 	.byte	0x1
-	.long	0x7ed
-	.uleb128 0x12
-	.long	.LBB28
-	.long	.LBE28
-	.long	0x788
-	.uleb128 0x27
+	.long	0x817
+	.uleb128 0xf
+	.long	.LBB30
+	.long	.LBE30
+	.long	0x7b2
+	.uleb128 0x10
 	.string	"i"
-	.byte	0x1
-	.byte	0x73
-	.long	0x51
-	.long	.LLST39
-	.uleb128 0x14
-	.long	.LBB29
-	.long	.LBE29
-	.uleb128 0x27
-	.string	"j"
 	.byte	0x1
 	.byte	0x74
 	.long	0x51
-	.long	.LLST40
+	.long	.LLST42
+	.uleb128 0x11
+	.long	.LBB31
+	.long	.LBE31
+	.uleb128 0x10
+	.string	"j"
+	.byte	0x1
+	.byte	0x75
+	.long	0x51
+	.long	.LLST43
 	.byte	0
 	.byte	0
-	.uleb128 0x12
-	.long	.LBB30
-	.long	.LBE30
-	.long	0x7b6
+	.uleb128 0xf
+	.long	.LBB32
+	.long	.LBE32
+	.long	0x7e0
 	.uleb128 0x28
 	.string	"i"
 	.byte	0x1
-	.byte	0x77
-	.long	0x51
-	.uleb128 0x14
-	.long	.LBB31
-	.long	.LBE31
-	.uleb128 0x27
-	.string	"j"
-	.byte	0x1
 	.byte	0x78
 	.long	0x51
-	.long	.LLST41
+	.uleb128 0x11
+	.long	.LBB33
+	.long	.LBE33
+	.uleb128 0x10
+	.string	"j"
+	.byte	0x1
+	.byte	0x79
+	.long	0x51
+	.long	.LLST44
 	.byte	0
 	.byte	0
-	.uleb128 0x23
-	.long	.LVL74
-	.long	0x9ea
-	.uleb128 0x23
-	.long	.LVL75
-	.long	0x9f7
-	.uleb128 0x23
-	.long	.LVL76
-	.long	0xa04
-	.uleb128 0x23
-	.long	.LVL77
-	.long	0xa11
-	.uleb128 0x23
-	.long	.LVL78
-	.long	0xa1e
-	.uleb128 0x23
-	.long	.LVL88
-	.long	0x6f7
+	.uleb128 0x24
+	.long	.LVL80
+	.long	0xa14
+	.uleb128 0x24
+	.long	.LVL81
+	.long	0xa21
+	.uleb128 0x24
+	.long	.LVL82
+	.long	0xa2e
+	.uleb128 0x24
+	.long	.LVL83
+	.long	0xa3b
+	.uleb128 0x24
+	.long	.LVL84
+	.long	0xa48
+	.uleb128 0x24
+	.long	.LVL94
+	.long	0x721
 	.byte	0
-	.uleb128 0x15
+	.uleb128 0x17
 	.byte	0x1
 	.long	.LASF2197
 	.byte	0x1
-	.word	0x1ae
+	.word	0x1ac
 	.byte	0x1
 	.long	.LFB86
 	.long	.LFE86
@@ -3344,49 +3511,49 @@ GamePointer:
 	.uleb128 0x20
 	.sleb128 2
 	.byte	0x1
-	.long	0x839
-	.uleb128 0x14
-	.long	.LBB32
-	.long	.LBE32
-	.uleb128 0x13
+	.long	0x863
+	.uleb128 0x11
+	.long	.LBB34
+	.long	.LBE34
+	.uleb128 0x16
 	.string	"r"
 	.byte	0x1
-	.word	0x1b0
+	.word	0x1ae
 	.long	0x51
-	.long	.LLST42
-	.uleb128 0x14
-	.long	.LBB33
-	.long	.LBE33
-	.uleb128 0x13
+	.long	.LLST45
+	.uleb128 0x11
+	.long	.LBB35
+	.long	.LBE35
+	.uleb128 0x16
 	.string	"c"
 	.byte	0x1
-	.word	0x1b1
+	.word	0x1af
 	.long	0x51
-	.long	.LLST43
+	.long	.LLST46
 	.byte	0
 	.byte	0
 	.byte	0
-	.uleb128 0x1a
+	.uleb128 0x1c
 	.byte	0x1
 	.long	.LASF2198
 	.byte	0x1
-	.word	0x1b6
+	.word	0x1b4
 	.byte	0x1
 	.long	.LFB87
 	.long	.LFE87
-	.long	.LLST44
+	.long	.LLST47
 	.byte	0x1
-	.long	0x862
+	.long	0x88c
 	.uleb128 0x29
 	.string	"d"
 	.byte	0x1
-	.word	0x1b8
-	.long	0x862
+	.word	0x1b6
+	.long	0x88c
 	.byte	0x2
 	.byte	0x8c
 	.sleb128 1
 	.byte	0
-	.uleb128 0x24
+	.uleb128 0x25
 	.long	0x5f
 	.uleb128 0x2a
 	.long	.LASF2199
@@ -3419,7 +3586,7 @@ GamePointer:
 	.uleb128 0x2b
 	.long	.LASF2203
 	.byte	0x1
-	.byte	0x3c
+	.byte	0x3d
 	.long	0x164
 	.byte	0x1
 	.byte	0x5
@@ -3428,7 +3595,7 @@ GamePointer:
 	.uleb128 0x2b
 	.long	.LASF2204
 	.byte	0x1
-	.byte	0x3e
+	.byte	0x3f
 	.long	0xb9
 	.byte	0x1
 	.byte	0x5
@@ -3437,7 +3604,7 @@ GamePointer:
 	.uleb128 0x2b
 	.long	.LASF2205
 	.byte	0x1
-	.byte	0x3f
+	.byte	0x40
 	.long	0xb9
 	.byte	0x1
 	.byte	0x5
@@ -3446,7 +3613,7 @@ GamePointer:
 	.uleb128 0x2b
 	.long	.LASF2206
 	.byte	0x1
-	.byte	0x40
+	.byte	0x41
 	.long	0xb9
 	.byte	0x1
 	.byte	0x5
@@ -3455,7 +3622,7 @@ GamePointer:
 	.uleb128 0x2b
 	.long	.LASF2207
 	.byte	0x1
-	.byte	0x41
+	.byte	0x42
 	.long	0xb9
 	.byte	0x1
 	.byte	0x5
@@ -3464,27 +3631,27 @@ GamePointer:
 	.uleb128 0x2b
 	.long	.LASF2208
 	.byte	0x1
-	.byte	0x42
+	.byte	0x43
 	.long	0xb9
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.long	Apagado
-	.uleb128 0xe
+	.uleb128 0x12
 	.long	0xb9
-	.long	0x91d
-	.uleb128 0xf
-	.long	0x1fa
+	.long	0x947
+	.uleb128 0x13
+	.long	0x224
 	.byte	0x7
-	.uleb128 0xf
-	.long	0x1fa
+	.uleb128 0x13
+	.long	0x224
 	.byte	0x7
 	.byte	0
 	.uleb128 0x2b
 	.long	.LASF2209
 	.byte	0x1
-	.byte	0x43
-	.long	0x907
+	.byte	0x44
+	.long	0x931
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -3492,8 +3659,8 @@ GamePointer:
 	.uleb128 0x2b
 	.long	.LASF2210
 	.byte	0x1
-	.byte	0x45
-	.long	0x907
+	.byte	0x46
+	.long	0x931
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -3501,40 +3668,40 @@ GamePointer:
 	.uleb128 0x2b
 	.long	.LASF2211
 	.byte	0x1
-	.byte	0x46
-	.long	0x907
+	.byte	0x47
+	.long	0x931
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.long	matrizJugador2
-	.uleb128 0xe
+	.uleb128 0x12
 	.long	0xf5
-	.long	0x963
-	.uleb128 0xf
-	.long	0x1fa
+	.long	0x98d
+	.uleb128 0x13
+	.long	0x224
 	.byte	0x2
 	.byte	0
 	.uleb128 0x2b
 	.long	.LASF2212
 	.byte	0x1
-	.byte	0x48
-	.long	0x953
+	.byte	0x49
+	.long	0x97d
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.long	submarinosJugador1
-	.uleb128 0xe
+	.uleb128 0x12
 	.long	0x159
-	.long	0x985
-	.uleb128 0xf
-	.long	0x1fa
+	.long	0x9af
+	.uleb128 0x13
+	.long	0x224
 	.byte	0x1
 	.byte	0
 	.uleb128 0x2b
 	.long	.LASF2213
 	.byte	0x1
-	.byte	0x49
-	.long	0x975
+	.byte	0x4a
+	.long	0x99f
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -3542,8 +3709,8 @@ GamePointer:
 	.uleb128 0x2b
 	.long	.LASF2214
 	.byte	0x1
-	.byte	0x4b
-	.long	0x953
+	.byte	0x4c
+	.long	0x97d
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -3551,24 +3718,24 @@ GamePointer:
 	.uleb128 0x2b
 	.long	.LASF2215
 	.byte	0x1
-	.byte	0x4c
-	.long	0x975
+	.byte	0x4d
+	.long	0x99f
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
 	.long	carguerosJugador2
-	.uleb128 0xe
+	.uleb128 0x12
 	.long	0x2d
-	.long	0x9cb
-	.uleb128 0xf
-	.long	0x1fa
+	.long	0x9f5
+	.uleb128 0x13
+	.long	0x224
 	.byte	0x19
 	.byte	0
 	.uleb128 0x2c
 	.string	"msg"
 	.byte	0x1
-	.byte	0x5c
-	.long	0x9bb
+	.byte	0x5d
+	.long	0x9e5
 	.byte	0x1
 	.byte	0x5
 	.byte	0x3
@@ -3579,14 +3746,14 @@ GamePointer:
 	.long	.LASF2216
 	.long	.LASF2216
 	.byte	0x1
-	.byte	0x51
+	.byte	0x52
 	.uleb128 0x2d
 	.byte	0x1
 	.byte	0x1
 	.long	.LASF2217
 	.long	.LASF2217
 	.byte	0x1
-	.byte	0x50
+	.byte	0x51
 	.uleb128 0x2d
 	.byte	0x1
 	.byte	0x1
@@ -3614,7 +3781,7 @@ GamePointer:
 	.long	.LASF2221
 	.long	.LASF2221
 	.byte	0x1
-	.byte	0x52
+	.byte	0x53
 	.byte	0
 	.section	.debug_abbrev,"",@progbits
 .Ldebug_abbrev0:
@@ -3808,7 +3975,7 @@ GamePointer:
 	.uleb128 0x12
 	.uleb128 0x1
 	.uleb128 0x40
-	.uleb128 0xa
+	.uleb128 0x6
 	.uleb128 0x2117
 	.uleb128 0xc
 	.uleb128 0x1
@@ -3816,6 +3983,56 @@ GamePointer:
 	.byte	0
 	.byte	0
 	.uleb128 0xe
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0xf
+	.uleb128 0xb
+	.byte	0x1
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x10
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0x6
+	.byte	0
+	.byte	0
+	.uleb128 0x11
+	.uleb128 0xb
+	.byte	0x1
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.byte	0
+	.byte	0
+	.uleb128 0x12
 	.uleb128 0x1
 	.byte	0x1
 	.uleb128 0x49
@@ -3824,7 +4041,7 @@ GamePointer:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0xf
+	.uleb128 0x13
 	.uleb128 0x21
 	.byte	0
 	.uleb128 0x49
@@ -3833,7 +4050,7 @@ GamePointer:
 	.uleb128 0xb
 	.byte	0
 	.byte	0
-	.uleb128 0x10
+	.uleb128 0x14
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -3860,7 +4077,7 @@ GamePointer:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x11
+	.uleb128 0x15
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -3875,71 +4092,11 @@ GamePointer:
 	.uleb128 0xa
 	.byte	0
 	.byte	0
-	.uleb128 0x12
-	.uleb128 0xb
-	.byte	0x1
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x13
+	.uleb128 0x16
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
 	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0x6
-	.byte	0
-	.byte	0
-	.uleb128 0x14
-	.uleb128 0xb
-	.byte	0x1
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.byte	0
-	.byte	0
-	.uleb128 0x15
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x27
-	.uleb128 0xc
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x40
-	.uleb128 0xa
-	.uleb128 0x2117
-	.uleb128 0xc
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x16
-	.uleb128 0x5
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0xe
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
@@ -3951,6 +4108,46 @@ GamePointer:
 	.byte	0
 	.byte	0
 	.uleb128 0x17
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0xc
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x27
+	.uleb128 0xc
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x40
+	.uleb128 0xa
+	.uleb128 0x2117
+	.uleb128 0xc
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x18
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0x6
+	.byte	0
+	.byte	0
+	.uleb128 0x19
 	.uleb128 0x1d
 	.byte	0x1
 	.uleb128 0x31
@@ -3965,7 +4162,7 @@ GamePointer:
 	.uleb128 0x5
 	.byte	0
 	.byte	0
-	.uleb128 0x18
+	.uleb128 0x1a
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x31
@@ -3974,7 +4171,7 @@ GamePointer:
 	.uleb128 0x6
 	.byte	0
 	.byte	0
-	.uleb128 0x19
+	.uleb128 0x1b
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x31
@@ -3983,7 +4180,7 @@ GamePointer:
 	.uleb128 0x6
 	.byte	0
 	.byte	0
-	.uleb128 0x1a
+	.uleb128 0x1c
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -4008,7 +4205,7 @@ GamePointer:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x1b
+	.uleb128 0x1d
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -4023,7 +4220,7 @@ GamePointer:
 	.uleb128 0x6
 	.byte	0
 	.byte	0
-	.uleb128 0x1c
+	.uleb128 0x1e
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -4035,26 +4232,6 @@ GamePointer:
 	.uleb128 0x49
 	.uleb128 0x13
 	.uleb128 0x2
-	.uleb128 0xa
-	.byte	0
-	.byte	0
-	.uleb128 0x1d
-	.uleb128 0x4109
-	.byte	0x1
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x31
-	.uleb128 0x13
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x1e
-	.uleb128 0x410a
-	.byte	0
-	.uleb128 0x2
-	.uleb128 0xa
-	.uleb128 0x2111
 	.uleb128 0xa
 	.byte	0
 	.byte	0
@@ -4065,9 +4242,29 @@ GamePointer:
 	.uleb128 0x1
 	.uleb128 0x31
 	.uleb128 0x13
+	.uleb128 0x1
+	.uleb128 0x13
 	.byte	0
 	.byte	0
 	.uleb128 0x20
+	.uleb128 0x410a
+	.byte	0
+	.uleb128 0x2
+	.uleb128 0xa
+	.uleb128 0x2111
+	.uleb128 0xa
+	.byte	0
+	.byte	0
+	.uleb128 0x21
+	.uleb128 0x4109
+	.byte	0x1
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x31
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x22
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -4092,22 +4289,7 @@ GamePointer:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x21
-	.uleb128 0x34
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0xa
-	.byte	0
-	.byte	0
-	.uleb128 0x22
+	.uleb128 0x23
 	.uleb128 0x1d
 	.byte	0x1
 	.uleb128 0x31
@@ -4124,7 +4306,7 @@ GamePointer:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x23
+	.uleb128 0x24
 	.uleb128 0x4109
 	.byte	0
 	.uleb128 0x11
@@ -4133,37 +4315,10 @@ GamePointer:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x24
+	.uleb128 0x25
 	.uleb128 0x35
 	.byte	0
 	.uleb128 0x49
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x25
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0xc
-	.uleb128 0x3
-	.uleb128 0xe
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x27
-	.uleb128 0xc
-	.uleb128 0x87
-	.uleb128 0xc
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x1
-	.uleb128 0x40
-	.uleb128 0xa
-	.uleb128 0x2117
-	.uleb128 0xc
-	.uleb128 0x1
 	.uleb128 0x13
 	.byte	0
 	.byte	0
@@ -4180,8 +4335,6 @@ GamePointer:
 	.uleb128 0xb
 	.uleb128 0x27
 	.uleb128 0xc
-	.uleb128 0x49
-	.uleb128 0x13
 	.uleb128 0x87
 	.uleb128 0xc
 	.uleb128 0x11
@@ -4197,18 +4350,32 @@ GamePointer:
 	.byte	0
 	.byte	0
 	.uleb128 0x27
-	.uleb128 0x34
-	.byte	0
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0xc
 	.uleb128 0x3
-	.uleb128 0x8
+	.uleb128 0xe
 	.uleb128 0x3a
 	.uleb128 0xb
 	.uleb128 0x3b
 	.uleb128 0xb
+	.uleb128 0x27
+	.uleb128 0xc
 	.uleb128 0x49
 	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0x6
+	.uleb128 0x87
+	.uleb128 0xc
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x1
+	.uleb128 0x40
+	.uleb128 0xa
+	.uleb128 0x2117
+	.uleb128 0xc
+	.uleb128 0x1
+	.uleb128 0x13
 	.byte	0
 	.byte	0
 	.uleb128 0x28
@@ -4311,7 +4478,7 @@ GamePointer:
 	.section	.debug_loc,"",@progbits
 .Ldebug_loc0:
 .LLST0:
-	.long	.LFB76
+	.long	.LFB75
 	.long	.LCFI0
 	.word	0x3
 	.byte	0x92
@@ -4335,20 +4502,20 @@ GamePointer:
 	.byte	0x8c
 	.sleb128 4
 	.long	.LCFI3
-	.long	.LFE76
+	.long	.LFE75
 	.word	0x2
 	.byte	0x8c
 	.sleb128 11
 	.long	0
 	.long	0
 .LLST1:
+	.long	.LVL0
 	.long	.LVL1
-	.long	.LVL2
 	.word	0x2
 	.byte	0x30
 	.byte	0x9f
+	.long	.LVL1
 	.long	.LVL2
-	.long	.LVL3
 	.word	0x8
 	.byte	0x8a
 	.sleb128 0
@@ -4358,8 +4525,8 @@ GamePointer:
 	.byte	0x23
 	.uleb128 0xb
 	.byte	0x9f
+	.long	.LVL2
 	.long	.LVL3
-	.long	.LVL4
 	.word	0x8
 	.byte	0x8a
 	.sleb128 0
@@ -4369,8 +4536,8 @@ GamePointer:
 	.byte	0x23
 	.uleb128 0xc
 	.byte	0x9f
-	.long	.LVL4
-	.long	.LFE76
+	.long	.LVL3
+	.long	.LFE75
 	.word	0x8
 	.byte	0x8a
 	.sleb128 0
@@ -4383,103 +4550,25 @@ GamePointer:
 	.long	0
 	.long	0
 .LLST2:
+	.long	.LVL4
 	.long	.LVL5
-	.long	.LVL6
 	.word	0x2
 	.byte	0x30
 	.byte	0x9f
+	.long	.LVL5
 	.long	.LVL6
-	.long	.LVL7
 	.word	0x2
 	.byte	0x31
 	.byte	0x9f
-	.long	.LVL7
-	.long	.LFE76
+	.long	.LVL6
+	.long	.LFE75
 	.word	0x2
 	.byte	0x32
 	.byte	0x9f
 	.long	0
 	.long	0
 .LLST3:
-	.long	.LVL8
-	.long	.LVL9
-	.word	0x1
-	.byte	0x68
-	.long	.LVL9
-	.long	.LFE77
-	.word	0x1
-	.byte	0x64
-	.long	0
-	.long	0
-.LLST4:
-	.long	.LVL8
-	.long	.LVL9
-	.word	0x2
-	.byte	0x31
-	.byte	0x9f
-	.long	.LVL9
-	.long	.LVL15
-	.word	0x1
-	.byte	0x69
-	.long	0
-	.long	0
-.LLST5:
-	.long	.LVL9
-	.long	.LVL10
-	.word	0x2
-	.byte	0x30
-	.byte	0x9f
-	.long	.LVL10
-	.long	.LVL11
-	.word	0x2
-	.byte	0x31
-	.byte	0x9f
-	.long	.LVL11
-	.long	.LVL12
-	.word	0x2
-	.byte	0x32
-	.byte	0x9f
-	.long	.LVL12
-	.long	.LVL13
-	.word	0x2
-	.byte	0x33
-	.byte	0x9f
-	.long	.LVL13
-	.long	.LVL15
-	.word	0x2
-	.byte	0x34
-	.byte	0x9f
-	.long	0
-	.long	0
-.LLST6:
-	.long	.LVL9
-	.long	.LVL13
-	.word	0x6
-	.byte	0x9e
-	.uleb128 0x4
-	.long	0x437a0000
-	.long	0
-	.long	0
-.LLST7:
-	.long	.LVL9
-	.long	.LVL13
-	.word	0x6
-	.byte	0x9e
-	.uleb128 0x4
-	.long	0x4a742400
-	.long	0
-	.long	0
-.LLST8:
-	.long	.LVL9
-	.long	.LVL13
-	.word	0x6
-	.byte	0xc
-	.long	0x3d0900
-	.byte	0x9f
-	.long	0
-	.long	0
-.LLST9:
-	.long	.LFB78
+	.long	.LFB76
 	.long	.LCFI4
 	.word	0x3
 	.byte	0x92
@@ -4492,6 +4581,174 @@ GamePointer:
 	.uleb128 0x20
 	.sleb128 3
 	.long	.LCFI5
+	.long	.LCFI6
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 4
+	.long	.LCFI6
+	.long	.LCFI7
+	.word	0x2
+	.byte	0x8c
+	.sleb128 4
+	.long	.LCFI7
+	.long	.LFE76
+	.word	0x2
+	.byte	0x8c
+	.sleb128 11
+	.long	0
+	.long	0
+.LLST4:
+	.long	.LVL7
+	.long	.LVL8
+	.word	0x2
+	.byte	0x30
+	.byte	0x9f
+	.long	.LVL8
+	.long	.LVL9
+	.word	0x8
+	.byte	0x8a
+	.sleb128 0
+	.byte	0x91
+	.sleb128 1
+	.byte	0x1c
+	.byte	0x23
+	.uleb128 0xb
+	.byte	0x9f
+	.long	.LVL9
+	.long	.LVL10
+	.word	0x8
+	.byte	0x8a
+	.sleb128 0
+	.byte	0x91
+	.sleb128 1
+	.byte	0x1c
+	.byte	0x23
+	.uleb128 0xc
+	.byte	0x9f
+	.long	.LVL10
+	.long	.LFE76
+	.word	0x8
+	.byte	0x8a
+	.sleb128 0
+	.byte	0x91
+	.sleb128 1
+	.byte	0x1c
+	.byte	0x23
+	.uleb128 0xb
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST5:
+	.long	.LVL11
+	.long	.LVL12
+	.word	0x2
+	.byte	0x30
+	.byte	0x9f
+	.long	.LVL12
+	.long	.LVL13
+	.word	0x2
+	.byte	0x31
+	.byte	0x9f
+	.long	.LVL13
+	.long	.LFE76
+	.word	0x2
+	.byte	0x32
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST6:
+	.long	.LVL14
+	.long	.LVL15
+	.word	0x1
+	.byte	0x68
+	.long	.LVL15
+	.long	.LFE77
+	.word	0x1
+	.byte	0x64
+	.long	0
+	.long	0
+.LLST7:
+	.long	.LVL14
+	.long	.LVL15
+	.word	0x2
+	.byte	0x31
+	.byte	0x9f
+	.long	.LVL15
+	.long	.LVL21
+	.word	0x1
+	.byte	0x69
+	.long	0
+	.long	0
+.LLST8:
+	.long	.LVL15
+	.long	.LVL16
+	.word	0x2
+	.byte	0x30
+	.byte	0x9f
+	.long	.LVL16
+	.long	.LVL17
+	.word	0x2
+	.byte	0x31
+	.byte	0x9f
+	.long	.LVL17
+	.long	.LVL18
+	.word	0x2
+	.byte	0x32
+	.byte	0x9f
+	.long	.LVL18
+	.long	.LVL19
+	.word	0x2
+	.byte	0x33
+	.byte	0x9f
+	.long	.LVL19
+	.long	.LVL21
+	.word	0x2
+	.byte	0x34
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST9:
+	.long	.LVL15
+	.long	.LVL19
+	.word	0x6
+	.byte	0x9e
+	.uleb128 0x4
+	.long	0x437a0000
+	.long	0
+	.long	0
+.LLST10:
+	.long	.LVL15
+	.long	.LVL19
+	.word	0x6
+	.byte	0x9e
+	.uleb128 0x4
+	.long	0x4a742400
+	.long	0
+	.long	0
+.LLST11:
+	.long	.LVL15
+	.long	.LVL19
+	.word	0x6
+	.byte	0xc
+	.long	0x3d0900
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST12:
+	.long	.LFB78
+	.long	.LCFI8
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 2
+	.long	.LCFI8
+	.long	.LCFI9
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 3
+	.long	.LCFI9
 	.long	.LFE78
 	.word	0x3
 	.byte	0x92
@@ -4499,36 +4756,36 @@ GamePointer:
 	.sleb128 4
 	.long	0
 	.long	0
-.LLST10:
-	.long	.LVL16
-	.long	.LVL17
+.LLST13:
+	.long	.LVL22
+	.long	.LVL23
 	.word	0x2
 	.byte	0x30
 	.byte	0x9f
 	.long	0
 	.long	0
-.LLST11:
-	.long	.LVL19
-	.long	.LVL20
+.LLST14:
+	.long	.LVL25
+	.long	.LVL26
 	.word	0x2
 	.byte	0x30
 	.byte	0x9f
 	.long	0
 	.long	0
-.LLST12:
+.LLST15:
 	.long	.LFB79
-	.long	.LCFI6
+	.long	.LCFI10
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 2
-	.long	.LCFI6
-	.long	.LCFI7
+	.long	.LCFI10
+	.long	.LCFI11
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 3
-	.long	.LCFI7
+	.long	.LCFI11
 	.long	.LFE79
 	.word	0x3
 	.byte	0x92
@@ -4536,173 +4793,85 @@ GamePointer:
 	.sleb128 4
 	.long	0
 	.long	0
-.LLST13:
-	.long	.LVL21
-	.long	.LVL22
-	.word	0x2
-	.byte	0x30
-	.byte	0x9f
-	.long	0
-	.long	0
-.LLST14:
-	.long	.LVL24
-	.long	.LVL25
-	.word	0x2
-	.byte	0x30
-	.byte	0x9f
-	.long	0
-	.long	0
-.LLST15:
-	.long	.LFB82
-	.long	.LCFI8
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 2
-	.long	.LCFI8
-	.long	.LCFI9
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 3
-	.long	.LCFI9
-	.long	.LCFI10
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 4
-	.long	.LCFI10
-	.long	.LCFI11
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 5
-	.long	.LCFI11
-	.long	.LCFI12
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 6
-	.long	.LCFI12
-	.long	.LCFI13
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 7
-	.long	.LCFI13
-	.long	.LCFI14
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 8
-	.long	.LCFI14
-	.long	.LCFI15
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 9
-	.long	.LCFI15
-	.long	.LCFI16
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 10
-	.long	.LCFI16
-	.long	.LCFI17
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 11
-	.long	.LCFI17
-	.long	.LFE82
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 12
-	.long	0
-	.long	0
 .LLST16:
-	.long	.LVL26
+	.long	.LVL27
 	.long	.LVL28
-	.word	0x1
-	.byte	0x68
-	.long	.LVL28
-	.long	.LFE82
-	.word	0x1
-	.byte	0x64
+	.word	0x2
+	.byte	0x30
+	.byte	0x9f
 	.long	0
 	.long	0
 .LLST17:
-	.long	.LVL27
-	.long	.LVL29
+	.long	.LVL30
+	.long	.LVL31
 	.word	0x2
 	.byte	0x30
 	.byte	0x9f
 	.long	0
 	.long	0
 .LLST18:
-	.long	.LFB83
-	.long	.LCFI18
+	.long	.LFB82
+	.long	.LCFI12
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 2
+	.long	.LCFI12
+	.long	.LCFI13
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 3
+	.long	.LCFI13
+	.long	.LCFI14
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 4
+	.long	.LCFI14
+	.long	.LCFI15
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 5
+	.long	.LCFI15
+	.long	.LCFI16
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 6
+	.long	.LCFI16
+	.long	.LCFI17
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 7
+	.long	.LCFI17
+	.long	.LCFI18
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 8
 	.long	.LCFI18
 	.long	.LCFI19
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
-	.sleb128 3
+	.sleb128 9
 	.long	.LCFI19
 	.long	.LCFI20
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
-	.sleb128 4
+	.sleb128 10
 	.long	.LCFI20
 	.long	.LCFI21
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
-	.sleb128 5
-	.long	.LCFI21
-	.long	.LCFI22
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 6
-	.long	.LCFI22
-	.long	.LCFI23
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 7
-	.long	.LCFI23
-	.long	.LCFI24
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 8
-	.long	.LCFI24
-	.long	.LCFI25
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 9
-	.long	.LCFI25
-	.long	.LCFI26
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 10
-	.long	.LCFI26
-	.long	.LCFI27
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
 	.sleb128 11
-	.long	.LCFI27
-	.long	.LFE83
+	.long	.LCFI21
+	.long	.LFE82
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
@@ -4710,116 +4879,204 @@ GamePointer:
 	.long	0
 	.long	0
 .LLST19:
-	.long	.LVL30
 	.long	.LVL32
+	.long	.LVL34
 	.word	0x1
 	.byte	0x68
-	.long	.LVL32
-	.long	.LFE83
+	.long	.LVL34
+	.long	.LFE82
 	.word	0x1
 	.byte	0x64
 	.long	0
 	.long	0
 .LLST20:
-	.long	.LVL31
 	.long	.LVL33
+	.long	.LVL35
 	.word	0x2
 	.byte	0x30
 	.byte	0x9f
 	.long	0
 	.long	0
 .LLST21:
-	.long	.LFB84
-	.long	.LCFI28
+	.long	.LFB83
+	.long	.LCFI22
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 2
+	.long	.LCFI22
+	.long	.LCFI23
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 3
+	.long	.LCFI23
+	.long	.LCFI24
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 4
+	.long	.LCFI24
+	.long	.LCFI25
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 5
+	.long	.LCFI25
+	.long	.LCFI26
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 6
+	.long	.LCFI26
+	.long	.LCFI27
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 7
+	.long	.LCFI27
+	.long	.LCFI28
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 8
 	.long	.LCFI28
 	.long	.LCFI29
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
-	.sleb128 3
+	.sleb128 9
 	.long	.LCFI29
 	.long	.LCFI30
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
-	.sleb128 4
+	.sleb128 10
 	.long	.LCFI30
 	.long	.LCFI31
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
-	.sleb128 5
-	.long	.LCFI31
-	.long	.LCFI32
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 6
-	.long	.LCFI32
-	.long	.LCFI33
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 7
-	.long	.LCFI33
-	.long	.LCFI34
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 8
-	.long	.LCFI34
-	.long	.LCFI35
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 9
-	.long	.LCFI35
-	.long	.LCFI36
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 10
-	.long	.LCFI36
-	.long	.LCFI37
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
 	.sleb128 11
-	.long	.LCFI37
-	.long	.LCFI38
+	.long	.LCFI31
+	.long	.LFE83
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 12
+	.long	0
+	.long	0
+.LLST22:
+	.long	.LVL36
+	.long	.LVL38
+	.word	0x1
+	.byte	0x68
+	.long	.LVL38
+	.long	.LFE83
+	.word	0x1
+	.byte	0x64
+	.long	0
+	.long	0
+.LLST23:
+	.long	.LVL37
+	.long	.LVL39
+	.word	0x2
+	.byte	0x30
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST24:
+	.long	.LFB84
+	.long	.LCFI32
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 2
+	.long	.LCFI32
+	.long	.LCFI33
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 3
+	.long	.LCFI33
+	.long	.LCFI34
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 4
+	.long	.LCFI34
+	.long	.LCFI35
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 5
+	.long	.LCFI35
+	.long	.LCFI36
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 6
+	.long	.LCFI36
+	.long	.LCFI37
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 7
+	.long	.LCFI37
+	.long	.LCFI38
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 8
 	.long	.LCFI38
 	.long	.LCFI39
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
-	.sleb128 13
+	.sleb128 9
 	.long	.LCFI39
 	.long	.LCFI40
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
-	.sleb128 14
+	.sleb128 10
 	.long	.LCFI40
 	.long	.LCFI41
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
-	.sleb128 15
+	.sleb128 11
 	.long	.LCFI41
 	.long	.LCFI42
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
-	.sleb128 16
+	.sleb128 12
 	.long	.LCFI42
+	.long	.LCFI43
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 13
+	.long	.LCFI43
+	.long	.LCFI44
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 14
+	.long	.LCFI44
+	.long	.LCFI45
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 15
+	.long	.LCFI45
+	.long	.LCFI46
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 16
+	.long	.LCFI46
 	.long	.LFE84
 	.word	0x3
 	.byte	0x92
@@ -4827,234 +5084,234 @@ GamePointer:
 	.sleb128 17
 	.long	0
 	.long	0
-.LLST22:
-	.long	.LVL35
-	.long	.LVL36
+.LLST25:
+	.long	.LVL41
+	.long	.LVL42
 	.word	0x2
 	.byte	0x30
 	.byte	0x9f
 	.long	0
 	.long	0
-.LLST23:
-	.long	.LFB80
-	.long	.LCFI43
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 2
-	.long	.LCFI43
-	.long	.LCFI44
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 3
-	.long	.LCFI44
-	.long	.LFE80
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 4
-	.long	0
-	.long	0
-.LLST24:
-	.long	.LVL37
-	.long	.LVL38
-	.word	0x1
-	.byte	0x68
-	.long	.LVL38
-	.long	.LVL42
-	.word	0x1
-	.byte	0x6c
-	.long	.LVL42
-	.long	.LFE80
-	.word	0x4
-	.byte	0xf3
-	.uleb128 0x1
-	.byte	0x68
-	.byte	0x9f
-	.long	0
-	.long	0
-.LLST25:
-	.long	.LVL37
-	.long	.LVL39-1
-	.word	0x1
-	.byte	0x66
-	.long	.LVL39-1
-	.long	.LVL41
-	.word	0x1
-	.byte	0x6d
-	.long	.LVL41
-	.long	.LFE80
-	.word	0x4
-	.byte	0xf3
-	.uleb128 0x1
-	.byte	0x66
-	.byte	0x9f
-	.long	0
-	.long	0
 .LLST26:
-	.long	.LFB74
-	.long	.LCFI45
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 2
-	.long	.LCFI45
-	.long	.LCFI46
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 3
-	.long	.LCFI46
+	.long	.LFB80
 	.long	.LCFI47
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
-	.sleb128 4
+	.sleb128 2
 	.long	.LCFI47
 	.long	.LCFI48
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 3
+	.long	.LCFI48
+	.long	.LFE80
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 4
+	.long	0
+	.long	0
+.LLST27:
+	.long	.LVL43
+	.long	.LVL44
+	.word	0x1
+	.byte	0x68
+	.long	.LVL44
+	.long	.LVL48
+	.word	0x1
+	.byte	0x6c
+	.long	.LVL48
+	.long	.LFE80
+	.word	0x4
+	.byte	0xf3
+	.uleb128 0x1
+	.byte	0x68
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST28:
+	.long	.LVL43
+	.long	.LVL45-1
+	.word	0x1
+	.byte	0x66
+	.long	.LVL45-1
+	.long	.LVL47
+	.word	0x1
+	.byte	0x6d
+	.long	.LVL47
+	.long	.LFE80
+	.word	0x4
+	.byte	0xf3
+	.uleb128 0x1
+	.byte	0x66
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST29:
+	.long	.LFB74
+	.long	.LCFI49
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 2
+	.long	.LCFI49
+	.long	.LCFI50
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 3
+	.long	.LCFI50
+	.long	.LCFI51
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 4
+	.long	.LCFI51
+	.long	.LCFI52
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 5
-	.long	.LCFI48
-	.long	.LCFI49
+	.long	.LCFI52
+	.long	.LCFI53
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 6
-	.long	.LCFI49
-	.long	.LCFI50
+	.long	.LCFI53
+	.long	.LCFI54
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 8
-	.long	.LCFI50
+	.long	.LCFI54
 	.long	.LFE74
 	.word	0x2
 	.byte	0x8c
 	.sleb128 8
 	.long	0
 	.long	0
-.LLST27:
-	.long	.LVL46
-	.long	.LVL47
+.LLST30:
+	.long	.LVL52
+	.long	.LVL53
 	.word	0x6
 	.byte	0x9e
 	.uleb128 0x4
-	.long	0x41200000
+	.long	0x41a00000
 	.long	0
 	.long	0
-.LLST28:
-	.long	.LVL46
-	.long	.LVL47
+.LLST31:
+	.long	.LVL52
+	.long	.LVL53
 	.word	0x6
 	.byte	0x9e
 	.uleb128 0x4
-	.long	0x481c4000
+	.long	0x489c4000
 	.long	0
 	.long	0
-.LLST29:
-	.long	.LVL46
-	.long	.LVL47
+.LLST32:
+	.long	.LVL52
+	.long	.LVL53
 	.word	0x6
 	.byte	0xc
-	.long	0x27100
+	.long	0x4e200
 	.byte	0x9f
 	.long	0
 	.long	0
-.LLST30:
+.LLST33:
 	.long	.LFB85
-	.long	.LCFI51
+	.long	.LCFI55
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 2
-	.long	.LCFI51
-	.long	.LCFI52
+	.long	.LCFI55
+	.long	.LCFI56
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 3
-	.long	.LCFI52
-	.long	.LCFI53
+	.long	.LCFI56
+	.long	.LCFI57
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 4
-	.long	.LCFI53
-	.long	.LCFI54
+	.long	.LCFI57
+	.long	.LCFI58
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 5
-	.long	.LCFI54
-	.long	.LCFI55
+	.long	.LCFI58
+	.long	.LCFI59
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 6
-	.long	.LCFI55
-	.long	.LCFI56
+	.long	.LCFI59
+	.long	.LCFI60
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 7
-	.long	.LCFI56
-	.long	.LCFI57
+	.long	.LCFI60
+	.long	.LCFI61
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 8
-	.long	.LCFI57
-	.long	.LCFI58
+	.long	.LCFI61
+	.long	.LCFI62
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 9
-	.long	.LCFI58
-	.long	.LCFI59
+	.long	.LCFI62
+	.long	.LCFI63
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 10
-	.long	.LCFI59
-	.long	.LCFI60
+	.long	.LCFI63
+	.long	.LCFI64
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 11
-	.long	.LCFI60
-	.long	.LCFI61
+	.long	.LCFI64
+	.long	.LCFI65
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 12
-	.long	.LCFI61
-	.long	.LCFI62
+	.long	.LCFI65
+	.long	.LCFI66
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 13
-	.long	.LCFI62
-	.long	.LCFI63
+	.long	.LCFI66
+	.long	.LCFI67
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 14
-	.long	.LCFI63
-	.long	.LCFI64
+	.long	.LCFI67
+	.long	.LCFI68
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 15
-	.long	.LCFI64
-	.long	.LCFI65
+	.long	.LCFI68
+	.long	.LCFI69
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 16
-	.long	.LCFI65
+	.long	.LCFI69
 	.long	.LFE85
 	.word	0x3
 	.byte	0x92
@@ -5062,175 +5319,159 @@ GamePointer:
 	.sleb128 17
 	.long	0
 	.long	0
-.LLST31:
-	.long	.LVL53
-	.long	.LVL54
+.LLST34:
+	.long	.LVL59
+	.long	.LVL60
 	.word	0x2
 	.byte	0x30
 	.byte	0x9f
 	.long	0
 	.long	0
-.LLST32:
-	.long	.LFB81
-	.long	.LCFI66
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 2
-	.long	.LCFI66
-	.long	.LCFI67
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 3
-	.long	.LCFI67
-	.long	.LFE81
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 4
-	.long	0
-	.long	0
-.LLST33:
-	.long	.LVL55
-	.long	.LVL56
-	.word	0x1
-	.byte	0x68
-	.long	.LVL56
-	.long	.LVL60
-	.word	0x1
-	.byte	0x6c
-	.long	.LVL60
-	.long	.LFE81
-	.word	0x4
-	.byte	0xf3
-	.uleb128 0x1
-	.byte	0x68
-	.byte	0x9f
-	.long	0
-	.long	0
-.LLST34:
-	.long	.LVL55
-	.long	.LVL57-1
-	.word	0x1
-	.byte	0x66
-	.long	.LVL57-1
-	.long	.LVL59
-	.word	0x1
-	.byte	0x6d
-	.long	.LVL59
-	.long	.LFE81
-	.word	0x4
-	.byte	0xf3
-	.uleb128 0x1
-	.byte	0x66
-	.byte	0x9f
-	.long	0
-	.long	0
 .LLST35:
-	.long	.LFB73
-	.long	.LCFI68
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 2
-	.long	.LCFI68
-	.long	.LCFI69
-	.word	0x3
-	.byte	0x92
-	.uleb128 0x20
-	.sleb128 3
-	.long	.LCFI69
+	.long	.LFB81
 	.long	.LCFI70
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
-	.sleb128 4
+	.sleb128 2
 	.long	.LCFI70
 	.long	.LCFI71
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 3
+	.long	.LCFI71
+	.long	.LFE81
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 4
+	.long	0
+	.long	0
+.LLST36:
+	.long	.LVL61
+	.long	.LVL62
+	.word	0x1
+	.byte	0x68
+	.long	.LVL62
+	.long	.LVL66
+	.word	0x1
+	.byte	0x6c
+	.long	.LVL66
+	.long	.LFE81
+	.word	0x4
+	.byte	0xf3
+	.uleb128 0x1
+	.byte	0x68
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST37:
+	.long	.LVL61
+	.long	.LVL63-1
+	.word	0x1
+	.byte	0x66
+	.long	.LVL63-1
+	.long	.LVL65
+	.word	0x1
+	.byte	0x6d
+	.long	.LVL65
+	.long	.LFE81
+	.word	0x4
+	.byte	0xf3
+	.uleb128 0x1
+	.byte	0x66
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST38:
+	.long	.LFB73
+	.long	.LCFI72
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 2
+	.long	.LCFI72
+	.long	.LCFI73
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 3
+	.long	.LCFI73
+	.long	.LCFI74
+	.word	0x3
+	.byte	0x92
+	.uleb128 0x20
+	.sleb128 4
+	.long	.LCFI74
+	.long	.LCFI75
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 5
-	.long	.LCFI71
-	.long	.LCFI72
+	.long	.LCFI75
+	.long	.LCFI76
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 6
-	.long	.LCFI72
-	.long	.LCFI73
+	.long	.LCFI76
+	.long	.LCFI77
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 8
-	.long	.LCFI73
+	.long	.LCFI77
 	.long	.LFE73
 	.word	0x2
 	.byte	0x8c
 	.sleb128 8
 	.long	0
 	.long	0
-.LLST36:
-	.long	.LVL64
-	.long	.LVL65
-	.word	0x6
-	.byte	0x9e
-	.uleb128 0x4
-	.long	0x41200000
-	.long	0
-	.long	0
-.LLST37:
-	.long	.LVL64
-	.long	.LVL65
-	.word	0x6
-	.byte	0x9e
-	.uleb128 0x4
-	.long	0x481c4000
-	.long	0
-	.long	0
-.LLST38:
-	.long	.LVL64
-	.long	.LVL65
-	.word	0x6
-	.byte	0xc
-	.long	0x27100
-	.byte	0x9f
-	.long	0
-	.long	0
 .LLST39:
-	.long	.LVL79
-	.long	.LVL80
-	.word	0x2
-	.byte	0x30
-	.byte	0x9f
+	.long	.LVL70
+	.long	.LVL71
+	.word	0x6
+	.byte	0x9e
+	.uleb128 0x4
+	.long	0x41a00000
 	.long	0
 	.long	0
 .LLST40:
-	.long	.LVL82
-	.long	.LVL83
-	.word	0x2
-	.byte	0x30
-	.byte	0x9f
+	.long	.LVL70
+	.long	.LVL71
+	.word	0x6
+	.byte	0x9e
+	.uleb128 0x4
+	.long	0x489c4000
 	.long	0
 	.long	0
 .LLST41:
-	.long	.LVL86
-	.long	.LVL87
-	.word	0x2
-	.byte	0x30
+	.long	.LVL70
+	.long	.LVL71
+	.word	0x6
+	.byte	0xc
+	.long	0x4e200
 	.byte	0x9f
 	.long	0
 	.long	0
 .LLST42:
-	.long	.LVL89
-	.long	.LVL90
+	.long	.LVL85
+	.long	.LVL86
 	.word	0x2
 	.byte	0x30
 	.byte	0x9f
 	.long	0
 	.long	0
 .LLST43:
+	.long	.LVL88
+	.long	.LVL89
+	.word	0x2
+	.byte	0x30
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST44:
 	.long	.LVL92
 	.long	.LVL93
 	.word	0x2
@@ -5238,32 +5479,48 @@ GamePointer:
 	.byte	0x9f
 	.long	0
 	.long	0
-.LLST44:
+.LLST45:
+	.long	.LVL95
+	.long	.LVL96
+	.word	0x2
+	.byte	0x30
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST46:
+	.long	.LVL98
+	.long	.LVL99
+	.word	0x2
+	.byte	0x30
+	.byte	0x9f
+	.long	0
+	.long	0
+.LLST47:
 	.long	.LFB87
-	.long	.LCFI74
+	.long	.LCFI78
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 2
-	.long	.LCFI74
-	.long	.LCFI75
+	.long	.LCFI78
+	.long	.LCFI79
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 3
-	.long	.LCFI75
-	.long	.LCFI76
+	.long	.LCFI79
+	.long	.LCFI80
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 4
-	.long	.LCFI76
-	.long	.LCFI77
+	.long	.LCFI80
+	.long	.LCFI81
 	.word	0x3
 	.byte	0x92
 	.uleb128 0x20
 	.sleb128 8
-	.long	.LCFI77
+	.long	.LCFI81
 	.long	.LFE87
 	.word	0x2
 	.byte	0x8c
@@ -6998,6 +7255,9 @@ GamePointer:
 	.byte	0x5
 	.uleb128 0x39
 	.long	.LASF2155
+	.byte	0x5
+	.uleb128 0x3a
+	.long	.LASF2156
 	.byte	0x4
 	.byte	0
 	.section	.debug_macro,"G",@progbits,wm4.parts.h.38.424177e1c4c7502bdf2cd6eac0e66f1e,comdat
@@ -12654,8 +12914,6 @@ GamePointer:
 	.string	"TWAR _SFR_MEM8(0xBA)"
 .LASF1594:
 	.string	"TWI_vect _VECTOR(24)"
-.LASF992:
-	.string	"OCF1A 1"
 .LASF560:
 	.string	"SAMD10DU ( SAM_PART_IS_DEFINED(SAMD10D14AU) )"
 .LASF2154:
@@ -12779,7 +13037,7 @@ GamePointer:
 .LASF1866:
 	.ascii	"__LPM_dword_tiny__(addr) (__ext"
 	.string	"ension__({ uint16_t __addr16 = (uint16_t)(addr) + __AVR_TINY_PM_BASE_ADDRESS__; uint32_t __result; __asm__ ( \"ld %A0, z+\" \"\\n\\t\" \"ld %B0, z+\" \"\\n\\t\" \"ld %C0, z+\" \"\\n\\t\" \"ld %D0, z\" \"\\n\\t\" : \"=r\" (__result), \"=z\" (__addr16) : \"1\" (__addr16) ); __result; }))"
-.LASF2162:
+.LASF2163:
 	.string	"uint32_t"
 .LASF1109:
 	.string	"GPIOR26 6"
@@ -12911,7 +13169,7 @@ GamePointer:
 	.string	"DD0 0"
 .LASF1720:
 	.string	"__AVR_LIBC_DATE_STRING__ \"20150208\""
-.LASF2173:
+.LASF2174:
 	.string	"Carguero"
 .LASF3:
 	.string	"__STDC_UTF_32__ 1"
@@ -12963,7 +13221,7 @@ GamePointer:
 	.string	"SPR0 0"
 .LASF1843:
 	.string	"ISR_NOBLOCK __attribute__((interrupt))"
-.LASF2174:
+.LASF2175:
 	.string	"P2RGB"
 .LASF2019:
 	.string	"SAMG53_XPLAINED_PRO 66"
@@ -12989,7 +13247,7 @@ GamePointer:
 	.string	"_UTIL_DELAY_BASIC_H_ 1"
 .LASF958:
 	.string	"PORTC6 6"
-.LASF2161:
+.LASF2162:
 	.string	"long int"
 .LASF1476:
 	.string	"TWD6 6"
@@ -13052,10 +13310,12 @@ GamePointer:
 	.string	"E2END 0x3FF"
 .LASF142:
 	.string	"__DBL_MANT_DIG__ 24"
-.LASF657:
-	.string	"SAM3XA (SAM3X4 || SAM3X8 || SAM3A4 || SAM3A8)"
+.LASF549:
+	.string	"SAMR35J ( SAM_PART_IS_DEFINED(SAMR35J18B) || SAM_PART_IS_DEFINED(SAMR35J17B) || SAM_PART_IS_DEFINED(SAMR35J16B) )"
 .LASF301:
 	.string	"__USA_FBIT__ 16"
+.LASF1430:
+	.string	"OCR2_4 4"
 .LASF847:
 	.string	"SCNdLEAST32 \"ld\""
 .LASF537:
@@ -13200,6 +13460,8 @@ GamePointer:
 	.string	"_GPIO_H_ "
 .LASF1110:
 	.string	"GPIOR27 7"
+.LASF223:
+	.string	"__LLFRACT_MIN__ (-0.5LLR-0.5LLR)"
 .LASF1426:
 	.string	"OCR2_0 0"
 .LASF679:
@@ -13374,7 +13636,7 @@ GamePointer:
 	.string	"SPR1 1"
 .LASF426:
 	.string	"__BUILTIN_AVR_ULLKBITS 1"
-.LASF2159:
+.LASF2160:
 	.string	"unsigned char"
 .LASF895:
 	.string	"_SFR_IO_REG_P(sfr) (_SFR_MEM_ADDR(sfr) < 0x40 + __SFR_OFFSET)"
@@ -13519,7 +13781,7 @@ GamePointer:
 	.string	"__BUILTIN_AVR_ROUNDHK 1"
 .LASF1158:
 	.string	"SPMCSR _SFR_IO8(0x37)"
-.LASF2167:
+.LASF2168:
 	.string	"blue"
 .LASF286:
 	.string	"__USQ_IBIT__ 0"
@@ -13763,8 +14025,8 @@ GamePointer:
 	.string	"PD4 PORTD4"
 .LASF1538:
 	.string	"UDR0 _SFR_MEM8(0xC6)"
-.LASF2199:
-	.string	"playerTurn"
+.LASF1622:
+	.string	"FUSE_DWEN (unsigned char)~_BV(6)"
 .LASF1619:
 	.string	"FUSE_EESAVE (unsigned char)~_BV(3)"
 .LASF692:
@@ -13829,8 +14091,6 @@ GamePointer:
 	.string	"ATMEGA256RFR2_XPLAINED_PRO 52"
 .LASF583:
 	.string	"SAMC21E ( SAM_PART_IS_DEFINED(SAMC21E15A) || SAM_PART_IS_DEFINED(SAMC21E16A) || SAM_PART_IS_DEFINED(SAMC21E17A) || SAM_PART_IS_DEFINED(SAMC21E18A) )"
-.LASF2224:
-	.string	"C:\\\\Users\\\\Bruno\\\\Desktop\\\\Micro\\\\BatallaNaval_Micro\\\\GccMatrixWS2812 V3\\\\GccMatrixWS2812 V3\\\\Debug"
 .LASF1162:
 	.string	"PGWRT 2"
 .LASF402:
@@ -13868,6 +14128,8 @@ GamePointer:
 	.string	"FUNC_PTR void *"
 .LASF203:
 	.string	"__FRACT_MIN__ (-0.5R-0.5R)"
+.LASF2224:
+	.string	"C:\\\\Users\\\\pijua\\\\Desktop\\\\BatallaNaval_Micro-main\\\\BatallaNaval_Micro-main\\\\GccMatrixWS2812 V3\\\\GccMatrixWS2812 V3\\\\Debug"
 .LASF2025:
 	.string	"SAM4CMS_DB 72"
 .LASF1891:
@@ -13894,7 +14156,7 @@ GamePointer:
 	.string	"__BUILTIN_AVR_ROUNDFX 1"
 .LASF283:
 	.string	"__UHQ_FBIT__ 16"
-.LASF2157:
+.LASF2158:
 	.string	"uint8_t"
 .LASF2083:
 	.string	"USART_RX IOPORT_CREATE_PIN(PORTD, 0)"
@@ -14242,6 +14504,8 @@ GamePointer:
 	.string	"__LPM_tiny__(addr) (__extension__({ uint16_t __addr16 = (uint16_t)(addr) + __AVR_TINY_PM_BASE_ADDRESS__; uint8_t __result; __asm__ ( \"ld %0, z\" \"\\n\\t\" : \"=r\" (__result) : \"z\" (__addr16) ); __result; }))"
 .LASF234:
 	.string	"__SACCUM_MAX__ 0X7FFFP-7HK"
+.LASF2156:
+	.string	"DELAY_BETWEEN_SHOTS 3"
 .LASF39:
 	.string	"__CHAR16_TYPE__ unsigned int"
 .LASF1542:
@@ -14276,9 +14540,9 @@ GamePointer:
 	.string	"PB7 PORTB7"
 .LASF1956:
 	.string	"_BOARD_H_ "
-.LASF2171:
-	.string	"boolDisparado0"
 .LASF2172:
+	.string	"boolDisparado0"
+.LASF2173:
 	.string	"boolDisparado1"
 .LASF1513:
 	.string	"UCPOL0 0"
@@ -14298,8 +14562,8 @@ GamePointer:
 	.string	"SAM3U2 ( SAM_PART_IS_DEFINED(SAM3U2C) || SAM_PART_IS_DEFINED(SAM3U2E) )"
 .LASF404:
 	.string	"__BUILTIN_AVR_BITSK 1"
-.LASF549:
-	.string	"SAMR35J ( SAM_PART_IS_DEFINED(SAMR35J18B) || SAM_PART_IS_DEFINED(SAMR35J17B) || SAM_PART_IS_DEFINED(SAMR35J16B) )"
+.LASF2199:
+	.string	"playerTurn"
 .LASF1502:
 	.string	"RXC0 7"
 .LASF9:
@@ -14457,7 +14721,7 @@ GamePointer:
 	.string	"SIZE_MAX UINT16_MAX"
 .LASF1859:
 	.string	"__LPM_classic__(addr) (__extension__({ uint16_t __addr16 = (uint16_t)(addr); uint8_t __result; __asm__ __volatile__ ( \"lpm\" \"\\n\\t\" \"mov %0, r0\" \"\\n\\t\" : \"=r\" (__result) : \"z\" (__addr16) : \"r0\" ); __result; }))"
-.LASF2175:
+.LASF2176:
 	.string	"__tmp"
 .LASF2035:
 	.string	"ATMEGA328P_XPLAINED_MINI 82"
@@ -14471,8 +14735,6 @@ GamePointer:
 	.string	"SAME70JB ( SAM_PART_IS_DEFINED(SAME70J19B) || SAM_PART_IS_DEFINED(SAME70J20B) || SAM_PART_IS_DEFINED(SAME70J21B) )"
 .LASF1884:
 	.string	"pgm_read_ptr(address_short) pgm_read_ptr_near(address_short)"
-.LASF1622:
-	.string	"FUSE_DWEN (unsigned char)~_BV(6)"
 .LASF488:
 	.string	"XMEGA_E (XMEGA_E5)"
 .LASF460:
@@ -14598,7 +14860,7 @@ GamePointer:
 	.string	"__BUILTIN_AVR_BITSULK 1"
 .LASF939:
 	.string	"PINC3 3"
-.LASF2156:
+.LASF2157:
 	.string	"int8_t"
 .LASF1656:
 	.string	"DD1 1"
@@ -14772,7 +15034,7 @@ GamePointer:
 	.string	"PCINT10 2"
 .LASF1915:
 	.string	"convert_byte_array_to_16_bit(data) (*(uint16_t *)(data))"
-.LASF2158:
+.LASF2159:
 	.string	"signed char"
 .LASF1484:
 	.string	"TWEA 6"
@@ -14838,7 +15100,7 @@ GamePointer:
 	.string	"WDIF 7"
 .LASF2017:
 	.string	"SAM4C_EK 64"
-.LASF2166:
+.LASF2167:
 	.string	"green"
 .LASF1489:
 	.string	"TWAM2 2"
@@ -14908,7 +15170,7 @@ GamePointer:
 	.string	"fabsf fabs"
 .LASF948:
 	.string	"DDC4 4"
-.LASF2168:
+.LASF2169:
 	.string	"RGBled"
 .LASF1925:
 	.string	"PGM_READ_BYTE(x) pgm_read_byte(x)"
@@ -15187,7 +15449,7 @@ GamePointer:
 	.string	"PORTD6 6"
 .LASF739:
 	.string	"INT_FAST16_MAX INT16_MAX"
-.LASF2169:
+.LASF2170:
 	.string	"boolDisparado"
 .LASF1564:
 	.string	"TIMER2_OVF_vect _VECTOR(9)"
@@ -15231,7 +15493,7 @@ GamePointer:
 	.string	"EXTRF 1"
 .LASF40:
 	.string	"__CHAR32_TYPE__ long unsigned int"
-.LASF2170:
+.LASF2171:
 	.string	"Submarino"
 .LASF315:
 	.string	"__GCC_ATOMIC_SHORT_LOCK_FREE 1"
@@ -15279,7 +15541,7 @@ GamePointer:
 	.string	"GPIOR01 1"
 .LASF1187:
 	.string	"PRTIM1 3"
-.LASF2176:
+.LASF2177:
 	.string	"__ticks_dc"
 .LASF1330:
 	.string	"TCNT1L2 2"
@@ -15353,8 +15615,8 @@ GamePointer:
 	.string	"UMSEL01 7"
 .LASF452:
 	.string	"UC3C1 ( AVR32_PART_IS_DEFINED(UC3C164C) || AVR32_PART_IS_DEFINED(UC3C1128C) || AVR32_PART_IS_DEFINED(UC3C1256C) || AVR32_PART_IS_DEFINED(UC3C1512C) )"
-.LASF223:
-	.string	"__LLFRACT_MIN__ (-0.5LLR-0.5LLR)"
+.LASF992:
+	.string	"OCF1A 1"
 .LASF638:
 	.string	"SAMV70N ( SAM_PART_IS_DEFINED(SAMV70N19) || SAM_PART_IS_DEFINED(SAMV70N20) )"
 .LASF2186:
@@ -15814,7 +16076,7 @@ GamePointer:
 	.string	"SAM4E16 ( SAM_PART_IS_DEFINED(SAM4E16C) || SAM_PART_IS_DEFINED(SAM4E16CB) || SAM_PART_IS_DEFINED(SAM4E16E) )"
 .LASF1082:
 	.string	"OCR0A_6 6"
-.LASF2177:
+.LASF2178:
 	.string	"double"
 .LASF1706:
 	.string	"ZL r30"
@@ -15838,8 +16100,6 @@ GamePointer:
 	.string	"__SIZEOF_DOUBLE__ 4"
 .LASF2016:
 	.string	"ATMEGARFX_RCB 63"
-.LASF2179:
-	.string	"checksTrue"
 .LASF2036:
 	.string	"ATMEGA328PB_XPLAINED_MINI 83"
 .LASF752:
@@ -15900,8 +16160,8 @@ GamePointer:
 	.string	"PINC6 6"
 .LASF791:
 	.string	"PRIiFAST32 \"li\""
-.LASF1430:
-	.string	"OCR2_4 4"
+.LASF657:
+	.string	"SAM3XA (SAM3X4 || SAM3X8 || SAM3A4 || SAM3A8)"
 .LASF1042:
 	.string	"EEAR6 6"
 .LASF1072:
@@ -16103,7 +16363,7 @@ GamePointer:
 	.string	"UDR0_0 0"
 .LASF2133:
 	.string	"isnanf isnan"
-.LASF2165:
+.LASF2166:
 	.string	"long long unsigned int"
 .LASF20:
 	.string	"__SIZEOF_SHORT__ 2"
@@ -16381,7 +16641,7 @@ GamePointer:
 	.string	"ADCH2 2"
 .LASF855:
 	.string	"SCNoLEAST8 \"hho\""
-.LASF2164:
+.LASF2165:
 	.string	"long long int"
 .LASF1714:
 	.string	"AVR_STACK_POINTER_HI_ADDR _SFR_IO_ADDR(SPH)"
@@ -16499,7 +16759,7 @@ GamePointer:
 	.string	"WGM12 3"
 .LASF1979:
 	.string	"UC3_L0_QT600 26"
-.LASF2163:
+.LASF2164:
 	.string	"long unsigned int"
 .LASF343:
 	.string	"__BUILTIN_AVR_NOP 1"
@@ -16605,7 +16865,7 @@ GamePointer:
 	.string	"PORTC4 4"
 .LASF54:
 	.string	"__UINT_LEAST8_TYPE__ unsigned char"
-.LASF2178:
+.LASF2179:
 	.string	"checks"
 .LASF1474:
 	.string	"TWD4 4"
@@ -16631,7 +16891,7 @@ GamePointer:
 	.string	"__always_optimize __attribute__((optimize(3)))"
 .LASF529:
 	.string	"SAM4SA16 ( SAM_PART_IS_DEFINED(SAM4SA16B) || SAM_PART_IS_DEFINED(SAM4SA16C) )"
-.LASF2160:
+.LASF2161:
 	.string	"unsigned int"
 .LASF2014:
 	.string	"SAM4N_XPLAINED_PRO 61"

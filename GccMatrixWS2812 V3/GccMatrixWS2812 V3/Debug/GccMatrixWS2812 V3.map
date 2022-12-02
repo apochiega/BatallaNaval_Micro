@@ -282,7 +282,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x16 src/ASF/mega/boards/atmega328p_xplained_mini/init.o
  .debug_macro   0x00000000       0x58 src/ASF/mega/boards/atmega328p_xplained_mini/init.o
  .debug_line    0x00000000      0x46c src/ASF/mega/boards/atmega328p_xplained_mini/init.o
- .debug_str     0x00000000    0x10a8f src/ASF/mega/boards/atmega328p_xplained_mini/init.o
+ .debug_str     0x00000000    0x10ab0 src/ASF/mega/boards/atmega328p_xplained_mini/init.o
  .comment       0x00000000       0x31 src/ASF/mega/boards/atmega328p_xplained_mini/init.o
  .debug_frame   0x00000000       0x24 src/ASF/mega/boards/atmega328p_xplained_mini/init.o
  .group         0x00000000        0x8 src/main.o
@@ -537,7 +537,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1046
+.text           0x00000000     0x111c
  *(.vectors)
  .vectors       0x00000000       0x68 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -592,128 +592,128 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x0000009a        0x4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
+ .init9         0x0000009a        0x6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  *(.init9)
  *(.text)
- .text          0x0000009e        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
-                0x0000009e                __vector_22
-                0x0000009e                __vector_1
-                0x0000009e                __vector_24
-                0x0000009e                __vector_12
-                0x0000009e                __bad_interrupt
-                0x0000009e                __vector_6
-                0x0000009e                __vector_3
-                0x0000009e                __vector_23
-                0x0000009e                __vector_25
-                0x0000009e                __vector_11
-                0x0000009e                __vector_13
-                0x0000009e                __vector_17
-                0x0000009e                __vector_7
-                0x0000009e                __vector_5
-                0x0000009e                __vector_4
-                0x0000009e                __vector_9
-                0x0000009e                __vector_2
-                0x0000009e                __vector_21
-                0x0000009e                __vector_15
-                0x0000009e                __vector_8
-                0x0000009e                __vector_10
-                0x0000009e                __vector_16
-                0x0000009e                __vector_20
- .text          0x000000a0       0xae src/DrvWs2812.o
-                0x000000a0                init_ws2812
-                0x000000b4                wrt_ws2812
- .text          0x0000014e       0xa0 src/wrt_Digit.o
-                0x0000014e                wrt_Digit_Init
-                0x00000160                wrt_Digit
-                0x000001ee                . = ALIGN (0x2)
+ .text          0x000000a0        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
+                0x000000a0                __vector_22
+                0x000000a0                __vector_1
+                0x000000a0                __vector_24
+                0x000000a0                __vector_12
+                0x000000a0                __bad_interrupt
+                0x000000a0                __vector_6
+                0x000000a0                __vector_3
+                0x000000a0                __vector_23
+                0x000000a0                __vector_25
+                0x000000a0                __vector_11
+                0x000000a0                __vector_13
+                0x000000a0                __vector_17
+                0x000000a0                __vector_7
+                0x000000a0                __vector_5
+                0x000000a0                __vector_4
+                0x000000a0                __vector_9
+                0x000000a0                __vector_2
+                0x000000a0                __vector_21
+                0x000000a0                __vector_15
+                0x000000a0                __vector_8
+                0x000000a0                __vector_10
+                0x000000a0                __vector_16
+                0x000000a0                __vector_20
+ .text          0x000000a2       0xae src/DrvWs2812.o
+                0x000000a2                init_ws2812
+                0x000000b6                wrt_ws2812
+ .text          0x00000150       0xa0 src/wrt_Digit.o
+                0x00000150                wrt_Digit_Init
+                0x00000162                wrt_Digit
+                0x000001f0                . = ALIGN (0x2)
  *(.text.*)
  .text.adc_init
-                0x000001ee       0x22 src/ADC.o
-                0x000001ee                adc_init
+                0x000001f0       0x22 src/ADC.o
+                0x000001f0                adc_init
  .text.read_adc
-                0x00000210       0x2a src/ADC.o
-                0x00000210                read_adc
+                0x00000212       0x2a src/ADC.o
+                0x00000212                read_adc
  .text.read_VRY
-                0x0000023a        0x6 src/ADC.o
-                0x0000023a                read_VRY
+                0x0000023c        0x6 src/ADC.o
+                0x0000023c                read_VRY
  .text.read_VRX
-                0x00000240        0x6 src/ADC.o
-                0x00000240                read_VRX
+                0x00000242        0x6 src/ADC.o
+                0x00000242                read_VRX
  .text.QueueInit
-                0x00000246       0x1a src/cqueue.o
-                0x00000246                QueueInit
+                0x00000248       0x1a src/cqueue.o
+                0x00000248                QueueInit
  .text.PushQueue
-                0x00000260       0x44 src/cqueue.o
-                0x00000260                PushQueue
+                0x00000262       0x44 src/cqueue.o
+                0x00000262                PushQueue
  .text.checkJoystick
-                0x000002a4       0x5e src/joystickReads.o
-                0x000002a4                checkJoystick
+                0x000002a6       0x5e src/joystickReads.o
+                0x000002a6                checkJoystick
  .text.checkJoystickButton
-                0x00000302        0xa src/joystickReads.o
-                0x00000302                checkJoystickButton
+                0x00000304        0xa src/joystickReads.o
+                0x00000304                checkJoystickButton
  .text.init_RTI
-                0x0000030c       0x16 src/Timer.o
-                0x0000030c                init_RTI
+                0x0000030e       0x16 src/Timer.o
+                0x0000030e                init_RTI
  .text.__vector_14
-                0x00000322      0x154 src/Timer.o
-                0x00000322                __vector_14
+                0x00000324      0x154 src/Timer.o
+                0x00000324                __vector_14
  .text.UART_Init
-                0x00000476       0x2e src/UART.o
-                0x00000476                UART_Init
+                0x00000478       0x2e src/UART.o
+                0x00000478                UART_Init
  .text.__vector_19
-                0x000004a4       0x32 src/UART.o
-                0x000004a4                __vector_19
+                0x000004a6       0x32 src/UART.o
+                0x000004a6                __vector_19
  .text.__vector_18
-                0x000004d6       0x4a src/UART.o
-                0x000004d6                __vector_18
+                0x000004d8       0x4a src/UART.o
+                0x000004d8                __vector_18
  .text.checkPlayer1Win
-                0x00000520        0x4 src/main.o
-                0x00000520                checkPlayer1Win
+                0x00000522       0xcc src/main.o
+                0x00000522                checkPlayer1Win
  .text.checkPlayer2Win
-                0x00000524       0xcc src/main.o
-                0x00000524                checkPlayer2Win
+                0x000005ee       0xcc src/main.o
+                0x000005ee                checkPlayer2Win
  .text.delaySeconds
-                0x000005f0       0x66 src/main.o
-                0x000005f0                delaySeconds
+                0x000006ba       0x66 src/main.o
+                0x000006ba                delaySeconds
  .text.copyArrayOf1
-                0x00000656       0x3e src/main.o
-                0x00000656                copyArrayOf1
+                0x00000720       0x3e src/main.o
+                0x00000720                copyArrayOf1
  .text.copyArrayOf2
-                0x00000694       0x3e src/main.o
-                0x00000694                copyArrayOf2
+                0x0000075e       0x3e src/main.o
+                0x0000075e                copyArrayOf2
  .text.scanSubmarinos1
-                0x000006d2       0xbc src/main.o
-                0x000006d2                scanSubmarinos1
+                0x0000079c       0xbc src/main.o
+                0x0000079c                scanSubmarinos1
  .text.scanSubmarinos2
-                0x0000078e       0xbc src/main.o
-                0x0000078e                scanSubmarinos2
+                0x00000858       0xbc src/main.o
+                0x00000858                scanSubmarinos2
  .text.scanCargueros1
-                0x0000084a      0x206 src/main.o
-                0x0000084a                scanCargueros1
+                0x00000914      0x206 src/main.o
+                0x00000914                scanCargueros1
  .text.shootPlayer1
-                0x00000a50       0x60 src/main.o
-                0x00000a50                shootPlayer1
+                0x00000b1a       0x60 src/main.o
+                0x00000b1a                shootPlayer1
  .text.playPlayer2
-                0x00000ab0      0x12e src/main.o
-                0x00000ab0                playPlayer2
+                0x00000b7a      0x134 src/main.o
+                0x00000b7a                playPlayer2
  .text.scanCargueros2
-                0x00000bde      0x206 src/main.o
-                0x00000bde                scanCargueros2
+                0x00000cae      0x206 src/main.o
+                0x00000cae                scanCargueros2
  .text.shootPlayer2
-                0x00000de4       0x60 src/main.o
-                0x00000de4                shootPlayer2
+                0x00000eb4       0x60 src/main.o
+                0x00000eb4                shootPlayer2
  .text.playPlayer1
-                0x00000e44      0x12e src/main.o
-                0x00000e44                playPlayer1
- .text.gameOn   0x00000f72       0x4c src/main.o
-                0x00000f72                gameOn
- .text.main     0x00000fbe       0x84 src/main.o
-                0x00000fbe                main
-                0x00001042                . = ALIGN (0x2)
+                0x00000f14      0x134 src/main.o
+                0x00000f14                playPlayer1
+ .text.gameOn   0x00001048       0x4c src/main.o
+                0x00001048                gameOn
+ .text.main     0x00001094       0x84 src/main.o
+                0x00001094                main
+                0x00001118                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00001042        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00001042                _exit
-                0x00001042                exit
+ .fini9         0x00001118        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x00001118                _exit
+                0x00001118                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -732,11 +732,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00001042        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x00001118        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00001046                _etext = .
+                0x0000111c                _etext = .
 
-.data           0x00800100       0x44 load address 0x00001046
+.data           0x00800100       0x44 load address 0x0000111c
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -803,8 +803,8 @@ END GROUP
                 0x00800227                matrizJugador1
                 0x008002e7                matrizJugador2
                 0x008003a7                PROVIDE (__bss_end, .)
-                0x00001046                __data_load_start = LOADADDR (.data)
-                0x0000108a                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000111c                __data_load_start = LOADADDR (.data)
+                0x00001160                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x008003a7        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -902,17 +902,17 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1a51
+.debug_info     0x00000000     0x1aa9
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_info    0x000005f4      0x12e src/ADC.o
  .debug_info    0x00000722      0x120 src/cqueue.o
- .debug_info    0x00000842       0x95 src/DrvWs2812.o
- .debug_info    0x000008d7      0x137 src/joystickReads.o
- .debug_info    0x00000a0e      0x1cd src/Timer.o
- .debug_info    0x00000bdb      0x3b5 src/UART.o
- .debug_info    0x00000f90       0x95 src/wrt_Digit.o
- .debug_info    0x00001025      0xa2c src/main.o
+ .debug_info    0x00000842       0xac src/DrvWs2812.o
+ .debug_info    0x000008ee      0x137 src/joystickReads.o
+ .debug_info    0x00000a25      0x1cd src/Timer.o
+ .debug_info    0x00000bf2      0x3b5 src/UART.o
+ .debug_info    0x00000fa7       0xac src/wrt_Digit.o
+ .debug_info    0x00001053      0xa56 src/main.o
 
 .debug_abbrev   0x00000000      0xd65
  *(.debug_abbrev)
@@ -926,7 +926,7 @@ END GROUP
  .debug_abbrev  0x00000a8b       0x14 src/wrt_Digit.o
  .debug_abbrev  0x00000a9f      0x2c6 src/main.o
 
-.debug_line     0x00000000     0x224d
+.debug_line     0x00000000     0x22ad
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x134 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_line    0x00000134      0x363 src/ADC.o
@@ -936,40 +936,40 @@ END GROUP
  .debug_line    0x00000c54      0x543 src/Timer.o
  .debug_line    0x00001197      0x465 src/UART.o
  .debug_line    0x000015fc      0x1eb src/wrt_Digit.o
- .debug_line    0x000017e7      0xa66 src/main.o
+ .debug_line    0x000017e7      0xac6 src/main.o
 
-.debug_frame    0x00000000      0x5a4
+.debug_frame    0x00000000      0x5b8
  *(.debug_frame)
  .debug_frame   0x00000000       0x54 src/ADC.o
  .debug_frame   0x00000054       0x54 src/cqueue.o
  .debug_frame   0x000000a8       0x44 src/joystickReads.o
  .debug_frame   0x000000ec       0x88 src/Timer.o
  .debug_frame   0x00000174      0x144 src/UART.o
- .debug_frame   0x000002b8      0x2ec src/main.o
+ .debug_frame   0x000002b8      0x300 src/main.o
 
-.debug_str      0x00000000    0x11616
+.debug_str      0x00000000    0x115de
  *(.debug_str)
  .debug_str     0x00000000      0x208 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_str     0x00000208     0x6eaf src/ADC.o
-                               0x6fa5 (size before relaxing)
- .debug_str     0x000070b7       0xd0 src/cqueue.o
-                               0x2bc3 (size before relaxing)
- .debug_str     0x00007187     0x9d7b src/joystickReads.o
-                              0x109ec (size before relaxing)
- .debug_str     0x00010f02      0x1c9 src/Timer.o
-                              0x10b3e (size before relaxing)
- .debug_str     0x000110cb      0x2eb src/UART.o
-                               0x7220 (size before relaxing)
- .debug_str     0x000113b6      0x260 src/main.o
-                              0x11030 (size before relaxing)
+ .debug_str     0x00000208     0x6ec6 src/ADC.o
+                               0x6fbc (size before relaxing)
+ .debug_str     0x000070ce       0x76 src/cqueue.o
+                               0x2be4 (size before relaxing)
+ .debug_str     0x00007144     0x9d7b src/joystickReads.o
+                              0x10a03 (size before relaxing)
+ .debug_str     0x00010ebf      0x1c9 src/Timer.o
+                              0x10b55 (size before relaxing)
+ .debug_str     0x00011088      0x2eb src/UART.o
+                               0x7241 (size before relaxing)
+ .debug_str     0x00011373      0x26b src/main.o
+                              0x11052 (size before relaxing)
 
-.debug_loc      0x00000000      0xc3c
+.debug_loc      0x00000000      0xcf9
  *(.debug_loc)
  .debug_loc     0x00000000       0x21 src/ADC.o
  .debug_loc     0x00000021       0x38 src/cqueue.o
  .debug_loc     0x00000059       0xcb src/Timer.o
  .debug_loc     0x00000124      0x26c src/UART.o
- .debug_loc     0x00000390      0x8ac src/main.o
+ .debug_loc     0x00000390      0x969 src/main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -998,7 +998,7 @@ END GROUP
  .debug_ranges  0x00000088       0x60 src/UART.o
  .debug_ranges  0x000000e8       0x90 src/main.o
 
-.debug_macro    0x00000000     0x7d60
+.debug_macro    0x00000000     0x7d66
  *(.debug_macro)
  .debug_macro   0x00000000      0xc4b src/ADC.o
  .debug_macro   0x00000c4b       0x10 src/ADC.o
@@ -1039,7 +1039,7 @@ END GROUP
  .debug_macro   0x00005437       0x58 src/joystickReads.o
  .debug_macro   0x0000548f      0xd78 src/Timer.o
  .debug_macro   0x00006207      0xca3 src/UART.o
- .debug_macro   0x00006eaa      0xd56 src/main.o
- .debug_macro   0x00007c00      0x160 src/main.o
+ .debug_macro   0x00006eaa      0xd5c src/main.o
+ .debug_macro   0x00007c06      0x160 src/main.o
 OUTPUT(GccMatrixWS2812 V3.elf elf32-avr)
 LOAD linker stubs

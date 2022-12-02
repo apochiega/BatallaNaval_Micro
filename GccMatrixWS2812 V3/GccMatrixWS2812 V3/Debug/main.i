@@ -1,5 +1,5 @@
 # 1 "../src/main.c"
-# 1 "C:\\Users\\Bruno\\Desktop\\Micro\\BatallaNaval_Micro\\GccMatrixWS2812 V3\\GccMatrixWS2812 V3\\Debug//"
+# 1 "C:\\Users\\pijua\\Desktop\\BatallaNaval_Micro-main\\BatallaNaval_Micro-main\\GccMatrixWS2812 V3\\GccMatrixWS2812 V3\\Debug//"
 # 1 "<built-in>"
 #define __STDC__ 1
 #define __STDC_VERSION__ 199901L
@@ -5891,6 +5891,7 @@ typedef RGBled (*P2RGB);
 #define GAME_POINTER_SPEED 20
 #define WINPLAYER1 3
 #define WINPLAYER2 4
+#define DELAY_BETWEEN_SHOTS 3
 
 
 P2RGB p2disp;
@@ -5957,9 +5958,9 @@ int main (void)
    matrizJugador2[i][j] = Apagado;
 
  
-# 123 "../src/main.c" 3
+# 124 "../src/main.c" 3
 __asm__ __volatile__ ("sei" ::: "memory")
-# 123 "../src/main.c"
+# 124 "../src/main.c"
      ;
 
  gameOn();
@@ -6016,7 +6017,7 @@ void playPlayer1(void)
 
   wrt_ws2812(p2disp);
 
-  _delay_ms(10);
+  _delay_ms(20);
  }
 
  shootPlayer2(xMovement, yMovement);
@@ -6024,7 +6025,7 @@ void playPlayer1(void)
  copyArrayOf2();
  wrt_ws2812(p2disp);
 
- delaySeconds(0);
+ delaySeconds(3);
  playerTurn = 2;
 }
 
@@ -6056,7 +6057,7 @@ void playPlayer2(void)
 
   wrt_ws2812(p2disp);
 
-  _delay_ms(10);
+  _delay_ms(20);
  }
 
  shootPlayer1(xMovement, yMovement);
@@ -6064,7 +6065,7 @@ void playPlayer2(void)
  copyArrayOf1();
  wrt_ws2812(p2disp);
 
- delaySeconds(0);
+ delaySeconds(3);
  playerTurn = 1;
 }
 
@@ -6072,7 +6073,6 @@ void playPlayer2(void)
 uint8_t checkPlayer1Win(void)
 {
  uint8_t checks[7] = {0, 0, 0, 0, 0, 0, 0};
- uint8_t checksTrue[7] = {1, 1, 1, 1, 1, 1, 1};
  for (uint8_t c=0; c<=2; c++)
  {
   if (submarinosJugador2[c].boolDisparado == 1)
@@ -6090,8 +6090,7 @@ uint8_t checkPlayer1Win(void)
   }
  }
 
-
- if (checks == checksTrue)
+ if ((checks[0] == 1) & (checks[1] == 1) & (checks[2] == 1) & (checks[3] == 1) & (checks[4] == 1) & (checks[5] == 1) & (checks[6] == 1))
  {
   return 1;
  }
@@ -6108,7 +6107,7 @@ uint8_t checkPlayer2Win(void)
  for (uint8_t c=0; c<=2; c++)
  {
   if (submarinosJugador1[c].boolDisparado == 1)
-  checks[c] = 1;
+   checks[c] = 1;
  }
  for (uint8_t c=0; c<=1; c++)
  {
@@ -6121,7 +6120,6 @@ uint8_t checkPlayer2Win(void)
    checks[c+5] = 1;
   }
  }
-
 
  if ((checks[0] == 1) & (checks[1] == 1) & (checks[2] == 1) & (checks[3] == 1) & (checks[4] == 1) & (checks[5] == 1) & (checks[6] == 1))
  {

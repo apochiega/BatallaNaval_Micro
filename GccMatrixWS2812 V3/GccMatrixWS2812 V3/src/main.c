@@ -52,9 +52,10 @@ typedef struct
 
 #define LED (1<<5)				// Hackatronics Led "D1"
 typedef RGBled (*P2RGB);
-#define GAME_POINTER_SPEED 20		// SPEED * 10 ms because of the function delay
+#define GAME_POINTER_SPEED	20		// SPEED * 10 ms because of the function delay
 #define WINPLAYER1 3			// Corresponding value to the ISR check for the win
 #define WINPLAYER2 4			// Corresponding value to the ISR check for the win
+#define DELAY_BETWEEN_SHOTS	3
 
 // Variables  
 P2RGB p2disp;
@@ -176,7 +177,7 @@ void playPlayer1(void)
 		
 		wrt_ws2812(p2disp);
 		
-		_delay_ms(10);
+		_delay_ms(20);
 	}
 	// Actions to end the player cycle
 	shootPlayer2(xMovement, yMovement);
@@ -184,7 +185,7 @@ void playPlayer1(void)
 	copyArrayOf2();
 	wrt_ws2812(p2disp);
 	
-	delaySeconds(0);
+	delaySeconds(DELAY_BETWEEN_SHOTS);
 	playerTurn = 2;
 }
 
@@ -216,7 +217,7 @@ void playPlayer2(void)
 		
 		wrt_ws2812(p2disp);
 		
-		_delay_ms(10);
+		_delay_ms(20);
 	}
 	// Actions to end the player cycle
 	shootPlayer1(xMovement, yMovement);
@@ -224,7 +225,7 @@ void playPlayer2(void)
 	copyArrayOf1();
 	wrt_ws2812(p2disp);
 	
-	delaySeconds(0);
+	delaySeconds(DELAY_BETWEEN_SHOTS);
 	playerTurn = 1;
 }
 
@@ -232,7 +233,6 @@ void playPlayer2(void)
 uint8_t checkPlayer1Win(void)
 {
 	uint8_t checks[7] = {0, 0, 0, 0, 0, 0, 0};
-	uint8_t checksTrue[7] = {1, 1, 1, 1, 1, 1, 1};
 	for (uint8_t c=0; c<=2; c++)
 	{
 		if (submarinosJugador2[c].boolDisparado == 1)
@@ -250,8 +250,7 @@ uint8_t checkPlayer1Win(void)
 		}
 	}
 	
-	
-	if (checks == checksTrue)
+	if ((checks[0] == 1) & (checks[1] == 1) & (checks[2] == 1) & (checks[3] == 1) & (checks[4] == 1) & (checks[5] == 1) & (checks[6] == 1))
 	{
 		return 1;
 	}
@@ -268,7 +267,7 @@ uint8_t checkPlayer2Win(void)
 	for (uint8_t c=0; c<=2; c++)
 	{
 		if (submarinosJugador1[c].boolDisparado == 1)
-		checks[c] = 1;
+			checks[c] = 1;
 	}
 	for (uint8_t c=0; c<=1; c++)
 	{
@@ -281,7 +280,6 @@ uint8_t checkPlayer2Win(void)
 			checks[c+5] = 1;
 		}
 	}
-	
 	
 	if ((checks[0] == 1) & (checks[1] == 1) & (checks[2] == 1) & (checks[3] == 1) & (checks[4] == 1) & (checks[5] == 1) & (checks[6] == 1))
 	{

@@ -8857,8 +8857,8 @@ board_init:
 	.string	"__BUILTIN_AVR_BITSULLR 1"
 .LASF1468:
 	.string	"LB_MODE_1 (0xFF)"
-.LASF100:
-	.string	"__INT16_C(c) c"
+.LASF2036:
+	.string	"SENSORS_XPLAINED_INERTIAL_A1 7"
 .LASF1404:
 	.string	"PB1 PORTB1"
 .LASF718:
@@ -8883,6 +8883,8 @@ board_init:
 	.string	"FUNC_PTR void *"
 .LASF203:
 	.string	"__FRACT_MIN__ (-0.5R-0.5R)"
+.LASF2119:
+	.string	"C:\\\\Users\\\\pijua\\\\Desktop\\\\BatallaNaval_Micro-main\\\\BatallaNaval_Micro-main\\\\GccMatrixWS2812 V3\\\\GccMatrixWS2812 V3\\\\Debug"
 .LASF1998:
 	.string	"SAM4CMS_DB 72"
 .LASF1889:
@@ -10005,8 +10007,6 @@ board_init:
 	.string	"__UFRACT_MAX__ 0XFFFFP-16UR"
 .LASF285:
 	.string	"__USQ_FBIT__ 32"
-.LASF2036:
-	.string	"SENSORS_XPLAINED_INERTIAL_A1 7"
 .LASF1333:
 	.string	"SPM_READY_vect _VECTOR(25)"
 .LASF1946:
@@ -11019,8 +11019,8 @@ board_init:
 	.string	"__DEC64_MIN__ 1E-383DD"
 .LASF1926:
 	.string	"Swap32(u32) ((U32)(((U32)Swap16((U32)(u32) >> 16)) | ((U32)Swap16((U32)(u32)) << 16)))"
-.LASF2119:
-	.string	"C:\\\\Users\\\\jacoby\\\\Desktop\\\\atmel projects\\\\GccMatrixWS2812 V3\\\\GccMatrixWS2812 V3\\\\Debug"
+.LASF100:
+	.string	"__INT16_C(c) c"
 .LASF1222:
 	.string	"TWINT 7"
 .LASF1297:
