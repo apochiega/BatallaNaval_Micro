@@ -92,14 +92,13 @@ wrt_Digit_Init:
 
 //*********************************************
 //	wrt_Digit
-//	Recibe un valor y el dígito y lo muestra en el display. Valor 10 para limpiar el dígito.
-//	Argumentos de entrada: valor (0:9 o 10) en r22 / dígito (1-4) en r24.
+//	Recibe un valor y el dígito y lo muestra en el display. | 0>'P' | 1>'-' | 2>'1' | 3>'2' | 4>'W' | 5>'I' | 6>'N' | 7>empty
+//	Argumentos de entrada: valor (0:6) en r22 / dígito (0-3) en r24.
 //*********************************************
 wrt_Digit:
-	cpi ValueIn, 11	//Control para evitar ingresos mayores a 10
+	cpi ValueIn, 8	//Control para evitar ingresos mayores a 7
 	brge end
-	dec DigitIn	//Tanto para la lista (.db) como para el control, nos sirve que Digit sea de 0 -> 3
-	cpi DigitIn, 4
+	cpi DigitIn, 4		//Tanto para la lista (.byte) como para el control, nos sirve que Digit sea de 0 -> 3
 	brge end
 
 	rcall value_to_ss	//ingreso y retorno en r16 
@@ -125,8 +124,8 @@ wrt_Digit:
 
 //**********************************************************
 //	value_to_ss
-//	Toma un valor de ingreso y lo convierte a su valor en el display de ss. 10 para limpiar.
-//	Argumento de ingreso y retorno en r16. Valores válidos (0:9)
+//	Toma un valor de ingreso y lo convierte a su valor en el display de ss.
+//	Argumento de ingreso y retorno en ValueIn (r24). Valores válidos (0:3)
 //**********************************************************
 value_to_ss:
 	push ADCRegister
@@ -207,9 +206,9 @@ send_byte:
 	ret
 
 
-//Código en hexa correspondiente al display de cada número (0:9 o 10 para borrar)
+//Código en hexa correspondiente al display de cada caracter (P, -, 1, 2, W, I, N, empty)
 ss_value:
-	.byte 0x03, 0x9F, 0x25, 0x0D, 0x99, 0x49, 0x41, 0x1F, 0x01, 0x19, 0xFF, 0x00	//Se agrega 0x00 para evitar padding
+	.byte 0x31, 0xFD, 0x9F, 0x25, 0xAB, 0x9F, 0xD5, 0xFF
 
 //Código en hexa correspondiente al dígito (1:4)
 display_digit_value:

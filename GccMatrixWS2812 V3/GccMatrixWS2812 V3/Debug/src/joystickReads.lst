@@ -1,0 +1,237 @@
+   1               		.file	"joystickReads.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.Ltext0:
+   9               		.cfi_sections	.debug_frame
+  10               		.section	.text.joystick_INIT,"ax",@progbits
+  11               	.global	joystick_INIT
+  13               	joystick_INIT:
+  14               	.LFB65:
+  15               		.file 1 "../src/joystickReads.c"
+   1:../src/joystickReads.c **** /*
+   2:../src/joystickReads.c ****  * joystickReads.c
+   3:../src/joystickReads.c ****  *
+   4:../src/joystickReads.c ****  * Created: 2/12/2022 0:19:06
+   5:../src/joystickReads.c ****  *  Author: Franco
+   6:../src/joystickReads.c ****  */ 
+   7:../src/joystickReads.c **** 
+   8:../src/joystickReads.c **** #include <asf.h>
+   9:../src/joystickReads.c **** #include <stdint.h>				//Standard types
+  10:../src/joystickReads.c **** #include <avr/interrupt.h>
+  11:../src/joystickReads.c **** #include "ADC.h"
+  12:../src/joystickReads.c **** #include "Timer.h"
+  13:../src/joystickReads.c **** 
+  14:../src/joystickReads.c **** // Definitions
+  15:../src/joystickReads.c **** int8_t xMovement;	// Pointer moves between 0 -> 7
+  16:../src/joystickReads.c **** int8_t yMovement;	// Pointer moves between 0 -> 7
+  17:../src/joystickReads.c **** uint8_t jButton = 1;
+  18:../src/joystickReads.c **** 
+  19:../src/joystickReads.c **** #define JOYSTICK (1<<6)			// Joystick button on PD6
+  20:../src/joystickReads.c **** #define HI_LIM 600
+  21:../src/joystickReads.c **** #define LO_LIM 400				// Joystick HIGH-LOW limit values
+  22:../src/joystickReads.c **** 
+  23:../src/joystickReads.c **** 
+  24:../src/joystickReads.c **** // Protoypes
+  25:../src/joystickReads.c **** void checkJoystick(void);
+  26:../src/joystickReads.c **** void checkJoystickButton(void);
+  27:../src/joystickReads.c **** void joystick_INIT(void);
+  28:../src/joystickReads.c **** 
+  29:../src/joystickReads.c **** 
+  30:../src/joystickReads.c **** // Initializes the DDRD
+  31:../src/joystickReads.c **** void joystick_INIT(void)
+  32:../src/joystickReads.c **** {
+  16               		.loc 1 32 0
+  17               		.cfi_startproc
+  18               	/* prologue: function */
+  19               	/* frame size = 0 */
+  20               	/* stack size = 0 */
+  21               	.L__stack_usage = 0
+  33:../src/joystickReads.c **** 	DDRD &= ~(JOYSTICK);
+  22               		.loc 1 33 0
+  23 0000 5698      		cbi 0xa,6
+  24 0002 0895      		ret
+  25               		.cfi_endproc
+  26               	.LFE65:
+  28               		.section	.text.checkJoystick,"ax",@progbits
+  29               	.global	checkJoystick
+  31               	checkJoystick:
+  32               	.LFB66:
+  34:../src/joystickReads.c **** }
+  35:../src/joystickReads.c **** 
+  36:../src/joystickReads.c **** 
+  37:../src/joystickReads.c **** // Sets the extern variables xMovement and yMovement to -1, 0, 1 depending on the Joystick state.
+  38:../src/joystickReads.c **** void checkJoystick(void)
+  39:../src/joystickReads.c **** {
+  33               		.loc 1 39 0
+  34               		.cfi_startproc
+  35               	/* prologue: function */
+  36               	/* frame size = 0 */
+  37               	/* stack size = 0 */
+  38               	.L__stack_usage = 0
+  40:../src/joystickReads.c **** 	if(read_VRX() > HI_LIM)
+  39               		.loc 1 40 0
+  40 0000 0E94 0000 		call read_VRX
+  41               	.LVL0:
+  42 0004 8935      		cpi r24,89
+  43 0006 9240      		sbci r25,2
+  44 0008 00F0      		brlo .L3
+  41:../src/joystickReads.c **** 	{
+  42:../src/joystickReads.c **** 		if (xMovement <= 6)
+  45               		.loc 1 42 0
+  46 000a 8091 0000 		lds r24,xMovement
+  47 000e 8730      		cpi r24,lo8(7)
+  48 0010 04F4      		brge .L4
+  43:../src/joystickReads.c **** 			xMovement += 1;
+  49               		.loc 1 43 0
+  50 0012 8F5F      		subi r24,lo8(-(1))
+  51 0014 8093 0000 		sts xMovement,r24
+  52 0018 00C0      		rjmp .L4
+  53               	.L3:
+  44:../src/joystickReads.c **** 	}
+  45:../src/joystickReads.c **** 	else if (read_VRX() < LO_LIM)
+  54               		.loc 1 45 0
+  55 001a 0E94 0000 		call read_VRX
+  56               	.LVL1:
+  57 001e 8039      		cpi r24,-112
+  58 0020 9140      		sbci r25,1
+  59 0022 00F4      		brsh .L4
+  46:../src/joystickReads.c **** 	{
+  47:../src/joystickReads.c **** 		if (xMovement >= 1)
+  60               		.loc 1 47 0
+  61 0024 8091 0000 		lds r24,xMovement
+  62 0028 1816      		cp __zero_reg__,r24
+  63 002a 04F4      		brge .L4
+  48:../src/joystickReads.c **** 			xMovement -= 1;
+  64               		.loc 1 48 0
+  65 002c 8150      		subi r24,lo8(-(-1))
+  66 002e 8093 0000 		sts xMovement,r24
+  67               	.L4:
+  49:../src/joystickReads.c **** 	}
+  50:../src/joystickReads.c **** 	
+  51:../src/joystickReads.c **** 	if(read_VRY() > HI_LIM)
+  68               		.loc 1 51 0
+  69 0032 0E94 0000 		call read_VRY
+  70               	.LVL2:
+  71 0036 8935      		cpi r24,89
+  72 0038 9240      		sbci r25,2
+  73 003a 00F0      		brlo .L5
+  52:../src/joystickReads.c **** 	{
+  53:../src/joystickReads.c **** 		if (yMovement >= 1)
+  74               		.loc 1 53 0
+  75 003c 8091 0000 		lds r24,yMovement
+  76 0040 1816      		cp __zero_reg__,r24
+  77 0042 04F4      		brge .L2
+  54:../src/joystickReads.c **** 			yMovement -= 1;
+  78               		.loc 1 54 0
+  79 0044 8150      		subi r24,lo8(-(-1))
+  80 0046 8093 0000 		sts yMovement,r24
+  81 004a 0895      		ret
+  82               	.L5:
+  55:../src/joystickReads.c **** 	}
+  56:../src/joystickReads.c **** 	else if (read_VRY() < LO_LIM)
+  83               		.loc 1 56 0
+  84 004c 0E94 0000 		call read_VRY
+  85               	.LVL3:
+  86 0050 8039      		cpi r24,-112
+  87 0052 9140      		sbci r25,1
+  88 0054 00F4      		brsh .L2
+  57:../src/joystickReads.c **** 	{
+  58:../src/joystickReads.c **** 		if (yMovement <= 6)
+  89               		.loc 1 58 0
+  90 0056 8091 0000 		lds r24,yMovement
+  91 005a 8730      		cpi r24,lo8(7)
+  92 005c 04F4      		brge .L2
+  59:../src/joystickReads.c **** 			yMovement += 1;
+  93               		.loc 1 59 0
+  94 005e 8F5F      		subi r24,lo8(-(1))
+  95 0060 8093 0000 		sts yMovement,r24
+  96               	.L2:
+  97 0064 0895      		ret
+  98               		.cfi_endproc
+  99               	.LFE66:
+ 101               		.section	.text.checkJoystickButton,"ax",@progbits
+ 102               	.global	checkJoystickButton
+ 104               	checkJoystickButton:
+ 105               	.LFB67:
+  60:../src/joystickReads.c **** 	}
+  61:../src/joystickReads.c **** }
+  62:../src/joystickReads.c **** 
+  63:../src/joystickReads.c **** void checkJoystickButton(void)
+  64:../src/joystickReads.c **** {
+ 106               		.loc 1 64 0
+ 107               		.cfi_startproc
+ 108               	/* prologue: function */
+ 109               	/* frame size = 0 */
+ 110               	/* stack size = 0 */
+ 111               	.L__stack_usage = 0
+  65:../src/joystickReads.c **** 	jButton = (PIND & JOYSTICK);	// Gets 0 for pressed and (1<<6) for button unpressed.
+ 112               		.loc 1 65 0
+ 113 0000 89B1      		in r24,0x9
+ 114               		.loc 1 65 0
+ 115 0002 8074      		andi r24,lo8(64)
+ 116 0004 8093 0000 		sts jButton,r24
+ 117 0008 0895      		ret
+ 118               		.cfi_endproc
+ 119               	.LFE67:
+ 121               	.global	jButton
+ 122               		.section	.data.jButton,"aw",@progbits
+ 125               	jButton:
+ 126 0000 01        		.byte	1
+ 127               		.comm	yMovement,1,1
+ 128               		.comm	xMovement,1,1
+ 129               		.text
+ 130               	.Letext0:
+ 131               		.file 2 "c:\\program files (x86)\\atmel\\studio\\7.0\\toolchain\\avr8\\avr8-gnu-toolchain\\avr\\in
+ 132               		.file 3 "../src/ADC.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 joystickReads.c
+     joystickReads.s:2      *ABS*:0000003e __SP_H__
+     joystickReads.s:3      *ABS*:0000003d __SP_L__
+     joystickReads.s:4      *ABS*:0000003f __SREG__
+     joystickReads.s:5      *ABS*:00000000 __tmp_reg__
+     joystickReads.s:6      *ABS*:00000001 __zero_reg__
+     joystickReads.s:13     .text.joystick_INIT:00000000 joystick_INIT
+     joystickReads.s:31     .text.checkJoystick:00000000 checkJoystick
+                            *COM*:00000001 xMovement
+                            *COM*:00000001 yMovement
+     joystickReads.s:104    .text.checkJoystickButton:00000000 checkJoystickButton
+     joystickReads.s:125    .data.jButton:00000000 jButton
+                           .group:00000000 wm4.parts.h.38.424177e1c4c7502bdf2cd6eac0e66f1e
+                           .group:00000000 wm4.sfr_defs.h.36.473802ecbcb5d4d38de6c7efbfcd3c60
+                           .group:00000000 wm4.stdint.h.41.052d062c327f27e210bb72c3d087afe5
+                           .group:00000000 wm4.inttypes.h.96.afb9c4be73a069861f8689c997efc518
+                           .group:00000000 wm4.sfr_defs.h.128.38ceebe2fb099c106e85a566519e0f1a
+                           .group:00000000 wm4.iom328p.h.44.29c929f46483155923fc58520c74ebf7
+                           .group:00000000 wm4.portpins.h.34.21289185946cbf62723ecc8db6cdc3ff
+                           .group:00000000 wm4.common.h.35.c7e66042b2128622b9d3bddccc9a39f4
+                           .group:00000000 wm4.version.h.54.85699b1a50c61c991a37d67b69e79e95
+                           .group:00000000 wm4.fuse.h.36.5c373c650020c0efef2cbaa98ea802c3
+                           .group:00000000 wm4.lock.h.36.51f311078904691e8f8c3d70111251d8
+                           .group:00000000 wm4.stdbool.h.29.07dce69c3b78884144b7f7bd19483461
+                           .group:00000000 wm4.stddef.h.39.99b5021e28f91cdb161c889e07266673
+                           .group:00000000 wm4.stdlib.h.40.248a6087ef49adb4f4328833c0282d4b
+                           .group:00000000 wm4.stddef.h.161.19e15733342b50ead2919490b095303e
+                           .group:00000000 wm4.stdlib.h.51.3a36e1d757b19eb9d8852fbf8bb7cd30
+                           .group:00000000 wm4.compiler.h.71.f9633126e8a32454fdb20497dc57808e
+                           .group:00000000 wm4.interrupt.h.36.b2193b640edda749ea0a45a8be5976c8
+                           .group:00000000 wm4.interrupt_avr8.h.89.988a0fb0a0728821bb2ce6a5fad9a217
+                           .group:00000000 wm4.pgmspace.h.83.7bf4a326041279617a872e0717310315
+                           .group:00000000 wm4.pgmspace.h.98.de80e653d80602932888d287eea24d43
+                           .group:00000000 wm4.progmem.h.56.1d8b28eb4bdbace2fba3d4aa9d1800d3
+                           .group:00000000 wm4.compiler.h.162.3bca7208a79b237ff211f6b945969fd5
+                           .group:00000000 wm4.ioport.h.38.48f501ae460febc49dd950c4a2361938
+                           .group:00000000 wm4.mega_gpio.h.43.3e8869bf7dde66f4dae42caccabdc28f
+                           .group:00000000 wm4.board.h.41.2d9694df0f6b670341666b9015632b94
+                           .group:00000000 wm4.led.h.38.8c4408d5cc264ea8e7bbcc0ac6971d10
+                           .group:00000000 wm4.atmega328p_xplained_mini.h.47.411278661c63ad4794d5f415bca0f65b
+                           .group:00000000 wm4.ADC.h.10.4375d630963ad1b8b9d883a341299c49
+
+UNDEFINED SYMBOLS
+read_VRX
+read_VRY
+__do_copy_data
+__do_clear_bss

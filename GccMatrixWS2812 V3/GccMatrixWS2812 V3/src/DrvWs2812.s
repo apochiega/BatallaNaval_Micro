@@ -238,3 +238,11 @@ reload:	dec  r19
 		pop  r20
 		pop  r19
 		ret
+		
+/*
+GLed_table:	.byte		0x64,0x63,0x62
+RLed_table:	.byte		0x00,0x64,0x00
+BLed_table:	.byte		0x00,0x00,0x64
+
+table_end:
+#define		tsize table_end-GLed_table*/

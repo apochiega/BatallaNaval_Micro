@@ -3,130 +3,130 @@ GccMatrixWS2812 V3.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000034  00800100  000005c4  00000658  2**0
+  0 .data         00000044  00800100  00001046  000010da  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         000005c4  00000000  00000000  00000094  2**1
+  1 .text         00001046  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          000000e0  00800134  00800134  0000068c  2**0
+  2 .bss          00000263  00800144  00800144  0000111e  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  0000068c  2**0
+  3 .comment      00000030  00000000  00000000  0000111e  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000006bc  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00001150  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000190  00000000  00000000  00000700  2**3
+  5 .debug_aranges 00000218  00000000  00000000  00001190  2**3
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0000153c  00000000  00000000  00000890  2**0
+  6 .debug_info   00001a51  00000000  00000000  000013a8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000c5a  00000000  00000000  00001dcc  2**0
+  7 .debug_abbrev 00000d65  00000000  00000000  00002df9  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000019b4  00000000  00000000  00002a26  2**0
+  8 .debug_line   0000224d  00000000  00000000  00003b5e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000002d4  00000000  00000000  000043dc  2**2
+  9 .debug_frame  000005a4  00000000  00000000  00005dac  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000113cd  00000000  00000000  000046b0  2**0
+ 10 .debug_str    00011616  00000000  00000000  00006350  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000051e  00000000  00000000  00015a7d  2**0
+ 11 .debug_loc    00000c3c  00000000  00000000  00017966  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000100  00000000  00000000  00015f9b  2**0
+ 12 .debug_ranges 00000178  00000000  00000000  000185a2  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_macro  00006fe9  00000000  00000000  0001609b  2**0
+ 13 .debug_macro  00007d60  00000000  00000000  0001871a  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
-   0:	33 c0       	rjmp	.+102    	; 0x68 <__ctors_end>
-   2:	00 00       	nop
-   4:	4c c0       	rjmp	.+152    	; 0x9e <__bad_interrupt>
-   6:	00 00       	nop
-   8:	4a c0       	rjmp	.+148    	; 0x9e <__bad_interrupt>
-   a:	00 00       	nop
-   c:	48 c0       	rjmp	.+144    	; 0x9e <__bad_interrupt>
-   e:	00 00       	nop
-  10:	46 c0       	rjmp	.+140    	; 0x9e <__bad_interrupt>
-  12:	00 00       	nop
-  14:	44 c0       	rjmp	.+136    	; 0x9e <__bad_interrupt>
-  16:	00 00       	nop
-  18:	42 c0       	rjmp	.+132    	; 0x9e <__bad_interrupt>
-  1a:	00 00       	nop
-  1c:	40 c0       	rjmp	.+128    	; 0x9e <__bad_interrupt>
-  1e:	00 00       	nop
-  20:	3e c0       	rjmp	.+124    	; 0x9e <__bad_interrupt>
-  22:	00 00       	nop
-  24:	3c c0       	rjmp	.+120    	; 0x9e <__bad_interrupt>
-  26:	00 00       	nop
-  28:	3a c0       	rjmp	.+116    	; 0x9e <__bad_interrupt>
-  2a:	00 00       	nop
-  2c:	38 c0       	rjmp	.+112    	; 0x9e <__bad_interrupt>
-  2e:	00 00       	nop
-  30:	36 c0       	rjmp	.+108    	; 0x9e <__bad_interrupt>
-  32:	00 00       	nop
-  34:	34 c0       	rjmp	.+104    	; 0x9e <__bad_interrupt>
-  36:	00 00       	nop
-  38:	40 c1       	rjmp	.+640    	; 0x2ba <__vector_14>
-  3a:	00 00       	nop
-  3c:	30 c0       	rjmp	.+96     	; 0x9e <__bad_interrupt>
-  3e:	00 00       	nop
-  40:	2e c0       	rjmp	.+92     	; 0x9e <__bad_interrupt>
-  42:	00 00       	nop
-  44:	2c c0       	rjmp	.+88     	; 0x9e <__bad_interrupt>
-  46:	00 00       	nop
-  48:	a6 c1       	rjmp	.+844    	; 0x396 <__vector_18>
-  4a:	00 00       	nop
-  4c:	8b c1       	rjmp	.+790    	; 0x364 <__vector_19>
-  4e:	00 00       	nop
-  50:	26 c0       	rjmp	.+76     	; 0x9e <__bad_interrupt>
-  52:	00 00       	nop
-  54:	24 c0       	rjmp	.+72     	; 0x9e <__bad_interrupt>
-  56:	00 00       	nop
-  58:	22 c0       	rjmp	.+68     	; 0x9e <__bad_interrupt>
-  5a:	00 00       	nop
-  5c:	20 c0       	rjmp	.+64     	; 0x9e <__bad_interrupt>
-  5e:	00 00       	nop
-  60:	1e c0       	rjmp	.+60     	; 0x9e <__bad_interrupt>
-  62:	00 00       	nop
-  64:	1c c0       	rjmp	.+56     	; 0x9e <__bad_interrupt>
+       0:	33 c0       	rjmp	.+102    	; 0x68 <__ctors_end>
+       2:	00 00       	nop
+       4:	4c c0       	rjmp	.+152    	; 0x9e <__bad_interrupt>
+       6:	00 00       	nop
+       8:	4a c0       	rjmp	.+148    	; 0x9e <__bad_interrupt>
+       a:	00 00       	nop
+       c:	48 c0       	rjmp	.+144    	; 0x9e <__bad_interrupt>
+       e:	00 00       	nop
+      10:	46 c0       	rjmp	.+140    	; 0x9e <__bad_interrupt>
+      12:	00 00       	nop
+      14:	44 c0       	rjmp	.+136    	; 0x9e <__bad_interrupt>
+      16:	00 00       	nop
+      18:	42 c0       	rjmp	.+132    	; 0x9e <__bad_interrupt>
+      1a:	00 00       	nop
+      1c:	40 c0       	rjmp	.+128    	; 0x9e <__bad_interrupt>
+      1e:	00 00       	nop
+      20:	3e c0       	rjmp	.+124    	; 0x9e <__bad_interrupt>
+      22:	00 00       	nop
+      24:	3c c0       	rjmp	.+120    	; 0x9e <__bad_interrupt>
+      26:	00 00       	nop
+      28:	3a c0       	rjmp	.+116    	; 0x9e <__bad_interrupt>
+      2a:	00 00       	nop
+      2c:	38 c0       	rjmp	.+112    	; 0x9e <__bad_interrupt>
+      2e:	00 00       	nop
+      30:	36 c0       	rjmp	.+108    	; 0x9e <__bad_interrupt>
+      32:	00 00       	nop
+      34:	34 c0       	rjmp	.+104    	; 0x9e <__bad_interrupt>
+      36:	00 00       	nop
+      38:	74 c1       	rjmp	.+744    	; 0x322 <__vector_14>
+      3a:	00 00       	nop
+      3c:	30 c0       	rjmp	.+96     	; 0x9e <__bad_interrupt>
+      3e:	00 00       	nop
+      40:	2e c0       	rjmp	.+92     	; 0x9e <__bad_interrupt>
+      42:	00 00       	nop
+      44:	2c c0       	rjmp	.+88     	; 0x9e <__bad_interrupt>
+      46:	00 00       	nop
+      48:	46 c2       	rjmp	.+1164   	; 0x4d6 <__vector_18>
+      4a:	00 00       	nop
+      4c:	2b c2       	rjmp	.+1110   	; 0x4a4 <__vector_19>
+      4e:	00 00       	nop
+      50:	26 c0       	rjmp	.+76     	; 0x9e <__bad_interrupt>
+      52:	00 00       	nop
+      54:	24 c0       	rjmp	.+72     	; 0x9e <__bad_interrupt>
+      56:	00 00       	nop
+      58:	22 c0       	rjmp	.+68     	; 0x9e <__bad_interrupt>
+      5a:	00 00       	nop
+      5c:	20 c0       	rjmp	.+64     	; 0x9e <__bad_interrupt>
+      5e:	00 00       	nop
+      60:	1e c0       	rjmp	.+60     	; 0x9e <__bad_interrupt>
+      62:	00 00       	nop
+      64:	1c c0       	rjmp	.+56     	; 0x9e <__bad_interrupt>
 	...
 
 00000068 <__ctors_end>:
-  68:	11 24       	eor	r1, r1
-  6a:	1f be       	out	0x3f, r1	; 63
-  6c:	cf ef       	ldi	r28, 0xFF	; 255
-  6e:	d8 e0       	ldi	r29, 0x08	; 8
-  70:	de bf       	out	0x3e, r29	; 62
-  72:	cd bf       	out	0x3d, r28	; 61
+      68:	11 24       	eor	r1, r1
+      6a:	1f be       	out	0x3f, r1	; 63
+      6c:	cf ef       	ldi	r28, 0xFF	; 255
+      6e:	d8 e0       	ldi	r29, 0x08	; 8
+      70:	de bf       	out	0x3e, r29	; 62
+      72:	cd bf       	out	0x3d, r28	; 61
 
 00000074 <__do_copy_data>:
-  74:	11 e0       	ldi	r17, 0x01	; 1
-  76:	a0 e0       	ldi	r26, 0x00	; 0
-  78:	b1 e0       	ldi	r27, 0x01	; 1
-  7a:	e4 ec       	ldi	r30, 0xC4	; 196
-  7c:	f5 e0       	ldi	r31, 0x05	; 5
-  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
-  80:	05 90       	lpm	r0, Z+
-  82:	0d 92       	st	X+, r0
-  84:	a4 33       	cpi	r26, 0x34	; 52
-  86:	b1 07       	cpc	r27, r17
-  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+      74:	11 e0       	ldi	r17, 0x01	; 1
+      76:	a0 e0       	ldi	r26, 0x00	; 0
+      78:	b1 e0       	ldi	r27, 0x01	; 1
+      7a:	e6 e4       	ldi	r30, 0x46	; 70
+      7c:	f0 e1       	ldi	r31, 0x10	; 16
+      7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+      80:	05 90       	lpm	r0, Z+
+      82:	0d 92       	st	X+, r0
+      84:	a4 34       	cpi	r26, 0x44	; 68
+      86:	b1 07       	cpc	r27, r17
+      88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
 
 0000008a <__do_clear_bss>:
-  8a:	22 e0       	ldi	r18, 0x02	; 2
-  8c:	a4 e3       	ldi	r26, 0x34	; 52
-  8e:	b1 e0       	ldi	r27, 0x01	; 1
-  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+      8a:	23 e0       	ldi	r18, 0x03	; 3
+      8c:	a4 e4       	ldi	r26, 0x44	; 68
+      8e:	b1 e0       	ldi	r27, 0x01	; 1
+      90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
 
 00000092 <.do_clear_bss_loop>:
-  92:	1d 92       	st	X+, r1
+      92:	1d 92       	st	X+, r1
 
 00000094 <.do_clear_bss_start>:
-  94:	a4 31       	cpi	r26, 0x14	; 20
-  96:	b2 07       	cpc	r27, r18
-  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
-  9a:	d0 d1       	rcall	.+928    	; 0x43c <main>
-  9c:	91 c2       	rjmp	.+1314   	; 0x5c0 <_exit>
+      94:	a7 3a       	cpi	r26, 0xA7	; 167
+      96:	b2 07       	cpc	r27, r18
+      98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+      9a:	91 d7       	rcall	.+3874   	; 0xfbe <main>
+      9c:	d2 c7       	rjmp	.+4004   	; 0x1042 <_exit>
 
 0000009e <__bad_interrupt>:
-  9e:	b0 cf       	rjmp	.-160    	; 0x0 <__vectors>
+      9e:	b0 cf       	rjmp	.-160    	; 0x0 <__vectors>
 
 000000a0 <init_ws2812>:
 //		lpm	r18,Z+					;Load byte from source 
@@ -135,77 +135,77 @@ Disassembly of section .text:
 ///////////////////////////////////////////////////////////////////////////
 
 		push r23
-  a0:	7f 93       	push	r23
+      a0:	7f 93       	push	r23
 
 		in	r23,DDRB			// DDRB|=PIXEL_PIN;
-  a2:	74 b1       	in	r23, 0x04	; 4
+      a2:	74 b1       	in	r23, 0x04	; 4
         ori r23,PIXEL_PIN
-  a4:	72 60       	ori	r23, 0x02	; 2
+      a4:	72 60       	ori	r23, 0x02	; 2
         out DDRB,r23
-  a6:	74 b9       	out	0x04, r23	; 4
+      a6:	74 b9       	out	0x04, r23	; 4
 
 		in	r23,PORTB
-  a8:	75 b1       	in	r23, 0x05	; 5
+      a8:	75 b1       	in	r23, 0x05	; 5
 		andi r23,~(PIXEL_PIN)		// PORTB&=~(PIXEL_PIN)
-  aa:	7d 7f       	andi	r23, 0xFD	; 253
+      aa:	7d 7f       	andi	r23, 0xFD	; 253
         out PORTB, r23
-  ac:	75 b9       	out	0x05, r23	; 5
+      ac:	75 b9       	out	0x05, r23	; 5
 		call	delay
-  ae:	3d d0       	rcall	.+122    	; 0x12a <delay>
+      ae:	3d d0       	rcall	.+122    	; 0x12a <delay>
 
 		pop r23
-  b0:	7f 91       	pop	r23
+      b0:	7f 91       	pop	r23
 		ret	
-  b2:	08 95       	ret
+      b2:	08 95       	ret
 
 000000b4 <wrt_ws2812>:
 
 
 wrt_ws2812:
 		cli
-  b4:	f8 94       	cli
+      b4:	f8 94       	cli
 		push pixdata
-  b6:	0f 93       	push	r16
+      b6:	0f 93       	push	r16
 		push grb_count
-  b8:	1f 93       	push	r17
+      b8:	1f 93       	push	r17
 
 		push BitCount
-  ba:	4f 93       	push	r20
+      ba:	4f 93       	push	r20
 
 000000bc <donext>:
 
 
 donext:
 		ldi r23,64  //numled
-  bc:	70 e4       	ldi	r23, 0x40	; 64
+      bc:	70 e4       	ldi	r23, 0x40	; 64
 		mov	ZL,r24
-  be:	e8 2f       	mov	r30, r24
+      be:	e8 2f       	mov	r30, r24
 		mov	ZH,r25
 loopg:
 
 		call WritePix
-  c0:	f9 2f       	mov	r31, r25
+      c0:	f9 2f       	mov	r31, r25
 
 000000c2 <loopg>:
-  c2:	07 d0       	rcall	.+14     	; 0xd2 <WritePix>
+      c2:	07 d0       	rcall	.+14     	; 0xd2 <WritePix>
 		dec r23
-  c4:	7a 95       	dec	r23
+      c4:	7a 95       	dec	r23
 		brne	loopg
-  c6:	e9 f7       	brne	.-6      	; 0xc2 <loopg>
+      c6:	e9 f7       	brne	.-6      	; 0xc2 <loopg>
 
 //		call delay
 //		call delay
 
 		pop	BitCount
-  c8:	4f 91       	pop	r20
+      c8:	4f 91       	pop	r20
 		pop grb_count
-  ca:	1f 91       	pop	r17
+      ca:	1f 91       	pop	r17
 		pop pixdata
-  cc:	0f 91       	pop	r16
+      cc:	0f 91       	pop	r16
 		sei
-  ce:	78 94       	sei
+      ce:	78 94       	sei
 		ret
-  d0:	08 95       	ret
+      d0:	08 95       	ret
 
 000000d2 <WritePix>:
 * area in GRB order
@@ -214,92 +214,92 @@ loopg:
 ********************/
 WritePix:
 		push r23
-  d2:	7f 93       	push	r23
+      d2:	7f 93       	push	r23
 		ldi     grb_count,3		; 3 leds / pixel [Green Red Blue]
-  d4:	13 e0       	ldi	r17, 0x03	; 3
+      d4:	13 e0       	ldi	r17, 0x03	; 3
 
 000000d6 <next_led>:
 
 next_led:
 		ld		pixdata,Z+				; load led data (GRB)
-  d6:	01 91       	ld	r16, Z+
+      d6:	01 91       	ld	r16, Z+
 		ldi		BitCount,8				; 8 bits / color
-  d8:	48 e0       	ldi	r20, 0x08	; 8
+      d8:	48 e0       	ldi	r20, 0x08	; 8
 
 000000da <nextbit>:
 nextbit:
 
 		in	r23,PORTB					//SetHI
-  da:	75 b1       	in	r23, 0x05	; 5
+      da:	75 b1       	in	r23, 0x05	; 5
 		ori r23,(PIXEL_PIN)				// PORTB|=PIXEL_PIN;
-  dc:	72 60       	ori	r23, 0x02	; 2
+      dc:	72 60       	ori	r23, 0x02	; 2
 		out	PORTB,r23
-  de:	75 b9       	out	0x05, r23	; 5
+      de:	75 b9       	out	0x05, r23	; 5
 
 		rol		pixdata		;[1]		//Next bit
-  e0:	00 1f       	adc	r16, r16
+      e0:	00 1f       	adc	r16, r16
 		brcs	ES1		;[1/2]
-  e2:	78 f0       	brcs	.+30     	; 0x102 <ES1>
+      e2:	78 f0       	brcs	.+30     	; 0x102 <ES1>
 
 000000e4 <ES0>:
 
 ES0:	Delay1
-  e4:	00 00       	nop
+      e4:	00 00       	nop
 
 		in	r23,PORTB					// SetLO
-  e6:	75 b1       	in	r23, 0x05	; 5
+      e6:	75 b1       	in	r23, 0x05	; 5
 		andi r23,~(PIXEL_PIN)			// PORTB&=~(PIXEL_PIN)
-  e8:	7d 7f       	andi	r23, 0xFD	; 253
+      e8:	7d 7f       	andi	r23, 0xFD	; 253
 		out	PORTB,r23
-  ea:	75 b9       	out	0x05, r23	; 5
+      ea:	75 b9       	out	0x05, r23	; 5
 	...
 
 		Delay8
 		dec		BitCount
-  fc:	4a 95       	dec	r20
+      fc:	4a 95       	dec	r20
 		brne	nextbit
-  fe:	69 f7       	brne	.-38     	; 0xda <nextbit>
+      fe:	69 f7       	brne	.-38     	; 0xda <nextbit>
 		rjmp	txend					//All bits sent -> done!!
- 100:	10 c0       	rjmp	.+32     	; 0x122 <txend>
+     100:	10 c0       	rjmp	.+32     	; 0x122 <txend>
 
 00000102 <ES1>:
 	...
 
 ES1:
 		Delay9
- 112:	00 00       	nop
+     112:	00 00       	nop
 
 		in	r23,PORTB					//SetLO
- 114:	75 b1       	in	r23, 0x05	; 5
+     114:	75 b1       	in	r23, 0x05	; 5
 		andi r23,~(PIXEL_PIN)			// PORTB&=~(PIXEL_PIN)
- 116:	7d 7f       	andi	r23, 0xFD	; 253
+     116:	7d 7f       	andi	r23, 0xFD	; 253
 		out	PORTB,r23
- 118:	75 b9       	out	0x05, r23	; 5
+     118:	75 b9       	out	0x05, r23	; 5
 
 
 		Delay1                       
- 11a:	00 00       	nop
+     11a:	00 00       	nop
 		dec		BitCount
- 11c:	4a 95       	dec	r20
+     11c:	4a 95       	dec	r20
 		brne	nextbit
- 11e:	e9 f6       	brne	.-70     	; 0xda <nextbit>
+     11e:	e9 f6       	brne	.-70     	; 0xda <nextbit>
 	...
 
 00000122 <txend>:
 		nop
 
 txend:	dec		grb_count
- 122:	1a 95       	dec	r17
+     122:	1a 95       	dec	r17
 		brne	next_led				// Next Led (color)
- 124:	c1 f6       	brne	.-80     	; 0xd6 <next_led>
+     124:	c1 f6       	brne	.-80     	; 0xd6 <next_led>
 
 00000126 <txdone>:
 	 
 
 txdone:	pop	r23
- 126:	7f 91       	pop	r23
+     126:	7f 91       	pop	r23
 		ret
- 128:	08 95       	ret
+     128:	08 95       	ret
 
 0000012a <delay>:
 
@@ -308,603 +308,2667 @@ txdone:	pop	r23
 
 delay:  
 		push r19
- 12a:	3f 93       	push	r19
+     12a:	3f 93       	push	r19
 		push r20
- 12c:	4f 93       	push	r20
+     12c:	4f 93       	push	r20
 		push r21
- 12e:	5f 93       	push	r21
+     12e:	5f 93       	push	r21
 		 
 		ldi  r21, 50
- 130:	52 e3       	ldi	r21, 0x32	; 50
+     130:	52 e3       	ldi	r21, 0x32	; 50
 		ldi  r19, TFAST	
- 132:	3f ef       	ldi	r19, 0xFF	; 255
+     132:	3f ef       	ldi	r19, 0xFF	; 255
 		ldi  r20, TSLOW
- 134:	4f ef       	ldi	r20, 0xFF	; 255
+     134:	4f ef       	ldi	r20, 0xFF	; 255
 
 00000136 <reload>:
 reload:	dec  r19
- 136:	3a 95       	dec	r19
+     136:	3a 95       	dec	r19
 		brne reload
- 138:	f1 f7       	brne	.-4      	; 0x136 <reload>
+     138:	f1 f7       	brne	.-4      	; 0x136 <reload>
 		ldi	r19,TFAST
- 13a:	3f ef       	ldi	r19, 0xFF	; 255
+     13a:	3f ef       	ldi	r19, 0xFF	; 255
 		dec  r20
- 13c:	4a 95       	dec	r20
+     13c:	4a 95       	dec	r20
 		brne reload
- 13e:	d9 f7       	brne	.-10     	; 0x136 <reload>
+     13e:	d9 f7       	brne	.-10     	; 0x136 <reload>
 		ldi  r20, TSLOW
- 140:	4f ef       	ldi	r20, 0xFF	; 255
+     140:	4f ef       	ldi	r20, 0xFF	; 255
 		dec	 r21
- 142:	5a 95       	dec	r21
+     142:	5a 95       	dec	r21
 		brne reload
- 144:	c1 f7       	brne	.-16     	; 0x136 <reload>
+     144:	c1 f7       	brne	.-16     	; 0x136 <reload>
 
 		pop  r21
- 146:	5f 91       	pop	r21
+     146:	5f 91       	pop	r21
 		pop  r20
- 148:	4f 91       	pop	r20
+     148:	4f 91       	pop	r20
 		pop  r19
- 14a:	3f 91       	pop	r19
- 14c:	08 95       	ret
+     14a:	3f 91       	pop	r19
+		ret
+     14c:	08 95       	ret
 
 0000014e <wrt_Digit_Init>:
- 14e:	4f 93       	push	r20
- 150:	4a b1       	in	r20, 0x0a	; 10
- 152:	41 69       	ori	r20, 0x91	; 145
- 154:	4a b9       	out	0x0a, r20	; 10
- 156:	44 b1       	in	r20, 0x04	; 4
- 158:	41 60       	ori	r20, 0x01	; 1
- 15a:	44 b9       	out	0x04, r20	; 4
- 15c:	4f 91       	pop	r20
- 15e:	08 95       	ret
+//*********************************************
+//	wrt_Digit_Init
+//	Inicializa sin sobreescribir los puertos para funcion wrt_digit
+//*********************************************
+wrt_Digit_Init:
+	push PortOut
+     14e:	4f 93       	push	r20
+
+	in PortOut, DDRD
+     150:	4a b1       	in	r20, 0x0a	; 10
+	ori PortOut, (SHIFT_CLOCK | LATCH_CLOCK | SERIAL_DATA)
+     152:	41 69       	ori	r20, 0x91	; 145
+	out DDRD, PortOut
+     154:	4a b9       	out	0x0a, r20	; 10
+
+	in PortOut, DDRB
+     156:	44 b1       	in	r20, 0x04	; 4
+	ori PortOut, SERIAL_DATA
+     158:	41 60       	ori	r20, 0x01	; 1
+	out DDRB, PortOut
+     15a:	44 b9       	out	0x04, r20	; 4
+
+	pop PortOut
+     15c:	4f 91       	pop	r20
+	ret
+     15e:	08 95       	ret
 
 00000160 <wrt_Digit>:
- 160:	8b 30       	cpi	r24, 0x0B	; 11
- 162:	84 f4       	brge	.+32     	; 0x184 <end>
- 164:	6a 95       	dec	r22
- 166:	64 30       	cpi	r22, 0x04	; 4
- 168:	6c f4       	brge	.+26     	; 0x184 <end>
- 16a:	0d d0       	rcall	.+26     	; 0x186 <value_to_ss>
- 16c:	1e d0       	rcall	.+60     	; 0x1aa <send_byte>
- 16e:	14 d0       	rcall	.+40     	; 0x198 <digit_to_display>
- 170:	86 2f       	mov	r24, r22
- 172:	1b d0       	rcall	.+54     	; 0x1aa <send_byte>
- 174:	49 b1       	in	r20, 0x09	; 9
- 176:	40 61       	ori	r20, 0x10	; 16
- 178:	4b b9       	out	0x0b, r20	; 11
- 17a:	00 00       	nop
- 17c:	00 00       	nop
- 17e:	49 b1       	in	r20, 0x09	; 9
- 180:	4f 7e       	andi	r20, 0xEF	; 239
- 182:	4b b9       	out	0x0b, r20	; 11
+//	wrt_Digit
+//	Recibe un valor y el dígito y lo muestra en el display. | 0>'P' | 1>'-' | 2>'1' | 3>'2' | 4>'W' | 5>'I' | 6>'N' | 7>empty
+//	Argumentos de entrada: valor (0:6) en r22 / dígito (0-3) en r24.
+//*********************************************
+wrt_Digit:
+	cpi ValueIn, 8	//Control para evitar ingresos mayores a 7
+     160:	88 30       	cpi	r24, 0x08	; 8
+	brge end
+     162:	7c f4       	brge	.+30     	; 0x182 <end>
+	cpi DigitIn, 4		//Tanto para la lista (.byte) como para el control, nos sirve que Digit sea de 0 -> 3
+     164:	64 30       	cpi	r22, 0x04	; 4
+	brge end
+     166:	6c f4       	brge	.+26     	; 0x182 <end>
 
-00000184 <end>:
- 184:	08 95       	ret
+	rcall value_to_ss	//ingreso y retorno en r16 
+     168:	0d d0       	rcall	.+26     	; 0x184 <value_to_ss>
+	rcall send_byte		//ingreso en r16
+     16a:	1e d0       	rcall	.+60     	; 0x1a8 <send_byte>
 
-00000186 <value_to_ss>:
- 186:	5f 93       	push	r21
- 188:	50 e0       	ldi	r21, 0x00	; 0
- 18a:	e4 ee       	ldi	r30, 0xE4	; 228
- 18c:	f1 e0       	ldi	r31, 0x01	; 1
- 18e:	e8 0f       	add	r30, r24
- 190:	f5 1f       	adc	r31, r21
- 192:	84 91       	lpm	r24, Z
- 194:	5f 91       	pop	r21
- 196:	08 95       	ret
+	rcall digit_to_display	//ingreso y retorno en r17
+     16c:	14 d0       	rcall	.+40     	; 0x196 <digit_to_display>
+	mov ValueIn, DigitIn
+     16e:	86 2f       	mov	r24, r22
+	rcall send_byte
+     170:	1b d0       	rcall	.+54     	; 0x1a8 <send_byte>
 
-00000198 <digit_to_display>:
- 198:	5f 93       	push	r21
- 19a:	50 e0       	ldi	r21, 0x00	; 0
- 19c:	e0 ef       	ldi	r30, 0xF0	; 240
- 19e:	f1 e0       	ldi	r31, 0x01	; 1
- 1a0:	e6 0f       	add	r30, r22
- 1a2:	f5 1f       	adc	r31, r21
- 1a4:	64 91       	lpm	r22, Z
- 1a6:	5f 91       	pop	r21
- 1a8:	08 95       	ret
+	in PortOut, PIND
+     172:	49 b1       	in	r20, 0x09	; 9
+	ori PortOut, LATCH_CLOCK
+     174:	40 61       	ori	r20, 0x10	; 16
+	out PORTD, PortOut
+     176:	4b b9       	out	0x0b, r20	; 11
+	nop
+     178:	00 00       	nop
+	nop
+     17a:	00 00       	nop
+	in PortOut, PIND
+     17c:	49 b1       	in	r20, 0x09	; 9
+	andi PortOut, ~LATCH_CLOCK
+     17e:	4f 7e       	andi	r20, 0xEF	; 239
+	out PORTD, PortOut
+     180:	4b b9       	out	0x0b, r20	; 11
 
-000001aa <send_byte>:
- 1aa:	7f 93       	push	r23
- 1ac:	2f 93       	push	r18
- 1ae:	4f 93       	push	r20
- 1b0:	5f 93       	push	r21
- 1b2:	78 e0       	ldi	r23, 0x08	; 8
- 1b4:	50 e0       	ldi	r21, 0x00	; 0
+00000182 <end>:
 
-000001b6 <loadLoop>:
- 1b6:	20 e0       	ldi	r18, 0x00	; 0
- 1b8:	87 95       	ror	r24
- 1ba:	25 1f       	adc	r18, r21
- 1bc:	43 b1       	in	r20, 0x03	; 3
- 1be:	4e 7f       	andi	r20, 0xFE	; 254
- 1c0:	42 2b       	or	r20, r18
- 1c2:	45 b9       	out	0x05, r20	; 5
- 1c4:	49 b1       	in	r20, 0x09	; 9
- 1c6:	40 68       	ori	r20, 0x80	; 128
- 1c8:	4b b9       	out	0x0b, r20	; 11
- 1ca:	00 00       	nop
- 1cc:	00 00       	nop
- 1ce:	49 b1       	in	r20, 0x09	; 9
- 1d0:	4f 77       	andi	r20, 0x7F	; 127
- 1d2:	4b b9       	out	0x0b, r20	; 11
- 1d4:	7a 95       	dec	r23
- 1d6:	70 30       	cpi	r23, 0x00	; 0
- 1d8:	71 f7       	brne	.-36     	; 0x1b6 <loadLoop>
- 1da:	5f 91       	pop	r21
- 1dc:	4f 91       	pop	r20
- 1de:	2f 91       	pop	r18
- 1e0:	7f 91       	pop	r23
- 1e2:	08 95       	ret
+	end:
+		ret
+     182:	08 95       	ret
 
-000001e4 <ss_value>:
- 1e4:	03 9f       	mul	r16, r19
- 1e6:	25 0d       	add	r18, r5
- 1e8:	99 49       	sbci	r25, 0x99	; 153
- 1ea:	41 1f       	adc	r20, r17
- 1ec:	01 19       	sub	r16, r1
- 1ee:	ff 00       	.word	0x00ff	; ????
+00000184 <value_to_ss>:
+//	value_to_ss
+//	Toma un valor de ingreso y lo convierte a su valor en el display de ss.
+//	Argumento de ingreso y retorno en ValueIn (r24). Valores válidos (0:3)
+//**********************************************************
+value_to_ss:
+	push ADCRegister
+     184:	5f 93       	push	r21
+	ldi ADCRegister, 0
+     186:	50 e0       	ldi	r21, 0x00	; 0
+  
+	ldz ss_value
+     188:	e2 ee       	ldi	r30, 0xE2	; 226
+     18a:	f1 e0       	ldi	r31, 0x01	; 1
+	
+	add ZL, ValueIn	//Agregamos el valor ingresado, para que Z apunte al valor correspondiente de la lista
+     18c:	e8 0f       	add	r30, r24
+	adc ZH, ADCRegister
+     18e:	f5 1f       	adc	r31, r21
+	
+	lpm ValueIn, Z
+     190:	84 91       	lpm	r24, Z
+  
+	pop ADCRegister
+     192:	5f 91       	pop	r21
+	ret
+     194:	08 95       	ret
 
-000001f0 <display_digit_value>:
- 1f0:	80 40       	sbci	r24, 0x00	; 0
- 1f2:	20 10       	cpse	r2, r0
+00000196 <digit_to_display>:
+//	digit_to_display:
+//	Toma un digito de ingreso y lo convierte a su valor en el display.
+//	Argumento de entrada y retorno en r17. Valores válidos (0:3)
+//**********************************************************
+digit_to_display:
+  push ADCRegister
+     196:	5f 93       	push	r21
+  ldi ADCRegister, 0
+     198:	50 e0       	ldi	r21, 0x00	; 0
 
-000001f4 <adc_init>:
- 1f4:	ea e7       	ldi	r30, 0x7A	; 122
- 1f6:	f0 e0       	ldi	r31, 0x00	; 0
- 1f8:	80 81       	ld	r24, Z
- 1fa:	87 60       	ori	r24, 0x07	; 7
- 1fc:	80 83       	st	Z, r24
- 1fe:	ac e7       	ldi	r26, 0x7C	; 124
- 200:	b0 e0       	ldi	r27, 0x00	; 0
- 202:	8c 91       	ld	r24, X
- 204:	80 64       	ori	r24, 0x40	; 64
- 206:	8c 93       	st	X, r24
- 208:	80 81       	ld	r24, Z
- 20a:	80 68       	ori	r24, 0x80	; 128
- 20c:	80 83       	st	Z, r24
- 20e:	80 81       	ld	r24, Z
- 210:	80 64       	ori	r24, 0x40	; 64
- 212:	80 83       	st	Z, r24
- 214:	08 95       	ret
+	ldz display_digit_value
+     19a:	ea ee       	ldi	r30, 0xEA	; 234
+     19c:	f1 e0       	ldi	r31, 0x01	; 1
 
-00000216 <read_adc>:
- 216:	ec e7       	ldi	r30, 0x7C	; 124
- 218:	f0 e0       	ldi	r31, 0x00	; 0
- 21a:	90 81       	ld	r25, Z
- 21c:	90 7f       	andi	r25, 0xF0	; 240
- 21e:	90 83       	st	Z, r25
- 220:	90 81       	ld	r25, Z
- 222:	89 2b       	or	r24, r25
- 224:	80 83       	st	Z, r24
- 226:	ea e7       	ldi	r30, 0x7A	; 122
- 228:	f0 e0       	ldi	r31, 0x00	; 0
- 22a:	80 81       	ld	r24, Z
- 22c:	80 64       	ori	r24, 0x40	; 64
- 22e:	80 83       	st	Z, r24
- 230:	80 81       	ld	r24, Z
- 232:	86 fd       	sbrc	r24, 6
- 234:	fd cf       	rjmp	.-6      	; 0x230 <read_adc+0x1a>
- 236:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <__TEXT_REGION_LENGTH__+0x7f8078>
- 23a:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <__TEXT_REGION_LENGTH__+0x7f8079>
- 23e:	08 95       	ret
+	add ZL, DigitIn
+     19e:	e6 0f       	add	r30, r22
+	adc ZH, ADCRegister
+     1a0:	f5 1f       	adc	r31, r21
+	lpm DigitIn, Z
+     1a2:	64 91       	lpm	r22, Z
+  
+  pop ADCRegister
+     1a4:	5f 91       	pop	r21
+	ret
+     1a6:	08 95       	ret
+
+000001a8 <send_byte>:
+// Esta función toma un byte de ingreso y lo envía al 74HC595
+// Argumento de entrada r16.
+//*************************************************
+
+send_byte:
+	push TimesCounter
+     1a8:	7f 93       	push	r23
+	push SerialData
+     1aa:	2f 93       	push	r18
+	push PortOut
+     1ac:	4f 93       	push	r20
+	push ADCRegister
+     1ae:	5f 93       	push	r21
+
+	ldi TimesCounter, 8
+     1b0:	78 e0       	ldi	r23, 0x08	; 8
+	ldi ADCRegister, 0
+     1b2:	50 e0       	ldi	r21, 0x00	; 0
+
+000001b4 <loadLoop>:
+	
+	loadLoop:
+		ldi SerialData, 0
+     1b4:	20 e0       	ldi	r18, 0x00	; 0
+
+		ror ValueIn
+     1b6:	87 95       	ror	r24
+		adc SerialData, ADCRegister
+     1b8:	25 1f       	adc	r18, r21
+
+		in PortOut, PINB
+     1ba:	43 b1       	in	r20, 0x03	; 3
+		andi PortOut, ~SERIAL_DATA
+     1bc:	4e 7f       	andi	r20, 0xFE	; 254
+		or PortOut, SerialData
+     1be:	42 2b       	or	r20, r18
+		out PORTB, PortOut
+     1c0:	45 b9       	out	0x05, r20	; 5
+
+		in PortOut, PIND
+     1c2:	49 b1       	in	r20, 0x09	; 9
+		ori PortOut, SHIFT_CLOCK
+     1c4:	40 68       	ori	r20, 0x80	; 128
+		out PORTD, PortOut
+     1c6:	4b b9       	out	0x0b, r20	; 11
+		nop		//Delay necesario para evitar fallos con la carga del dato
+     1c8:	00 00       	nop
+		nop
+     1ca:	00 00       	nop
+		in PortOut, PIND
+     1cc:	49 b1       	in	r20, 0x09	; 9
+		andi PortOut, ~SHIFT_CLOCK
+     1ce:	4f 77       	andi	r20, 0x7F	; 127
+		out PORTD, PortOut
+     1d0:	4b b9       	out	0x0b, r20	; 11
+
+		dec TimesCounter
+     1d2:	7a 95       	dec	r23
+		cpi TimesCounter, 0
+     1d4:	70 30       	cpi	r23, 0x00	; 0
+		brne loadLoop		//Finaliza el Loop luego de cargar el último bit (8 veces)
+     1d6:	71 f7       	brne	.-36     	; 0x1b4 <loadLoop>
+	
+	pop ADCRegister
+     1d8:	5f 91       	pop	r21
+	pop PortOut
+     1da:	4f 91       	pop	r20
+	pop SerialData
+     1dc:	2f 91       	pop	r18
+	pop TimesCounter
+     1de:	7f 91       	pop	r23
+	ret
+     1e0:	08 95       	ret
+
+000001e2 <ss_value>:
+     1e2:	31 fd       	sbrc	r19, 1
+     1e4:	9f 25       	eor	r25, r15
+     1e6:	ab 9f       	mul	r26, r27
+     1e8:	d5 ff       	sbrs	r29, 5
+
+000001ea <display_digit_value>:
+     1ea:	80 40       	sbci	r24, 0x00	; 0
+     1ec:	20 10       	cpse	r2, r0
+
+000001ee <adc_init>:
+#include "stdlib.h"
+void USART_putstring(char* StringPtr);
+
+void adc_init(void){
+	
+	ADCSRA |= ((1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0));    //16Mhz/128 = 125Khz the ADC reference clock
+     1ee:	ea e7       	ldi	r30, 0x7A	; 122
+     1f0:	f0 e0       	ldi	r31, 0x00	; 0
+     1f2:	80 81       	ld	r24, Z
+     1f4:	87 60       	ori	r24, 0x07	; 7
+     1f6:	80 83       	st	Z, r24
+	ADMUX |= (1<<REFS0);                //Voltage reference from Avcc (5v)
+     1f8:	ac e7       	ldi	r26, 0x7C	; 124
+     1fa:	b0 e0       	ldi	r27, 0x00	; 0
+     1fc:	8c 91       	ld	r24, X
+     1fe:	80 64       	ori	r24, 0x40	; 64
+     200:	8c 93       	st	X, r24
+	ADCSRA |= (1<<ADEN);                //Turn on ADC
+     202:	80 81       	ld	r24, Z
+     204:	80 68       	ori	r24, 0x80	; 128
+     206:	80 83       	st	Z, r24
+	ADCSRA |= (1<<ADSC);                //Do an initial conversion because this one is the slowest and to ensure that everything is up and running
+     208:	80 81       	ld	r24, Z
+     20a:	80 64       	ori	r24, 0x40	; 64
+     20c:	80 83       	st	Z, r24
+     20e:	08 95       	ret
+
+00000210 <read_adc>:
+}
+
+uint16_t read_adc(uint8_t channel){
+	ADMUX &= 0xF0;                    //Clear the older channel that was read
+     210:	ec e7       	ldi	r30, 0x7C	; 124
+     212:	f0 e0       	ldi	r31, 0x00	; 0
+     214:	90 81       	ld	r25, Z
+     216:	90 7f       	andi	r25, 0xF0	; 240
+     218:	90 83       	st	Z, r25
+	ADMUX |= channel;                //Defines the new ADC channel to be read
+     21a:	90 81       	ld	r25, Z
+     21c:	89 2b       	or	r24, r25
+     21e:	80 83       	st	Z, r24
+	ADCSRA |= (1<<ADSC);            //Starts a new conversion
+     220:	ea e7       	ldi	r30, 0x7A	; 122
+     222:	f0 e0       	ldi	r31, 0x00	; 0
+     224:	80 81       	ld	r24, Z
+     226:	80 64       	ori	r24, 0x40	; 64
+     228:	80 83       	st	Z, r24
+	while(ADCSRA & (1<<ADSC));      //Wait until the conversion is done
+     22a:	80 81       	ld	r24, Z
+     22c:	86 fd       	sbrc	r24, 6
+     22e:	fd cf       	rjmp	.-6      	; 0x22a <read_adc+0x1a>
+	return ADCW;                    //Returns the ADC value of the chosen channel
+     230:	80 91 78 00 	lds	r24, 0x0078	; 0x800078 <__TEXT_REGION_LENGTH__+0x7f8078>
+     234:	90 91 79 00 	lds	r25, 0x0079	; 0x800079 <__TEXT_REGION_LENGTH__+0x7f8079>
+}
+     238:	08 95       	ret
+
+0000023a <read_VRY>:
+
+
+
+uint16_t read_VRY(void)
+{
+	return read_adc(4);
+     23a:	84 e0       	ldi	r24, 0x04	; 4
+     23c:	e9 cf       	rjmp	.-46     	; 0x210 <read_adc>
+} 
+     23e:	08 95       	ret
 
 00000240 <read_VRX>:
- 240:	85 e0       	ldi	r24, 0x05	; 5
- 242:	e9 cf       	rjmp	.-46     	; 0x216 <read_adc>
- 244:	08 95       	ret
+uint16_t read_VRX(void)
+{
+	return read_adc(5);
+     240:	85 e0       	ldi	r24, 0x05	; 5
+     242:	e6 cf       	rjmp	.-52     	; 0x210 <read_adc>
+     244:	08 95       	ret
 
 00000246 <QueueInit>:
- 246:	89 e3       	ldi	r24, 0x39	; 57
- 248:	91 e0       	ldi	r25, 0x01	; 1
- 24a:	90 93 37 01 	sts	0x0137, r25	; 0x800137 <pin+0x1>
- 24e:	80 93 36 01 	sts	0x0136, r24	; 0x800136 <pin>
- 252:	90 93 35 01 	sts	0x0135, r25	; 0x800135 <__data_end+0x1>
- 256:	80 93 34 01 	sts	0x0134, r24	; 0x800134 <__data_end>
- 25a:	10 92 38 01 	sts	0x0138, r1	; 0x800138 <news>
- 25e:	08 95       	ret
+     246:	89 e4       	ldi	r24, 0x49	; 73
+     248:	91 e0       	ldi	r25, 0x01	; 1
+     24a:	90 93 47 01 	sts	0x0147, r25	; 0x800147 <pin+0x1>
+     24e:	80 93 46 01 	sts	0x0146, r24	; 0x800146 <pin>
+     252:	90 93 45 01 	sts	0x0145, r25	; 0x800145 <__data_end+0x1>
+     256:	80 93 44 01 	sts	0x0144, r24	; 0x800144 <__data_end>
+     25a:	10 92 48 01 	sts	0x0148, r1	; 0x800148 <news>
+     25e:	08 95       	ret
 
 00000260 <PushQueue>:
- 260:	90 91 38 01 	lds	r25, 0x0138	; 0x800138 <news>
- 264:	94 31       	cpi	r25, 0x14	; 20
- 266:	20 f0       	brcs	.+8      	; 0x270 <PushQueue+0x10>
- 268:	8f ef       	ldi	r24, 0xFF	; 255
- 26a:	80 93 38 01 	sts	0x0138, r24	; 0x800138 <news>
- 26e:	08 95       	ret
- 270:	e0 91 36 01 	lds	r30, 0x0136	; 0x800136 <pin>
- 274:	f0 91 37 01 	lds	r31, 0x0137	; 0x800137 <pin+0x1>
- 278:	9f 01       	movw	r18, r30
- 27a:	2f 5f       	subi	r18, 0xFF	; 255
- 27c:	3f 4f       	sbci	r19, 0xFF	; 255
- 27e:	30 93 37 01 	sts	0x0137, r19	; 0x800137 <pin+0x1>
- 282:	20 93 36 01 	sts	0x0136, r18	; 0x800136 <pin>
- 286:	80 83       	st	Z, r24
- 288:	81 e0       	ldi	r24, 0x01	; 1
- 28a:	89 0f       	add	r24, r25
- 28c:	80 93 38 01 	sts	0x0138, r24	; 0x800138 <news>
- 290:	2d 54       	subi	r18, 0x4D	; 77
- 292:	31 40       	sbci	r19, 0x01	; 1
- 294:	31 f4       	brne	.+12     	; 0x2a2 <PushQueue+0x42>
- 296:	29 e3       	ldi	r18, 0x39	; 57
- 298:	31 e0       	ldi	r19, 0x01	; 1
- 29a:	30 93 37 01 	sts	0x0137, r19	; 0x800137 <pin+0x1>
- 29e:	20 93 36 01 	sts	0x0136, r18	; 0x800136 <pin>
- 2a2:	08 95       	ret
+     260:	90 91 48 01 	lds	r25, 0x0148	; 0x800148 <news>
+     264:	94 31       	cpi	r25, 0x14	; 20
+     266:	20 f0       	brcs	.+8      	; 0x270 <PushQueue+0x10>
+     268:	8f ef       	ldi	r24, 0xFF	; 255
+     26a:	80 93 48 01 	sts	0x0148, r24	; 0x800148 <news>
+     26e:	08 95       	ret
+     270:	e0 91 46 01 	lds	r30, 0x0146	; 0x800146 <pin>
+     274:	f0 91 47 01 	lds	r31, 0x0147	; 0x800147 <pin+0x1>
+     278:	9f 01       	movw	r18, r30
+     27a:	2f 5f       	subi	r18, 0xFF	; 255
+     27c:	3f 4f       	sbci	r19, 0xFF	; 255
+     27e:	30 93 47 01 	sts	0x0147, r19	; 0x800147 <pin+0x1>
+     282:	20 93 46 01 	sts	0x0146, r18	; 0x800146 <pin>
+     286:	80 83       	st	Z, r24
+     288:	81 e0       	ldi	r24, 0x01	; 1
+     28a:	89 0f       	add	r24, r25
+     28c:	80 93 48 01 	sts	0x0148, r24	; 0x800148 <news>
+     290:	2d 55       	subi	r18, 0x5D	; 93
+     292:	31 40       	sbci	r19, 0x01	; 1
+     294:	31 f4       	brne	.+12     	; 0x2a2 <PushQueue+0x42>
+     296:	29 e4       	ldi	r18, 0x49	; 73
+     298:	31 e0       	ldi	r19, 0x01	; 1
+     29a:	30 93 47 01 	sts	0x0147, r19	; 0x800147 <pin+0x1>
+     29e:	20 93 46 01 	sts	0x0146, r18	; 0x800146 <pin>
+     2a2:	08 95       	ret
 
-000002a4 <init_RTI>:
- 2a4:	82 e0       	ldi	r24, 0x02	; 2
- 2a6:	84 bd       	out	0x24, r24	; 36
- 2a8:	94 e0       	ldi	r25, 0x04	; 4
- 2aa:	95 bd       	out	0x25, r25	; 37
- 2ac:	9d e7       	ldi	r25, 0x7D	; 125
- 2ae:	97 bd       	out	0x27, r25	; 39
- 2b0:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <__TEXT_REGION_LENGTH__+0x7f806e>
- 2b4:	25 9a       	sbi	0x04, 5	; 4
- 2b6:	2d 98       	cbi	0x05, 5	; 5
- 2b8:	08 95       	ret
+000002a4 <checkJoystick>:
 
-000002ba <__vector_14>:
- 2ba:	1f 92       	push	r1
- 2bc:	0f 92       	push	r0
- 2be:	0f b6       	in	r0, 0x3f	; 63
- 2c0:	0f 92       	push	r0
- 2c2:	11 24       	eor	r1, r1
- 2c4:	8f 93       	push	r24
- 2c6:	9f 93       	push	r25
- 2c8:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
- 2cc:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
- 2d0:	89 2b       	or	r24, r25
- 2d2:	51 f0       	breq	.+20     	; 0x2e8 <__vector_14+0x2e>
- 2d4:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
- 2d8:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
- 2dc:	01 97       	sbiw	r24, 0x01	; 1
- 2de:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
- 2e2:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
- 2e6:	0a c0       	rjmp	.+20     	; 0x2fc <__vector_14+0x42>
- 2e8:	88 e2       	ldi	r24, 0x28	; 40
- 2ea:	90 e0       	ldi	r25, 0x00	; 0
- 2ec:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__DATA_REGION_ORIGIN__+0x1>
- 2f0:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
- 2f4:	95 b1       	in	r25, 0x05	; 5
- 2f6:	80 e2       	ldi	r24, 0x20	; 32
- 2f8:	89 27       	eor	r24, r25
- 2fa:	85 b9       	out	0x05, r24	; 5
- 2fc:	9f 91       	pop	r25
- 2fe:	8f 91       	pop	r24
- 300:	0f 90       	pop	r0
- 302:	0f be       	out	0x3f, r0	; 63
- 304:	0f 90       	pop	r0
- 306:	1f 90       	pop	r1
- 308:	18 95       	reti
 
-0000030a <UART_Init>:
- 30a:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7f80c5>
- 30e:	87 e6       	ldi	r24, 0x67	; 103
- 310:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7f80c4>
- 314:	86 e0       	ldi	r24, 0x06	; 6
- 316:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7f80c2>
- 31a:	e1 ec       	ldi	r30, 0xC1	; 193
- 31c:	f0 e0       	ldi	r31, 0x00	; 0
- 31e:	88 e1       	ldi	r24, 0x18	; 24
- 320:	80 83       	st	Z, r24
- 322:	80 81       	ld	r24, Z
- 324:	80 68       	ori	r24, 0x80	; 128
- 326:	80 83       	st	Z, r24
- 328:	8e df       	rcall	.-228    	; 0x246 <QueueInit>
- 32a:	8f e9       	ldi	r24, 0x9F	; 159
- 32c:	9f e0       	ldi	r25, 0x0F	; 15
- 32e:	01 97       	sbiw	r24, 0x01	; 1
- 330:	f1 f7       	brne	.-4      	; 0x32e <UART_Init+0x24>
- 332:	00 c0       	rjmp	.+0      	; 0x334 <UART_Init+0x2a>
- 334:	00 00       	nop
- 336:	08 95       	ret
+// Sets the extern variables xMovement and yMovement to -1, 0, 1 depending on the Joystick state.
+void checkJoystick(void)
+{
+	if(read_VRX() > HI_LIM)
+     2a4:	cd df       	rcall	.-102    	; 0x240 <read_VRX>
+     2a6:	89 35       	cpi	r24, 0x59	; 89
+     2a8:	92 40       	sbci	r25, 0x02	; 2
+     2aa:	40 f0       	brcs	.+16     	; 0x2bc <checkJoystick+0x18>
+	{
+		if (xMovement <= 6)
+     2ac:	80 91 61 01 	lds	r24, 0x0161	; 0x800161 <xMovement>
+     2b0:	87 30       	cpi	r24, 0x07	; 7
+     2b2:	7c f4       	brge	.+30     	; 0x2d2 <checkJoystick+0x2e>
+			xMovement += 1;
+     2b4:	8f 5f       	subi	r24, 0xFF	; 255
+     2b6:	80 93 61 01 	sts	0x0161, r24	; 0x800161 <xMovement>
+	}
+	else if (read_VRX() < LO_LIM)
+     2ba:	0b c0       	rjmp	.+22     	; 0x2d2 <checkJoystick+0x2e>
+     2bc:	c1 df       	rcall	.-126    	; 0x240 <read_VRX>
+     2be:	80 39       	cpi	r24, 0x90	; 144
+     2c0:	91 40       	sbci	r25, 0x01	; 1
+     2c2:	38 f4       	brcc	.+14     	; 0x2d2 <checkJoystick+0x2e>
+	{
+		if (xMovement >= 1)
+     2c4:	80 91 61 01 	lds	r24, 0x0161	; 0x800161 <xMovement>
+     2c8:	18 16       	cp	r1, r24
+     2ca:	1c f4       	brge	.+6      	; 0x2d2 <checkJoystick+0x2e>
+			xMovement -= 1;
+     2cc:	81 50       	subi	r24, 0x01	; 1
+     2ce:	80 93 61 01 	sts	0x0161, r24	; 0x800161 <xMovement>
+	}
+	
+	if(read_VRY() > HI_LIM)
+     2d2:	b3 df       	rcall	.-154    	; 0x23a <read_VRY>
+     2d4:	89 35       	cpi	r24, 0x59	; 89
+     2d6:	92 40       	sbci	r25, 0x02	; 2
+     2d8:	40 f0       	brcs	.+16     	; 0x2ea <checkJoystick+0x46>
+	{
+		if (yMovement >= 1)
+     2da:	80 91 60 01 	lds	r24, 0x0160	; 0x800160 <yMovement>
+     2de:	18 16       	cp	r1, r24
+     2e0:	7c f4       	brge	.+30     	; 0x300 <checkJoystick+0x5c>
+			yMovement -= 1;
+     2e2:	81 50       	subi	r24, 0x01	; 1
+     2e4:	80 93 60 01 	sts	0x0160, r24	; 0x800160 <yMovement>
+	}
+	else if (read_VRY() < LO_LIM)
+     2e8:	08 95       	ret
+     2ea:	a7 df       	rcall	.-178    	; 0x23a <read_VRY>
+     2ec:	80 39       	cpi	r24, 0x90	; 144
+     2ee:	91 40       	sbci	r25, 0x01	; 1
+     2f0:	38 f4       	brcc	.+14     	; 0x300 <checkJoystick+0x5c>
+	{
+		if (yMovement <= 6)
+     2f2:	80 91 60 01 	lds	r24, 0x0160	; 0x800160 <yMovement>
+     2f6:	87 30       	cpi	r24, 0x07	; 7
+     2f8:	1c f4       	brge	.+6      	; 0x300 <checkJoystick+0x5c>
+			yMovement += 1;
+     2fa:	8f 5f       	subi	r24, 0xFF	; 255
+     2fc:	80 93 60 01 	sts	0x0160, r24	; 0x800160 <yMovement>
+     300:	08 95       	ret
 
-00000338 <UART_TransmitPolling>:
- 338:	e0 ec       	ldi	r30, 0xC0	; 192
- 33a:	f0 e0       	ldi	r31, 0x00	; 0
- 33c:	90 81       	ld	r25, Z
- 33e:	95 ff       	sbrs	r25, 5
- 340:	fd cf       	rjmp	.-6      	; 0x33c <UART_TransmitPolling+0x4>
- 342:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
- 346:	08 95       	ret
+00000302 <checkJoystickButton>:
+	}
+}
 
-00000348 <UART_putstring>:
- 348:	cf 93       	push	r28
- 34a:	df 93       	push	r29
- 34c:	ec 01       	movw	r28, r24
- 34e:	88 81       	ld	r24, Y
- 350:	88 23       	and	r24, r24
- 352:	29 f0       	breq	.+10     	; 0x35e <UART_putstring+0x16>
- 354:	21 96       	adiw	r28, 0x01	; 1
- 356:	f0 df       	rcall	.-32     	; 0x338 <UART_TransmitPolling>
- 358:	89 91       	ld	r24, Y+
- 35a:	81 11       	cpse	r24, r1
- 35c:	fc cf       	rjmp	.-8      	; 0x356 <UART_putstring+0xe>
- 35e:	df 91       	pop	r29
- 360:	cf 91       	pop	r28
- 362:	08 95       	ret
+void checkJoystickButton(void)
+{
+	jButton = (PIND & JOYSTICK);	// Gets 0 for pressed and (1<<6) for button unpressed.
+     302:	89 b1       	in	r24, 0x09	; 9
+     304:	80 74       	andi	r24, 0x40	; 64
+     306:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__DATA_REGION_ORIGIN__>
+     30a:	08 95       	ret
 
-00000364 <__vector_19>:
- 364:	1f 92       	push	r1
- 366:	0f 92       	push	r0
- 368:	0f b6       	in	r0, 0x3f	; 63
- 36a:	0f 92       	push	r0
- 36c:	11 24       	eor	r1, r1
- 36e:	8f 93       	push	r24
- 370:	ef 93       	push	r30
- 372:	ff 93       	push	r31
- 374:	80 91 51 01 	lds	r24, 0x0151	; 0x800151 <USART_TransmitBuffer>
- 378:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
- 37c:	e1 ec       	ldi	r30, 0xC1	; 193
- 37e:	f0 e0       	ldi	r31, 0x00	; 0
- 380:	80 81       	ld	r24, Z
- 382:	8f 7d       	andi	r24, 0xDF	; 223
- 384:	80 83       	st	Z, r24
- 386:	ff 91       	pop	r31
- 388:	ef 91       	pop	r30
- 38a:	8f 91       	pop	r24
- 38c:	0f 90       	pop	r0
- 38e:	0f be       	out	0x3f, r0	; 63
- 390:	0f 90       	pop	r0
- 392:	1f 90       	pop	r1
- 394:	18 95       	reti
+0000030c <init_RTI>:
+	//  COM0A1=0,COM0A0=0 Normal port operation, OC0A disconnected.
+	//
 
-00000396 <__vector_18>:
- 396:	1f 92       	push	r1
- 398:	0f 92       	push	r0
- 39a:	0f b6       	in	r0, 0x3f	; 63
- 39c:	0f 92       	push	r0
- 39e:	11 24       	eor	r1, r1
- 3a0:	2f 93       	push	r18
- 3a2:	3f 93       	push	r19
- 3a4:	4f 93       	push	r20
- 3a6:	5f 93       	push	r21
- 3a8:	6f 93       	push	r22
- 3aa:	7f 93       	push	r23
- 3ac:	8f 93       	push	r24
- 3ae:	9f 93       	push	r25
- 3b0:	af 93       	push	r26
- 3b2:	bf 93       	push	r27
- 3b4:	ef 93       	push	r30
- 3b6:	ff 93       	push	r31
- 3b8:	80 91 c6 00 	lds	r24, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
- 3bc:	51 df       	rcall	.-350    	; 0x260 <PushQueue>
- 3be:	ff 91       	pop	r31
- 3c0:	ef 91       	pop	r30
- 3c2:	bf 91       	pop	r27
- 3c4:	af 91       	pop	r26
- 3c6:	9f 91       	pop	r25
- 3c8:	8f 91       	pop	r24
- 3ca:	7f 91       	pop	r23
- 3cc:	6f 91       	pop	r22
- 3ce:	5f 91       	pop	r21
- 3d0:	4f 91       	pop	r20
- 3d2:	3f 91       	pop	r19
- 3d4:	2f 91       	pop	r18
- 3d6:	0f 90       	pop	r0
- 3d8:	0f be       	out	0x3f, r0	; 63
- 3da:	0f 90       	pop	r0
- 3dc:	1f 90       	pop	r1
- 3de:	18 95       	reti
 
-000003e0 <clear_disp>:
+	// 1-Timer Mode: CTC
+	TCCR0A=(0<<COM0A1)|(0<<COM0A0)|(0<<COM0B1)|(0<<COM0B0)|(1<<WGM01)|(0<<WGM00);
+     30c:	82 e0       	ldi	r24, 0x02	; 2
+     30e:	84 bd       	out	0x24, r24	; 36
+	
+	
+
+	// 2-Clock select:Prescaler=1024
+	TCCR0B=(0<<FOC0A)|(0<<FOC0B)|(0<<WGM02)|PRESCALER;
+     310:	94 e0       	ldi	r25, 0x04	; 4
+     312:	95 bd       	out	0x25, r25	; 37
+	
+
+	// 3-Set OCR
+	OCR0A=125;
+     314:	9d e7       	ldi	r25, 0x7D	; 125
+     316:	97 bd       	out	0x27, r25	; 39
+
+
+	// 4-Timer/Counter0 Output Compare Match A Interrupt Enable
+	TIMSK0=(0<<OCIE0B)|(1<<OCIE0A)|(0<<TOIE0);
+     318:	80 93 6e 00 	sts	0x006E, r24	; 0x80006e <__TEXT_REGION_LENGTH__+0x7f806e>
+	
+	// This is for testing purposes (Blinking Led)
+
+	DDRB|=LED;
+     31c:	25 9a       	sbi	0x04, 5	; 4
+	PORTB&=~(LED);
+     31e:	2d 98       	cbi	0x05, 5	; 5
+     320:	08 95       	ret
+
+00000322 <__vector_14>:
+
+
+//Interrupt service routine (ISR) for Timer 0
+// Timer int happens every (16MHz)^(-1)*256*125 = 62.5ns*256*125 = 64 * 125 useg = 2mseg
+ISR(TIMER0_COMPA_vect)
+{
+     322:	1f 92       	push	r1
+     324:	0f 92       	push	r0
+     326:	0f b6       	in	r0, 0x3f	; 63
+     328:	0f 92       	push	r0
+     32a:	11 24       	eor	r1, r1
+     32c:	2f 93       	push	r18
+     32e:	3f 93       	push	r19
+     330:	4f 93       	push	r20
+     332:	5f 93       	push	r21
+     334:	6f 93       	push	r22
+     336:	7f 93       	push	r23
+     338:	8f 93       	push	r24
+     33a:	9f 93       	push	r25
+     33c:	af 93       	push	r26
+     33e:	bf 93       	push	r27
+     340:	ef 93       	push	r30
+     342:	ff 93       	push	r31
+	volatile static int countSS = SEVEN_SEGMENTS_TIME;
+	volatile static int countJoystick = JOYSTICK_TIME;
+	
+	// Writes the corresponding player (P-1 or P-2) or the winner on the Seven Segments Display
+	wrt_Digit(ssP1[countSS], countSS);
+     344:	60 91 03 01 	lds	r22, 0x0103	; 0x800103 <countSS.2236>
+     348:	70 91 04 01 	lds	r23, 0x0104	; 0x800104 <countSS.2236+0x1>
+     34c:	e0 91 03 01 	lds	r30, 0x0103	; 0x800103 <countSS.2236>
+     350:	f0 91 04 01 	lds	r31, 0x0104	; 0x800104 <countSS.2236+0x1>
+     354:	e1 5c       	subi	r30, 0xC1	; 193
+     356:	fe 4f       	sbci	r31, 0xFE	; 254
+     358:	80 81       	ld	r24, Z
+     35a:	02 df       	rcall	.-508    	; 0x160 <wrt_Digit>
+	
+	if (playerTurn == 1)
+     35c:	80 91 62 01 	lds	r24, 0x0162	; 0x800162 <playerTurn>
+     360:	81 30       	cpi	r24, 0x01	; 1
+     362:	69 f4       	brne	.+26     	; 0x37e <__vector_14+0x5c>
+		wrt_Digit(ssP1[countSS], countSS);
+     364:	60 91 03 01 	lds	r22, 0x0103	; 0x800103 <countSS.2236>
+     368:	70 91 04 01 	lds	r23, 0x0104	; 0x800104 <countSS.2236+0x1>
+     36c:	e0 91 03 01 	lds	r30, 0x0103	; 0x800103 <countSS.2236>
+     370:	f0 91 04 01 	lds	r31, 0x0104	; 0x800104 <countSS.2236+0x1>
+     374:	e1 5c       	subi	r30, 0xC1	; 193
+     376:	fe 4f       	sbci	r31, 0xFE	; 254
+     378:	80 81       	ld	r24, Z
+     37a:	f2 de       	rcall	.-540    	; 0x160 <wrt_Digit>
+     37c:	3d c0       	rjmp	.+122    	; 0x3f8 <__vector_14+0xd6>
+	else if (playerTurn == 2)
+     37e:	82 30       	cpi	r24, 0x02	; 2
+     380:	69 f4       	brne	.+26     	; 0x39c <__vector_14+0x7a>
+		wrt_Digit(ssP2[countSS], countSS);
+     382:	60 91 03 01 	lds	r22, 0x0103	; 0x800103 <countSS.2236>
+     386:	70 91 04 01 	lds	r23, 0x0104	; 0x800104 <countSS.2236+0x1>
+     38a:	e0 91 03 01 	lds	r30, 0x0103	; 0x800103 <countSS.2236>
+     38e:	f0 91 04 01 	lds	r31, 0x0104	; 0x800104 <countSS.2236+0x1>
+     392:	e5 5c       	subi	r30, 0xC5	; 197
+     394:	fe 4f       	sbci	r31, 0xFE	; 254
+     396:	80 81       	ld	r24, Z
+     398:	e3 de       	rcall	.-570    	; 0x160 <wrt_Digit>
+     39a:	2e c0       	rjmp	.+92     	; 0x3f8 <__vector_14+0xd6>
+	else if ((playerTurn == 3) | (playerTurn == 4))
+     39c:	9d ef       	ldi	r25, 0xFD	; 253
+     39e:	98 0f       	add	r25, r24
+     3a0:	92 30       	cpi	r25, 0x02	; 2
+     3a2:	50 f5       	brcc	.+84     	; 0x3f8 <__vector_14+0xd6>
+		{
+			if (countSS == 0)
+     3a4:	20 91 03 01 	lds	r18, 0x0103	; 0x800103 <countSS.2236>
+     3a8:	30 91 04 01 	lds	r19, 0x0104	; 0x800104 <countSS.2236+0x1>
+     3ac:	23 2b       	or	r18, r19
+				wrt_Digit(LETTER_W, 0);
+     3ae:	21 f4       	brne	.+8      	; 0x3b8 <__vector_14+0x96>
+     3b0:	60 e0       	ldi	r22, 0x00	; 0
+     3b2:	84 e0       	ldi	r24, 0x04	; 4
+     3b4:	d5 de       	rcall	.-598    	; 0x160 <wrt_Digit>
+     3b6:	20 c0       	rjmp	.+64     	; 0x3f8 <__vector_14+0xd6>
+			else if (countSS == 1)
+     3b8:	20 91 03 01 	lds	r18, 0x0103	; 0x800103 <countSS.2236>
+     3bc:	30 91 04 01 	lds	r19, 0x0104	; 0x800104 <countSS.2236+0x1>
+     3c0:	21 30       	cpi	r18, 0x01	; 1
+     3c2:	31 05       	cpc	r19, r1
+				wrt_Digit(LETTER_I, 1);
+     3c4:	21 f4       	brne	.+8      	; 0x3ce <__vector_14+0xac>
+     3c6:	61 e0       	ldi	r22, 0x01	; 1
+     3c8:	85 e0       	ldi	r24, 0x05	; 5
+     3ca:	ca de       	rcall	.-620    	; 0x160 <wrt_Digit>
+     3cc:	15 c0       	rjmp	.+42     	; 0x3f8 <__vector_14+0xd6>
+			else if (countSS == 2)
+     3ce:	20 91 03 01 	lds	r18, 0x0103	; 0x800103 <countSS.2236>
+     3d2:	30 91 04 01 	lds	r19, 0x0104	; 0x800104 <countSS.2236+0x1>
+     3d6:	22 30       	cpi	r18, 0x02	; 2
+     3d8:	31 05       	cpc	r19, r1
+				wrt_Digit(LETTER_N, 2);
+     3da:	21 f4       	brne	.+8      	; 0x3e4 <__vector_14+0xc2>
+     3dc:	62 e0       	ldi	r22, 0x02	; 2
+     3de:	86 e0       	ldi	r24, 0x06	; 6
+     3e0:	bf de       	rcall	.-642    	; 0x160 <wrt_Digit>
+     3e2:	0a c0       	rjmp	.+20     	; 0x3f8 <__vector_14+0xd6>
+			else if (countSS == 3)
+     3e4:	20 91 03 01 	lds	r18, 0x0103	; 0x800103 <countSS.2236>
+     3e8:	30 91 04 01 	lds	r19, 0x0104	; 0x800104 <countSS.2236+0x1>
+     3ec:	23 30       	cpi	r18, 0x03	; 3
+     3ee:	31 05       	cpc	r19, r1
+				wrt_Digit(playerTurn-1, 3);		// Numbers '1' and '2' in the display are the numbers 2 and 3 inputs.	
+     3f0:	19 f4       	brne	.+6      	; 0x3f8 <__vector_14+0xd6>
+     3f2:	63 e0       	ldi	r22, 0x03	; 3
+     3f4:	81 50       	subi	r24, 0x01	; 1
+     3f6:	b4 de       	rcall	.-664    	; 0x160 <wrt_Digit>
+		}
+	
+	if (countSS)
+     3f8:	80 91 03 01 	lds	r24, 0x0103	; 0x800103 <countSS.2236>
+     3fc:	90 91 04 01 	lds	r25, 0x0104	; 0x800104 <countSS.2236+0x1>
+     400:	89 2b       	or	r24, r25
+     402:	51 f0       	breq	.+20     	; 0x418 <__EEPROM_REGION_LENGTH__+0x18>
+		countSS--;
+     404:	80 91 03 01 	lds	r24, 0x0103	; 0x800103 <countSS.2236>
+     408:	90 91 04 01 	lds	r25, 0x0104	; 0x800104 <countSS.2236+0x1>
+     40c:	01 97       	sbiw	r24, 0x01	; 1
+     40e:	90 93 04 01 	sts	0x0104, r25	; 0x800104 <countSS.2236+0x1>
+     412:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <countSS.2236>
+     416:	06 c0       	rjmp	.+12     	; 0x424 <__EEPROM_REGION_LENGTH__+0x24>
+	else
+		countSS = SEVEN_SEGMENTS_TIME;
+     418:	83 e0       	ldi	r24, 0x03	; 3
+     41a:	90 e0       	ldi	r25, 0x00	; 0
+     41c:	90 93 04 01 	sts	0x0104, r25	; 0x800104 <countSS.2236+0x1>
+     420:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <countSS.2236>
+	
+	// Joystick movement is scanned every 100 ms and saved on x/yMovement
+	if (countJoystick)
+     424:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <countJoystick.2237>
+     428:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <countJoystick.2237+0x1>
+     42c:	89 2b       	or	r24, r25
+     42e:	51 f0       	breq	.+20     	; 0x444 <__EEPROM_REGION_LENGTH__+0x44>
+		countJoystick--;
+     430:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <countJoystick.2237>
+     434:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <countJoystick.2237+0x1>
+     438:	01 97       	sbiw	r24, 0x01	; 1
+     43a:	90 93 02 01 	sts	0x0102, r25	; 0x800102 <countJoystick.2237+0x1>
+     43e:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <countJoystick.2237>
+	else 
+	{
+		countJoystick = JOYSTICK_TIME;
+     442:	08 c0       	rjmp	.+16     	; 0x454 <__EEPROM_REGION_LENGTH__+0x54>
+     444:	82 e3       	ldi	r24, 0x32	; 50
+     446:	90 e0       	ldi	r25, 0x00	; 0
+     448:	90 93 02 01 	sts	0x0102, r25	; 0x800102 <countJoystick.2237+0x1>
+		checkJoystick();
+     44c:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <countJoystick.2237>
+		checkJoystickButton();
+     450:	29 df       	rcall	.-430    	; 0x2a4 <checkJoystick>
+     452:	57 df       	rcall	.-338    	; 0x302 <checkJoystickButton>
+	}
+     454:	ff 91       	pop	r31
+     456:	ef 91       	pop	r30
+     458:	bf 91       	pop	r27
+     45a:	af 91       	pop	r26
+     45c:	9f 91       	pop	r25
+     45e:	8f 91       	pop	r24
+     460:	7f 91       	pop	r23
+     462:	6f 91       	pop	r22
+     464:	5f 91       	pop	r21
+     466:	4f 91       	pop	r20
+     468:	3f 91       	pop	r19
+     46a:	2f 91       	pop	r18
+     46c:	0f 90       	pop	r0
+     46e:	0f be       	out	0x3f, r0	; 63
+     470:	0f 90       	pop	r0
+     472:	1f 90       	pop	r1
+     474:	18 95       	reti
+
+00000476 <UART_Init>:
+     476:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7f80c5>
+     47a:	87 e6       	ldi	r24, 0x67	; 103
+     47c:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7f80c4>
+     480:	86 e0       	ldi	r24, 0x06	; 6
+     482:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7f80c2>
+     486:	e1 ec       	ldi	r30, 0xC1	; 193
+     488:	f0 e0       	ldi	r31, 0x00	; 0
+     48a:	88 e1       	ldi	r24, 0x18	; 24
+     48c:	80 83       	st	Z, r24
+     48e:	80 81       	ld	r24, Z
+     490:	80 68       	ori	r24, 0x80	; 128
+     492:	80 83       	st	Z, r24
+     494:	d8 de       	rcall	.-592    	; 0x246 <QueueInit>
+     496:	8f e9       	ldi	r24, 0x9F	; 159
+     498:	9f e0       	ldi	r25, 0x0F	; 15
+     49a:	01 97       	sbiw	r24, 0x01	; 1
+     49c:	f1 f7       	brne	.-4      	; 0x49a <UART_Init+0x24>
+     49e:	00 c0       	rjmp	.+0      	; 0x4a0 <UART_Init+0x2a>
+     4a0:	00 00       	nop
+     4a2:	08 95       	ret
+
+000004a4 <__vector_19>:
+     4a4:	1f 92       	push	r1
+     4a6:	0f 92       	push	r0
+     4a8:	0f b6       	in	r0, 0x3f	; 63
+     4aa:	0f 92       	push	r0
+     4ac:	11 24       	eor	r1, r1
+     4ae:	8f 93       	push	r24
+     4b0:	ef 93       	push	r30
+     4b2:	ff 93       	push	r31
+     4b4:	80 91 64 01 	lds	r24, 0x0164	; 0x800164 <USART_TransmitBuffer>
+     4b8:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
+     4bc:	e1 ec       	ldi	r30, 0xC1	; 193
+     4be:	f0 e0       	ldi	r31, 0x00	; 0
+     4c0:	80 81       	ld	r24, Z
+     4c2:	8f 7d       	andi	r24, 0xDF	; 223
+     4c4:	80 83       	st	Z, r24
+     4c6:	ff 91       	pop	r31
+     4c8:	ef 91       	pop	r30
+     4ca:	8f 91       	pop	r24
+     4cc:	0f 90       	pop	r0
+     4ce:	0f be       	out	0x3f, r0	; 63
+     4d0:	0f 90       	pop	r0
+     4d2:	1f 90       	pop	r1
+     4d4:	18 95       	reti
+
+000004d6 <__vector_18>:
+     4d6:	1f 92       	push	r1
+     4d8:	0f 92       	push	r0
+     4da:	0f b6       	in	r0, 0x3f	; 63
+     4dc:	0f 92       	push	r0
+     4de:	11 24       	eor	r1, r1
+     4e0:	2f 93       	push	r18
+     4e2:	3f 93       	push	r19
+     4e4:	4f 93       	push	r20
+     4e6:	5f 93       	push	r21
+     4e8:	6f 93       	push	r22
+     4ea:	7f 93       	push	r23
+     4ec:	8f 93       	push	r24
+     4ee:	9f 93       	push	r25
+     4f0:	af 93       	push	r26
+     4f2:	bf 93       	push	r27
+     4f4:	ef 93       	push	r30
+     4f6:	ff 93       	push	r31
+     4f8:	80 91 c6 00 	lds	r24, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
+     4fc:	b1 de       	rcall	.-670    	; 0x260 <PushQueue>
+     4fe:	ff 91       	pop	r31
+     500:	ef 91       	pop	r30
+     502:	bf 91       	pop	r27
+     504:	af 91       	pop	r26
+     506:	9f 91       	pop	r25
+     508:	8f 91       	pop	r24
+     50a:	7f 91       	pop	r23
+     50c:	6f 91       	pop	r22
+     50e:	5f 91       	pop	r21
+     510:	4f 91       	pop	r20
+     512:	3f 91       	pop	r19
+     514:	2f 91       	pop	r18
+     516:	0f 90       	pop	r0
+     518:	0f be       	out	0x3f, r0	; 63
+     51a:	0f 90       	pop	r0
+     51c:	1f 90       	pop	r1
+     51e:	18 95       	reti
+
+00000520 <checkPlayer1Win>:
+	}
+	else
+	{
+		return 0;
+	}
+}
+     520:	80 e0       	ldi	r24, 0x00	; 0
+     522:	08 95       	ret
+
+00000524 <checkPlayer2Win>:
+
+/* Returns 1 if player2 Won.*/
+uint8_t checkPlayer2Win(void)
+{
+     524:	cf 93       	push	r28
+     526:	df 93       	push	r29
+     528:	cd b7       	in	r28, 0x3d	; 61
+     52a:	de b7       	in	r29, 0x3e	; 62
+     52c:	27 97       	sbiw	r28, 0x07	; 7
+     52e:	0f b6       	in	r0, 0x3f	; 63
+     530:	f8 94       	cli
+     532:	de bf       	out	0x3e, r29	; 62
+     534:	0f be       	out	0x3f, r0	; 63
+     536:	cd bf       	out	0x3d, r28	; 61
+	uint8_t checks[7] = {0, 0, 0, 0, 0, 0, 0};
+     538:	de 01       	movw	r26, r28
+     53a:	11 96       	adiw	r26, 0x01	; 1
+     53c:	87 e0       	ldi	r24, 0x07	; 7
+     53e:	fd 01       	movw	r30, r26
+     540:	11 92       	st	Z+, r1
+     542:	8a 95       	dec	r24
+     544:	e9 f7       	brne	.-6      	; 0x540 <checkPlayer2Win+0x1c>
+     546:	e6 e2       	ldi	r30, 0x26	; 38
+     548:	f1 e0       	ldi	r31, 0x01	; 1
+     54a:	2f e2       	ldi	r18, 0x2F	; 47
+     54c:	31 e0       	ldi	r19, 0x01	; 1
+	for (uint8_t c=0; c<=2; c++)
+	{
+		if (submarinosJugador1[c].boolDisparado == 1)
+		checks[c] = 1;
+     54e:	91 e0       	ldi	r25, 0x01	; 1
+uint8_t checkPlayer2Win(void)
+{
+	uint8_t checks[7] = {0, 0, 0, 0, 0, 0, 0};
+	for (uint8_t c=0; c<=2; c++)
+	{
+		if (submarinosJugador1[c].boolDisparado == 1)
+     550:	82 81       	ldd	r24, Z+2	; 0x02
+     552:	81 30       	cpi	r24, 0x01	; 1
+     554:	09 f4       	brne	.+2      	; 0x558 <checkPlayer2Win+0x34>
+		checks[c] = 1;
+     556:	9c 93       	st	X, r25
+     558:	33 96       	adiw	r30, 0x03	; 3
+     55a:	11 96       	adiw	r26, 0x01	; 1
+
+/* Returns 1 if player2 Won.*/
+uint8_t checkPlayer2Win(void)
+{
+	uint8_t checks[7] = {0, 0, 0, 0, 0, 0, 0};
+	for (uint8_t c=0; c<=2; c++)
+     55c:	e2 17       	cp	r30, r18
+     55e:	f3 07       	cpc	r31, r19
+     560:	b9 f7       	brne	.-18     	; 0x550 <checkPlayer2Win+0x2c>
+		if (submarinosJugador1[c].boolDisparado == 1)
+		checks[c] = 1;
+	}
+	for (uint8_t c=0; c<=1; c++)
+	{
+		if (carguerosJugador1[c].boolDisparado0 == 1)
+     562:	80 91 1c 01 	lds	r24, 0x011C	; 0x80011c <carguerosJugador1+0x2>
+     566:	81 30       	cpi	r24, 0x01	; 1
+     568:	09 f4       	brne	.+2      	; 0x56c <checkPlayer2Win+0x48>
+		{
+			checks[c+3] = 1;
+     56a:	8c 83       	std	Y+4, r24	; 0x04
+		}
+		if (carguerosJugador1[c].boolDisparado1 == 1)
+     56c:	80 91 1f 01 	lds	r24, 0x011F	; 0x80011f <carguerosJugador1+0x5>
+     570:	81 30       	cpi	r24, 0x01	; 1
+     572:	09 f4       	brne	.+2      	; 0x576 <checkPlayer2Win+0x52>
+		{
+			checks[c+5] = 1;
+     574:	8e 83       	std	Y+6, r24	; 0x06
+		if (submarinosJugador1[c].boolDisparado == 1)
+		checks[c] = 1;
+	}
+	for (uint8_t c=0; c<=1; c++)
+	{
+		if (carguerosJugador1[c].boolDisparado0 == 1)
+     576:	80 91 22 01 	lds	r24, 0x0122	; 0x800122 <carguerosJugador1+0x8>
+     57a:	81 30       	cpi	r24, 0x01	; 1
+     57c:	09 f4       	brne	.+2      	; 0x580 <checkPlayer2Win+0x5c>
+		{
+			checks[c+3] = 1;
+     57e:	8d 83       	std	Y+5, r24	; 0x05
+		}
+		if (carguerosJugador1[c].boolDisparado1 == 1)
+     580:	80 91 25 01 	lds	r24, 0x0125	; 0x800125 <carguerosJugador1+0xb>
+     584:	81 30       	cpi	r24, 0x01	; 1
+     586:	09 f4       	brne	.+2      	; 0x58a <checkPlayer2Win+0x66>
+		{
+			checks[c+5] = 1;
+     588:	8f 83       	std	Y+7, r24	; 0x07
+	}
+	
+	
+	if ((checks[0] == 1) & (checks[1] == 1) & (checks[2] == 1) & (checks[3] == 1) & (checks[4] == 1) & (checks[5] == 1) & (checks[6] == 1))
+	{
+		return 1;
+     58a:	31 e0       	ldi	r19, 0x01	; 1
+     58c:	89 81       	ldd	r24, Y+1	; 0x01
+     58e:	81 30       	cpi	r24, 0x01	; 1
+     590:	09 f0       	breq	.+2      	; 0x594 <checkPlayer2Win+0x70>
+     592:	30 e0       	ldi	r19, 0x00	; 0
+     594:	81 e0       	ldi	r24, 0x01	; 1
+     596:	9a 81       	ldd	r25, Y+2	; 0x02
+     598:	91 30       	cpi	r25, 0x01	; 1
+     59a:	09 f0       	breq	.+2      	; 0x59e <checkPlayer2Win+0x7a>
+     59c:	80 e0       	ldi	r24, 0x00	; 0
+     59e:	83 23       	and	r24, r19
+     5a0:	31 e0       	ldi	r19, 0x01	; 1
+     5a2:	9b 81       	ldd	r25, Y+3	; 0x03
+     5a4:	91 30       	cpi	r25, 0x01	; 1
+     5a6:	09 f0       	breq	.+2      	; 0x5aa <checkPlayer2Win+0x86>
+     5a8:	30 e0       	ldi	r19, 0x00	; 0
+     5aa:	83 23       	and	r24, r19
+     5ac:	21 e0       	ldi	r18, 0x01	; 1
+     5ae:	9c 81       	ldd	r25, Y+4	; 0x04
+     5b0:	91 30       	cpi	r25, 0x01	; 1
+     5b2:	09 f0       	breq	.+2      	; 0x5b6 <checkPlayer2Win+0x92>
+     5b4:	20 e0       	ldi	r18, 0x00	; 0
+     5b6:	98 2f       	mov	r25, r24
+     5b8:	92 23       	and	r25, r18
+     5ba:	81 e0       	ldi	r24, 0x01	; 1
+     5bc:	2d 81       	ldd	r18, Y+5	; 0x05
+     5be:	21 30       	cpi	r18, 0x01	; 1
+     5c0:	09 f0       	breq	.+2      	; 0x5c4 <checkPlayer2Win+0xa0>
+     5c2:	80 e0       	ldi	r24, 0x00	; 0
+     5c4:	89 23       	and	r24, r25
+     5c6:	91 e0       	ldi	r25, 0x01	; 1
+     5c8:	2e 81       	ldd	r18, Y+6	; 0x06
+     5ca:	21 30       	cpi	r18, 0x01	; 1
+     5cc:	09 f0       	breq	.+2      	; 0x5d0 <checkPlayer2Win+0xac>
+     5ce:	90 e0       	ldi	r25, 0x00	; 0
+     5d0:	98 23       	and	r25, r24
+     5d2:	81 e0       	ldi	r24, 0x01	; 1
+     5d4:	2f 81       	ldd	r18, Y+7	; 0x07
+     5d6:	21 30       	cpi	r18, 0x01	; 1
+     5d8:	09 f0       	breq	.+2      	; 0x5dc <checkPlayer2Win+0xb8>
+     5da:	80 e0       	ldi	r24, 0x00	; 0
+	}
+	else
+	{
+		return 0;
+	}
+}
+     5dc:	89 23       	and	r24, r25
+     5de:	27 96       	adiw	r28, 0x07	; 7
+     5e0:	0f b6       	in	r0, 0x3f	; 63
+     5e2:	f8 94       	cli
+     5e4:	de bf       	out	0x3e, r29	; 62
+     5e6:	0f be       	out	0x3f, r0	; 63
+     5e8:	cd bf       	out	0x3d, r28	; 61
+     5ea:	df 91       	pop	r29
+     5ec:	cf 91       	pop	r28
+     5ee:	08 95       	ret
+
+000005f0 <delaySeconds>:
+
+/* Blocking delay in seconds.*/ 
+void delaySeconds(uint8_t seconds)
+{
+	for(int8_t i=1; i<=seconds; i++)
+     5f0:	48 2f       	mov	r20, r24
+     5f2:	50 e0       	ldi	r21, 0x00	; 0
+     5f4:	14 16       	cp	r1, r20
+     5f6:	15 06       	cpc	r1, r21
+     5f8:	6c f5       	brge	.+90     	; 0x654 <delaySeconds+0x64>
+     5fa:	91 e0       	ldi	r25, 0x01	; 1
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 3e0:	e2 e5       	ldi	r30, 0x52	; 82
- 3e2:	f1 e0       	ldi	r31, 0x01	; 1
- 3e4:	42 e1       	ldi	r20, 0x12	; 18
- 3e6:	52 e0       	ldi	r21, 0x02	; 2
- 3e8:	10 c0       	rjmp	.+32     	; 0x40a <__EEPROM_REGION_LENGTH__+0xa>
- 3ea:	80 91 4d 01 	lds	r24, 0x014D	; 0x80014d <Apagado>
- 3ee:	90 91 4e 01 	lds	r25, 0x014E	; 0x80014e <Apagado+0x1>
- 3f2:	a0 91 4f 01 	lds	r26, 0x014F	; 0x80014f <Apagado+0x2>
- 3f6:	81 93       	st	Z+, r24
- 3f8:	91 93       	st	Z+, r25
- 3fa:	a1 93       	st	Z+, r26
- 3fc:	e2 17       	cp	r30, r18
- 3fe:	f3 07       	cpc	r31, r19
- 400:	a1 f7       	brne	.-24     	; 0x3ea <clear_disp+0xa>
- 402:	f9 01       	movw	r30, r18
- 404:	42 17       	cp	r20, r18
- 406:	53 07       	cpc	r21, r19
- 408:	21 f0       	breq	.+8      	; 0x412 <__EEPROM_REGION_LENGTH__+0x12>
- 40a:	9f 01       	movw	r18, r30
- 40c:	28 5e       	subi	r18, 0xE8	; 232
- 40e:	3f 4f       	sbci	r19, 0xFF	; 255
- 410:	ec cf       	rjmp	.-40     	; 0x3ea <clear_disp+0xa>
- 412:	08 95       	ret
+     5fc:	2f ef       	ldi	r18, 0xFF	; 255
+     5fe:	34 e3       	ldi	r19, 0x34	; 52
+     600:	8c e0       	ldi	r24, 0x0C	; 12
+     602:	21 50       	subi	r18, 0x01	; 1
+     604:	30 40       	sbci	r19, 0x00	; 0
+     606:	80 40       	sbci	r24, 0x00	; 0
+     608:	e1 f7       	brne	.-8      	; 0x602 <delaySeconds+0x12>
+     60a:	00 c0       	rjmp	.+0      	; 0x60c <delaySeconds+0x1c>
+     60c:	00 00       	nop
+     60e:	2f ef       	ldi	r18, 0xFF	; 255
+     610:	34 e3       	ldi	r19, 0x34	; 52
+     612:	8c e0       	ldi	r24, 0x0C	; 12
+     614:	21 50       	subi	r18, 0x01	; 1
+     616:	30 40       	sbci	r19, 0x00	; 0
+     618:	80 40       	sbci	r24, 0x00	; 0
+     61a:	e1 f7       	brne	.-8      	; 0x614 <delaySeconds+0x24>
+     61c:	00 c0       	rjmp	.+0      	; 0x61e <delaySeconds+0x2e>
+     61e:	00 00       	nop
+     620:	2f ef       	ldi	r18, 0xFF	; 255
+     622:	34 e3       	ldi	r19, 0x34	; 52
+     624:	8c e0       	ldi	r24, 0x0C	; 12
+     626:	21 50       	subi	r18, 0x01	; 1
+     628:	30 40       	sbci	r19, 0x00	; 0
+     62a:	80 40       	sbci	r24, 0x00	; 0
+     62c:	e1 f7       	brne	.-8      	; 0x626 <delaySeconds+0x36>
+     62e:	00 c0       	rjmp	.+0      	; 0x630 <delaySeconds+0x40>
+     630:	00 00       	nop
+     632:	2f ef       	ldi	r18, 0xFF	; 255
+     634:	34 e3       	ldi	r19, 0x34	; 52
+     636:	8c e0       	ldi	r24, 0x0C	; 12
+     638:	21 50       	subi	r18, 0x01	; 1
+     63a:	30 40       	sbci	r19, 0x00	; 0
+     63c:	80 40       	sbci	r24, 0x00	; 0
+     63e:	e1 f7       	brne	.-8      	; 0x638 <delaySeconds+0x48>
+     640:	00 c0       	rjmp	.+0      	; 0x642 <delaySeconds+0x52>
+     642:	00 00       	nop
+     644:	9f 5f       	subi	r25, 0xFF	; 255
+     646:	29 2f       	mov	r18, r25
+     648:	09 2e       	mov	r0, r25
+     64a:	00 0c       	add	r0, r0
+     64c:	33 0b       	sbc	r19, r19
+     64e:	42 17       	cp	r20, r18
+     650:	53 07       	cpc	r21, r19
+     652:	a4 f6       	brge	.-88     	; 0x5fc <delaySeconds+0xc>
+     654:	08 95       	ret
 
-00000414 <TB_joy1>:
- 414:	15 df       	rcall	.-470    	; 0x240 <read_VRX>
- 416:	89 35       	cpi	r24, 0x59	; 89
- 418:	92 40       	sbci	r25, 0x02	; 2
- 41a:	20 f0       	brcs	.+8      	; 0x424 <TB_joy1+0x10>
- 41c:	88 e2       	ldi	r24, 0x28	; 40
- 41e:	91 e0       	ldi	r25, 0x01	; 1
- 420:	93 cf       	rjmp	.-218    	; 0x348 <UART_putstring>
- 422:	08 95       	ret
- 424:	0d df       	rcall	.-486    	; 0x240 <read_VRX>
- 426:	80 39       	cpi	r24, 0x90	; 144
- 428:	91 40       	sbci	r25, 0x01	; 1
- 42a:	20 f4       	brcc	.+8      	; 0x434 <TB_joy1+0x20>
- 42c:	8b e2       	ldi	r24, 0x2B	; 43
- 42e:	91 e0       	ldi	r25, 0x01	; 1
- 430:	8b cf       	rjmp	.-234    	; 0x348 <UART_putstring>
- 432:	08 95       	ret
- 434:	80 e3       	ldi	r24, 0x30	; 48
- 436:	91 e0       	ldi	r25, 0x01	; 1
- 438:	87 cf       	rjmp	.-242    	; 0x348 <UART_putstring>
- 43a:	08 95       	ret
+00000656 <copyArrayOf1>:
+	}
+}
 
-0000043c <main>:
- 43c:	31 de       	rcall	.-926    	; 0xa0 <init_ws2812>
- 43e:	32 df       	rcall	.-412    	; 0x2a4 <init_RTI>
- 440:	64 df       	rcall	.-312    	; 0x30a <UART_Init>
- 442:	d8 de       	rcall	.-592    	; 0x1f4 <adc_init>
- 444:	84 de       	rcall	.-760    	; 0x14e <wrt_Digit_Init>
- 446:	82 e5       	ldi	r24, 0x52	; 82
- 448:	91 e0       	ldi	r25, 0x01	; 1
- 44a:	90 93 13 02 	sts	0x0213, r25	; 0x800213 <p2disp+0x1>
- 44e:	80 93 12 02 	sts	0x0212, r24	; 0x800212 <p2disp>
- 452:	78 94       	sei
- 454:	82 e0       	ldi	r24, 0x02	; 2
- 456:	91 e0       	ldi	r25, 0x01	; 1
- 458:	77 df       	rcall	.-274    	; 0x348 <UART_putstring>
- 45a:	63 e0       	ldi	r22, 0x03	; 3
- 45c:	84 e0       	ldi	r24, 0x04	; 4
- 45e:	80 de       	rcall	.-768    	; 0x160 <wrt_Digit>
- 460:	bf df       	rcall	.-130    	; 0x3e0 <clear_disp>
- 462:	80 91 12 02 	lds	r24, 0x0212	; 0x800212 <p2disp>
- 466:	90 91 13 02 	lds	r25, 0x0213	; 0x800213 <p2disp+0x1>
- 46a:	24 de       	rcall	.-952    	; 0xb4 <wrt_ws2812>
- 46c:	2f ef       	ldi	r18, 0xFF	; 255
- 46e:	89 e6       	ldi	r24, 0x69	; 105
- 470:	98 e1       	ldi	r25, 0x18	; 24
- 472:	21 50       	subi	r18, 0x01	; 1
- 474:	80 40       	sbci	r24, 0x00	; 0
- 476:	90 40       	sbci	r25, 0x00	; 0
- 478:	e1 f7       	brne	.-8      	; 0x472 <main+0x36>
- 47a:	00 c0       	rjmp	.+0      	; 0x47c <main+0x40>
- 47c:	00 00       	nop
- 47e:	0f 2e       	mov	r0, r31
- 480:	f2 e5       	ldi	r31, 0x52	; 82
- 482:	af 2e       	mov	r10, r31
- 484:	f1 e0       	ldi	r31, 0x01	; 1
- 486:	bf 2e       	mov	r11, r31
- 488:	f0 2d       	mov	r31, r0
- 48a:	22 e1       	ldi	r18, 0x12	; 18
- 48c:	32 e0       	ldi	r19, 0x02	; 2
- 48e:	f5 01       	movw	r30, r10
- 490:	80 91 22 01 	lds	r24, 0x0122	; 0x800122 <Hundido>
- 494:	90 91 23 01 	lds	r25, 0x0123	; 0x800123 <Hundido+0x1>
- 498:	a0 91 24 01 	lds	r26, 0x0124	; 0x800124 <Hundido+0x2>
- 49c:	80 83       	st	Z, r24
- 49e:	91 83       	std	Z+1, r25	; 0x01
- 4a0:	a2 83       	std	Z+2, r26	; 0x02
- 4a2:	80 91 25 01 	lds	r24, 0x0125	; 0x800125 <GamePointer>
- 4a6:	90 91 26 01 	lds	r25, 0x0126	; 0x800126 <GamePointer+0x1>
- 4aa:	a0 91 27 01 	lds	r26, 0x0127	; 0x800127 <GamePointer+0x2>
- 4ae:	84 87       	std	Z+12, r24	; 0x0c
- 4b0:	95 87       	std	Z+13, r25	; 0x0d
- 4b2:	a6 87       	std	Z+14, r26	; 0x0e
- 4b4:	80 91 1f 01 	lds	r24, 0x011F	; 0x80011f <Agua>
- 4b8:	90 91 20 01 	lds	r25, 0x0120	; 0x800120 <Agua+0x1>
- 4bc:	a0 91 21 01 	lds	r26, 0x0121	; 0x800121 <Agua+0x2>
- 4c0:	85 8b       	std	Z+21, r24	; 0x15
- 4c2:	96 8b       	std	Z+22, r25	; 0x16
- 4c4:	a7 8b       	std	Z+23, r26	; 0x17
- 4c6:	80 91 1c 01 	lds	r24, 0x011C	; 0x80011c <Danado>
- 4ca:	90 91 1d 01 	lds	r25, 0x011D	; 0x80011d <Danado+0x1>
- 4ce:	a0 91 1e 01 	lds	r26, 0x011E	; 0x80011e <Danado+0x2>
- 4d2:	81 87       	std	Z+9, r24	; 0x09
- 4d4:	92 87       	std	Z+10, r25	; 0x0a
- 4d6:	a3 87       	std	Z+11, r26	; 0x0b
- 4d8:	87 87       	std	Z+15, r24	; 0x0f
- 4da:	90 8b       	std	Z+16, r25	; 0x10
- 4dc:	a1 8b       	std	Z+17, r26	; 0x11
- 4de:	78 96       	adiw	r30, 0x18	; 24
- 4e0:	e2 17       	cp	r30, r18
- 4e2:	f3 07       	cpc	r31, r19
- 4e4:	a9 f6       	brne	.-86     	; 0x490 <main+0x54>
- 4e6:	80 91 12 02 	lds	r24, 0x0212	; 0x800212 <p2disp>
- 4ea:	90 91 13 02 	lds	r25, 0x0213	; 0x800213 <p2disp+0x1>
- 4ee:	e2 dd       	rcall	.-1084   	; 0xb4 <wrt_ws2812>
- 4f0:	ef ef       	ldi	r30, 0xFF	; 255
- 4f2:	f5 ea       	ldi	r31, 0xA5	; 165
- 4f4:	2e e0       	ldi	r18, 0x0E	; 14
- 4f6:	e1 50       	subi	r30, 0x01	; 1
- 4f8:	f0 40       	sbci	r31, 0x00	; 0
- 4fa:	20 40       	sbci	r18, 0x00	; 0
- 4fc:	e1 f7       	brne	.-8      	; 0x4f6 <main+0xba>
- 4fe:	00 c0       	rjmp	.+0      	; 0x500 <main+0xc4>
- 500:	00 00       	nop
- 502:	6e df       	rcall	.-292    	; 0x3e0 <clear_disp>
- 504:	0f 2e       	mov	r0, r31
- 506:	f3 ea       	ldi	r31, 0xA3	; 163
- 508:	cf 2e       	mov	r12, r31
- 50a:	f1 e0       	ldi	r31, 0x01	; 1
- 50c:	df 2e       	mov	r13, r31
- 50e:	f0 2d       	mov	r31, r0
- 510:	0f 2e       	mov	r0, r31
- 512:	fb eb       	ldi	r31, 0xBB	; 187
- 514:	ef 2e       	mov	r14, r31
- 516:	f1 e0       	ldi	r31, 0x01	; 1
- 518:	ff 2e       	mov	r15, r31
- 51a:	f0 2d       	mov	r31, r0
- 51c:	c6 ea       	ldi	r28, 0xA6	; 166
- 51e:	d1 e0       	ldi	r29, 0x01	; 1
- 520:	0e eb       	ldi	r16, 0xBE	; 190
- 522:	11 e0       	ldi	r17, 0x01	; 1
- 524:	80 91 22 01 	lds	r24, 0x0122	; 0x800122 <Hundido>
- 528:	90 91 23 01 	lds	r25, 0x0123	; 0x800123 <Hundido+0x1>
- 52c:	a0 91 24 01 	lds	r26, 0x0124	; 0x800124 <Hundido+0x2>
- 530:	f6 01       	movw	r30, r12
- 532:	80 83       	st	Z, r24
- 534:	91 83       	std	Z+1, r25	; 0x01
- 536:	a2 83       	std	Z+2, r26	; 0x02
- 538:	80 91 25 01 	lds	r24, 0x0125	; 0x800125 <GamePointer>
- 53c:	90 91 26 01 	lds	r25, 0x0126	; 0x800126 <GamePointer+0x1>
- 540:	a0 91 27 01 	lds	r26, 0x0127	; 0x800127 <GamePointer+0x2>
- 544:	f7 01       	movw	r30, r14
- 546:	80 83       	st	Z, r24
- 548:	91 83       	std	Z+1, r25	; 0x01
- 54a:	a2 83       	std	Z+2, r26	; 0x02
- 54c:	80 91 1c 01 	lds	r24, 0x011C	; 0x80011c <Danado>
- 550:	90 91 1d 01 	lds	r25, 0x011D	; 0x80011d <Danado+0x1>
- 554:	a0 91 1e 01 	lds	r26, 0x011E	; 0x80011e <Danado+0x2>
- 558:	88 83       	st	Y, r24
- 55a:	99 83       	std	Y+1, r25	; 0x01
- 55c:	aa 83       	std	Y+2, r26	; 0x02
- 55e:	80 91 1f 01 	lds	r24, 0x011F	; 0x80011f <Agua>
- 562:	90 91 20 01 	lds	r25, 0x0120	; 0x800120 <Agua+0x1>
- 566:	a0 91 21 01 	lds	r26, 0x0121	; 0x800121 <Agua+0x2>
- 56a:	f8 01       	movw	r30, r16
- 56c:	80 83       	st	Z, r24
- 56e:	91 83       	std	Z+1, r25	; 0x01
- 570:	a2 83       	std	Z+2, r26	; 0x02
- 572:	80 91 12 02 	lds	r24, 0x0212	; 0x800212 <p2disp>
- 576:	90 91 13 02 	lds	r25, 0x0213	; 0x800213 <p2disp+0x1>
- 57a:	9c dd       	rcall	.-1224   	; 0xb4 <wrt_ws2812>
- 57c:	ff ef       	ldi	r31, 0xFF	; 255
- 57e:	21 ee       	ldi	r18, 0xE1	; 225
- 580:	84 e0       	ldi	r24, 0x04	; 4
- 582:	f1 50       	subi	r31, 0x01	; 1
- 584:	20 40       	sbci	r18, 0x00	; 0
- 586:	80 40       	sbci	r24, 0x00	; 0
- 588:	e1 f7       	brne	.-8      	; 0x582 <main+0x146>
- 58a:	00 c0       	rjmp	.+0      	; 0x58c <main+0x150>
- 58c:	00 00       	nop
- 58e:	28 df       	rcall	.-432    	; 0x3e0 <clear_disp>
- 590:	9b e1       	ldi	r25, 0x1B	; 27
- 592:	c9 1a       	sub	r12, r25
- 594:	d1 08       	sbc	r13, r1
- 596:	e5 e1       	ldi	r30, 0x15	; 21
- 598:	ee 0e       	add	r14, r30
- 59a:	f1 1c       	adc	r15, r1
- 59c:	65 97       	sbiw	r28, 0x15	; 21
- 59e:	05 5e       	subi	r16, 0xE5	; 229
- 5a0:	1f 4f       	sbci	r17, 0xFF	; 255
- 5a2:	ac 16       	cp	r10, r28
- 5a4:	bd 06       	cpc	r11, r29
- 5a6:	09 f0       	breq	.+2      	; 0x5aa <main+0x16e>
- 5a8:	bd cf       	rjmp	.-134    	; 0x524 <main+0xe8>
- 5aa:	34 df       	rcall	.-408    	; 0x414 <TB_joy1>
- 5ac:	ff ef       	ldi	r31, 0xFF	; 255
- 5ae:	21 ee       	ldi	r18, 0xE1	; 225
- 5b0:	84 e0       	ldi	r24, 0x04	; 4
- 5b2:	f1 50       	subi	r31, 0x01	; 1
- 5b4:	20 40       	sbci	r18, 0x00	; 0
- 5b6:	80 40       	sbci	r24, 0x00	; 0
- 5b8:	e1 f7       	brne	.-8      	; 0x5b2 <main+0x176>
- 5ba:	00 c0       	rjmp	.+0      	; 0x5bc <main+0x180>
- 5bc:	00 00       	nop
- 5be:	f5 cf       	rjmp	.-22     	; 0x5aa <main+0x16e>
+/* Copies matrizJugador1 in display_rgb.*/
+void copyArrayOf1(void)
+{
+     656:	cf 93       	push	r28
+     658:	df 93       	push	r29
+     65a:	e7 e2       	ldi	r30, 0x27	; 39
+     65c:	f2 e0       	ldi	r31, 0x02	; 2
+     65e:	65 e6       	ldi	r22, 0x65	; 101
+     660:	71 e0       	ldi	r23, 0x01	; 1
+     662:	c7 ee       	ldi	r28, 0xE7	; 231
+     664:	d2 e0       	ldi	r29, 0x02	; 2
+     666:	0f c0       	rjmp	.+30     	; 0x686 <copyArrayOf1+0x30>
+	for (int i=0; i<=7; i++)
+		for (int j=0; j<=7; j++)
+			display_rgb[i][j] = matrizJugador1[i][j];
+     668:	21 91       	ld	r18, Z+
+     66a:	31 91       	ld	r19, Z+
+     66c:	41 91       	ld	r20, Z+
+     66e:	2d 93       	st	X+, r18
+     670:	3d 93       	st	X+, r19
+     672:	4d 93       	st	X+, r20
 
-000005c0 <_exit>:
- 5c0:	f8 94       	cli
+/* Copies matrizJugador1 in display_rgb.*/
+void copyArrayOf1(void)
+{
+	for (int i=0; i<=7; i++)
+		for (int j=0; j<=7; j++)
+     674:	e8 17       	cp	r30, r24
+     676:	f9 07       	cpc	r31, r25
+     678:	b9 f7       	brne	.-18     	; 0x668 <copyArrayOf1+0x12>
+     67a:	68 5e       	subi	r22, 0xE8	; 232
+     67c:	7f 4f       	sbci	r23, 0xFF	; 255
+     67e:	fc 01       	movw	r30, r24
+}
 
-000005c2 <__stop_program>:
- 5c2:	ff cf       	rjmp	.-2      	; 0x5c2 <__stop_program>
+/* Copies matrizJugador1 in display_rgb.*/
+void copyArrayOf1(void)
+{
+	for (int i=0; i<=7; i++)
+     680:	c8 17       	cp	r28, r24
+     682:	d9 07       	cpc	r29, r25
+     684:	21 f0       	breq	.+8      	; 0x68e <copyArrayOf1+0x38>
+     686:	cf 01       	movw	r24, r30
+     688:	48 96       	adiw	r24, 0x18	; 24
+	}
+}
+
+/* Copies matrizJugador1 in display_rgb.*/
+void copyArrayOf1(void)
+{
+     68a:	db 01       	movw	r26, r22
+     68c:	ed cf       	rjmp	.-38     	; 0x668 <copyArrayOf1+0x12>
+	for (int i=0; i<=7; i++)
+		for (int j=0; j<=7; j++)
+			display_rgb[i][j] = matrizJugador1[i][j];
+}
+     68e:	df 91       	pop	r29
+     690:	cf 91       	pop	r28
+     692:	08 95       	ret
+
+00000694 <copyArrayOf2>:
+
+/* Copies matrizJugador2 in display_rgb.*/
+void copyArrayOf2(void)
+{
+     694:	cf 93       	push	r28
+     696:	df 93       	push	r29
+     698:	e7 ee       	ldi	r30, 0xE7	; 231
+     69a:	f2 e0       	ldi	r31, 0x02	; 2
+     69c:	65 e6       	ldi	r22, 0x65	; 101
+     69e:	71 e0       	ldi	r23, 0x01	; 1
+     6a0:	c7 ea       	ldi	r28, 0xA7	; 167
+     6a2:	d3 e0       	ldi	r29, 0x03	; 3
+     6a4:	0f c0       	rjmp	.+30     	; 0x6c4 <copyArrayOf2+0x30>
+	for (int i=0; i<=7; i++)
+		for (int j=0; j<=7; j++)
+			display_rgb[i][j] = matrizJugador2[i][j];
+     6a6:	21 91       	ld	r18, Z+
+     6a8:	31 91       	ld	r19, Z+
+     6aa:	41 91       	ld	r20, Z+
+     6ac:	2d 93       	st	X+, r18
+     6ae:	3d 93       	st	X+, r19
+     6b0:	4d 93       	st	X+, r20
+
+/* Copies matrizJugador2 in display_rgb.*/
+void copyArrayOf2(void)
+{
+	for (int i=0; i<=7; i++)
+		for (int j=0; j<=7; j++)
+     6b2:	e8 17       	cp	r30, r24
+     6b4:	f9 07       	cpc	r31, r25
+     6b6:	b9 f7       	brne	.-18     	; 0x6a6 <copyArrayOf2+0x12>
+     6b8:	68 5e       	subi	r22, 0xE8	; 232
+     6ba:	7f 4f       	sbci	r23, 0xFF	; 255
+     6bc:	fc 01       	movw	r30, r24
+}
+
+/* Copies matrizJugador2 in display_rgb.*/
+void copyArrayOf2(void)
+{
+	for (int i=0; i<=7; i++)
+     6be:	c8 17       	cp	r28, r24
+     6c0:	d9 07       	cpc	r29, r25
+     6c2:	21 f0       	breq	.+8      	; 0x6cc <copyArrayOf2+0x38>
+     6c4:	cf 01       	movw	r24, r30
+     6c6:	48 96       	adiw	r24, 0x18	; 24
+			display_rgb[i][j] = matrizJugador1[i][j];
+}
+
+/* Copies matrizJugador2 in display_rgb.*/
+void copyArrayOf2(void)
+{
+     6c8:	db 01       	movw	r26, r22
+     6ca:	ed cf       	rjmp	.-38     	; 0x6a6 <copyArrayOf2+0x12>
+	for (int i=0; i<=7; i++)
+		for (int j=0; j<=7; j++)
+			display_rgb[i][j] = matrizJugador2[i][j];
+}
+     6cc:	df 91       	pop	r29
+     6ce:	cf 91       	pop	r28
+     6d0:	08 95       	ret
+
+000006d2 <scanSubmarinos1>:
+}
+
+/* Takes coordinates x, y from 0:7 as arguments and scans Submarinos of player1.
+Sets MatrizJugador1 corresponding to the existance of a ship on the coordinates.*/
+void scanSubmarinos1(int8_t x, int8_t y)
+{
+     6d2:	af 92       	push	r10
+     6d4:	bf 92       	push	r11
+     6d6:	cf 92       	push	r12
+     6d8:	df 92       	push	r13
+     6da:	ef 92       	push	r14
+     6dc:	ff 92       	push	r15
+     6de:	0f 93       	push	r16
+     6e0:	1f 93       	push	r17
+     6e2:	cf 93       	push	r28
+     6e4:	df 93       	push	r29
+     6e6:	e6 e2       	ldi	r30, 0x26	; 38
+     6e8:	f1 e0       	ldi	r31, 0x01	; 1
+     6ea:	cf e2       	ldi	r28, 0x2F	; 47
+     6ec:	d1 e0       	ldi	r29, 0x01	; 1
+	for(int i=0; i<=2; i++)
+	{
+		if ((submarinosJugador1[i].x0 == x) & (submarinosJugador1[i].y0 == y))
+     6ee:	48 2f       	mov	r20, r24
+     6f0:	88 0f       	add	r24, r24
+     6f2:	55 0b       	sbc	r21, r21
+     6f4:	06 2e       	mov	r0, r22
+     6f6:	00 0c       	add	r0, r0
+     6f8:	77 0b       	sbc	r23, r23
+     6fa:	81 e0       	ldi	r24, 0x01	; 1
+     6fc:	f1 2c       	mov	r15, r1
+		{
+			submarinosJugador1[i].boolDisparado = 1;
+			matrizJugador1[x][y] = Hundido;
+     6fe:	db 01       	movw	r26, r22
+     700:	aa 0f       	add	r26, r26
+     702:	bb 1f       	adc	r27, r27
+     704:	9d 01       	movw	r18, r26
+     706:	26 0f       	add	r18, r22
+     708:	37 1f       	adc	r19, r23
+     70a:	da 01       	movw	r26, r20
+     70c:	aa 0f       	add	r26, r26
+     70e:	bb 1f       	adc	r27, r27
+     710:	a4 0f       	add	r26, r20
+     712:	b5 1f       	adc	r27, r21
+     714:	aa 0f       	add	r26, r26
+     716:	bb 1f       	adc	r27, r27
+     718:	aa 0f       	add	r26, r26
+     71a:	bb 1f       	adc	r27, r27
+     71c:	aa 0f       	add	r26, r26
+     71e:	bb 1f       	adc	r27, r27
+     720:	a2 0f       	add	r26, r18
+     722:	b3 1f       	adc	r27, r19
+     724:	9d 01       	movw	r18, r26
+     726:	29 5d       	subi	r18, 0xD9	; 217
+     728:	3d 4f       	sbci	r19, 0xFD	; 253
+     72a:	59 01       	movw	r10, r18
+     72c:	8f 01       	movw	r16, r30
+Sets MatrizJugador1 corresponding to the existance of a ship on the coordinates.*/
+void scanSubmarinos1(int8_t x, int8_t y)
+{
+	for(int i=0; i<=2; i++)
+	{
+		if ((submarinosJugador1[i].x0 == x) & (submarinosJugador1[i].y0 == y))
+     72e:	20 81       	ld	r18, Z
+     730:	30 e0       	ldi	r19, 0x00	; 0
+     732:	98 2f       	mov	r25, r24
+     734:	24 17       	cp	r18, r20
+     736:	35 07       	cpc	r19, r21
+     738:	09 f0       	breq	.+2      	; 0x73c <scanSubmarinos1+0x6a>
+     73a:	9f 2d       	mov	r25, r15
+     73c:	99 23       	and	r25, r25
+     73e:	c1 f0       	breq	.+48     	; 0x770 <scanSubmarinos1+0x9e>
+     740:	d8 01       	movw	r26, r16
+     742:	11 96       	adiw	r26, 0x01	; 1
+     744:	2c 91       	ld	r18, X
+     746:	30 e0       	ldi	r19, 0x00	; 0
+     748:	98 2f       	mov	r25, r24
+     74a:	26 17       	cp	r18, r22
+     74c:	37 07       	cpc	r19, r23
+     74e:	09 f0       	breq	.+2      	; 0x752 <scanSubmarinos1+0x80>
+     750:	9f 2d       	mov	r25, r15
+     752:	99 23       	and	r25, r25
+     754:	69 f0       	breq	.+26     	; 0x770 <scanSubmarinos1+0x9e>
+		{
+			submarinosJugador1[i].boolDisparado = 1;
+     756:	d8 01       	movw	r26, r16
+     758:	12 96       	adiw	r26, 0x02	; 2
+     75a:	8c 93       	st	X, r24
+			matrizJugador1[x][y] = Hundido;
+     75c:	c0 90 35 01 	lds	r12, 0x0135	; 0x800135 <Hundido>
+     760:	d0 90 36 01 	lds	r13, 0x0136	; 0x800136 <Hundido+0x1>
+     764:	e0 90 37 01 	lds	r14, 0x0137	; 0x800137 <Hundido+0x2>
+     768:	d5 01       	movw	r26, r10
+     76a:	cd 92       	st	X+, r12
+     76c:	dd 92       	st	X+, r13
+     76e:	ec 92       	st	X, r14
+     770:	33 96       	adiw	r30, 0x03	; 3
+
+/* Takes coordinates x, y from 0:7 as arguments and scans Submarinos of player1.
+Sets MatrizJugador1 corresponding to the existance of a ship on the coordinates.*/
+void scanSubmarinos1(int8_t x, int8_t y)
+{
+	for(int i=0; i<=2; i++)
+     772:	ec 17       	cp	r30, r28
+     774:	fd 07       	cpc	r31, r29
+     776:	d1 f6       	brne	.-76     	; 0x72c <scanSubmarinos1+0x5a>
+		{
+			submarinosJugador1[i].boolDisparado = 1;
+			matrizJugador1[x][y] = Hundido;
+		}
+	}
+}
+     778:	df 91       	pop	r29
+     77a:	cf 91       	pop	r28
+     77c:	1f 91       	pop	r17
+     77e:	0f 91       	pop	r16
+     780:	ff 90       	pop	r15
+     782:	ef 90       	pop	r14
+     784:	df 90       	pop	r13
+     786:	cf 90       	pop	r12
+     788:	bf 90       	pop	r11
+     78a:	af 90       	pop	r10
+     78c:	08 95       	ret
+
+0000078e <scanSubmarinos2>:
+
+/* Takes coordinates x, y from 0:7 as arguments and scans Submarinos of player2.
+Sets MatrizJugador2 corresponding to the existance of a ship on the coordinates.*/
+void scanSubmarinos2(int8_t x, int8_t y)
+{
+     78e:	af 92       	push	r10
+     790:	bf 92       	push	r11
+     792:	cf 92       	push	r12
+     794:	df 92       	push	r13
+     796:	ef 92       	push	r14
+     798:	ff 92       	push	r15
+     79a:	0f 93       	push	r16
+     79c:	1f 93       	push	r17
+     79e:	cf 93       	push	r28
+     7a0:	df 93       	push	r29
+     7a2:	e1 e1       	ldi	r30, 0x11	; 17
+     7a4:	f1 e0       	ldi	r31, 0x01	; 1
+     7a6:	ca e1       	ldi	r28, 0x1A	; 26
+     7a8:	d1 e0       	ldi	r29, 0x01	; 1
+	for(int i=0; i<=2; i++)
+	{
+		if ((submarinosJugador2[i].x0 == x) & (submarinosJugador2[i].y0 == y))
+     7aa:	48 2f       	mov	r20, r24
+     7ac:	88 0f       	add	r24, r24
+     7ae:	55 0b       	sbc	r21, r21
+     7b0:	06 2e       	mov	r0, r22
+     7b2:	00 0c       	add	r0, r0
+     7b4:	77 0b       	sbc	r23, r23
+     7b6:	81 e0       	ldi	r24, 0x01	; 1
+     7b8:	f1 2c       	mov	r15, r1
+		{
+			submarinosJugador2[i].boolDisparado = 1;
+			matrizJugador2[x][y] = Hundido;
+     7ba:	db 01       	movw	r26, r22
+     7bc:	aa 0f       	add	r26, r26
+     7be:	bb 1f       	adc	r27, r27
+     7c0:	9d 01       	movw	r18, r26
+     7c2:	26 0f       	add	r18, r22
+     7c4:	37 1f       	adc	r19, r23
+     7c6:	da 01       	movw	r26, r20
+     7c8:	aa 0f       	add	r26, r26
+     7ca:	bb 1f       	adc	r27, r27
+     7cc:	a4 0f       	add	r26, r20
+     7ce:	b5 1f       	adc	r27, r21
+     7d0:	aa 0f       	add	r26, r26
+     7d2:	bb 1f       	adc	r27, r27
+     7d4:	aa 0f       	add	r26, r26
+     7d6:	bb 1f       	adc	r27, r27
+     7d8:	aa 0f       	add	r26, r26
+     7da:	bb 1f       	adc	r27, r27
+     7dc:	a2 0f       	add	r26, r18
+     7de:	b3 1f       	adc	r27, r19
+     7e0:	9d 01       	movw	r18, r26
+     7e2:	29 51       	subi	r18, 0x19	; 25
+     7e4:	3d 4f       	sbci	r19, 0xFD	; 253
+     7e6:	59 01       	movw	r10, r18
+     7e8:	8f 01       	movw	r16, r30
+Sets MatrizJugador2 corresponding to the existance of a ship on the coordinates.*/
+void scanSubmarinos2(int8_t x, int8_t y)
+{
+	for(int i=0; i<=2; i++)
+	{
+		if ((submarinosJugador2[i].x0 == x) & (submarinosJugador2[i].y0 == y))
+     7ea:	20 81       	ld	r18, Z
+     7ec:	30 e0       	ldi	r19, 0x00	; 0
+     7ee:	98 2f       	mov	r25, r24
+     7f0:	24 17       	cp	r18, r20
+     7f2:	35 07       	cpc	r19, r21
+     7f4:	09 f0       	breq	.+2      	; 0x7f8 <scanSubmarinos2+0x6a>
+     7f6:	9f 2d       	mov	r25, r15
+     7f8:	99 23       	and	r25, r25
+     7fa:	c1 f0       	breq	.+48     	; 0x82c <__DATA_REGION_LENGTH__+0x2c>
+     7fc:	d8 01       	movw	r26, r16
+     7fe:	11 96       	adiw	r26, 0x01	; 1
+     800:	2c 91       	ld	r18, X
+     802:	30 e0       	ldi	r19, 0x00	; 0
+     804:	98 2f       	mov	r25, r24
+     806:	26 17       	cp	r18, r22
+     808:	37 07       	cpc	r19, r23
+     80a:	09 f0       	breq	.+2      	; 0x80e <__DATA_REGION_LENGTH__+0xe>
+     80c:	9f 2d       	mov	r25, r15
+     80e:	99 23       	and	r25, r25
+     810:	69 f0       	breq	.+26     	; 0x82c <__DATA_REGION_LENGTH__+0x2c>
+		{
+			submarinosJugador2[i].boolDisparado = 1;
+     812:	d8 01       	movw	r26, r16
+     814:	12 96       	adiw	r26, 0x02	; 2
+     816:	8c 93       	st	X, r24
+			matrizJugador2[x][y] = Hundido;
+     818:	c0 90 35 01 	lds	r12, 0x0135	; 0x800135 <Hundido>
+     81c:	d0 90 36 01 	lds	r13, 0x0136	; 0x800136 <Hundido+0x1>
+     820:	e0 90 37 01 	lds	r14, 0x0137	; 0x800137 <Hundido+0x2>
+     824:	d5 01       	movw	r26, r10
+     826:	cd 92       	st	X+, r12
+     828:	dd 92       	st	X+, r13
+     82a:	ec 92       	st	X, r14
+     82c:	33 96       	adiw	r30, 0x03	; 3
+
+/* Takes coordinates x, y from 0:7 as arguments and scans Submarinos of player2.
+Sets MatrizJugador2 corresponding to the existance of a ship on the coordinates.*/
+void scanSubmarinos2(int8_t x, int8_t y)
+{
+	for(int i=0; i<=2; i++)
+     82e:	ec 17       	cp	r30, r28
+     830:	fd 07       	cpc	r31, r29
+     832:	d1 f6       	brne	.-76     	; 0x7e8 <scanSubmarinos2+0x5a>
+		{
+			submarinosJugador2[i].boolDisparado = 1;
+			matrizJugador2[x][y] = Hundido;
+		}
+	}
+}
+     834:	df 91       	pop	r29
+     836:	cf 91       	pop	r28
+     838:	1f 91       	pop	r17
+     83a:	0f 91       	pop	r16
+     83c:	ff 90       	pop	r15
+     83e:	ef 90       	pop	r14
+     840:	df 90       	pop	r13
+     842:	cf 90       	pop	r12
+     844:	bf 90       	pop	r11
+     846:	af 90       	pop	r10
+     848:	08 95       	ret
+
+0000084a <scanCargueros1>:
+
+/* Takes coordinates x, y from 0:7 as arguments and scans Cargueros of player1.
+Sets MatrizJugador1 corresponding to the existance of a ship on the coordinates.*/
+void scanCargueros1(int8_t x, int8_t y)
+{
+     84a:	4f 92       	push	r4
+     84c:	5f 92       	push	r5
+     84e:	6f 92       	push	r6
+     850:	7f 92       	push	r7
+     852:	8f 92       	push	r8
+     854:	af 92       	push	r10
+     856:	bf 92       	push	r11
+     858:	cf 92       	push	r12
+     85a:	df 92       	push	r13
+     85c:	ef 92       	push	r14
+     85e:	ff 92       	push	r15
+     860:	0f 93       	push	r16
+     862:	1f 93       	push	r17
+     864:	cf 93       	push	r28
+     866:	df 93       	push	r29
+     868:	ea e1       	ldi	r30, 0x1A	; 26
+     86a:	f1 e0       	ldi	r31, 0x01	; 1
+     86c:	0f 2e       	mov	r0, r31
+     86e:	f6 e2       	ldi	r31, 0x26	; 38
+     870:	ef 2e       	mov	r14, r31
+     872:	f1 e0       	ldi	r31, 0x01	; 1
+     874:	ff 2e       	mov	r15, r31
+     876:	f0 2d       	mov	r31, r0
+	for(int i=0; i<=1; i++)
+	{
+		if ((carguerosJugador1[i].x0 == x) & (carguerosJugador1[i].y0 == y))
+     878:	08 2e       	mov	r0, r24
+     87a:	00 0c       	add	r0, r0
+     87c:	99 0b       	sbc	r25, r25
+     87e:	06 2e       	mov	r0, r22
+     880:	00 0c       	add	r0, r0
+     882:	77 0b       	sbc	r23, r23
+     884:	bb 24       	eor	r11, r11
+     886:	b3 94       	inc	r11
+     888:	a1 2c       	mov	r10, r1
+			{
+				matrizJugador1[carguerosJugador1[i].x0][carguerosJugador1[i].y0] = Hundido;
+				matrizJugador1[carguerosJugador1[i].x1][carguerosJugador1[i].y1] = Hundido;
+			}
+			else
+				matrizJugador1[x][y] = Danado;
+     88a:	9b 01       	movw	r18, r22
+     88c:	22 0f       	add	r18, r18
+     88e:	33 1f       	adc	r19, r19
+     890:	a9 01       	movw	r20, r18
+     892:	46 0f       	add	r20, r22
+     894:	57 1f       	adc	r21, r23
+     896:	9c 01       	movw	r18, r24
+     898:	22 0f       	add	r18, r18
+     89a:	33 1f       	adc	r19, r19
+     89c:	28 0f       	add	r18, r24
+     89e:	39 1f       	adc	r19, r25
+     8a0:	22 0f       	add	r18, r18
+     8a2:	33 1f       	adc	r19, r19
+     8a4:	22 0f       	add	r18, r18
+     8a6:	33 1f       	adc	r19, r19
+     8a8:	22 0f       	add	r18, r18
+     8aa:	33 1f       	adc	r19, r19
+     8ac:	24 0f       	add	r18, r20
+     8ae:	35 1f       	adc	r19, r21
+     8b0:	a9 01       	movw	r20, r18
+     8b2:	49 5d       	subi	r20, 0xD9	; 217
+     8b4:	5d 4f       	sbci	r21, 0xFD	; 253
+     8b6:	2a 01       	movw	r4, r20
+     8b8:	ef 01       	movw	r28, r30
+Sets MatrizJugador1 corresponding to the existance of a ship on the coordinates.*/
+void scanCargueros1(int8_t x, int8_t y)
+{
+	for(int i=0; i<=1; i++)
+	{
+		if ((carguerosJugador1[i].x0 == x) & (carguerosJugador1[i].y0 == y))
+     8ba:	20 81       	ld	r18, Z
+     8bc:	30 e0       	ldi	r19, 0x00	; 0
+     8be:	41 81       	ldd	r20, Z+1	; 0x01
+     8c0:	50 e0       	ldi	r21, 0x00	; 0
+     8c2:	1b 2d       	mov	r17, r11
+     8c4:	28 17       	cp	r18, r24
+     8c6:	39 07       	cpc	r19, r25
+     8c8:	09 f0       	breq	.+2      	; 0x8cc <scanCargueros1+0x82>
+     8ca:	1a 2d       	mov	r17, r10
+     8cc:	11 23       	and	r17, r17
+     8ce:	09 f4       	brne	.+2      	; 0x8d2 <scanCargueros1+0x88>
+     8d0:	52 c0       	rjmp	.+164    	; 0x976 <__stack+0x77>
+     8d2:	1b 2d       	mov	r17, r11
+     8d4:	46 17       	cp	r20, r22
+     8d6:	57 07       	cpc	r21, r23
+     8d8:	09 f0       	breq	.+2      	; 0x8dc <scanCargueros1+0x92>
+     8da:	1a 2d       	mov	r17, r10
+     8dc:	11 23       	and	r17, r17
+     8de:	09 f4       	brne	.+2      	; 0x8e2 <scanCargueros1+0x98>
+     8e0:	4a c0       	rjmp	.+148    	; 0x976 <__stack+0x77>
+		{
+			carguerosJugador1[i].boolDisparado0 = 1;
+     8e2:	ba 82       	std	Y+2, r11	; 0x02
+			if ((carguerosJugador1[i].boolDisparado0 == 1) & (carguerosJugador1[i].boolDisparado1 == 1))
+     8e4:	1d 81       	ldd	r17, Y+5	; 0x05
+     8e6:	11 30       	cpi	r17, 0x01	; 1
+     8e8:	d9 f5       	brne	.+118    	; 0x960 <__stack+0x61>
+			{
+				matrizJugador1[carguerosJugador1[i].x0][carguerosJugador1[i].y0] = Hundido;
+     8ea:	8a 01       	movw	r16, r20
+     8ec:	00 0f       	add	r16, r16
+     8ee:	11 1f       	adc	r17, r17
+     8f0:	40 0f       	add	r20, r16
+     8f2:	51 1f       	adc	r21, r17
+     8f4:	89 01       	movw	r16, r18
+     8f6:	00 0f       	add	r16, r16
+     8f8:	11 1f       	adc	r17, r17
+     8fa:	20 0f       	add	r18, r16
+     8fc:	31 1f       	adc	r19, r17
+     8fe:	22 0f       	add	r18, r18
+     900:	33 1f       	adc	r19, r19
+     902:	22 0f       	add	r18, r18
+     904:	33 1f       	adc	r19, r19
+     906:	22 0f       	add	r18, r18
+     908:	33 1f       	adc	r19, r19
+     90a:	42 0f       	add	r20, r18
+     90c:	53 1f       	adc	r21, r19
+     90e:	49 5d       	subi	r20, 0xD9	; 217
+     910:	5d 4f       	sbci	r21, 0xFD	; 253
+     912:	60 90 35 01 	lds	r6, 0x0135	; 0x800135 <Hundido>
+     916:	70 90 36 01 	lds	r7, 0x0136	; 0x800136 <Hundido+0x1>
+     91a:	80 90 37 01 	lds	r8, 0x0137	; 0x800137 <Hundido+0x2>
+     91e:	da 01       	movw	r26, r20
+     920:	6d 92       	st	X+, r6
+     922:	7d 92       	st	X+, r7
+     924:	8c 92       	st	X, r8
+				matrizJugador1[carguerosJugador1[i].x1][carguerosJugador1[i].y1] = Hundido;
+     926:	4c 81       	ldd	r20, Y+4	; 0x04
+     928:	50 e0       	ldi	r21, 0x00	; 0
+     92a:	2b 81       	ldd	r18, Y+3	; 0x03
+     92c:	30 e0       	ldi	r19, 0x00	; 0
+     92e:	ea 01       	movw	r28, r20
+     930:	cc 0f       	add	r28, r28
+     932:	dd 1f       	adc	r29, r29
+     934:	4c 0f       	add	r20, r28
+     936:	5d 1f       	adc	r21, r29
+     938:	e9 01       	movw	r28, r18
+     93a:	cc 0f       	add	r28, r28
+     93c:	dd 1f       	adc	r29, r29
+     93e:	c2 0f       	add	r28, r18
+     940:	d3 1f       	adc	r29, r19
+     942:	cc 0f       	add	r28, r28
+     944:	dd 1f       	adc	r29, r29
+     946:	cc 0f       	add	r28, r28
+     948:	dd 1f       	adc	r29, r29
+     94a:	cc 0f       	add	r28, r28
+     94c:	dd 1f       	adc	r29, r29
+     94e:	4c 0f       	add	r20, r28
+     950:	5d 1f       	adc	r21, r29
+     952:	ea 01       	movw	r28, r20
+     954:	c9 5d       	subi	r28, 0xD9	; 217
+     956:	dd 4f       	sbci	r29, 0xFD	; 253
+     958:	68 82       	st	Y, r6
+     95a:	79 82       	std	Y+1, r7	; 0x01
+     95c:	8a 82       	std	Y+2, r8	; 0x02
+     95e:	63 c0       	rjmp	.+198    	; 0xa26 <__stack+0x127>
+			}
+			else
+				matrizJugador1[x][y] = Danado;
+     960:	20 91 2f 01 	lds	r18, 0x012F	; 0x80012f <Danado>
+     964:	30 91 30 01 	lds	r19, 0x0130	; 0x800130 <Danado+0x1>
+     968:	40 91 31 01 	lds	r20, 0x0131	; 0x800131 <Danado+0x2>
+     96c:	d2 01       	movw	r26, r4
+     96e:	2d 93       	st	X+, r18
+     970:	3d 93       	st	X+, r19
+     972:	4c 93       	st	X, r20
+     974:	58 c0       	rjmp	.+176    	; 0xa26 <__stack+0x127>
+		}
+		else if ((carguerosJugador1[i].x1 == x) & (carguerosJugador1[i].y1 == y))
+     976:	0b 81       	ldd	r16, Y+3	; 0x03
+     978:	10 e0       	ldi	r17, 0x00	; 0
+     97a:	cc 80       	ldd	r12, Y+4	; 0x04
+     97c:	d1 2c       	mov	r13, r1
+     97e:	8b 2c       	mov	r8, r11
+     980:	80 17       	cp	r24, r16
+     982:	91 07       	cpc	r25, r17
+     984:	09 f0       	breq	.+2      	; 0x988 <__stack+0x89>
+     986:	8a 2c       	mov	r8, r10
+     988:	88 20       	and	r8, r8
+     98a:	09 f4       	brne	.+2      	; 0x98e <__stack+0x8f>
+     98c:	4c c0       	rjmp	.+152    	; 0xa26 <__stack+0x127>
+     98e:	8b 2c       	mov	r8, r11
+     990:	6c 15       	cp	r22, r12
+     992:	7d 05       	cpc	r23, r13
+     994:	09 f0       	breq	.+2      	; 0x998 <__stack+0x99>
+     996:	8a 2c       	mov	r8, r10
+     998:	88 20       	and	r8, r8
+     99a:	09 f4       	brne	.+2      	; 0x99e <__stack+0x9f>
+     99c:	44 c0       	rjmp	.+136    	; 0xa26 <__stack+0x127>
+		{
+			carguerosJugador1[i].boolDisparado1 = 1;
+     99e:	bd 82       	std	Y+5, r11	; 0x05
+			if ((carguerosJugador1[i].boolDisparado0 == 1) & (carguerosJugador1[i].boolDisparado1 == 1))
+     9a0:	ca 81       	ldd	r28, Y+2	; 0x02
+     9a2:	c1 30       	cpi	r28, 0x01	; 1
+     9a4:	b1 f5       	brne	.+108    	; 0xa12 <__stack+0x113>
+			{
+				matrizJugador1[carguerosJugador1[i].x0][carguerosJugador1[i].y0] = Hundido;
+     9a6:	ea 01       	movw	r28, r20
+     9a8:	cc 0f       	add	r28, r28
+     9aa:	dd 1f       	adc	r29, r29
+     9ac:	4c 0f       	add	r20, r28
+     9ae:	5d 1f       	adc	r21, r29
+     9b0:	e9 01       	movw	r28, r18
+     9b2:	cc 0f       	add	r28, r28
+     9b4:	dd 1f       	adc	r29, r29
+     9b6:	c2 0f       	add	r28, r18
+     9b8:	d3 1f       	adc	r29, r19
+     9ba:	cc 0f       	add	r28, r28
+     9bc:	dd 1f       	adc	r29, r29
+     9be:	cc 0f       	add	r28, r28
+     9c0:	dd 1f       	adc	r29, r29
+     9c2:	cc 0f       	add	r28, r28
+     9c4:	dd 1f       	adc	r29, r29
+     9c6:	4c 0f       	add	r20, r28
+     9c8:	5d 1f       	adc	r21, r29
+     9ca:	ea 01       	movw	r28, r20
+     9cc:	c9 5d       	subi	r28, 0xD9	; 217
+     9ce:	dd 4f       	sbci	r29, 0xFD	; 253
+     9d0:	20 91 35 01 	lds	r18, 0x0135	; 0x800135 <Hundido>
+     9d4:	30 91 36 01 	lds	r19, 0x0136	; 0x800136 <Hundido+0x1>
+     9d8:	40 91 37 01 	lds	r20, 0x0137	; 0x800137 <Hundido+0x2>
+     9dc:	28 83       	st	Y, r18
+     9de:	39 83       	std	Y+1, r19	; 0x01
+     9e0:	4a 83       	std	Y+2, r20	; 0x02
+				matrizJugador1[carguerosJugador1[i].x1][carguerosJugador1[i].y1] = Hundido;
+     9e2:	e6 01       	movw	r28, r12
+     9e4:	cc 0f       	add	r28, r28
+     9e6:	dd 1f       	adc	r29, r29
+     9e8:	cc 0e       	add	r12, r28
+     9ea:	dd 1e       	adc	r13, r29
+     9ec:	e8 01       	movw	r28, r16
+     9ee:	cc 0f       	add	r28, r28
+     9f0:	dd 1f       	adc	r29, r29
+     9f2:	c0 0f       	add	r28, r16
+     9f4:	d1 1f       	adc	r29, r17
+     9f6:	cc 0f       	add	r28, r28
+     9f8:	dd 1f       	adc	r29, r29
+     9fa:	cc 0f       	add	r28, r28
+     9fc:	dd 1f       	adc	r29, r29
+     9fe:	cc 0f       	add	r28, r28
+     a00:	dd 1f       	adc	r29, r29
+     a02:	cc 0d       	add	r28, r12
+     a04:	dd 1d       	adc	r29, r13
+     a06:	c9 5d       	subi	r28, 0xD9	; 217
+     a08:	dd 4f       	sbci	r29, 0xFD	; 253
+     a0a:	28 83       	st	Y, r18
+     a0c:	39 83       	std	Y+1, r19	; 0x01
+     a0e:	4a 83       	std	Y+2, r20	; 0x02
+     a10:	0a c0       	rjmp	.+20     	; 0xa26 <__stack+0x127>
+			}
+			else
+				matrizJugador1[x][y] = Danado;
+     a12:	20 91 2f 01 	lds	r18, 0x012F	; 0x80012f <Danado>
+     a16:	30 91 30 01 	lds	r19, 0x0130	; 0x800130 <Danado+0x1>
+     a1a:	40 91 31 01 	lds	r20, 0x0131	; 0x800131 <Danado+0x2>
+     a1e:	d2 01       	movw	r26, r4
+     a20:	2d 93       	st	X+, r18
+     a22:	3d 93       	st	X+, r19
+     a24:	4c 93       	st	X, r20
+     a26:	36 96       	adiw	r30, 0x06	; 6
+
+/* Takes coordinates x, y from 0:7 as arguments and scans Cargueros of player1.
+Sets MatrizJugador1 corresponding to the existance of a ship on the coordinates.*/
+void scanCargueros1(int8_t x, int8_t y)
+{
+	for(int i=0; i<=1; i++)
+     a28:	ee 15       	cp	r30, r14
+     a2a:	ff 05       	cpc	r31, r15
+     a2c:	09 f0       	breq	.+2      	; 0xa30 <__stack+0x131>
+     a2e:	44 cf       	rjmp	.-376    	; 0x8b8 <scanCargueros1+0x6e>
+			}
+			else
+				matrizJugador1[x][y] = Danado;
+		}
+	}
+}
+     a30:	df 91       	pop	r29
+     a32:	cf 91       	pop	r28
+     a34:	1f 91       	pop	r17
+     a36:	0f 91       	pop	r16
+     a38:	ff 90       	pop	r15
+     a3a:	ef 90       	pop	r14
+     a3c:	df 90       	pop	r13
+     a3e:	cf 90       	pop	r12
+     a40:	bf 90       	pop	r11
+     a42:	af 90       	pop	r10
+     a44:	8f 90       	pop	r8
+     a46:	7f 90       	pop	r7
+     a48:	6f 90       	pop	r6
+     a4a:	5f 90       	pop	r5
+     a4c:	4f 90       	pop	r4
+     a4e:	08 95       	ret
+
+00000a50 <shootPlayer1>:
+			display_rgb[i][j] = matrizJugador2[i][j];
+}
+
+/* Takes coordinates x, y from 0:7 as arguments and shoots player1 there.*/
+void shootPlayer1(int8_t x, int8_t y)
+{
+     a50:	cf 93       	push	r28
+     a52:	df 93       	push	r29
+     a54:	c8 2f       	mov	r28, r24
+     a56:	d6 2f       	mov	r29, r22
+	matrizJugador1[x][y] = Agua;
+     a58:	e6 2f       	mov	r30, r22
+     a5a:	06 2e       	mov	r0, r22
+     a5c:	00 0c       	add	r0, r0
+     a5e:	ff 0b       	sbc	r31, r31
+     a60:	08 2e       	mov	r0, r24
+     a62:	00 0c       	add	r0, r0
+     a64:	99 0b       	sbc	r25, r25
+     a66:	9f 01       	movw	r18, r30
+     a68:	22 0f       	add	r18, r18
+     a6a:	33 1f       	adc	r19, r19
+     a6c:	e2 0f       	add	r30, r18
+     a6e:	f3 1f       	adc	r31, r19
+     a70:	9c 01       	movw	r18, r24
+     a72:	22 0f       	add	r18, r18
+     a74:	33 1f       	adc	r19, r19
+     a76:	82 0f       	add	r24, r18
+     a78:	93 1f       	adc	r25, r19
+     a7a:	88 0f       	add	r24, r24
+     a7c:	99 1f       	adc	r25, r25
+     a7e:	88 0f       	add	r24, r24
+     a80:	99 1f       	adc	r25, r25
+     a82:	88 0f       	add	r24, r24
+     a84:	99 1f       	adc	r25, r25
+     a86:	e8 0f       	add	r30, r24
+     a88:	f9 1f       	adc	r31, r25
+     a8a:	e9 5d       	subi	r30, 0xD9	; 217
+     a8c:	fd 4f       	sbci	r31, 0xFD	; 253
+     a8e:	80 91 32 01 	lds	r24, 0x0132	; 0x800132 <Agua>
+     a92:	90 91 33 01 	lds	r25, 0x0133	; 0x800133 <Agua+0x1>
+     a96:	a0 91 34 01 	lds	r26, 0x0134	; 0x800134 <Agua+0x2>
+     a9a:	80 83       	st	Z, r24
+     a9c:	91 83       	std	Z+1, r25	; 0x01
+     a9e:	a2 83       	std	Z+2, r26	; 0x02
+	scanSubmarinos1(x, y);
+     aa0:	8c 2f       	mov	r24, r28
+     aa2:	17 de       	rcall	.-978    	; 0x6d2 <scanSubmarinos1>
+	scanCargueros1(x, y);
+     aa4:	6d 2f       	mov	r22, r29
+     aa6:	8c 2f       	mov	r24, r28
+     aa8:	d0 de       	rcall	.-608    	; 0x84a <scanCargueros1>
+}
+     aaa:	df 91       	pop	r29
+     aac:	cf 91       	pop	r28
+     aae:	08 95       	ret
+
+00000ab0 <playPlayer2>:
+	playerTurn = 2;
+}
+
+/* Cycle of a shot for player2.*/
+void playPlayer2(void)
+{
+     ab0:	0f 93       	push	r16
+     ab2:	1f 93       	push	r17
+     ab4:	cf 93       	push	r28
+     ab6:	df 93       	push	r29
+     ab8:	00 d0       	rcall	.+0      	; 0xaba <playPlayer2+0xa>
+     aba:	cd b7       	in	r28, 0x3d	; 61
+     abc:	de b7       	in	r29, 0x3e	; 62
+	// Actions to do only once per cycle
+	volatile int gamePointerTilt = GAME_POINTER_SPEED;
+     abe:	84 e1       	ldi	r24, 0x14	; 20
+     ac0:	90 e0       	ldi	r25, 0x00	; 0
+     ac2:	9a 83       	std	Y+2, r25	; 0x02
+     ac4:	89 83       	std	Y+1, r24	; 0x01
+	
+	while(jButton != 0)
+     ac6:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+     aca:	88 23       	and	r24, r24
+     acc:	09 f4       	brne	.+2      	; 0xad0 <playPlayer2+0x20>
+     ace:	70 c0       	rjmp	.+224    	; 0xbb0 <playPlayer2+0x100>
+	{
+		if (gamePointerTilt == 0)
+		{
+			copyArrayOf1();
+			display_rgb[xMovement][yMovement] = GamePointer;
+			gamePointerTilt = GAME_POINTER_SPEED;
+     ad0:	04 e1       	ldi	r16, 0x14	; 20
+     ad2:	10 e0       	ldi	r17, 0x00	; 0
+	// Actions to do only once per cycle
+	volatile int gamePointerTilt = GAME_POINTER_SPEED;
+	
+	while(jButton != 0)
+	{
+		if (gamePointerTilt == 0)
+     ad4:	89 81       	ldd	r24, Y+1	; 0x01
+     ad6:	9a 81       	ldd	r25, Y+2	; 0x02
+     ad8:	89 2b       	or	r24, r25
+     ada:	39 f5       	brne	.+78     	; 0xb2a <playPlayer2+0x7a>
+		{
+			copyArrayOf1();
+     adc:	bc dd       	rcall	.-1160   	; 0x656 <copyArrayOf1>
+			display_rgb[xMovement][yMovement] = GamePointer;
+     ade:	e0 91 60 01 	lds	r30, 0x0160	; 0x800160 <yMovement>
+     ae2:	f0 e0       	ldi	r31, 0x00	; 0
+     ae4:	80 91 61 01 	lds	r24, 0x0161	; 0x800161 <xMovement>
+     ae8:	90 e0       	ldi	r25, 0x00	; 0
+     aea:	9f 01       	movw	r18, r30
+     aec:	22 0f       	add	r18, r18
+     aee:	33 1f       	adc	r19, r19
+     af0:	e2 0f       	add	r30, r18
+     af2:	f3 1f       	adc	r31, r19
+     af4:	9c 01       	movw	r18, r24
+     af6:	22 0f       	add	r18, r18
+     af8:	33 1f       	adc	r19, r19
+     afa:	82 0f       	add	r24, r18
+     afc:	93 1f       	adc	r25, r19
+     afe:	88 0f       	add	r24, r24
+     b00:	99 1f       	adc	r25, r25
+     b02:	88 0f       	add	r24, r24
+     b04:	99 1f       	adc	r25, r25
+     b06:	88 0f       	add	r24, r24
+     b08:	99 1f       	adc	r25, r25
+     b0a:	e8 0f       	add	r30, r24
+     b0c:	f9 1f       	adc	r31, r25
+     b0e:	eb 59       	subi	r30, 0x9B	; 155
+     b10:	fe 4f       	sbci	r31, 0xFE	; 254
+     b12:	80 91 38 01 	lds	r24, 0x0138	; 0x800138 <GamePointer>
+     b16:	90 91 39 01 	lds	r25, 0x0139	; 0x800139 <GamePointer+0x1>
+     b1a:	a0 91 3a 01 	lds	r26, 0x013A	; 0x80013a <GamePointer+0x2>
+     b1e:	80 83       	st	Z, r24
+     b20:	91 83       	std	Z+1, r25	; 0x01
+     b22:	a2 83       	std	Z+2, r26	; 0x02
+			gamePointerTilt = GAME_POINTER_SPEED;
+     b24:	1a 83       	std	Y+2, r17	; 0x02
+     b26:	09 83       	std	Y+1, r16	; 0x01
+     b28:	34 c0       	rjmp	.+104    	; 0xb92 <playPlayer2+0xe2>
+		}
+		else if (gamePointerTilt >= GAME_POINTER_SPEED/2)
+     b2a:	89 81       	ldd	r24, Y+1	; 0x01
+     b2c:	9a 81       	ldd	r25, Y+2	; 0x02
+     b2e:	0a 97       	sbiw	r24, 0x0a	; 10
+		{
+			copyArrayOf1();
+     b30:	54 f1       	brlt	.+84     	; 0xb86 <playPlayer2+0xd6>
+     b32:	91 dd       	rcall	.-1246   	; 0x656 <copyArrayOf1>
+			display_rgb[xMovement][yMovement] = GamePointer;
+     b34:	e0 91 60 01 	lds	r30, 0x0160	; 0x800160 <yMovement>
+     b38:	f0 e0       	ldi	r31, 0x00	; 0
+     b3a:	80 91 61 01 	lds	r24, 0x0161	; 0x800161 <xMovement>
+     b3e:	90 e0       	ldi	r25, 0x00	; 0
+     b40:	9f 01       	movw	r18, r30
+     b42:	22 0f       	add	r18, r18
+     b44:	33 1f       	adc	r19, r19
+     b46:	e2 0f       	add	r30, r18
+     b48:	f3 1f       	adc	r31, r19
+     b4a:	9c 01       	movw	r18, r24
+     b4c:	22 0f       	add	r18, r18
+     b4e:	33 1f       	adc	r19, r19
+     b50:	82 0f       	add	r24, r18
+     b52:	93 1f       	adc	r25, r19
+     b54:	88 0f       	add	r24, r24
+     b56:	99 1f       	adc	r25, r25
+     b58:	88 0f       	add	r24, r24
+     b5a:	99 1f       	adc	r25, r25
+     b5c:	88 0f       	add	r24, r24
+     b5e:	99 1f       	adc	r25, r25
+     b60:	e8 0f       	add	r30, r24
+     b62:	f9 1f       	adc	r31, r25
+     b64:	eb 59       	subi	r30, 0x9B	; 155
+     b66:	fe 4f       	sbci	r31, 0xFE	; 254
+     b68:	80 91 38 01 	lds	r24, 0x0138	; 0x800138 <GamePointer>
+     b6c:	90 91 39 01 	lds	r25, 0x0139	; 0x800139 <GamePointer+0x1>
+     b70:	a0 91 3a 01 	lds	r26, 0x013A	; 0x80013a <GamePointer+0x2>
+     b74:	80 83       	st	Z, r24
+     b76:	91 83       	std	Z+1, r25	; 0x01
+     b78:	a2 83       	std	Z+2, r26	; 0x02
+			gamePointerTilt--;
+     b7a:	89 81       	ldd	r24, Y+1	; 0x01
+     b7c:	9a 81       	ldd	r25, Y+2	; 0x02
+     b7e:	01 97       	sbiw	r24, 0x01	; 1
+     b80:	9a 83       	std	Y+2, r25	; 0x02
+     b82:	89 83       	std	Y+1, r24	; 0x01
+		}
+		else
+		{
+			copyArrayOf1();
+     b84:	06 c0       	rjmp	.+12     	; 0xb92 <playPlayer2+0xe2>
+     b86:	67 dd       	rcall	.-1330   	; 0x656 <copyArrayOf1>
+			gamePointerTilt--;
+     b88:	89 81       	ldd	r24, Y+1	; 0x01
+     b8a:	9a 81       	ldd	r25, Y+2	; 0x02
+     b8c:	01 97       	sbiw	r24, 0x01	; 1
+     b8e:	9a 83       	std	Y+2, r25	; 0x02
+     b90:	89 83       	std	Y+1, r24	; 0x01
+		}
+		
+		wrt_ws2812(p2disp);
+     b92:	80 91 25 02 	lds	r24, 0x0225	; 0x800225 <p2disp>
+     b96:	90 91 26 02 	lds	r25, 0x0226	; 0x800226 <p2disp+0x1>
+     b9a:	8c da       	rcall	.-2792   	; 0xb4 <wrt_ws2812>
+     b9c:	8f e3       	ldi	r24, 0x3F	; 63
+     b9e:	9c e9       	ldi	r25, 0x9C	; 156
+     ba0:	01 97       	sbiw	r24, 0x01	; 1
+     ba2:	f1 f7       	brne	.-4      	; 0xba0 <playPlayer2+0xf0>
+     ba4:	00 c0       	rjmp	.+0      	; 0xba6 <playPlayer2+0xf6>
+     ba6:	00 00       	nop
+void playPlayer2(void)
+{
+	// Actions to do only once per cycle
+	volatile int gamePointerTilt = GAME_POINTER_SPEED;
+	
+	while(jButton != 0)
+     ba8:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+     bac:	81 11       	cpse	r24, r1
+     bae:	92 cf       	rjmp	.-220    	; 0xad4 <playPlayer2+0x24>
+		wrt_ws2812(p2disp);
+		
+		_delay_ms(10);
+	}
+	// Actions to end the player cycle
+	shootPlayer1(xMovement, yMovement);
+     bb0:	60 91 60 01 	lds	r22, 0x0160	; 0x800160 <yMovement>
+     bb4:	80 91 61 01 	lds	r24, 0x0161	; 0x800161 <xMovement>
+	
+	copyArrayOf1();
+     bb8:	4b df       	rcall	.-362    	; 0xa50 <shootPlayer1>
+	wrt_ws2812(p2disp);
+     bba:	4d dd       	rcall	.-1382   	; 0x656 <copyArrayOf1>
+     bbc:	80 91 25 02 	lds	r24, 0x0225	; 0x800225 <p2disp>
+     bc0:	90 91 26 02 	lds	r25, 0x0226	; 0x800226 <p2disp+0x1>
+	
+	delaySeconds(0);
+     bc4:	77 da       	rcall	.-2834   	; 0xb4 <wrt_ws2812>
+     bc6:	80 e0       	ldi	r24, 0x00	; 0
+     bc8:	13 dd       	rcall	.-1498   	; 0x5f0 <delaySeconds>
+	playerTurn = 1;
+     bca:	81 e0       	ldi	r24, 0x01	; 1
+     bcc:	80 93 62 01 	sts	0x0162, r24	; 0x800162 <playerTurn>
+}
+     bd0:	0f 90       	pop	r0
+     bd2:	0f 90       	pop	r0
+     bd4:	df 91       	pop	r29
+     bd6:	cf 91       	pop	r28
+     bd8:	1f 91       	pop	r17
+     bda:	0f 91       	pop	r16
+     bdc:	08 95       	ret
+
+00000bde <scanCargueros2>:
+}
+
+/* Takes coordinates x, y from 0:7 as arguments and scans Cargueros of player2.
+Sets MatrizJugador2 corresponding to the existance of a ship on the coordinates.*/
+void scanCargueros2(int8_t x, int8_t y)
+{	
+     bde:	4f 92       	push	r4
+     be0:	5f 92       	push	r5
+     be2:	6f 92       	push	r6
+     be4:	7f 92       	push	r7
+     be6:	8f 92       	push	r8
+     be8:	af 92       	push	r10
+     bea:	bf 92       	push	r11
+     bec:	cf 92       	push	r12
+     bee:	df 92       	push	r13
+     bf0:	ef 92       	push	r14
+     bf2:	ff 92       	push	r15
+     bf4:	0f 93       	push	r16
+     bf6:	1f 93       	push	r17
+     bf8:	cf 93       	push	r28
+     bfa:	df 93       	push	r29
+     bfc:	e5 e0       	ldi	r30, 0x05	; 5
+     bfe:	f1 e0       	ldi	r31, 0x01	; 1
+     c00:	0f 2e       	mov	r0, r31
+     c02:	f1 e1       	ldi	r31, 0x11	; 17
+     c04:	ef 2e       	mov	r14, r31
+     c06:	f1 e0       	ldi	r31, 0x01	; 1
+     c08:	ff 2e       	mov	r15, r31
+     c0a:	f0 2d       	mov	r31, r0
+	for(int i=0; i<=1; i++)
+	{
+		if ((carguerosJugador2[i].x0 == x) & (carguerosJugador2[i].y0 == y))
+     c0c:	08 2e       	mov	r0, r24
+     c0e:	00 0c       	add	r0, r0
+     c10:	99 0b       	sbc	r25, r25
+     c12:	06 2e       	mov	r0, r22
+     c14:	00 0c       	add	r0, r0
+     c16:	77 0b       	sbc	r23, r23
+     c18:	bb 24       	eor	r11, r11
+     c1a:	b3 94       	inc	r11
+     c1c:	a1 2c       	mov	r10, r1
+			{
+				matrizJugador2[carguerosJugador2[i].x0][carguerosJugador2[i].y0] = Hundido;
+				matrizJugador2[carguerosJugador2[i].x1][carguerosJugador2[i].y1] = Hundido;
+			}
+			else
+				matrizJugador2[x][y] = Danado;
+     c1e:	9b 01       	movw	r18, r22
+     c20:	22 0f       	add	r18, r18
+     c22:	33 1f       	adc	r19, r19
+     c24:	a9 01       	movw	r20, r18
+     c26:	46 0f       	add	r20, r22
+     c28:	57 1f       	adc	r21, r23
+     c2a:	9c 01       	movw	r18, r24
+     c2c:	22 0f       	add	r18, r18
+     c2e:	33 1f       	adc	r19, r19
+     c30:	28 0f       	add	r18, r24
+     c32:	39 1f       	adc	r19, r25
+     c34:	22 0f       	add	r18, r18
+     c36:	33 1f       	adc	r19, r19
+     c38:	22 0f       	add	r18, r18
+     c3a:	33 1f       	adc	r19, r19
+     c3c:	22 0f       	add	r18, r18
+     c3e:	33 1f       	adc	r19, r19
+     c40:	24 0f       	add	r18, r20
+     c42:	35 1f       	adc	r19, r21
+     c44:	a9 01       	movw	r20, r18
+     c46:	49 51       	subi	r20, 0x19	; 25
+     c48:	5d 4f       	sbci	r21, 0xFD	; 253
+     c4a:	2a 01       	movw	r4, r20
+     c4c:	ef 01       	movw	r28, r30
+Sets MatrizJugador2 corresponding to the existance of a ship on the coordinates.*/
+void scanCargueros2(int8_t x, int8_t y)
+{	
+	for(int i=0; i<=1; i++)
+	{
+		if ((carguerosJugador2[i].x0 == x) & (carguerosJugador2[i].y0 == y))
+     c4e:	20 81       	ld	r18, Z
+     c50:	30 e0       	ldi	r19, 0x00	; 0
+     c52:	41 81       	ldd	r20, Z+1	; 0x01
+     c54:	50 e0       	ldi	r21, 0x00	; 0
+     c56:	1b 2d       	mov	r17, r11
+     c58:	28 17       	cp	r18, r24
+     c5a:	39 07       	cpc	r19, r25
+     c5c:	09 f0       	breq	.+2      	; 0xc60 <scanCargueros2+0x82>
+     c5e:	1a 2d       	mov	r17, r10
+     c60:	11 23       	and	r17, r17
+     c62:	09 f4       	brne	.+2      	; 0xc66 <scanCargueros2+0x88>
+     c64:	52 c0       	rjmp	.+164    	; 0xd0a <scanCargueros2+0x12c>
+     c66:	1b 2d       	mov	r17, r11
+     c68:	46 17       	cp	r20, r22
+     c6a:	57 07       	cpc	r21, r23
+     c6c:	09 f0       	breq	.+2      	; 0xc70 <scanCargueros2+0x92>
+     c6e:	1a 2d       	mov	r17, r10
+     c70:	11 23       	and	r17, r17
+     c72:	09 f4       	brne	.+2      	; 0xc76 <scanCargueros2+0x98>
+     c74:	4a c0       	rjmp	.+148    	; 0xd0a <scanCargueros2+0x12c>
+		{
+			carguerosJugador2[i].boolDisparado0 = 1;
+     c76:	ba 82       	std	Y+2, r11	; 0x02
+			if ((carguerosJugador2[i].boolDisparado0 == 1) & (carguerosJugador2[i].boolDisparado1 == 1))
+     c78:	1d 81       	ldd	r17, Y+5	; 0x05
+     c7a:	11 30       	cpi	r17, 0x01	; 1
+     c7c:	d9 f5       	brne	.+118    	; 0xcf4 <scanCargueros2+0x116>
+			{
+				matrizJugador2[carguerosJugador2[i].x0][carguerosJugador2[i].y0] = Hundido;
+     c7e:	8a 01       	movw	r16, r20
+     c80:	00 0f       	add	r16, r16
+     c82:	11 1f       	adc	r17, r17
+     c84:	40 0f       	add	r20, r16
+     c86:	51 1f       	adc	r21, r17
+     c88:	89 01       	movw	r16, r18
+     c8a:	00 0f       	add	r16, r16
+     c8c:	11 1f       	adc	r17, r17
+     c8e:	20 0f       	add	r18, r16
+     c90:	31 1f       	adc	r19, r17
+     c92:	22 0f       	add	r18, r18
+     c94:	33 1f       	adc	r19, r19
+     c96:	22 0f       	add	r18, r18
+     c98:	33 1f       	adc	r19, r19
+     c9a:	22 0f       	add	r18, r18
+     c9c:	33 1f       	adc	r19, r19
+     c9e:	42 0f       	add	r20, r18
+     ca0:	53 1f       	adc	r21, r19
+     ca2:	49 51       	subi	r20, 0x19	; 25
+     ca4:	5d 4f       	sbci	r21, 0xFD	; 253
+     ca6:	60 90 35 01 	lds	r6, 0x0135	; 0x800135 <Hundido>
+     caa:	70 90 36 01 	lds	r7, 0x0136	; 0x800136 <Hundido+0x1>
+     cae:	80 90 37 01 	lds	r8, 0x0137	; 0x800137 <Hundido+0x2>
+     cb2:	da 01       	movw	r26, r20
+     cb4:	6d 92       	st	X+, r6
+     cb6:	7d 92       	st	X+, r7
+     cb8:	8c 92       	st	X, r8
+				matrizJugador2[carguerosJugador2[i].x1][carguerosJugador2[i].y1] = Hundido;
+     cba:	4c 81       	ldd	r20, Y+4	; 0x04
+     cbc:	50 e0       	ldi	r21, 0x00	; 0
+     cbe:	2b 81       	ldd	r18, Y+3	; 0x03
+     cc0:	30 e0       	ldi	r19, 0x00	; 0
+     cc2:	ea 01       	movw	r28, r20
+     cc4:	cc 0f       	add	r28, r28
+     cc6:	dd 1f       	adc	r29, r29
+     cc8:	4c 0f       	add	r20, r28
+     cca:	5d 1f       	adc	r21, r29
+     ccc:	e9 01       	movw	r28, r18
+     cce:	cc 0f       	add	r28, r28
+     cd0:	dd 1f       	adc	r29, r29
+     cd2:	c2 0f       	add	r28, r18
+     cd4:	d3 1f       	adc	r29, r19
+     cd6:	cc 0f       	add	r28, r28
+     cd8:	dd 1f       	adc	r29, r29
+     cda:	cc 0f       	add	r28, r28
+     cdc:	dd 1f       	adc	r29, r29
+     cde:	cc 0f       	add	r28, r28
+     ce0:	dd 1f       	adc	r29, r29
+     ce2:	4c 0f       	add	r20, r28
+     ce4:	5d 1f       	adc	r21, r29
+     ce6:	ea 01       	movw	r28, r20
+     ce8:	c9 51       	subi	r28, 0x19	; 25
+     cea:	dd 4f       	sbci	r29, 0xFD	; 253
+     cec:	68 82       	st	Y, r6
+     cee:	79 82       	std	Y+1, r7	; 0x01
+     cf0:	8a 82       	std	Y+2, r8	; 0x02
+     cf2:	63 c0       	rjmp	.+198    	; 0xdba <scanCargueros2+0x1dc>
+			}
+			else
+				matrizJugador2[x][y] = Danado;
+     cf4:	20 91 2f 01 	lds	r18, 0x012F	; 0x80012f <Danado>
+     cf8:	30 91 30 01 	lds	r19, 0x0130	; 0x800130 <Danado+0x1>
+     cfc:	40 91 31 01 	lds	r20, 0x0131	; 0x800131 <Danado+0x2>
+     d00:	d2 01       	movw	r26, r4
+     d02:	2d 93       	st	X+, r18
+     d04:	3d 93       	st	X+, r19
+     d06:	4c 93       	st	X, r20
+     d08:	58 c0       	rjmp	.+176    	; 0xdba <scanCargueros2+0x1dc>
+		}
+		else if ((carguerosJugador2[i].x1 == x) & (carguerosJugador2[i].y1 == y))
+     d0a:	0b 81       	ldd	r16, Y+3	; 0x03
+     d0c:	10 e0       	ldi	r17, 0x00	; 0
+     d0e:	cc 80       	ldd	r12, Y+4	; 0x04
+     d10:	d1 2c       	mov	r13, r1
+     d12:	8b 2c       	mov	r8, r11
+     d14:	80 17       	cp	r24, r16
+     d16:	91 07       	cpc	r25, r17
+     d18:	09 f0       	breq	.+2      	; 0xd1c <scanCargueros2+0x13e>
+     d1a:	8a 2c       	mov	r8, r10
+     d1c:	88 20       	and	r8, r8
+     d1e:	09 f4       	brne	.+2      	; 0xd22 <scanCargueros2+0x144>
+     d20:	4c c0       	rjmp	.+152    	; 0xdba <scanCargueros2+0x1dc>
+     d22:	8b 2c       	mov	r8, r11
+     d24:	6c 15       	cp	r22, r12
+     d26:	7d 05       	cpc	r23, r13
+     d28:	09 f0       	breq	.+2      	; 0xd2c <scanCargueros2+0x14e>
+     d2a:	8a 2c       	mov	r8, r10
+     d2c:	88 20       	and	r8, r8
+     d2e:	09 f4       	brne	.+2      	; 0xd32 <scanCargueros2+0x154>
+     d30:	44 c0       	rjmp	.+136    	; 0xdba <scanCargueros2+0x1dc>
+		{
+			carguerosJugador2[i].boolDisparado1 = 1;
+     d32:	bd 82       	std	Y+5, r11	; 0x05
+			if ((carguerosJugador2[i].boolDisparado0 == 1) & (carguerosJugador2[i].boolDisparado1 == 1))
+     d34:	ca 81       	ldd	r28, Y+2	; 0x02
+     d36:	c1 30       	cpi	r28, 0x01	; 1
+     d38:	b1 f5       	brne	.+108    	; 0xda6 <scanCargueros2+0x1c8>
+			{
+				matrizJugador2[carguerosJugador2[i].x0][carguerosJugador2[i].y0] = Hundido;
+     d3a:	ea 01       	movw	r28, r20
+     d3c:	cc 0f       	add	r28, r28
+     d3e:	dd 1f       	adc	r29, r29
+     d40:	4c 0f       	add	r20, r28
+     d42:	5d 1f       	adc	r21, r29
+     d44:	e9 01       	movw	r28, r18
+     d46:	cc 0f       	add	r28, r28
+     d48:	dd 1f       	adc	r29, r29
+     d4a:	c2 0f       	add	r28, r18
+     d4c:	d3 1f       	adc	r29, r19
+     d4e:	cc 0f       	add	r28, r28
+     d50:	dd 1f       	adc	r29, r29
+     d52:	cc 0f       	add	r28, r28
+     d54:	dd 1f       	adc	r29, r29
+     d56:	cc 0f       	add	r28, r28
+     d58:	dd 1f       	adc	r29, r29
+     d5a:	4c 0f       	add	r20, r28
+     d5c:	5d 1f       	adc	r21, r29
+     d5e:	ea 01       	movw	r28, r20
+     d60:	c9 51       	subi	r28, 0x19	; 25
+     d62:	dd 4f       	sbci	r29, 0xFD	; 253
+     d64:	20 91 35 01 	lds	r18, 0x0135	; 0x800135 <Hundido>
+     d68:	30 91 36 01 	lds	r19, 0x0136	; 0x800136 <Hundido+0x1>
+     d6c:	40 91 37 01 	lds	r20, 0x0137	; 0x800137 <Hundido+0x2>
+     d70:	28 83       	st	Y, r18
+     d72:	39 83       	std	Y+1, r19	; 0x01
+     d74:	4a 83       	std	Y+2, r20	; 0x02
+				matrizJugador2[carguerosJugador2[i].x1][carguerosJugador2[i].y1] = Hundido;
+     d76:	e6 01       	movw	r28, r12
+     d78:	cc 0f       	add	r28, r28
+     d7a:	dd 1f       	adc	r29, r29
+     d7c:	cc 0e       	add	r12, r28
+     d7e:	dd 1e       	adc	r13, r29
+     d80:	e8 01       	movw	r28, r16
+     d82:	cc 0f       	add	r28, r28
+     d84:	dd 1f       	adc	r29, r29
+     d86:	c0 0f       	add	r28, r16
+     d88:	d1 1f       	adc	r29, r17
+     d8a:	cc 0f       	add	r28, r28
+     d8c:	dd 1f       	adc	r29, r29
+     d8e:	cc 0f       	add	r28, r28
+     d90:	dd 1f       	adc	r29, r29
+     d92:	cc 0f       	add	r28, r28
+     d94:	dd 1f       	adc	r29, r29
+     d96:	cc 0d       	add	r28, r12
+     d98:	dd 1d       	adc	r29, r13
+     d9a:	c9 51       	subi	r28, 0x19	; 25
+     d9c:	dd 4f       	sbci	r29, 0xFD	; 253
+     d9e:	28 83       	st	Y, r18
+     da0:	39 83       	std	Y+1, r19	; 0x01
+     da2:	4a 83       	std	Y+2, r20	; 0x02
+     da4:	0a c0       	rjmp	.+20     	; 0xdba <scanCargueros2+0x1dc>
+			}
+			else
+				matrizJugador2[x][y] = Danado;
+     da6:	20 91 2f 01 	lds	r18, 0x012F	; 0x80012f <Danado>
+     daa:	30 91 30 01 	lds	r19, 0x0130	; 0x800130 <Danado+0x1>
+     dae:	40 91 31 01 	lds	r20, 0x0131	; 0x800131 <Danado+0x2>
+     db2:	d2 01       	movw	r26, r4
+     db4:	2d 93       	st	X+, r18
+     db6:	3d 93       	st	X+, r19
+     db8:	4c 93       	st	X, r20
+     dba:	36 96       	adiw	r30, 0x06	; 6
+
+/* Takes coordinates x, y from 0:7 as arguments and scans Cargueros of player2.
+Sets MatrizJugador2 corresponding to the existance of a ship on the coordinates.*/
+void scanCargueros2(int8_t x, int8_t y)
+{	
+	for(int i=0; i<=1; i++)
+     dbc:	ee 15       	cp	r30, r14
+     dbe:	ff 05       	cpc	r31, r15
+     dc0:	09 f0       	breq	.+2      	; 0xdc4 <scanCargueros2+0x1e6>
+     dc2:	44 cf       	rjmp	.-376    	; 0xc4c <scanCargueros2+0x6e>
+			}
+			else
+				matrizJugador2[x][y] = Danado;
+		}
+	}
+}
+     dc4:	df 91       	pop	r29
+     dc6:	cf 91       	pop	r28
+     dc8:	1f 91       	pop	r17
+     dca:	0f 91       	pop	r16
+     dcc:	ff 90       	pop	r15
+     dce:	ef 90       	pop	r14
+     dd0:	df 90       	pop	r13
+     dd2:	cf 90       	pop	r12
+     dd4:	bf 90       	pop	r11
+     dd6:	af 90       	pop	r10
+     dd8:	8f 90       	pop	r8
+     dda:	7f 90       	pop	r7
+     ddc:	6f 90       	pop	r6
+     dde:	5f 90       	pop	r5
+     de0:	4f 90       	pop	r4
+     de2:	08 95       	ret
+
+00000de4 <shootPlayer2>:
+	scanCargueros1(x, y);
+}
+
+/* Takes coordinates x, y from 0:7 as arguments and shoots player2 there.*/
+void shootPlayer2(int8_t x, int8_t y)
+{
+     de4:	cf 93       	push	r28
+     de6:	df 93       	push	r29
+     de8:	c8 2f       	mov	r28, r24
+     dea:	d6 2f       	mov	r29, r22
+	matrizJugador2[x][y] = Agua;
+     dec:	e6 2f       	mov	r30, r22
+     dee:	06 2e       	mov	r0, r22
+     df0:	00 0c       	add	r0, r0
+     df2:	ff 0b       	sbc	r31, r31
+     df4:	08 2e       	mov	r0, r24
+     df6:	00 0c       	add	r0, r0
+     df8:	99 0b       	sbc	r25, r25
+     dfa:	9f 01       	movw	r18, r30
+     dfc:	22 0f       	add	r18, r18
+     dfe:	33 1f       	adc	r19, r19
+     e00:	e2 0f       	add	r30, r18
+     e02:	f3 1f       	adc	r31, r19
+     e04:	9c 01       	movw	r18, r24
+     e06:	22 0f       	add	r18, r18
+     e08:	33 1f       	adc	r19, r19
+     e0a:	82 0f       	add	r24, r18
+     e0c:	93 1f       	adc	r25, r19
+     e0e:	88 0f       	add	r24, r24
+     e10:	99 1f       	adc	r25, r25
+     e12:	88 0f       	add	r24, r24
+     e14:	99 1f       	adc	r25, r25
+     e16:	88 0f       	add	r24, r24
+     e18:	99 1f       	adc	r25, r25
+     e1a:	e8 0f       	add	r30, r24
+     e1c:	f9 1f       	adc	r31, r25
+     e1e:	e9 51       	subi	r30, 0x19	; 25
+     e20:	fd 4f       	sbci	r31, 0xFD	; 253
+     e22:	80 91 32 01 	lds	r24, 0x0132	; 0x800132 <Agua>
+     e26:	90 91 33 01 	lds	r25, 0x0133	; 0x800133 <Agua+0x1>
+     e2a:	a0 91 34 01 	lds	r26, 0x0134	; 0x800134 <Agua+0x2>
+     e2e:	80 83       	st	Z, r24
+     e30:	91 83       	std	Z+1, r25	; 0x01
+     e32:	a2 83       	std	Z+2, r26	; 0x02
+	scanSubmarinos2(x, y);
+     e34:	8c 2f       	mov	r24, r28
+     e36:	ab dc       	rcall	.-1706   	; 0x78e <scanSubmarinos2>
+	scanCargueros2(x, y);
+     e38:	6d 2f       	mov	r22, r29
+     e3a:	8c 2f       	mov	r24, r28
+     e3c:	d0 de       	rcall	.-608    	; 0xbde <scanCargueros2>
+}
+     e3e:	df 91       	pop	r29
+     e40:	cf 91       	pop	r28
+     e42:	08 95       	ret
+
+00000e44 <playPlayer1>:
+	}
+}
+
+/* Cycle of a shot for player1.*/
+void playPlayer1(void)
+{
+     e44:	0f 93       	push	r16
+     e46:	1f 93       	push	r17
+     e48:	cf 93       	push	r28
+     e4a:	df 93       	push	r29
+     e4c:	00 d0       	rcall	.+0      	; 0xe4e <playPlayer1+0xa>
+     e4e:	cd b7       	in	r28, 0x3d	; 61
+     e50:	de b7       	in	r29, 0x3e	; 62
+	// Actions to do only once per cycle
+	volatile int gamePointerTilt = GAME_POINTER_SPEED;
+     e52:	84 e1       	ldi	r24, 0x14	; 20
+     e54:	90 e0       	ldi	r25, 0x00	; 0
+     e56:	9a 83       	std	Y+2, r25	; 0x02
+     e58:	89 83       	std	Y+1, r24	; 0x01
+	
+	while(jButton != 0)
+     e5a:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+     e5e:	88 23       	and	r24, r24
+     e60:	09 f4       	brne	.+2      	; 0xe64 <playPlayer1+0x20>
+     e62:	70 c0       	rjmp	.+224    	; 0xf44 <playPlayer1+0x100>
+	{
+		if (gamePointerTilt == 0)
+		{
+			copyArrayOf2();
+			display_rgb[xMovement][yMovement] = GamePointer;
+			gamePointerTilt = GAME_POINTER_SPEED;
+     e64:	04 e1       	ldi	r16, 0x14	; 20
+     e66:	10 e0       	ldi	r17, 0x00	; 0
+	// Actions to do only once per cycle
+	volatile int gamePointerTilt = GAME_POINTER_SPEED;
+	
+	while(jButton != 0)
+	{
+		if (gamePointerTilt == 0)
+     e68:	89 81       	ldd	r24, Y+1	; 0x01
+     e6a:	9a 81       	ldd	r25, Y+2	; 0x02
+     e6c:	89 2b       	or	r24, r25
+     e6e:	39 f5       	brne	.+78     	; 0xebe <playPlayer1+0x7a>
+		{
+			copyArrayOf2();
+     e70:	11 dc       	rcall	.-2014   	; 0x694 <copyArrayOf2>
+			display_rgb[xMovement][yMovement] = GamePointer;
+     e72:	e0 91 60 01 	lds	r30, 0x0160	; 0x800160 <yMovement>
+     e76:	f0 e0       	ldi	r31, 0x00	; 0
+     e78:	80 91 61 01 	lds	r24, 0x0161	; 0x800161 <xMovement>
+     e7c:	90 e0       	ldi	r25, 0x00	; 0
+     e7e:	9f 01       	movw	r18, r30
+     e80:	22 0f       	add	r18, r18
+     e82:	33 1f       	adc	r19, r19
+     e84:	e2 0f       	add	r30, r18
+     e86:	f3 1f       	adc	r31, r19
+     e88:	9c 01       	movw	r18, r24
+     e8a:	22 0f       	add	r18, r18
+     e8c:	33 1f       	adc	r19, r19
+     e8e:	82 0f       	add	r24, r18
+     e90:	93 1f       	adc	r25, r19
+     e92:	88 0f       	add	r24, r24
+     e94:	99 1f       	adc	r25, r25
+     e96:	88 0f       	add	r24, r24
+     e98:	99 1f       	adc	r25, r25
+     e9a:	88 0f       	add	r24, r24
+     e9c:	99 1f       	adc	r25, r25
+     e9e:	e8 0f       	add	r30, r24
+     ea0:	f9 1f       	adc	r31, r25
+     ea2:	eb 59       	subi	r30, 0x9B	; 155
+     ea4:	fe 4f       	sbci	r31, 0xFE	; 254
+     ea6:	80 91 38 01 	lds	r24, 0x0138	; 0x800138 <GamePointer>
+     eaa:	90 91 39 01 	lds	r25, 0x0139	; 0x800139 <GamePointer+0x1>
+     eae:	a0 91 3a 01 	lds	r26, 0x013A	; 0x80013a <GamePointer+0x2>
+     eb2:	80 83       	st	Z, r24
+     eb4:	91 83       	std	Z+1, r25	; 0x01
+     eb6:	a2 83       	std	Z+2, r26	; 0x02
+			gamePointerTilt = GAME_POINTER_SPEED;
+     eb8:	1a 83       	std	Y+2, r17	; 0x02
+     eba:	09 83       	std	Y+1, r16	; 0x01
+     ebc:	34 c0       	rjmp	.+104    	; 0xf26 <playPlayer1+0xe2>
+		}
+		else if (gamePointerTilt >= GAME_POINTER_SPEED/2)
+     ebe:	89 81       	ldd	r24, Y+1	; 0x01
+     ec0:	9a 81       	ldd	r25, Y+2	; 0x02
+     ec2:	0a 97       	sbiw	r24, 0x0a	; 10
+		{
+			copyArrayOf2();
+     ec4:	54 f1       	brlt	.+84     	; 0xf1a <playPlayer1+0xd6>
+     ec6:	e6 db       	rcall	.-2100   	; 0x694 <copyArrayOf2>
+			display_rgb[xMovement][yMovement] = GamePointer;
+     ec8:	e0 91 60 01 	lds	r30, 0x0160	; 0x800160 <yMovement>
+     ecc:	f0 e0       	ldi	r31, 0x00	; 0
+     ece:	80 91 61 01 	lds	r24, 0x0161	; 0x800161 <xMovement>
+     ed2:	90 e0       	ldi	r25, 0x00	; 0
+     ed4:	9f 01       	movw	r18, r30
+     ed6:	22 0f       	add	r18, r18
+     ed8:	33 1f       	adc	r19, r19
+     eda:	e2 0f       	add	r30, r18
+     edc:	f3 1f       	adc	r31, r19
+     ede:	9c 01       	movw	r18, r24
+     ee0:	22 0f       	add	r18, r18
+     ee2:	33 1f       	adc	r19, r19
+     ee4:	82 0f       	add	r24, r18
+     ee6:	93 1f       	adc	r25, r19
+     ee8:	88 0f       	add	r24, r24
+     eea:	99 1f       	adc	r25, r25
+     eec:	88 0f       	add	r24, r24
+     eee:	99 1f       	adc	r25, r25
+     ef0:	88 0f       	add	r24, r24
+     ef2:	99 1f       	adc	r25, r25
+     ef4:	e8 0f       	add	r30, r24
+     ef6:	f9 1f       	adc	r31, r25
+     ef8:	eb 59       	subi	r30, 0x9B	; 155
+     efa:	fe 4f       	sbci	r31, 0xFE	; 254
+     efc:	80 91 38 01 	lds	r24, 0x0138	; 0x800138 <GamePointer>
+     f00:	90 91 39 01 	lds	r25, 0x0139	; 0x800139 <GamePointer+0x1>
+     f04:	a0 91 3a 01 	lds	r26, 0x013A	; 0x80013a <GamePointer+0x2>
+     f08:	80 83       	st	Z, r24
+     f0a:	91 83       	std	Z+1, r25	; 0x01
+     f0c:	a2 83       	std	Z+2, r26	; 0x02
+			gamePointerTilt--;
+     f0e:	89 81       	ldd	r24, Y+1	; 0x01
+     f10:	9a 81       	ldd	r25, Y+2	; 0x02
+     f12:	01 97       	sbiw	r24, 0x01	; 1
+     f14:	9a 83       	std	Y+2, r25	; 0x02
+     f16:	89 83       	std	Y+1, r24	; 0x01
+		}
+		else
+		{
+			copyArrayOf2();
+     f18:	06 c0       	rjmp	.+12     	; 0xf26 <playPlayer1+0xe2>
+     f1a:	bc db       	rcall	.-2184   	; 0x694 <copyArrayOf2>
+			gamePointerTilt--;
+     f1c:	89 81       	ldd	r24, Y+1	; 0x01
+     f1e:	9a 81       	ldd	r25, Y+2	; 0x02
+     f20:	01 97       	sbiw	r24, 0x01	; 1
+     f22:	9a 83       	std	Y+2, r25	; 0x02
+     f24:	89 83       	std	Y+1, r24	; 0x01
+		}
+		
+		wrt_ws2812(p2disp);
+     f26:	80 91 25 02 	lds	r24, 0x0225	; 0x800225 <p2disp>
+     f2a:	90 91 26 02 	lds	r25, 0x0226	; 0x800226 <p2disp+0x1>
+     f2e:	c2 d8       	rcall	.-3708   	; 0xb4 <wrt_ws2812>
+     f30:	8f e3       	ldi	r24, 0x3F	; 63
+     f32:	9c e9       	ldi	r25, 0x9C	; 156
+     f34:	01 97       	sbiw	r24, 0x01	; 1
+     f36:	f1 f7       	brne	.-4      	; 0xf34 <playPlayer1+0xf0>
+     f38:	00 c0       	rjmp	.+0      	; 0xf3a <playPlayer1+0xf6>
+     f3a:	00 00       	nop
+void playPlayer1(void)
+{
+	// Actions to do only once per cycle
+	volatile int gamePointerTilt = GAME_POINTER_SPEED;
+	
+	while(jButton != 0)
+     f3c:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__DATA_REGION_ORIGIN__>
+     f40:	81 11       	cpse	r24, r1
+     f42:	92 cf       	rjmp	.-220    	; 0xe68 <playPlayer1+0x24>
+		wrt_ws2812(p2disp);
+		
+		_delay_ms(10);
+	}
+	// Actions to end the player cycle
+	shootPlayer2(xMovement, yMovement);
+     f44:	60 91 60 01 	lds	r22, 0x0160	; 0x800160 <yMovement>
+     f48:	80 91 61 01 	lds	r24, 0x0161	; 0x800161 <xMovement>
+	
+	copyArrayOf2();
+     f4c:	4b df       	rcall	.-362    	; 0xde4 <shootPlayer2>
+	wrt_ws2812(p2disp);
+     f4e:	a2 db       	rcall	.-2236   	; 0x694 <copyArrayOf2>
+     f50:	80 91 25 02 	lds	r24, 0x0225	; 0x800225 <p2disp>
+     f54:	90 91 26 02 	lds	r25, 0x0226	; 0x800226 <p2disp+0x1>
+	
+	delaySeconds(0);
+     f58:	ad d8       	rcall	.-3750   	; 0xb4 <wrt_ws2812>
+     f5a:	80 e0       	ldi	r24, 0x00	; 0
+     f5c:	49 db       	rcall	.-2414   	; 0x5f0 <delaySeconds>
+	playerTurn = 2;
+     f5e:	82 e0       	ldi	r24, 0x02	; 2
+     f60:	80 93 62 01 	sts	0x0162, r24	; 0x800162 <playerTurn>
+}
+     f64:	0f 90       	pop	r0
+     f66:	0f 90       	pop	r0
+     f68:	df 91       	pop	r29
+     f6a:	cf 91       	pop	r28
+     f6c:	1f 91       	pop	r17
+     f6e:	0f 91       	pop	r16
+     f70:	08 95       	ret
+
+00000f72 <gameOn>:
+	{
+		while(playerTurn == 1)
+			playPlayer1();
+	
+		if (checkPlayer1Win() == 1)
+			playerTurn = WINPLAYER1;
+     f72:	d3 e0       	ldi	r29, 0x03	; 3
+		
+		while (playerTurn == 2)
+			playPlayer2();
+		
+		if (checkPlayer2Win() == 1)
+			playerTurn = WINPLAYER2;
+     f74:	c4 e0       	ldi	r28, 0x04	; 4
+	gameOn();
+}
+
+void gameOn(void)
+{
+	while ((playerTurn == 1) | (playerTurn == 2))
+     f76:	19 c0       	rjmp	.+50     	; 0xfaa <gameOn+0x38>
+	{
+		while(playerTurn == 1)
+			playPlayer1();
+     f78:	65 df       	rcall	.-310    	; 0xe44 <playPlayer1>
+
+void gameOn(void)
+{
+	while ((playerTurn == 1) | (playerTurn == 2))
+	{
+		while(playerTurn == 1)
+     f7a:	80 91 62 01 	lds	r24, 0x0162	; 0x800162 <playerTurn>
+     f7e:	81 30       	cpi	r24, 0x01	; 1
+			playPlayer1();
+	
+		if (checkPlayer1Win() == 1)
+     f80:	d9 f3       	breq	.-10     	; 0xf78 <gameOn+0x6>
+     f82:	ce da       	rcall	.-2660   	; 0x520 <checkPlayer1Win>
+     f84:	81 30       	cpi	r24, 0x01	; 1
+     f86:	19 f4       	brne	.+6      	; 0xf8e <gameOn+0x1c>
+			playerTurn = WINPLAYER1;
+     f88:	d0 93 62 01 	sts	0x0162, r29	; 0x800162 <playerTurn>
+     f8c:	09 c0       	rjmp	.+18     	; 0xfa0 <gameOn+0x2e>
+		
+		while (playerTurn == 2)
+     f8e:	80 91 62 01 	lds	r24, 0x0162	; 0x800162 <playerTurn>
+     f92:	82 30       	cpi	r24, 0x02	; 2
+			playPlayer2();
+     f94:	29 f4       	brne	.+10     	; 0xfa0 <gameOn+0x2e>
+     f96:	8c dd       	rcall	.-1256   	; 0xab0 <playPlayer2>
+			playPlayer1();
+	
+		if (checkPlayer1Win() == 1)
+			playerTurn = WINPLAYER1;
+		
+		while (playerTurn == 2)
+     f98:	80 91 62 01 	lds	r24, 0x0162	; 0x800162 <playerTurn>
+     f9c:	82 30       	cpi	r24, 0x02	; 2
+			playPlayer2();
+		
+		if (checkPlayer2Win() == 1)
+     f9e:	d9 f3       	breq	.-10     	; 0xf96 <gameOn+0x24>
+     fa0:	c1 da       	rcall	.-2686   	; 0x524 <checkPlayer2Win>
+     fa2:	81 30       	cpi	r24, 0x01	; 1
+     fa4:	11 f4       	brne	.+4      	; 0xfaa <gameOn+0x38>
+			playerTurn = WINPLAYER2;
+     fa6:	c0 93 62 01 	sts	0x0162, r28	; 0x800162 <playerTurn>
+	gameOn();
+}
+
+void gameOn(void)
+{
+	while ((playerTurn == 1) | (playerTurn == 2))
+     faa:	80 91 62 01 	lds	r24, 0x0162	; 0x800162 <playerTurn>
+     fae:	9f ef       	ldi	r25, 0xFF	; 255
+     fb0:	98 0f       	add	r25, r24
+     fb2:	92 30       	cpi	r25, 0x02	; 2
+     fb4:	18 f4       	brcc	.+6      	; 0xfbc <gameOn+0x4a>
+	{
+		while(playerTurn == 1)
+     fb6:	81 30       	cpi	r24, 0x01	; 1
+     fb8:	f9 f2       	breq	.-66     	; 0xf78 <gameOn+0x6>
+     fba:	e3 cf       	rjmp	.-58     	; 0xf82 <gameOn+0x10>
+     fbc:	ff cf       	rjmp	.-2      	; 0xfbc <gameOn+0x4a>
+
+00000fbe <main>:
+void scanCargueros2(int8_t, int8_t);
+
+
+int main (void)
+{		
+	init_ws2812();		// Initialize RGB Display driver
+     fbe:	70 d8       	rcall	.-3872   	; 0xa0 <init_ws2812>
+	init_RTI();			// Initialize Periodic Real Time Interrupt(Timer)
+     fc0:	a5 d9       	rcall	.-3254   	; 0x30c <init_RTI>
+	UART_Init();		// Initialize serial port driver (UART)
+     fc2:	59 da       	rcall	.-2894   	; 0x476 <UART_Init>
+	adc_init();			// Initialize Analog to digital converter (Joystick)
+     fc4:	14 d9       	rcall	.-3544   	; 0x1ee <adc_init>
+     fc6:	c3 d8       	rcall	.-3706   	; 0x14e <wrt_Digit_Init>
+	wrt_Digit_Init();	// Initialize the Seven Segments Display
+     fc8:	81 e0       	ldi	r24, 0x01	; 1
+     fca:	80 93 62 01 	sts	0x0162, r24	; 0x800162 <playerTurn>
+	playerTurn = 1;		// Sets the value of the first player
+     fce:	85 e6       	ldi	r24, 0x65	; 101
+     fd0:	91 e0       	ldi	r25, 0x01	; 1
+		
+	p2disp=&display_rgb[0][0];
+     fd2:	90 93 26 02 	sts	0x0226, r25	; 0x800226 <p2disp+0x1>
+     fd6:	80 93 25 02 	sts	0x0225, r24	; 0x800225 <p2disp>
+     fda:	e7 e2       	ldi	r30, 0x27	; 39
+     fdc:	f2 e0       	ldi	r31, 0x02	; 2
+     fde:	47 ee       	ldi	r20, 0xE7	; 231
+     fe0:	52 e0       	ldi	r21, 0x02	; 2
+     fe2:	15 c0       	rjmp	.+42     	; 0x100e <main+0x50>
+     fe4:	80 91 5d 01 	lds	r24, 0x015D	; 0x80015d <Apagado>
+	
+	for (int i=0; i<=7; i++)				// Sets the initial 'Apagado' value for matrizJugador1 RGBled array.
+		for (int j=0; j<=7; j++)
+			matrizJugador1[i][j] = Apagado;
+     fe8:	90 91 5e 01 	lds	r25, 0x015E	; 0x80015e <Apagado+0x1>
+     fec:	a0 91 5f 01 	lds	r26, 0x015F	; 0x80015f <Apagado+0x2>
+     ff0:	81 93       	st	Z+, r24
+     ff2:	91 93       	st	Z+, r25
+     ff4:	a1 93       	st	Z+, r26
+     ff6:	e2 17       	cp	r30, r18
+     ff8:	f3 07       	cpc	r31, r19
+	playerTurn = 1;		// Sets the value of the first player
+		
+	p2disp=&display_rgb[0][0];
+	
+	for (int i=0; i<=7; i++)				// Sets the initial 'Apagado' value for matrizJugador1 RGBled array.
+		for (int j=0; j<=7; j++)
+     ffa:	a1 f7       	brne	.-24     	; 0xfe4 <main+0x26>
+     ffc:	f9 01       	movw	r30, r18
+     ffe:	42 17       	cp	r20, r18
+    1000:	53 07       	cpc	r21, r19
+	wrt_Digit_Init();	// Initialize the Seven Segments Display
+	playerTurn = 1;		// Sets the value of the first player
+		
+	p2disp=&display_rgb[0][0];
+	
+	for (int i=0; i<=7; i++)				// Sets the initial 'Apagado' value for matrizJugador1 RGBled array.
+    1002:	29 f4       	brne	.+10     	; 0x100e <main+0x50>
+    1004:	e7 ee       	ldi	r30, 0xE7	; 231
+    1006:	f2 e0       	ldi	r31, 0x02	; 2
+    1008:	47 ea       	ldi	r20, 0xA7	; 167
+    100a:	53 e0       	ldi	r21, 0x03	; 3
+    100c:	14 c0       	rjmp	.+40     	; 0x1036 <main+0x78>
+    100e:	9f 01       	movw	r18, r30
+    1010:	28 5e       	subi	r18, 0xE8	; 232
+    1012:	3f 4f       	sbci	r19, 0xFF	; 255
+    1014:	e7 cf       	rjmp	.-50     	; 0xfe4 <main+0x26>
+    1016:	80 91 5d 01 	lds	r24, 0x015D	; 0x80015d <Apagado>
+		for (int j=0; j<=7; j++)
+			matrizJugador1[i][j] = Apagado;
+
+	for (int i=0; i<=7; i++)				// Sets the initial 'Apagado' value for matrizJugador2 RGBled array.
+		for (int j=0; j<=7; j++)
+			matrizJugador2[i][j] = Apagado;
+    101a:	90 91 5e 01 	lds	r25, 0x015E	; 0x80015e <Apagado+0x1>
+    101e:	a0 91 5f 01 	lds	r26, 0x015F	; 0x80015f <Apagado+0x2>
+    1022:	81 93       	st	Z+, r24
+    1024:	91 93       	st	Z+, r25
+    1026:	a1 93       	st	Z+, r26
+    1028:	e2 17       	cp	r30, r18
+    102a:	f3 07       	cpc	r31, r19
+	for (int i=0; i<=7; i++)				// Sets the initial 'Apagado' value for matrizJugador1 RGBled array.
+		for (int j=0; j<=7; j++)
+			matrizJugador1[i][j] = Apagado;
+
+	for (int i=0; i<=7; i++)				// Sets the initial 'Apagado' value for matrizJugador2 RGBled array.
+		for (int j=0; j<=7; j++)
+    102c:	a1 f7       	brne	.-24     	; 0x1016 <main+0x58>
+    102e:	f9 01       	movw	r30, r18
+    1030:	42 17       	cp	r20, r18
+    1032:	53 07       	cpc	r21, r19
+	
+	for (int i=0; i<=7; i++)				// Sets the initial 'Apagado' value for matrizJugador1 RGBled array.
+		for (int j=0; j<=7; j++)
+			matrizJugador1[i][j] = Apagado;
+
+	for (int i=0; i<=7; i++)				// Sets the initial 'Apagado' value for matrizJugador2 RGBled array.
+    1034:	21 f0       	breq	.+8      	; 0x103e <main+0x80>
+    1036:	9f 01       	movw	r18, r30
+    1038:	28 5e       	subi	r18, 0xE8	; 232
+    103a:	3f 4f       	sbci	r19, 0xFF	; 255
+    103c:	ec cf       	rjmp	.-40     	; 0x1016 <main+0x58>
+    103e:	78 94       	sei
+		for (int j=0; j<=7; j++)
+			matrizJugador2[i][j] = Apagado;
+			
+	sei();					// Enable global Interrupts
+    1040:	98 df       	rcall	.-208    	; 0xf72 <gameOn>
+
+00001042 <_exit>:
+	
+	gameOn();
+    1042:	f8 94       	cli
+
+00001044 <__stop_program>:
+    1044:	ff cf       	rjmp	.-2      	; 0x1044 <__stop_program>

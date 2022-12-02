@@ -26,7 +26,8 @@ src/Timer.d src/Timer.o: ../src/Timer.c ../src/asf.h \
  ../src/ASF/common/boards/board.h \
  ../src/ASF/mega/boards/atmega328p_xplained_mini/atmega328p_xplained_mini.h \
  ../src/ASF/mega/boards/atmega328p_xplained_mini/led.h \
- ../src/ASF/mega/utils/status_codes.h ../src/Timer.h
+ ../src/ASF/mega/utils/status_codes.h ../src/Timer.h ../src/ADC.h \
+ ../src/joystickReads.h
 
 ../src/asf.h:
 
@@ -89,3 +90,7 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 ../src/ASF/mega/utils/status_codes.h:
 
 ../src/Timer.h:
+
+../src/ADC.h:
+
+../src/joystickReads.h:

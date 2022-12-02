@@ -8,6 +8,8 @@ src\cqueue.c
 
 src\DrvWs2812.s
 
+src\joystickReads.c
+
 src\Timer.c
 
 src\UART.c

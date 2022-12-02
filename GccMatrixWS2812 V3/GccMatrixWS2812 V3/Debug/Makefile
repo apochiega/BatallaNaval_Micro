@@ -58,6 +58,7 @@ SUBDIRS :=  \
 C_SRCS +=  \
 ../src/ADC.c \
 ../src/cqueue.c \
+../src/joystickReads.c \
 ../src/Timer.c \
 ../src/UART.c \
 ../src/ASF/mega/boards/atmega328p_xplained_mini/init.c \
@@ -76,6 +77,7 @@ OBJS +=  \
 src/ADC.o \
 src/cqueue.o \
 src/DrvWs2812.o \
+src/joystickReads.o \
 src/Timer.o \
 src/UART.o \
 src/wrt_Digit.o \
@@ -86,6 +88,7 @@ OBJS_AS_ARGS +=  \
 src/ADC.o \
 src/cqueue.o \
 src/DrvWs2812.o \
+src/joystickReads.o \
 src/Timer.o \
 src/UART.o \
 src/wrt_Digit.o \
@@ -96,6 +99,7 @@ C_DEPS +=  \
 src/ADC.d \
 src/cqueue.d \
 src/DrvWs2812.d \
+src/joystickReads.d \
 src/Timer.d \
 src/UART.d \
 src/wrt_Digit.d \
@@ -106,6 +110,7 @@ C_DEPS_AS_ARGS +=  \
 src/ADC.d \
 src/cqueue.d \
 src/DrvWs2812.d \
+src/joystickReads.d \
 src/Timer.d \
 src/UART.d \
 src/wrt_Digit.d \
@@ -134,6 +139,13 @@ src/ADC.o: ../src/ADC.c
 	
 
 src/cqueue.o: ../src/cqueue.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -DDEBUG -DBOARD=ATMEGA328P_XPLAINED_MINI  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../src/ASF/common/boards" -I"../src/ASF/mega/utils/preprocessor" -I"../src/ASF/mega/utils" -I"../src/ASF/common/utils" -I"../src/ASF/mega/boards" -I"../src/ASF/mega/boards/atmega328p_xplained_mini" -I"../src/ASF/common/services/gpio" -I"../src/ASF/common/services/ioport" -I"../src" -I"../src/config"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g3 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -fno-strict-aliasing -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax -Wa,-adhlns=$(@:%.o=%.lst) -save-temps -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+src/joystickReads.o: ../src/joystickReads.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -DDEBUG -DBOARD=ATMEGA328P_XPLAINED_MINI  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../src/ASF/common/boards" -I"../src/ASF/mega/utils/preprocessor" -I"../src/ASF/mega/utils" -I"../src/ASF/common/utils" -I"../src/ASF/mega/boards" -I"../src/ASF/mega/boards/atmega328p_xplained_mini" -I"../src/ASF/common/services/gpio" -I"../src/ASF/common/services/ioport" -I"../src" -I"../src/config"  -O1 -fdata-sections -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g3 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega328p" -c -std=gnu99 -fno-strict-aliasing -Wstrict-prototypes -Wmissing-prototypes -Werror-implicit-function-declaration -Wpointer-arith -mrelax -Wa,-adhlns=$(@:%.o=%.lst) -save-temps -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

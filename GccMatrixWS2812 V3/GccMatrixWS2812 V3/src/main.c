@@ -7,6 +7,7 @@
 #include "UART.h"
 #include "ADC.h"
 #include "Timer.h"
+#include "joystickReads.h"
 /*
 GccWS2812_V3
 This version works like the assembly version "ws2812 efecto1"
@@ -33,129 +34,405 @@ typedef struct
 
 typedef struct  
 		{
-			RGBled color;
-			uint8_t barco;			//	int simulando Bool type
-			uint8_t disparado;		//	int simulando Bool type
-		} CasillaDeMatriz;
+			uint8_t x0;		//	Coordenadas
+			uint8_t y0;
+			uint8_t boolDisparado;
+		} Submarino;
 		
-
-typedef struct  
+typedef struct
 		{
-			uint8_t x;		//	Coordenadas
-			uint8_t y;
-			uint8_t largoX;		//Largo del barco
-			uint8_t largoY;
-		} Barco;
+			uint8_t x0;		//	Coordenadas
+			uint8_t y0;
+			uint8_t boolDisparado0;
+			uint8_t x1;		//Largo 2 de barco
+			uint8_t y1;
+			uint8_t boolDisparado1;
+		} Carguero;
 		
 
-
-typedef RGBled (*P2RGB) ;
+#define LED (1<<5)				// Hackatronics Led "D1"
+typedef RGBled (*P2RGB);
+#define GAME_POINTER_SPEED 20		// SPEED * 10 ms because of the function delay
+#define WINPLAYER1 3			// Corresponding value to the ISR check for the win
+#define WINPLAYER2 4			// Corresponding value to the ISR check for the win
 
 // Variables  
-
 P2RGB p2disp;
 
 RGBled GamePointer = {25,0,0};	//Verde
 RGBled Hundido = {0,30,0};		//Rojo
 RGBled Agua = {0,0,30};			//Azul
 RGBled Danado = {30,30,0};		//Amarillo
-RGBled Apagado={0,0,0};	
+RGBled Apagado = {0,0,0};	
 RGBled display_rgb[8][8];	
 
+RGBled matrizJugador1[8][8];
+RGBled matrizJugador2[8][8];
 
+Submarino submarinosJugador1[3] = {{0,3,0}, {2,3,0}, {6,3,0}};
+Carguero carguerosJugador1[2] = {{7,7,0,7,6,0}, {5,5,0,4,5,0}};
 	
+Submarino submarinosJugador2[3] = {{1,6,0}, {1,4,0}, {3,4,0}};
+Carguero carguerosJugador2[2] = {{6,6,0,7,6,0}, {2,2,0,2,3,0}};
 
 		
 // Assembly functions
 extern void init_ws2812(void);
 extern void wrt_ws2812(P2RGB);
-extern void wrt_Digit(uint8_t, uint8_t);
 extern void wrt_Digit_Init(void);
 
 // Local prototypes
-
-void TB_joy1(void);
-
+void gameOn(void);
 void softdelay(void);
 void clear_disp(void);
-uint8_t msg[] = "Hello from ATmega328p\r\n  ";
+void copyArrayOf1(void);
+void copyArrayOf2(void);
+void playPlayer1(void);
+void playPlayer2(void);
+int8_t msg[] = "Hello from ATmega328p\r\n  ";
+uint8_t checkPlayer1Win(void);
+uint8_t checkPlayer2Win(void);
+void delaySeconds(uint8_t);
+void shootPlayer1(int8_t, int8_t);
+void shootPlayer2(int8_t, int8_t);
+void scanSubmarinos1(int8_t, int8_t);
+void scanCargueros1(int8_t, int8_t);
+void scanSubmarinos2(int8_t, int8_t);
+void scanCargueros2(int8_t, int8_t);
 
-void ADCTestBench(void);
-#define LED (1<<5)				//Led
+
 int main (void)
-{
-//volatile	int k;
-int k,i;
-				
-			init_ws2812();		//Initialize RGB Display driver
-			init_RTI();			//Initialize Periodic Real Time Interrupt(Timer)
-			UART_Init();		//Initialize serial port driver (UART)
-			adc_init();			//Initialize Analog to digital converter (Joystick)
-			wrt_Digit_Init();
+{		
+	init_ws2812();		// Initialize RGB Display driver
+	init_RTI();			// Initialize Periodic Real Time Interrupt(Timer)
+	UART_Init();		// Initialize serial port driver (UART)
+	adc_init();			// Initialize Analog to digital converter (Joystick)
+	wrt_Digit_Init();	// Initialize the Seven Segments Display
+	playerTurn = 1;		// Sets the value of the first player
 		
-			p2disp=&display_rgb[0][0];
-			
-			sei();					// Enable global Interrupts
+	p2disp=&display_rgb[0][0];
+	
+	for (int i=0; i<=7; i++)				// Sets the initial 'Apagado' value for matrizJugador1 RGBled array.
+		for (int j=0; j<=7; j++)
+			matrizJugador1[i][j] = Apagado;
 
-			UART_putstring(msg);
+	for (int i=0; i<=7; i++)				// Sets the initial 'Apagado' value for matrizJugador2 RGBled array.
+		for (int j=0; j<=7; j++)
+			matrizJugador2[i][j] = Apagado;
 			
-			wrt_Digit(4,3);
-
-			clear_disp();
-	        wrt_ws2812(p2disp);
-			
-			_delay_ms(500);
-			
-			
-			for(k=0;k<=7;k++)
-			{
-			display_rgb[k][0]=Hundido;
-			display_rgb[k][4]=GamePointer;
-			display_rgb[k][7]=Agua;
-			display_rgb[k][3]=Danado;
-			display_rgb[k][5]=Danado;
-			}
-
-			wrt_ws2812(p2disp);
-			
-			
-			_delay_ms(300);
-			clear_disp();
-			
-			for(i=0;i<=3;i++)
-			{
-				display_rgb[3-i][3-i]=Hundido;
-				display_rgb[4+i][3-i]=GamePointer;
-				display_rgb[3-i][4+i]=Danado;
-				display_rgb[4+i][4+i]=Agua;
-		
-				wrt_ws2812(p2disp);
-		
-				_delay_ms(100);
-				clear_disp();  
-			}
-
-while (1)
-{
-	TB_joy1();
-	_delay_ms(100);
+	sei();					// Enable global Interrupts
+	
+	gameOn();
 }
-			
-			ADCTestBench();
-			uart_test(); 
-			
-			while(1)
+
+void gameOn(void)
+{
+	while ((playerTurn == 1) | (playerTurn == 2))
+	{
+		while(playerTurn == 1)
+			playPlayer1();
+	
+		if (checkPlayer1Win() == 1)
+			playerTurn = WINPLAYER1;
+		
+		while (playerTurn == 2)
+			playPlayer2();
+		
+		if (checkPlayer2Win() == 1)
+			playerTurn = WINPLAYER2;
+	}
+	
+	while(1)
+	{
+		
+	}
+}
+
+/* Cycle of a shot for player1.*/
+void playPlayer1(void)
+{
+	// Actions to do only once per cycle
+	volatile int gamePointerTilt = GAME_POINTER_SPEED;
+	
+	while(jButton != 0)
+	{
+		if (gamePointerTilt == 0)
+		{
+			copyArrayOf2();
+			display_rgb[xMovement][yMovement] = GamePointer;
+			gamePointerTilt = GAME_POINTER_SPEED;
+		}
+		else if (gamePointerTilt >= GAME_POINTER_SPEED/2)
+		{
+			copyArrayOf2();
+			display_rgb[xMovement][yMovement] = GamePointer;
+			gamePointerTilt--;
+		}
+		else
+		{
+			copyArrayOf2();
+			gamePointerTilt--;
+		}
+		
+		wrt_ws2812(p2disp);
+		
+		_delay_ms(10);
+	}
+	// Actions to end the player cycle
+	shootPlayer2(xMovement, yMovement);
+	
+	copyArrayOf2();
+	wrt_ws2812(p2disp);
+	
+	delaySeconds(0);
+	playerTurn = 2;
+}
+
+/* Cycle of a shot for player2.*/
+void playPlayer2(void)
+{
+	// Actions to do only once per cycle
+	volatile int gamePointerTilt = GAME_POINTER_SPEED;
+	
+	while(jButton != 0)
+	{
+		if (gamePointerTilt == 0)
+		{
+			copyArrayOf1();
+			display_rgb[xMovement][yMovement] = GamePointer;
+			gamePointerTilt = GAME_POINTER_SPEED;
+		}
+		else if (gamePointerTilt >= GAME_POINTER_SPEED/2)
+		{
+			copyArrayOf1();
+			display_rgb[xMovement][yMovement] = GamePointer;
+			gamePointerTilt--;
+		}
+		else
+		{
+			copyArrayOf1();
+			gamePointerTilt--;
+		}
+		
+		wrt_ws2812(p2disp);
+		
+		_delay_ms(10);
+	}
+	// Actions to end the player cycle
+	shootPlayer1(xMovement, yMovement);
+	
+	copyArrayOf1();
+	wrt_ws2812(p2disp);
+	
+	delaySeconds(0);
+	playerTurn = 1;
+}
+
+/* Returns 1 if player1 Won.*/
+uint8_t checkPlayer1Win(void)
+{
+	uint8_t checks[7] = {0, 0, 0, 0, 0, 0, 0};
+	uint8_t checksTrue[7] = {1, 1, 1, 1, 1, 1, 1};
+	for (uint8_t c=0; c<=2; c++)
+	{
+		if (submarinosJugador2[c].boolDisparado == 1)
+			checks[c] = 1;
+	}
+	for (uint8_t c=0; c<=1; c++)
+	{
+		if (carguerosJugador2[c].boolDisparado0 == 1)
+		{
+			checks[c+3] = 1;
+		}
+		if (carguerosJugador2[c].boolDisparado1 == 1)
+		{
+			checks[c+5] = 1;
+		}
+	}
+	
+	
+	if (checks == checksTrue)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+/* Returns 1 if player2 Won.*/
+uint8_t checkPlayer2Win(void)
+{
+	uint8_t checks[7] = {0, 0, 0, 0, 0, 0, 0};
+	for (uint8_t c=0; c<=2; c++)
+	{
+		if (submarinosJugador1[c].boolDisparado == 1)
+		checks[c] = 1;
+	}
+	for (uint8_t c=0; c<=1; c++)
+	{
+		if (carguerosJugador1[c].boolDisparado0 == 1)
+		{
+			checks[c+3] = 1;
+		}
+		if (carguerosJugador1[c].boolDisparado1 == 1)
+		{
+			checks[c+5] = 1;
+		}
+	}
+	
+	
+	if ((checks[0] == 1) & (checks[1] == 1) & (checks[2] == 1) & (checks[3] == 1) & (checks[4] == 1) & (checks[5] == 1) & (checks[6] == 1))
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+/* Blocking delay in seconds.*/ 
+void delaySeconds(uint8_t seconds)
+{
+	for(int8_t i=1; i<=seconds; i++)
+	{
+		for(int8_t i=0; i<=3; i++)
+		{
+			_delay_ms(250);
+		}
+	}
+}
+
+/* Copies matrizJugador1 in display_rgb.*/
+void copyArrayOf1(void)
+{
+	for (int i=0; i<=7; i++)
+		for (int j=0; j<=7; j++)
+			display_rgb[i][j] = matrizJugador1[i][j];
+}
+
+/* Copies matrizJugador2 in display_rgb.*/
+void copyArrayOf2(void)
+{
+	for (int i=0; i<=7; i++)
+		for (int j=0; j<=7; j++)
+			display_rgb[i][j] = matrizJugador2[i][j];
+}
+
+/* Takes coordinates x, y from 0:7 as arguments and shoots player1 there.*/
+void shootPlayer1(int8_t x, int8_t y)
+{
+	matrizJugador1[x][y] = Agua;
+	scanSubmarinos1(x, y);
+	scanCargueros1(x, y);
+}
+
+/* Takes coordinates x, y from 0:7 as arguments and shoots player2 there.*/
+void shootPlayer2(int8_t x, int8_t y)
+{
+	matrizJugador2[x][y] = Agua;
+	scanSubmarinos2(x, y);
+	scanCargueros2(x, y);
+}
+
+/* Takes coordinates x, y from 0:7 as arguments and scans Submarinos of player1.
+Sets MatrizJugador1 corresponding to the existance of a ship on the coordinates.*/
+void scanSubmarinos1(int8_t x, int8_t y)
+{
+	for(int i=0; i<=2; i++)
+	{
+		if ((submarinosJugador1[i].x0 == x) & (submarinosJugador1[i].y0 == y))
+		{
+			submarinosJugador1[i].boolDisparado = 1;
+			matrizJugador1[x][y] = Hundido;
+		}
+	}
+}
+
+/* Takes coordinates x, y from 0:7 as arguments and scans Submarinos of player2.
+Sets MatrizJugador2 corresponding to the existance of a ship on the coordinates.*/
+void scanSubmarinos2(int8_t x, int8_t y)
+{
+	for(int i=0; i<=2; i++)
+	{
+		if ((submarinosJugador2[i].x0 == x) & (submarinosJugador2[i].y0 == y))
+		{
+			submarinosJugador2[i].boolDisparado = 1;
+			matrizJugador2[x][y] = Hundido;
+		}
+	}
+}
+
+/* Takes coordinates x, y from 0:7 as arguments and scans Cargueros of player1.
+Sets MatrizJugador1 corresponding to the existance of a ship on the coordinates.*/
+void scanCargueros1(int8_t x, int8_t y)
+{
+	for(int i=0; i<=1; i++)
+	{
+		if ((carguerosJugador1[i].x0 == x) & (carguerosJugador1[i].y0 == y))
+		{
+			carguerosJugador1[i].boolDisparado0 = 1;
+			if ((carguerosJugador1[i].boolDisparado0 == 1) & (carguerosJugador1[i].boolDisparado1 == 1))
 			{
-				wrt_Digit(4,4);
-				_delay_ms(4);
-			};		// Just in case....  
+				matrizJugador1[carguerosJugador1[i].x0][carguerosJugador1[i].y0] = Hundido;
+				matrizJugador1[carguerosJugador1[i].x1][carguerosJugador1[i].y1] = Hundido;
+			}
+			else
+				matrizJugador1[x][y] = Danado;
+		}
+		else if ((carguerosJugador1[i].x1 == x) & (carguerosJugador1[i].y1 == y))
+		{
+			carguerosJugador1[i].boolDisparado1 = 1;
+			if ((carguerosJugador1[i].boolDisparado0 == 1) & (carguerosJugador1[i].boolDisparado1 == 1))
+			{
+				matrizJugador1[carguerosJugador1[i].x0][carguerosJugador1[i].y0] = Hundido;
+				matrizJugador1[carguerosJugador1[i].x1][carguerosJugador1[i].y1] = Hundido;
+			}
+			else
+				matrizJugador1[x][y] = Danado;
+		}
+	}
+}
+
+/* Takes coordinates x, y from 0:7 as arguments and scans Cargueros of player2.
+Sets MatrizJugador2 corresponding to the existance of a ship on the coordinates.*/
+void scanCargueros2(int8_t x, int8_t y)
+{	
+	for(int i=0; i<=1; i++)
+	{
+		if ((carguerosJugador2[i].x0 == x) & (carguerosJugador2[i].y0 == y))
+		{
+			carguerosJugador2[i].boolDisparado0 = 1;
+			if ((carguerosJugador2[i].boolDisparado0 == 1) & (carguerosJugador2[i].boolDisparado1 == 1))
+			{
+				matrizJugador2[carguerosJugador2[i].x0][carguerosJugador2[i].y0] = Hundido;
+				matrizJugador2[carguerosJugador2[i].x1][carguerosJugador2[i].y1] = Hundido;
+			}
+			else
+				matrizJugador2[x][y] = Danado;
+		}
+		else if ((carguerosJugador2[i].x1 == x) & (carguerosJugador2[i].y1 == y))
+		{
+			carguerosJugador2[i].boolDisparado1 = 1;
+			if ((carguerosJugador2[i].boolDisparado0 == 1) & (carguerosJugador2[i].boolDisparado1 == 1))
+			{
+				matrizJugador2[carguerosJugador2[i].x0][carguerosJugador2[i].y0] = Hundido;
+				matrizJugador2[carguerosJugador2[i].x1][carguerosJugador2[i].y1] = Hundido;
+			}
+			else
+				matrizJugador2[x][y] = Danado;
+		}
+	}
 }
 
 void clear_disp(void)
 {
 	for(int r=0;r<=7;r++)
 		for(int c=0;c<=7;c++)
-				display_rgb[r][c]=Apagado;
+			display_rgb[r][c] = Apagado;
+				
 }
 
 void softdelay(void)
@@ -166,50 +443,4 @@ void softdelay(void)
 	{
 	};
 	
-}
-
-
-void ADCTestBench(void)
-{
-	uint8_t buffer[5];
-	
-	while(1){
-		
-		//Read VX
-		itoa(read_VRX(),(char*)buffer, 10);
-		UART_putstring(buffer);
-		UART_send_data('\t');
-		UART_send_data('\t');
-		//Read VY
-		itoa(read_VRY(), (char *)buffer, 10);
-		UART_putstring(buffer);
-		UART_send_data('\r');
-		UART_send_data('\n');
-		_delay_ms(50);
-	}
-	
-}
-
-
-#define HI_LIM 600
-#define LO_LIM 400
-
-
-void TB_joy1(void)
-{
-	
-	if(read_VRX() > HI_LIM)
-	
-		UART_putstring((uint8_t *)"UP");
-	
-	else if(read_VRX() < LO_LIM)
-		UART_putstring((uint8_t *)"DOWN");
-		
-	else
-		UART_putstring((uint8_t *)"ok");
-		
-	
-		
-		
-		
 }

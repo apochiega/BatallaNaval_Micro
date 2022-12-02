@@ -8,8 +8,10 @@
 
 #ifndef TIMER_H_
 #define TIMER_H_
+
 void init_RTI(void);
 
+extern uint8_t playerTurn;
 
 
 

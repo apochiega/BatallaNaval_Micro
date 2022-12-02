@@ -5,8 +5,27 @@
 #include "Timer.h"
 #define LED (1<<5)				//Led1 on PB5
 
+// External includes
+#include "ADC.h"
+#include "joystickReads.h"
 
 
+// Definitions
+uint8_t playerTurn;		// Seven Segments definitions
+#define LETTER_P	0
+#define LETTER_HYPHEN	1
+#define NUMBER_1	2
+#define NUMBER_2	3
+#define LETTER_W	4
+#define LETTER_I	5
+#define LETTER_N	6
+#define EMPTY_DIGIT	7
+static uint8_t ssP1[4] = {LETTER_P, LETTER_HYPHEN, NUMBER_1, EMPTY_DIGIT};
+static uint8_t ssP2[4] = {LETTER_P, LETTER_HYPHEN, NUMBER_2, EMPTY_DIGIT};
+
+extern void wrt_Digit(uint8_t, uint8_t);
+
+/* int Timer_TB(void); */
 
 // Timer Prescaler definitions //
 
@@ -19,8 +38,11 @@
 // Select Prescaler value
 #define	PRESCALER divx256	//Timer prescaler / divider
 
+#define SEVEN_SEGMENTS_TIME 3		// ISR counters Definitions
+#define JOYSTICK_TIME 50
 
-int Timer_TB (void)
+
+/*int Timer_TB (void)
 {
 
 	DDRB=LED;
@@ -34,7 +56,7 @@ int Timer_TB (void)
 	while(1);				//Endless Loop
 
 
-}
+}*/
 
 
 
@@ -71,18 +93,45 @@ void init_RTI(void)
 
 }
 
+
 //Interrupt service routine (ISR) for Timer 0
-// Timer int happens every (16MHz)^(-1)*1024*125 = 62.5ns*1024*125 = 64 * 125 useg = 8mseg
+// Timer int happens every (16MHz)^(-1)*256*125 = 62.5ns*256*125 = 64 * 125 useg = 2mseg
 ISR(TIMER0_COMPA_vect)
 {
-	volatile static int count=40;
+	volatile static int countSS = SEVEN_SEGMENTS_TIME;
+	volatile static int countJoystick = JOYSTICK_TIME;
 	
-	if(count)			// 2mseg x 40= 80mseg
-	count--;
+	// Writes the corresponding player (P-1 or P-2) or the winner on the Seven Segments Display
+	wrt_Digit(ssP1[countSS], countSS);
+	
+	if (playerTurn == 1)
+		wrt_Digit(ssP1[countSS], countSS);
+	else if (playerTurn == 2)
+		wrt_Digit(ssP2[countSS], countSS);
+	else if ((playerTurn == 3) | (playerTurn == 4))
+		{
+			if (countSS == 0)
+				wrt_Digit(LETTER_W, 0);
+			else if (countSS == 1)
+				wrt_Digit(LETTER_I, 1);
+			else if (countSS == 2)
+				wrt_Digit(LETTER_N, 2);
+			else if (countSS == 3)
+				wrt_Digit(playerTurn-1, 3);		// Numbers '1' and '2' in the display are the numbers 2 and 3 inputs.	
+		}
+	
+	if (countSS)
+		countSS--;
 	else
-	{
-		count=40;
-		PORTB^=LED;   	// This is for testing purposes (Blinking Led)
-	}
+		countSS = SEVEN_SEGMENTS_TIME;
 	
+	// Joystick movement is scanned every 100 ms and saved on x/yMovement
+	if (countJoystick)
+		countJoystick--;
+	else 
+	{
+		countJoystick = JOYSTICK_TIME;
+		checkJoystick();
+		checkJoystickButton();
+	}
 }

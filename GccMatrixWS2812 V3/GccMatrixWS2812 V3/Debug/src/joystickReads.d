@@ -1,5 +1,6 @@
-src/main.d src/main.o: ../src/main.c ../src/asf.h \
- ../src/ASF/common/services/gpio/gpio.h ../src/ASF/common/utils/parts.h \
+src/joystickReads.d src/joystickReads.o: ../src/joystickReads.c \
+ ../src/asf.h ../src/ASF/common/services/gpio/gpio.h \
+ ../src/ASF/common/utils/parts.h \
  ../src/ASF/common/services/gpio/mega_gpio/mega_gpio.h \
  ../src/ASF/mega/utils/compiler.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
@@ -26,11 +27,7 @@ src/main.d src/main.o: ../src/main.c ../src/asf.h \
  ../src/ASF/common/boards/board.h \
  ../src/ASF/mega/boards/atmega328p_xplained_mini/atmega328p_xplained_mini.h \
  ../src/ASF/mega/boards/atmega328p_xplained_mini/led.h \
- ../src/ASF/mega/utils/status_codes.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- ../src/UART.h ../src/ADC.h ../src/Timer.h ../src/joystickReads.h
+ ../src/ASF/mega/utils/status_codes.h ../src/ADC.h ../src/Timer.h
 
 ../src/asf.h:
 
@@ -92,16 +89,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 ../src/ASF/mega/utils/status_codes.h:
 
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
-
-../src/UART.h:
-
 ../src/ADC.h:
 
 ../src/Timer.h:
-
-../src/joystickReads.h:

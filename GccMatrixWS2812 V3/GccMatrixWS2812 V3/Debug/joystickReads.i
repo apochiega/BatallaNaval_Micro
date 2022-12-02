@@ -1,4 +1,4 @@
-# 1 "../src/Timer.c"
+# 1 "../src/joystickReads.c"
 # 1 "C:\\Users\\Bruno\\Desktop\\Micro\\BatallaNaval_Micro\\GccMatrixWS2812 V3\\GccMatrixWS2812 V3\\Debug//"
 # 1 "<built-in>"
 #define __STDC__ 1
@@ -441,7 +441,13 @@
 #define __AVR_DEV_LIB_NAME__ m328p
 #define DEBUG 1
 #define BOARD ATMEGA328P_XPLAINED_MINI
-# 1 "../src/Timer.c"
+# 1 "../src/joystickReads.c"
+
+
+
+
+
+
 
 # 1 "../src/asf.h" 1
 # 45 "../src/asf.h"
@@ -5419,18 +5425,7 @@ enum status_code {
 
 typedef enum status_code status_code_t;
 # 70 "../src/asf.h" 2
-# 3 "../src/Timer.c" 2
-
-
-# 1 "../src/Timer.h" 1
-# 10 "../src/Timer.h"
-#define TIMER_H_ 
-
-void init_RTI(void);
-
-extern uint8_t playerTurn;
-# 6 "../src/Timer.c" 2
-#define LED (1<<5)
+# 9 "../src/joystickReads.c" 2
 
 
 # 1 "../src/ADC.h" 1
@@ -5443,203 +5438,74 @@ void adc_init(void);
 uint16_t read_adc(uint8_t channel);
 uint16_t read_VRX(void);
 uint16_t read_VRY(void);
-# 10 "../src/Timer.c" 2
-# 1 "../src/joystickReads.h" 1
-# 10 "../src/joystickReads.h"
-#define JOYSTICKREADS_H_ 
+# 12 "../src/joystickReads.c" 2
+# 1 "../src/Timer.h" 1
+# 10 "../src/Timer.h"
+#define TIMER_H_ 
+
+void init_RTI(void);
+
+extern uint8_t playerTurn;
+# 13 "../src/joystickReads.c" 2
+
+
+int8_t xMovement;
+int8_t yMovement;
+uint8_t jButton = 1;
+
+#define JOYSTICK (1<<6)
+#define HI_LIM 600
+#define LO_LIM 400
+
+
 
 void checkJoystick(void);
 void checkJoystickButton(void);
-
-extern uint8_t xMovement;
-extern uint8_t yMovement;
-extern uint8_t jButton;
-# 11 "../src/Timer.c" 2
+void joystick_INIT(void);
 
 
 
-uint8_t playerTurn;
-#define LETTER_P 0
-#define LETTER_HYPHEN 1
-#define NUMBER_1 2
-#define NUMBER_2 3
-#define LETTER_W 4
-#define LETTER_I 5
-#define LETTER_N 6
-#define EMPTY_DIGIT 7
-static uint8_t ssP1[4] = {0, 1, 2, 7};
-static uint8_t ssP2[4] = {0, 1, 3, 7};
-
-extern void wrt_Digit(uint8_t, uint8_t);
-
-
-
-
-
-#define divx1 (0<<CS02)|(0<<CS01)|(1<<CS00)
-#define divx8 (0<<CS02)|(1<<CS01)|(0<<CS00)
-#define divx64 (0<<CS02)|(1<<CS01)|(1<<CS00)
-#define divx256 (1<<CS02)|(0<<CS01)|(0<<CS00)
-#define divx1024 (1<<CS02)|(0<<CS01)|(1<<CS00)
-
-
-#define PRESCALER divx256
-
-#define SEVEN_SEGMENTS_TIME 3
-#define JOYSTICK_TIME 50
-# 64 "../src/Timer.c"
-void init_RTI(void)
+void joystick_INIT(void)
 {
-# 74 "../src/Timer.c"
  
-# 74 "../src/Timer.c" 3
-(*(volatile uint8_t *)((0x24) + 0x20))
-# 74 "../src/Timer.c"
-      =(0<<
-# 74 "../src/Timer.c" 3
-           7
-# 74 "../src/Timer.c"
-                 )|(0<<
-# 74 "../src/Timer.c" 3
-                       6
-# 74 "../src/Timer.c"
-                             )|(0<<
-# 74 "../src/Timer.c" 3
-                                   5
-# 74 "../src/Timer.c"
-                                         )|(0<<
-# 74 "../src/Timer.c" 3
-                                               4
-# 74 "../src/Timer.c"
-                                                     )|(1<<
-# 74 "../src/Timer.c" 3
-                                                           1
-# 74 "../src/Timer.c"
-                                                                )|(0<<
-# 74 "../src/Timer.c" 3
-                                                                      0
-# 74 "../src/Timer.c"
-                                                                           );
-
-
-
-
- 
-# 79 "../src/Timer.c" 3
-(*(volatile uint8_t *)((0x25) + 0x20))
-# 79 "../src/Timer.c"
-      =(0<<
-# 79 "../src/Timer.c" 3
-           7
-# 79 "../src/Timer.c"
-                )|(0<<
-# 79 "../src/Timer.c" 3
-                      6
-# 79 "../src/Timer.c"
-                           )|(0<<
-# 79 "../src/Timer.c" 3
-                                 3
-# 79 "../src/Timer.c"
-                                      )|(1<<
-# 79 "../src/Timer.c" 3
-                                        2
-# 79 "../src/Timer.c"
-                                        )|(0<<
-# 79 "../src/Timer.c" 3
-                                        1
-# 79 "../src/Timer.c"
-                                        )|(0<<
-# 79 "../src/Timer.c" 3
-                                        0
-# 79 "../src/Timer.c"
-                                        );
-
-
-
- 
-# 83 "../src/Timer.c" 3
-(*(volatile uint8_t *)((0x27) + 0x20))
-# 83 "../src/Timer.c"
-     =125;
-
-
-
- 
-# 87 "../src/Timer.c" 3
-(*(volatile uint8_t *)(0x6E))
-# 87 "../src/Timer.c"
-      =(0<<
-# 87 "../src/Timer.c" 3
-           2
-# 87 "../src/Timer.c"
-                 )|(1<<
-# 87 "../src/Timer.c" 3
-                       1
-# 87 "../src/Timer.c"
-                             )|(0<<
-# 87 "../src/Timer.c" 3
-                                   0
-# 87 "../src/Timer.c"
-                                        );
-
-
-
- 
-# 91 "../src/Timer.c" 3
-(*(volatile uint8_t *)((0x04) + 0x20))
-# 91 "../src/Timer.c"
-    |=(1<<5);
- 
-# 92 "../src/Timer.c" 3
-(*(volatile uint8_t *)((0x05) + 0x20))
-# 92 "../src/Timer.c"
-     &=~((1<<5));
-
+# 33 "../src/joystickReads.c" 3
+(*(volatile uint8_t *)((0x0A) + 0x20)) 
+# 33 "../src/joystickReads.c"
+     &= ~((1<<6));
 }
 
 
 
-
-
-# 99 "../src/Timer.c" 3
-void __vector_14 (void) __attribute__ ((signal,used, externally_visible)) ; void __vector_14 (void)
-
-# 100 "../src/Timer.c"
+void checkJoystick(void)
 {
- volatile static int countSS = 3;
- volatile static int countJoystick = 50;
-
-
- wrt_Digit(ssP1[countSS], countSS);
-
- if (playerTurn == 1)
-  wrt_Digit(ssP1[countSS], countSS);
- else if (playerTurn == 2)
-  wrt_Digit(ssP2[countSS], countSS);
- else if ((playerTurn == 3) | (playerTurn == 4))
-  {
-   if (countSS == 0)
-    wrt_Digit(4, 0);
-   else if (countSS == 1)
-    wrt_Digit(5, 1);
-   else if (countSS == 2)
-    wrt_Digit(6, 2);
-   else if (countSS == 3)
-    wrt_Digit(playerTurn-1, 3);
-  }
-
- if (countSS)
-  countSS--;
- else
-  countSS = 3;
-
-
- if (countJoystick)
-  countJoystick--;
- else
+ if(read_VRX() > 600)
  {
-  countJoystick = 50;
-  checkJoystick();
-  checkJoystickButton();
+  if (xMovement <= 6)
+   xMovement += 1;
  }
+ else if (read_VRX() < 400)
+ {
+  if (xMovement >= 1)
+   xMovement -= 1;
+ }
+
+ if(read_VRY() > 600)
+ {
+  if (yMovement >= 1)
+   yMovement -= 1;
+ }
+ else if (read_VRY() < 400)
+ {
+  if (yMovement <= 6)
+   yMovement += 1;
+ }
+}
+
+void checkJoystickButton(void)
+{
+ jButton = (
+# 65 "../src/joystickReads.c" 3
+           (*(volatile uint8_t *)((0x09) + 0x20)) 
+# 65 "../src/joystickReads.c"
+                & (1<<6));
 }

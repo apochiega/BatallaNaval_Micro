@@ -10,7 +10,7 @@
   10               		.section	.text.init_RTI,"ax",@progbits
   11               	.global	init_RTI
   13               	init_RTI:
-  14               	.LFB66:
+  14               	.LFB65:
   15               		.file 1 "../src/Timer.c"
    1:../src/Timer.c **** 
    2:../src/Timer.c **** #include <asf.h>
@@ -19,214 +19,413 @@
    5:../src/Timer.c **** #include "Timer.h"
    6:../src/Timer.c **** #define LED (1<<5)				//Led1 on PB5
    7:../src/Timer.c **** 
-   8:../src/Timer.c **** 
-   9:../src/Timer.c **** 
-  10:../src/Timer.c **** 
-  11:../src/Timer.c **** // Timer Prescaler definitions //
+   8:../src/Timer.c **** // External includes
+   9:../src/Timer.c **** #include "ADC.h"
+  10:../src/Timer.c **** #include "joystickReads.h"
+  11:../src/Timer.c **** 
   12:../src/Timer.c **** 
-  13:../src/Timer.c **** #define divx1 (0<<CS02)|(0<<CS01)|(1<<CS00)
-  14:../src/Timer.c **** #define	divx8 (0<<CS02)|(1<<CS01)|(0<<CS00)
-  15:../src/Timer.c **** #define	divx64 (0<<CS02)|(1<<CS01)|(1<<CS00)
-  16:../src/Timer.c **** #define	divx256 (1<<CS02)|(0<<CS01)|(0<<CS00)
-  17:../src/Timer.c **** #define	divx1024 (1<<CS02)|(0<<CS01)|(1<<CS00)
-  18:../src/Timer.c **** 
-  19:../src/Timer.c **** // Select Prescaler value
-  20:../src/Timer.c **** #define	PRESCALER divx256	//Timer prescaler / divider
-  21:../src/Timer.c **** 
-  22:../src/Timer.c **** 
-  23:../src/Timer.c **** int Timer_TB (void)
-  24:../src/Timer.c **** {
+  13:../src/Timer.c **** // Definitions
+  14:../src/Timer.c **** uint8_t playerTurn;		// Seven Segments definitions
+  15:../src/Timer.c **** #define LETTER_P	0
+  16:../src/Timer.c **** #define LETTER_HYPHEN	1
+  17:../src/Timer.c **** #define NUMBER_1	2
+  18:../src/Timer.c **** #define NUMBER_2	3
+  19:../src/Timer.c **** #define LETTER_W	4
+  20:../src/Timer.c **** #define LETTER_I	5
+  21:../src/Timer.c **** #define LETTER_N	6
+  22:../src/Timer.c **** #define EMPTY_DIGIT	7
+  23:../src/Timer.c **** static uint8_t ssP1[4] = {LETTER_P, LETTER_HYPHEN, NUMBER_1, EMPTY_DIGIT};
+  24:../src/Timer.c **** static uint8_t ssP2[4] = {LETTER_P, LETTER_HYPHEN, NUMBER_2, EMPTY_DIGIT};
   25:../src/Timer.c **** 
-  26:../src/Timer.c **** 	DDRB=LED;
-  27:../src/Timer.c **** 	PORTB=(LED)^(LED);
-  28:../src/Timer.c **** 	
-  29:../src/Timer.c **** 	init_RTI();				//Init Periodic Real Time Interrupt
-  30:../src/Timer.c **** 	
-  31:../src/Timer.c **** 	sei();					// Enable global Interrupts
-  32:../src/Timer.c **** 
-  33:../src/Timer.c **** 
-  34:../src/Timer.c **** 	while(1);				//Endless Loop
-  35:../src/Timer.c **** 
-  36:../src/Timer.c **** 
-  37:../src/Timer.c **** }
-  38:../src/Timer.c **** 
-  39:../src/Timer.c **** 
+  26:../src/Timer.c **** extern void wrt_Digit(uint8_t, uint8_t);
+  27:../src/Timer.c **** 
+  28:../src/Timer.c **** /* int Timer_TB(void); */
+  29:../src/Timer.c **** 
+  30:../src/Timer.c **** // Timer Prescaler definitions //
+  31:../src/Timer.c **** 
+  32:../src/Timer.c **** #define divx1 (0<<CS02)|(0<<CS01)|(1<<CS00)
+  33:../src/Timer.c **** #define	divx8 (0<<CS02)|(1<<CS01)|(0<<CS00)
+  34:../src/Timer.c **** #define	divx64 (0<<CS02)|(1<<CS01)|(1<<CS00)
+  35:../src/Timer.c **** #define	divx256 (1<<CS02)|(0<<CS01)|(0<<CS00)
+  36:../src/Timer.c **** #define	divx1024 (1<<CS02)|(0<<CS01)|(1<<CS00)
+  37:../src/Timer.c **** 
+  38:../src/Timer.c **** // Select Prescaler value
+  39:../src/Timer.c **** #define	PRESCALER divx256	//Timer prescaler / divider
   40:../src/Timer.c **** 
-  41:../src/Timer.c **** 
-  42:../src/Timer.c **** void init_RTI(void)
-  43:../src/Timer.c **** {
-  16               		.loc 1 43 0
+  41:../src/Timer.c **** #define SEVEN_SEGMENTS_TIME 3		// ISR counters Definitions
+  42:../src/Timer.c **** #define JOYSTICK_TIME 50
+  43:../src/Timer.c **** 
+  44:../src/Timer.c **** 
+  45:../src/Timer.c **** /*int Timer_TB (void)
+  46:../src/Timer.c **** {
+  47:../src/Timer.c **** 
+  48:../src/Timer.c **** 	DDRB=LED;
+  49:../src/Timer.c **** 	PORTB=(LED)^(LED);
+  50:../src/Timer.c **** 	
+  51:../src/Timer.c **** 	init_RTI();				//Init Periodic Real Time Interrupt
+  52:../src/Timer.c **** 	
+  53:../src/Timer.c **** 	sei();					// Enable global Interrupts
+  54:../src/Timer.c **** 
+  55:../src/Timer.c **** 
+  56:../src/Timer.c **** 	while(1);				//Endless Loop
+  57:../src/Timer.c **** 
+  58:../src/Timer.c **** 
+  59:../src/Timer.c **** }*/
+  60:../src/Timer.c **** 
+  61:../src/Timer.c **** 
+  62:../src/Timer.c **** 
+  63:../src/Timer.c **** 
+  64:../src/Timer.c **** void init_RTI(void)
+  65:../src/Timer.c **** {
+  16               		.loc 1 65 0
   17               		.cfi_startproc
   18               	/* prologue: function */
   19               	/* frame size = 0 */
   20               	/* stack size = 0 */
   21               	.L__stack_usage = 0
-  44:../src/Timer.c **** 	
-  45:../src/Timer.c **** 	//  Interrupt Source: Hardware Timer 0 using OCR0A (Output Compare Register A)
-  46:../src/Timer.c **** 	//  Waveform Generation Mode:Clear Timer on Compare Match (CTC)(WGM02=0,WGM01=1,WGM0=0)(Non PWM Mo
-  47:../src/Timer.c **** 	//  COM0A1=0,COM0A0=0 Normal port operation, OC0A disconnected.
-  48:../src/Timer.c **** 	//
-  49:../src/Timer.c **** 
-  50:../src/Timer.c **** 
-  51:../src/Timer.c **** 	// 1-Timer Mode: CTC
-  52:../src/Timer.c **** 	TCCR0A=(0<<COM0A1)|(0<<COM0A0)|(0<<COM0B1)|(0<<COM0B0)|(1<<WGM01)|(0<<WGM00);
-  22               		.loc 1 52 0
+  66:../src/Timer.c **** 	
+  67:../src/Timer.c **** 	//  Interrupt Source: Hardware Timer 0 using OCR0A (Output Compare Register A)
+  68:../src/Timer.c **** 	//  Waveform Generation Mode:Clear Timer on Compare Match (CTC)(WGM02=0,WGM01=1,WGM0=0)(Non PWM Mo
+  69:../src/Timer.c **** 	//  COM0A1=0,COM0A0=0 Normal port operation, OC0A disconnected.
+  70:../src/Timer.c **** 	//
+  71:../src/Timer.c **** 
+  72:../src/Timer.c **** 
+  73:../src/Timer.c **** 	// 1-Timer Mode: CTC
+  74:../src/Timer.c **** 	TCCR0A=(0<<COM0A1)|(0<<COM0A0)|(0<<COM0B1)|(0<<COM0B0)|(1<<WGM01)|(0<<WGM00);
+  22               		.loc 1 74 0
   23 0000 82E0      		ldi r24,lo8(2)
   24 0002 84BD      		out 0x24,r24
-  53:../src/Timer.c **** 	
-  54:../src/Timer.c **** 	
-  55:../src/Timer.c **** 
-  56:../src/Timer.c **** 	// 2-Clock select:Prescaler=1024
-  57:../src/Timer.c **** 	TCCR0B=(0<<FOC0A)|(0<<FOC0B)|(0<<WGM02)|PRESCALER;
-  25               		.loc 1 57 0
+  75:../src/Timer.c **** 	
+  76:../src/Timer.c **** 	
+  77:../src/Timer.c **** 
+  78:../src/Timer.c **** 	// 2-Clock select:Prescaler=1024
+  79:../src/Timer.c **** 	TCCR0B=(0<<FOC0A)|(0<<FOC0B)|(0<<WGM02)|PRESCALER;
+  25               		.loc 1 79 0
   26 0004 94E0      		ldi r25,lo8(4)
   27 0006 95BD      		out 0x25,r25
-  58:../src/Timer.c **** 	
-  59:../src/Timer.c **** 
-  60:../src/Timer.c **** 	// 3-Set OCR
-  61:../src/Timer.c **** 	OCR0A=125;
-  28               		.loc 1 61 0
+  80:../src/Timer.c **** 	
+  81:../src/Timer.c **** 
+  82:../src/Timer.c **** 	// 3-Set OCR
+  83:../src/Timer.c **** 	OCR0A=125;
+  28               		.loc 1 83 0
   29 0008 9DE7      		ldi r25,lo8(125)
   30 000a 97BD      		out 0x27,r25
-  62:../src/Timer.c **** 
-  63:../src/Timer.c **** 
-  64:../src/Timer.c **** 	// 4-Timer/Counter0 Output Compare Match A Interrupt Enable
-  65:../src/Timer.c **** 	TIMSK0=(0<<OCIE0B)|(1<<OCIE0A)|(0<<TOIE0);
-  31               		.loc 1 65 0
+  84:../src/Timer.c **** 
+  85:../src/Timer.c **** 
+  86:../src/Timer.c **** 	// 4-Timer/Counter0 Output Compare Match A Interrupt Enable
+  87:../src/Timer.c **** 	TIMSK0=(0<<OCIE0B)|(1<<OCIE0A)|(0<<TOIE0);
+  31               		.loc 1 87 0
   32 000c 8093 6E00 		sts 110,r24
-  66:../src/Timer.c **** 	
-  67:../src/Timer.c **** 	// This is for testing purposes (Blinking Led)
-  68:../src/Timer.c **** 
-  69:../src/Timer.c **** 	DDRB|=LED;
-  33               		.loc 1 69 0
+  88:../src/Timer.c **** 	
+  89:../src/Timer.c **** 	// This is for testing purposes (Blinking Led)
+  90:../src/Timer.c **** 
+  91:../src/Timer.c **** 	DDRB|=LED;
+  33               		.loc 1 91 0
   34 0010 259A      		sbi 0x4,5
-  70:../src/Timer.c **** 	PORTB&=~(LED);
-  35               		.loc 1 70 0
+  92:../src/Timer.c **** 	PORTB&=~(LED);
+  35               		.loc 1 92 0
   36 0012 2D98      		cbi 0x5,5
   37 0014 0895      		ret
   38               		.cfi_endproc
-  39               	.LFE66:
-  41               		.section	.text.Timer_TB,"ax",@progbits
-  42               	.global	Timer_TB
-  44               	Timer_TB:
-  45               	.LFB65:
-  24:../src/Timer.c **** 
-  46               		.loc 1 24 0
+  39               	.LFE65:
+  41               		.section	.text.__vector_14,"ax",@progbits
+  42               	.global	__vector_14
+  44               	__vector_14:
+  45               	.LFB66:
+  93:../src/Timer.c **** 
+  94:../src/Timer.c **** }
+  95:../src/Timer.c **** 
+  96:../src/Timer.c **** 
+  97:../src/Timer.c **** //Interrupt service routine (ISR) for Timer 0
+  98:../src/Timer.c **** // Timer int happens every (16MHz)^(-1)*256*125 = 62.5ns*256*125 = 64 * 125 useg = 2mseg
+  99:../src/Timer.c **** ISR(TIMER0_COMPA_vect)
+ 100:../src/Timer.c **** {
+  46               		.loc 1 100 0
   47               		.cfi_startproc
-  48               	/* prologue: function */
-  49               	/* frame size = 0 */
-  50               	/* stack size = 0 */
-  51               	.L__stack_usage = 0
-  26:../src/Timer.c **** 	PORTB=(LED)^(LED);
-  52               		.loc 1 26 0
-  53 0000 80E2      		ldi r24,lo8(32)
-  54 0002 84B9      		out 0x4,r24
-  27:../src/Timer.c **** 	
-  55               		.loc 1 27 0
-  56 0004 15B8      		out 0x5,__zero_reg__
-  29:../src/Timer.c **** 	
-  57               		.loc 1 29 0
-  58 0006 0E94 0000 		call init_RTI
-  59               	.LVL0:
-  31:../src/Timer.c **** 
-  60               		.loc 1 31 0
-  61               	/* #APP */
-  62               	 ;  31 "../src/Timer.c" 1
-  63 000a 7894      		sei
-  64               	 ;  0 "" 2
-  65               	/* #NOAPP */
-  66               	.L3:
-  67 000c 00C0      		rjmp .L3
-  68               		.cfi_endproc
-  69               	.LFE65:
-  71               		.section	.text.__vector_14,"ax",@progbits
-  72               	.global	__vector_14
-  74               	__vector_14:
-  75               	.LFB67:
-  71:../src/Timer.c **** 
-  72:../src/Timer.c **** }
-  73:../src/Timer.c **** 
-  74:../src/Timer.c **** //Interrupt service routine (ISR) for Timer 0
-  75:../src/Timer.c **** // Timer int happens every (16MHz)^(-1)*1024*125 = 62.5ns*1024*125 = 64 * 125 useg = 8mseg
-  76:../src/Timer.c **** ISR(TIMER0_COMPA_vect)
-  77:../src/Timer.c **** {
-  76               		.loc 1 77 0
-  77               		.cfi_startproc
-  78 0000 1F92      		push r1
-  79               	.LCFI0:
-  80               		.cfi_def_cfa_offset 3
-  81               		.cfi_offset 1, -2
-  82 0002 0F92      		push r0
-  83               	.LCFI1:
-  84               		.cfi_def_cfa_offset 4
-  85               		.cfi_offset 0, -3
-  86 0004 0FB6      		in r0,__SREG__
-  87 0006 0F92      		push r0
-  88 0008 1124      		clr __zero_reg__
-  89 000a 8F93      		push r24
-  90               	.LCFI2:
-  91               		.cfi_def_cfa_offset 5
-  92               		.cfi_offset 24, -4
-  93 000c 9F93      		push r25
-  94               	.LCFI3:
-  95               		.cfi_def_cfa_offset 6
-  96               		.cfi_offset 25, -5
-  97               	/* prologue: Signal */
-  98               	/* frame size = 0 */
-  99               	/* stack size = 5 */
- 100               	.L__stack_usage = 5
-  78:../src/Timer.c **** 	volatile static int count=40;
-  79:../src/Timer.c **** 	
-  80:../src/Timer.c **** 	if(count)			// 2mseg x 40= 80mseg
- 101               		.loc 1 80 0
- 102 000e 8091 0000 		lds r24,count.2218
- 103 0012 9091 0000 		lds r25,count.2218+1
- 104 0016 892B      		or r24,r25
- 105 0018 01F0      		breq .L5
-  81:../src/Timer.c **** 	count--;
- 106               		.loc 1 81 0
- 107 001a 8091 0000 		lds r24,count.2218
- 108 001e 9091 0000 		lds r25,count.2218+1
- 109 0022 0197      		sbiw r24,1
- 110 0024 9093 0000 		sts count.2218+1,r25
- 111 0028 8093 0000 		sts count.2218,r24
- 112 002c 00C0      		rjmp .L4
- 113               	.L5:
-  82:../src/Timer.c **** 	else
-  83:../src/Timer.c **** 	{
-  84:../src/Timer.c **** 		count=40;
- 114               		.loc 1 84 0
- 115 002e 88E2      		ldi r24,lo8(40)
- 116 0030 90E0      		ldi r25,0
- 117 0032 9093 0000 		sts count.2218+1,r25
- 118 0036 8093 0000 		sts count.2218,r24
-  85:../src/Timer.c **** 		PORTB^=LED;   	// This is for testing purposes (Blinking Led)
- 119               		.loc 1 85 0
- 120 003a 95B1      		in r25,0x5
- 121 003c 80E2      		ldi r24,lo8(32)
- 122 003e 8927      		eor r24,r25
- 123 0040 85B9      		out 0x5,r24
- 124               	.L4:
- 125               	/* epilogue start */
-  86:../src/Timer.c **** 	}
-  87:../src/Timer.c **** 	
-  88:../src/Timer.c **** }...
- 126               		.loc 1 88 0
- 127 0042 9F91      		pop r25
- 128 0044 8F91      		pop r24
- 129 0046 0F90      		pop r0
- 130 0048 0FBE      		out __SREG__,r0
- 131 004a 0F90      		pop r0
- 132 004c 1F90      		pop r1
- 133 004e 1895      		reti
- 134               		.cfi_endproc
- 135               	.LFE67:
- 137               		.section	.data.count.2218,"aw",@progbits
- 140               	count.2218:
- 141 0000 2800      		.word	40
- 142               		.text
- 143               	.Letext0:
- 144               		.file 2 "c:\\program files (x86)\\atmel\\studio\\7.0\\toolchain\\avr8\\avr8-gnu-toolchain\\avr\\in
+  48 0000 1F92      		push r1
+  49               	.LCFI0:
+  50               		.cfi_def_cfa_offset 3
+  51               		.cfi_offset 1, -2
+  52 0002 0F92      		push r0
+  53               	.LCFI1:
+  54               		.cfi_def_cfa_offset 4
+  55               		.cfi_offset 0, -3
+  56 0004 0FB6      		in r0,__SREG__
+  57 0006 0F92      		push r0
+  58 0008 1124      		clr __zero_reg__
+  59 000a 2F93      		push r18
+  60               	.LCFI2:
+  61               		.cfi_def_cfa_offset 5
+  62               		.cfi_offset 18, -4
+  63 000c 3F93      		push r19
+  64               	.LCFI3:
+  65               		.cfi_def_cfa_offset 6
+  66               		.cfi_offset 19, -5
+  67 000e 4F93      		push r20
+  68               	.LCFI4:
+  69               		.cfi_def_cfa_offset 7
+  70               		.cfi_offset 20, -6
+  71 0010 5F93      		push r21
+  72               	.LCFI5:
+  73               		.cfi_def_cfa_offset 8
+  74               		.cfi_offset 21, -7
+  75 0012 6F93      		push r22
+  76               	.LCFI6:
+  77               		.cfi_def_cfa_offset 9
+  78               		.cfi_offset 22, -8
+  79 0014 7F93      		push r23
+  80               	.LCFI7:
+  81               		.cfi_def_cfa_offset 10
+  82               		.cfi_offset 23, -9
+  83 0016 8F93      		push r24
+  84               	.LCFI8:
+  85               		.cfi_def_cfa_offset 11
+  86               		.cfi_offset 24, -10
+  87 0018 9F93      		push r25
+  88               	.LCFI9:
+  89               		.cfi_def_cfa_offset 12
+  90               		.cfi_offset 25, -11
+  91 001a AF93      		push r26
+  92               	.LCFI10:
+  93               		.cfi_def_cfa_offset 13
+  94               		.cfi_offset 26, -12
+  95 001c BF93      		push r27
+  96               	.LCFI11:
+  97               		.cfi_def_cfa_offset 14
+  98               		.cfi_offset 27, -13
+  99 001e EF93      		push r30
+ 100               	.LCFI12:
+ 101               		.cfi_def_cfa_offset 15
+ 102               		.cfi_offset 30, -14
+ 103 0020 FF93      		push r31
+ 104               	.LCFI13:
+ 105               		.cfi_def_cfa_offset 16
+ 106               		.cfi_offset 31, -15
+ 107               	/* prologue: Signal */
+ 108               	/* frame size = 0 */
+ 109               	/* stack size = 15 */
+ 110               	.L__stack_usage = 15
+ 101:../src/Timer.c **** 	volatile static int countSS = SEVEN_SEGMENTS_TIME;
+ 102:../src/Timer.c **** 	volatile static int countJoystick = JOYSTICK_TIME;
+ 103:../src/Timer.c **** 	
+ 104:../src/Timer.c **** 	// Writes the corresponding player (P-1 or P-2) or the winner on the Seven Segments Display
+ 105:../src/Timer.c **** 	wrt_Digit(ssP1[countSS], countSS);
+ 111               		.loc 1 105 0
+ 112 0022 6091 0000 		lds r22,countSS.2236
+ 113 0026 7091 0000 		lds r23,countSS.2236+1
+ 114 002a E091 0000 		lds r30,countSS.2236
+ 115 002e F091 0000 		lds r31,countSS.2236+1
+ 116 0032 E050      		subi r30,lo8(-(ssP1))
+ 117 0034 F040      		sbci r31,hi8(-(ssP1))
+ 118 0036 8081      		ld r24,Z
+ 119 0038 0E94 0000 		call wrt_Digit
+ 120               	.LVL0:
+ 106:../src/Timer.c **** 	
+ 107:../src/Timer.c **** 	if (playerTurn == 1)
+ 121               		.loc 1 107 0
+ 122 003c 8091 0000 		lds r24,playerTurn
+ 123 0040 8130      		cpi r24,lo8(1)
+ 124 0042 01F4      		brne .L3
+ 108:../src/Timer.c **** 		wrt_Digit(ssP1[countSS], countSS);
+ 125               		.loc 1 108 0
+ 126 0044 6091 0000 		lds r22,countSS.2236
+ 127 0048 7091 0000 		lds r23,countSS.2236+1
+ 128 004c E091 0000 		lds r30,countSS.2236
+ 129 0050 F091 0000 		lds r31,countSS.2236+1
+ 130 0054 E050      		subi r30,lo8(-(ssP1))
+ 131 0056 F040      		sbci r31,hi8(-(ssP1))
+ 132 0058 8081      		ld r24,Z
+ 133 005a 0E94 0000 		call wrt_Digit
+ 134               	.LVL1:
+ 135 005e 00C0      		rjmp .L4
+ 136               	.L3:
+ 109:../src/Timer.c **** 	else if (playerTurn == 2)
+ 137               		.loc 1 109 0
+ 138 0060 8230      		cpi r24,lo8(2)
+ 139 0062 01F4      		brne .L5
+ 110:../src/Timer.c **** 		wrt_Digit(ssP2[countSS], countSS);
+ 140               		.loc 1 110 0
+ 141 0064 6091 0000 		lds r22,countSS.2236
+ 142 0068 7091 0000 		lds r23,countSS.2236+1
+ 143 006c E091 0000 		lds r30,countSS.2236
+ 144 0070 F091 0000 		lds r31,countSS.2236+1
+ 145 0074 E050      		subi r30,lo8(-(ssP2))
+ 146 0076 F040      		sbci r31,hi8(-(ssP2))
+ 147 0078 8081      		ld r24,Z
+ 148 007a 0E94 0000 		call wrt_Digit
+ 149               	.LVL2:
+ 150 007e 00C0      		rjmp .L4
+ 151               	.L5:
+ 111:../src/Timer.c **** 	else if ((playerTurn == 3) | (playerTurn == 4))
+ 152               		.loc 1 111 0
+ 153 0080 9DEF      		ldi r25,lo8(-3)
+ 154 0082 980F      		add r25,r24
+ 155 0084 9230      		cpi r25,lo8(2)
+ 156 0086 00F4      		brsh .L4
+ 112:../src/Timer.c **** 		{
+ 113:../src/Timer.c **** 			if (countSS == 0)
+ 157               		.loc 1 113 0
+ 158 0088 2091 0000 		lds r18,countSS.2236
+ 159 008c 3091 0000 		lds r19,countSS.2236+1
+ 160 0090 232B      		or r18,r19
+ 161 0092 01F4      		brne .L6
+ 114:../src/Timer.c **** 				wrt_Digit(LETTER_W, 0);
+ 162               		.loc 1 114 0
+ 163 0094 60E0      		ldi r22,0
+ 164 0096 84E0      		ldi r24,lo8(4)
+ 165 0098 0E94 0000 		call wrt_Digit
+ 166               	.LVL3:
+ 167 009c 00C0      		rjmp .L4
+ 168               	.L6:
+ 115:../src/Timer.c **** 			else if (countSS == 1)
+ 169               		.loc 1 115 0
+ 170 009e 2091 0000 		lds r18,countSS.2236
+ 171 00a2 3091 0000 		lds r19,countSS.2236+1
+ 172 00a6 2130      		cpi r18,1
+ 173 00a8 3105      		cpc r19,__zero_reg__
+ 174 00aa 01F4      		brne .L7
+ 116:../src/Timer.c **** 				wrt_Digit(LETTER_I, 1);
+ 175               		.loc 1 116 0
+ 176 00ac 61E0      		ldi r22,lo8(1)
+ 177 00ae 85E0      		ldi r24,lo8(5)
+ 178 00b0 0E94 0000 		call wrt_Digit
+ 179               	.LVL4:
+ 180 00b4 00C0      		rjmp .L4
+ 181               	.L7:
+ 117:../src/Timer.c **** 			else if (countSS == 2)
+ 182               		.loc 1 117 0
+ 183 00b6 2091 0000 		lds r18,countSS.2236
+ 184 00ba 3091 0000 		lds r19,countSS.2236+1
+ 185 00be 2230      		cpi r18,2
+ 186 00c0 3105      		cpc r19,__zero_reg__
+ 187 00c2 01F4      		brne .L8
+ 118:../src/Timer.c **** 				wrt_Digit(LETTER_N, 2);
+ 188               		.loc 1 118 0
+ 189 00c4 62E0      		ldi r22,lo8(2)
+ 190 00c6 86E0      		ldi r24,lo8(6)
+ 191 00c8 0E94 0000 		call wrt_Digit
+ 192               	.LVL5:
+ 193 00cc 00C0      		rjmp .L4
+ 194               	.L8:
+ 119:../src/Timer.c **** 			else if (countSS == 3)
+ 195               		.loc 1 119 0
+ 196 00ce 2091 0000 		lds r18,countSS.2236
+ 197 00d2 3091 0000 		lds r19,countSS.2236+1
+ 198 00d6 2330      		cpi r18,3
+ 199 00d8 3105      		cpc r19,__zero_reg__
+ 200 00da 01F4      		brne .L4
+ 120:../src/Timer.c **** 				wrt_Digit(playerTurn-1, 3);		// Numbers '1' and '2' in the display are the numbers 2 and 3 inpu
+ 201               		.loc 1 120 0
+ 202 00dc 63E0      		ldi r22,lo8(3)
+ 203 00de 8150      		subi r24,lo8(-(-1))
+ 204 00e0 0E94 0000 		call wrt_Digit
+ 205               	.LVL6:
+ 206               	.L4:
+ 121:../src/Timer.c **** 		}
+ 122:../src/Timer.c **** 	
+ 123:../src/Timer.c **** 	if (countSS)
+ 207               		.loc 1 123 0
+ 208 00e4 8091 0000 		lds r24,countSS.2236
+ 209 00e8 9091 0000 		lds r25,countSS.2236+1
+ 210 00ec 892B      		or r24,r25
+ 211 00ee 01F0      		breq .L9
+ 124:../src/Timer.c **** 		countSS--;
+ 212               		.loc 1 124 0
+ 213 00f0 8091 0000 		lds r24,countSS.2236
+ 214 00f4 9091 0000 		lds r25,countSS.2236+1
+ 215 00f8 0197      		sbiw r24,1
+ 216 00fa 9093 0000 		sts countSS.2236+1,r25
+ 217 00fe 8093 0000 		sts countSS.2236,r24
+ 218 0102 00C0      		rjmp .L10
+ 219               	.L9:
+ 125:../src/Timer.c **** 	else
+ 126:../src/Timer.c **** 		countSS = SEVEN_SEGMENTS_TIME;
+ 220               		.loc 1 126 0
+ 221 0104 83E0      		ldi r24,lo8(3)
+ 222 0106 90E0      		ldi r25,0
+ 223 0108 9093 0000 		sts countSS.2236+1,r25
+ 224 010c 8093 0000 		sts countSS.2236,r24
+ 225               	.L10:
+ 127:../src/Timer.c **** 	
+ 128:../src/Timer.c **** 	// Joystick movement is scanned every 100 ms and saved on x/yMovement
+ 129:../src/Timer.c **** 	if (countJoystick)
+ 226               		.loc 1 129 0
+ 227 0110 8091 0000 		lds r24,countJoystick.2237
+ 228 0114 9091 0000 		lds r25,countJoystick.2237+1
+ 229 0118 892B      		or r24,r25
+ 230 011a 01F0      		breq .L11
+ 130:../src/Timer.c **** 		countJoystick--;
+ 231               		.loc 1 130 0
+ 232 011c 8091 0000 		lds r24,countJoystick.2237
+ 233 0120 9091 0000 		lds r25,countJoystick.2237+1
+ 234 0124 0197      		sbiw r24,1
+ 235 0126 9093 0000 		sts countJoystick.2237+1,r25
+ 236 012a 8093 0000 		sts countJoystick.2237,r24
+ 237 012e 00C0      		rjmp .L2
+ 238               	.L11:
+ 131:../src/Timer.c **** 	else 
+ 132:../src/Timer.c **** 	{
+ 133:../src/Timer.c **** 		countJoystick = JOYSTICK_TIME;
+ 239               		.loc 1 133 0
+ 240 0130 82E3      		ldi r24,lo8(50)
+ 241 0132 90E0      		ldi r25,0
+ 242 0134 9093 0000 		sts countJoystick.2237+1,r25
+ 243 0138 8093 0000 		sts countJoystick.2237,r24
+ 134:../src/Timer.c **** 		checkJoystick();
+ 244               		.loc 1 134 0
+ 245 013c 0E94 0000 		call checkJoystick
+ 246               	.LVL7:
+ 135:../src/Timer.c **** 		checkJoystickButton();
+ 247               		.loc 1 135 0
+ 248 0140 0E94 0000 		call checkJoystickButton
+ 249               	.LVL8:
+ 250               	.L2:
+ 251               	/* epilogue start */
+ 136:../src/Timer.c **** 	}
+ 137:../src/Timer.c **** }...
+ 252               		.loc 1 137 0
+ 253 0144 FF91      		pop r31
+ 254 0146 EF91      		pop r30
+ 255 0148 BF91      		pop r27
+ 256 014a AF91      		pop r26
+ 257 014c 9F91      		pop r25
+ 258 014e 8F91      		pop r24
+ 259 0150 7F91      		pop r23
+ 260 0152 6F91      		pop r22
+ 261 0154 5F91      		pop r21
+ 262 0156 4F91      		pop r20
+ 263 0158 3F91      		pop r19
+ 264 015a 2F91      		pop r18
+ 265 015c 0F90      		pop r0
+ 266 015e 0FBE      		out __SREG__,r0
+ 267 0160 0F90      		pop r0
+ 268 0162 1F90      		pop r1
+ 269 0164 1895      		reti
+ 270               		.cfi_endproc
+ 271               	.LFE66:
+ 273               		.section	.data.countJoystick.2237,"aw",@progbits
+ 276               	countJoystick.2237:
+ 277 0000 3200      		.word	50
+ 278               		.section	.data.countSS.2236,"aw",@progbits
+ 281               	countSS.2236:
+ 282 0000 0300      		.word	3
+ 283               		.section	.rodata.ssP2,"a",@progbits
+ 286               	ssP2:
+ 287 0000 00        		.byte	0
+ 288 0001 01        		.byte	1
+ 289 0002 03        		.byte	3
+ 290 0003 07        		.byte	7
+ 291               		.section	.rodata.ssP1,"a",@progbits
+ 294               	ssP1:
+ 295 0000 00        		.byte	0
+ 296 0001 01        		.byte	1
+ 297 0002 02        		.byte	2
+ 298 0003 07        		.byte	7
+ 299               		.comm	playerTurn,1,1
+ 300               		.text
+ 301               	.Letext0:
+ 302               		.file 2 "../src/joystickReads.h"
+ 303               		.file 3 "c:\\program files (x86)\\atmel\\studio\\7.0\\toolchain\\avr8\\avr8-gnu-toolchain\\avr\\in
 DEFINED SYMBOLS
                             *ABS*:00000000 Timer.c
              Timer.s:2      *ABS*:0000003e __SP_H__
@@ -235,9 +434,12 @@ DEFINED SYMBOLS
              Timer.s:5      *ABS*:00000000 __tmp_reg__
              Timer.s:6      *ABS*:00000001 __zero_reg__
              Timer.s:13     .text.init_RTI:00000000 init_RTI
-             Timer.s:44     .text.Timer_TB:00000000 Timer_TB
-             Timer.s:74     .text.__vector_14:00000000 __vector_14
-             Timer.s:140    .data.count.2218:00000000 count.2218
+             Timer.s:44     .text.__vector_14:00000000 __vector_14
+             Timer.s:281    .data.countSS.2236:00000000 countSS.2236
+             Timer.s:294    .rodata.ssP1:00000000 ssP1
+                            *COM*:00000001 playerTurn
+             Timer.s:286    .rodata.ssP2:00000000 ssP2
+             Timer.s:276    .data.countJoystick.2237:00000000 countJoystick.2237
                            .group:00000000 wm4.parts.h.38.424177e1c4c7502bdf2cd6eac0e66f1e
                            .group:00000000 wm4.sfr_defs.h.36.473802ecbcb5d4d38de6c7efbfcd3c60
                            .group:00000000 wm4.stdint.h.41.052d062c327f27e210bb72c3d087afe5
@@ -266,6 +468,11 @@ DEFINED SYMBOLS
                            .group:00000000 wm4.board.h.41.2d9694df0f6b670341666b9015632b94
                            .group:00000000 wm4.led.h.38.8c4408d5cc264ea8e7bbcc0ac6971d10
                            .group:00000000 wm4.atmega328p_xplained_mini.h.47.411278661c63ad4794d5f415bca0f65b
+                           .group:00000000 wm4.ADC.h.10.4375d630963ad1b8b9d883a341299c49
 
 UNDEFINED SYMBOLS
+wrt_Digit
+checkJoystick
+checkJoystickButton
 __do_copy_data
+__do_clear_bss

@@ -279,6 +279,12 @@
     <Compile Include="src\DrvWs2812.s">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\joystickReads.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\joystickReads.c">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="src\Timer.c">
       <SubType>compile</SubType>
     </Compile>

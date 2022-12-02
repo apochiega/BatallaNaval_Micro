@@ -3,19 +3,14 @@ Archive member included to satisfy reference by file (symbol)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
                               C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o (exit)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_copy_data.o)
-                              src/Timer.o (__do_copy_data)
+                              src/joystickReads.o (__do_copy_data)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
                               src/ADC.o (__do_clear_bss)
-c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(itoa_ncheck.o)
-                              src/main.o (__itoa_ncheck)
-c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(utoa_ncheck.o)
-                              c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(itoa_ncheck.o) (__utoa_common)
-c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strrev.o)
-                              c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(utoa_ncheck.o) (strrev)
 
 Allocating common symbols
 Common symbol       size              file
 
+yMovement           0x1               src/joystickReads.o
 USART_ReceiveBuffer
                     0x1               src/UART.o
 display_rgb         0xc0              src/main.o
@@ -23,6 +18,10 @@ adc_value           0x2               src/ADC.o
 USART_TransmitBuffer
                     0x1               src/UART.o
 p2disp              0x2               src/main.o
+matrizJugador1      0xc0              src/main.o
+xMovement           0x1               src/joystickReads.o
+playerTurn          0x1               src/Timer.o
+matrizJugador2      0xc0              src/main.o
 
 Discarded input sections
 
@@ -47,8 +46,6 @@ Discarded input sections
  .text          0x00000000        0x0 src/ADC.o
  .data          0x00000000        0x0 src/ADC.o
  .bss           0x00000000        0x0 src/ADC.o
- .text.read_VRY
-                0x00000000        0x8 src/ADC.o
  COMMON         0x00000000        0x2 src/ADC.o
  .group         0x00000000        0x8 src/cqueue.o
  .text          0x00000000        0x0 src/cqueue.o
@@ -60,6 +57,53 @@ Discarded input sections
                 0x00000000        0x6 src/cqueue.o
  .data          0x00000000        0x0 src/DrvWs2812.o
  .bss           0x00000000        0x0 src/DrvWs2812.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .group         0x00000000        0x8 src/joystickReads.o
+ .text          0x00000000        0x0 src/joystickReads.o
+ .data          0x00000000        0x0 src/joystickReads.o
+ .bss           0x00000000        0x0 src/joystickReads.o
+ .text.joystick_INIT
+                0x00000000        0x4 src/joystickReads.o
+ .debug_macro   0x00000000       0x10 src/joystickReads.o
+ .debug_macro   0x00000000      0x1c9 src/joystickReads.o
+ .debug_macro   0x00000000      0x2fc src/joystickReads.o
+ .debug_macro   0x00000000       0x9e src/joystickReads.o
+ .debug_macro   0x00000000     0x1411 src/joystickReads.o
+ .debug_macro   0x00000000      0x13a src/joystickReads.o
+ .debug_macro   0x00000000       0xbd src/joystickReads.o
+ .debug_macro   0x00000000       0x34 src/joystickReads.o
+ .debug_macro   0x00000000       0x18 src/joystickReads.o
+ .debug_macro   0x00000000       0x6c src/joystickReads.o
+ .debug_macro   0x00000000       0x1c src/joystickReads.o
+ .debug_macro   0x00000000       0x16 src/joystickReads.o
+ .group         0x00000000        0x8 src/Timer.o
  .group         0x00000000        0x8 src/Timer.o
  .group         0x00000000        0x8 src/Timer.o
  .group         0x00000000        0x8 src/Timer.o
@@ -91,8 +135,7 @@ Discarded input sections
  .text          0x00000000        0x0 src/Timer.o
  .data          0x00000000        0x0 src/Timer.o
  .bss           0x00000000        0x0 src/Timer.o
- .text.Timer_TB
-                0x00000000        0xe src/Timer.o
+ .debug_macro   0x00000000      0x71d src/Timer.o
  .debug_macro   0x00000000       0x10 src/Timer.o
  .debug_macro   0x00000000      0x1c9 src/Timer.o
  .debug_macro   0x00000000      0x2fc src/Timer.o
@@ -103,7 +146,24 @@ Discarded input sections
  .debug_macro   0x00000000       0x34 src/Timer.o
  .debug_macro   0x00000000       0x18 src/Timer.o
  .debug_macro   0x00000000       0x6c src/Timer.o
+ .debug_macro   0x00000000       0x22 src/Timer.o
+ .debug_macro   0x00000000      0x16d src/Timer.o
  .debug_macro   0x00000000       0x1c src/Timer.o
+ .debug_macro   0x00000000       0x35 src/Timer.o
+ .debug_macro   0x00000000       0x66 src/Timer.o
+ .debug_macro   0x00000000       0x43 src/Timer.o
+ .debug_macro   0x00000000       0x69 src/Timer.o
+ .debug_macro   0x00000000       0x2b src/Timer.o
+ .debug_macro   0x00000000       0x10 src/Timer.o
+ .debug_macro   0x00000000       0xe2 src/Timer.o
+ .debug_macro   0x00000000       0x40 src/Timer.o
+ .debug_macro   0x00000000      0x100 src/Timer.o
+ .debug_macro   0x00000000       0x56 src/Timer.o
+ .debug_macro   0x00000000       0x40 src/Timer.o
+ .debug_macro   0x00000000      0x2df src/Timer.o
+ .debug_macro   0x00000000       0x1c src/Timer.o
+ .debug_macro   0x00000000       0x58 src/Timer.o
+ .debug_macro   0x00000000       0x16 src/Timer.o
  .group         0x00000000        0x8 src/UART.o
  .group         0x00000000        0x8 src/UART.o
  .group         0x00000000        0x8 src/UART.o
@@ -127,8 +187,12 @@ Discarded input sections
                 0x00000000        0x6 src/UART.o
  .text.UART_ReceivePolling
                 0x00000000       0x10 src/UART.o
+ .text.UART_TransmitPolling
+                0x00000000       0x10 src/UART.o
  .text.UART_send_data
                 0x00000000        0x6 src/UART.o
+ .text.UART_putstring
+                0x00000000       0x1e src/UART.o
  .text.uart_test
                 0x00000000       0x14 src/UART.o
  .text.UART_TransmitInterrupt
@@ -255,10 +319,11 @@ Discarded input sections
  .text          0x00000000        0x0 src/main.o
  .data          0x00000000        0x0 src/main.o
  .bss           0x00000000        0x0 src/main.o
+ .text.clear_disp
+                0x00000000       0x34 src/main.o
  .text.softdelay
                 0x00000000       0x60 src/main.o
- .text.ADCTestBench
-                0x00000000       0x6a src/main.o
+ .data.msg      0x00000000       0x1a src/main.o
  .debug_macro   0x00000000      0x71d src/main.o
  .debug_macro   0x00000000       0x10 src/main.o
  .debug_macro   0x00000000      0x1c9 src/main.o
@@ -337,21 +402,6 @@ Discarded input sections
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
  .text.libgcc.fixed
                 0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_clear_bss.o)
- .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(itoa_ncheck.o)
- .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(itoa_ncheck.o)
- .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(itoa_ncheck.o)
- .text.avr-libc
-                0x00000000       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(itoa_ncheck.o)
- .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(utoa_ncheck.o)
- .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(utoa_ncheck.o)
- .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(utoa_ncheck.o)
- .text.avr-libc
-                0x00000000       0x34 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(utoa_ncheck.o)
- .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strrev.o)
- .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strrev.o)
- .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strrev.o)
- .text.avr-libc
-                0x00000000       0x20 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(strrev.o)
 
 Memory Configuration
 
@@ -372,6 +422,7 @@ LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/
 LOAD src/ADC.o
 LOAD src/cqueue.o
 LOAD src/DrvWs2812.o
+LOAD src/joystickReads.o
 LOAD src/Timer.o
 LOAD src/UART.o
 LOAD src/wrt_Digit.o
@@ -486,7 +537,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x5c4
+.text           0x00000000     0x1046
  *(.vectors)
  .vectors       0x00000000       0x68 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -571,17 +622,20 @@ END GROUP
  .text          0x000000a0       0xae src/DrvWs2812.o
                 0x000000a0                init_ws2812
                 0x000000b4                wrt_ws2812
- .text          0x0000014e       0xa6 src/wrt_Digit.o
+ .text          0x0000014e       0xa0 src/wrt_Digit.o
                 0x0000014e                wrt_Digit_Init
                 0x00000160                wrt_Digit
-                0x000001f4                . = ALIGN (0x2)
+                0x000001ee                . = ALIGN (0x2)
  *(.text.*)
  .text.adc_init
-                0x000001f4       0x22 src/ADC.o
-                0x000001f4                adc_init
+                0x000001ee       0x22 src/ADC.o
+                0x000001ee                adc_init
  .text.read_adc
-                0x00000216       0x2a src/ADC.o
-                0x00000216                read_adc
+                0x00000210       0x2a src/ADC.o
+                0x00000210                read_adc
+ .text.read_VRY
+                0x0000023a        0x6 src/ADC.o
+                0x0000023a                read_VRY
  .text.read_VRX
                 0x00000240        0x6 src/ADC.o
                 0x00000240                read_VRX
@@ -591,39 +645,75 @@ END GROUP
  .text.PushQueue
                 0x00000260       0x44 src/cqueue.o
                 0x00000260                PushQueue
+ .text.checkJoystick
+                0x000002a4       0x5e src/joystickReads.o
+                0x000002a4                checkJoystick
+ .text.checkJoystickButton
+                0x00000302        0xa src/joystickReads.o
+                0x00000302                checkJoystickButton
  .text.init_RTI
-                0x000002a4       0x16 src/Timer.o
-                0x000002a4                init_RTI
+                0x0000030c       0x16 src/Timer.o
+                0x0000030c                init_RTI
  .text.__vector_14
-                0x000002ba       0x50 src/Timer.o
-                0x000002ba                __vector_14
+                0x00000322      0x154 src/Timer.o
+                0x00000322                __vector_14
  .text.UART_Init
-                0x0000030a       0x2e src/UART.o
-                0x0000030a                UART_Init
- .text.UART_TransmitPolling
-                0x00000338       0x10 src/UART.o
-                0x00000338                UART_TransmitPolling
- .text.UART_putstring
-                0x00000348       0x1c src/UART.o
-                0x00000348                UART_putstring
+                0x00000476       0x2e src/UART.o
+                0x00000476                UART_Init
  .text.__vector_19
-                0x00000364       0x32 src/UART.o
-                0x00000364                __vector_19
+                0x000004a4       0x32 src/UART.o
+                0x000004a4                __vector_19
  .text.__vector_18
-                0x00000396       0x4a src/UART.o
-                0x00000396                __vector_18
- .text.clear_disp
-                0x000003e0       0x34 src/main.o
-                0x000003e0                clear_disp
- .text.TB_joy1  0x00000414       0x28 src/main.o
-                0x00000414                TB_joy1
- .text.main     0x0000043c      0x184 src/main.o
-                0x0000043c                main
-                0x000005c0                . = ALIGN (0x2)
+                0x000004d6       0x4a src/UART.o
+                0x000004d6                __vector_18
+ .text.checkPlayer1Win
+                0x00000520        0x4 src/main.o
+                0x00000520                checkPlayer1Win
+ .text.checkPlayer2Win
+                0x00000524       0xcc src/main.o
+                0x00000524                checkPlayer2Win
+ .text.delaySeconds
+                0x000005f0       0x66 src/main.o
+                0x000005f0                delaySeconds
+ .text.copyArrayOf1
+                0x00000656       0x3e src/main.o
+                0x00000656                copyArrayOf1
+ .text.copyArrayOf2
+                0x00000694       0x3e src/main.o
+                0x00000694                copyArrayOf2
+ .text.scanSubmarinos1
+                0x000006d2       0xbc src/main.o
+                0x000006d2                scanSubmarinos1
+ .text.scanSubmarinos2
+                0x0000078e       0xbc src/main.o
+                0x0000078e                scanSubmarinos2
+ .text.scanCargueros1
+                0x0000084a      0x206 src/main.o
+                0x0000084a                scanCargueros1
+ .text.shootPlayer1
+                0x00000a50       0x60 src/main.o
+                0x00000a50                shootPlayer1
+ .text.playPlayer2
+                0x00000ab0      0x12e src/main.o
+                0x00000ab0                playPlayer2
+ .text.scanCargueros2
+                0x00000bde      0x206 src/main.o
+                0x00000bde                scanCargueros2
+ .text.shootPlayer2
+                0x00000de4       0x60 src/main.o
+                0x00000de4                shootPlayer2
+ .text.playPlayer1
+                0x00000e44      0x12e src/main.o
+                0x00000e44                playPlayer1
+ .text.gameOn   0x00000f72       0x4c src/main.o
+                0x00000f72                gameOn
+ .text.main     0x00000fbe       0x84 src/main.o
+                0x00000fbe                main
+                0x00001042                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000005c0        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x000005c0                _exit
-                0x000005c0                exit
+ .fini9         0x00001042        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x00001042                _exit
+                0x00001042                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -642,64 +732,85 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000005c0        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x00001042        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x000005c4                _etext = .
+                0x00001046                _etext = .
 
-.data           0x00800100       0x34 load address 0x000005c4
+.data           0x00800100       0x44 load address 0x00001046
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
- .data.count.2218
-                0x00800100        0x2 src/Timer.o
- .data.msg      0x00800102       0x1a src/main.o
-                0x00800102                msg
- .data.Danado   0x0080011c        0x3 src/main.o
-                0x0080011c                Danado
- .data.Agua     0x0080011f        0x3 src/main.o
-                0x0080011f                Agua
- .data.Hundido  0x00800122        0x3 src/main.o
-                0x00800122                Hundido
+ .data.jButton  0x00800100        0x1 src/joystickReads.o
+                0x00800100                jButton
+ .data.countJoystick.2237
+                0x00800101        0x2 src/Timer.o
+ .data.countSS.2236
+                0x00800103        0x2 src/Timer.o
+ .data.carguerosJugador2
+                0x00800105        0xc src/main.o
+                0x00800105                carguerosJugador2
+ .data.submarinosJugador2
+                0x00800111        0x9 src/main.o
+                0x00800111                submarinosJugador2
+ .data.carguerosJugador1
+                0x0080011a        0xc src/main.o
+                0x0080011a                carguerosJugador1
+ .data.submarinosJugador1
+                0x00800126        0x9 src/main.o
+                0x00800126                submarinosJugador1
+ .data.Danado   0x0080012f        0x3 src/main.o
+                0x0080012f                Danado
+ .data.Agua     0x00800132        0x3 src/main.o
+                0x00800132                Agua
+ .data.Hundido  0x00800135        0x3 src/main.o
+                0x00800135                Hundido
  .data.GamePointer
-                0x00800125        0x3 src/main.o
-                0x00800125                GamePointer
+                0x00800138        0x3 src/main.o
+                0x00800138                GamePointer
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
- .rodata.str1.1
-                0x00800128        0xb src/main.o
+ .rodata.ssP2   0x0080013b        0x4 src/Timer.o
+ .rodata.ssP1   0x0080013f        0x4 src/Timer.o
  *(.gnu.linkonce.r*)
-                0x00800134                . = ALIGN (0x2)
- *fill*         0x00800133        0x1 
-                0x00800134                _edata = .
-                0x00800134                PROVIDE (__data_end, .)
+                0x00800144                . = ALIGN (0x2)
+ *fill*         0x00800143        0x1 
+                0x00800144                _edata = .
+                0x00800144                PROVIDE (__data_end, .)
 
-.bss            0x00800134       0xe0
-                0x00800134                PROVIDE (__bss_start, .)
+.bss            0x00800144      0x263
+                0x00800144                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.pout      0x00800134        0x2 src/cqueue.o
- .bss.pin       0x00800136        0x2 src/cqueue.o
- .bss.news      0x00800138        0x1 src/cqueue.o
- .bss.buffer    0x00800139       0x14 src/cqueue.o
- .bss.Apagado   0x0080014d        0x3 src/main.o
-                0x0080014d                Apagado
+ .bss.pout      0x00800144        0x2 src/cqueue.o
+ .bss.pin       0x00800146        0x2 src/cqueue.o
+ .bss.news      0x00800148        0x1 src/cqueue.o
+ .bss.buffer    0x00800149       0x14 src/cqueue.o
+ .bss.Apagado   0x0080015d        0x3 src/main.o
+                0x0080015d                Apagado
  *(COMMON)
- COMMON         0x00800150        0x2 src/UART.o
-                0x00800150                USART_ReceiveBuffer
-                0x00800151                USART_TransmitBuffer
- COMMON         0x00800152       0xc2 src/main.o
-                0x00800152                display_rgb
-                0x00800212                p2disp
-                0x00800214                PROVIDE (__bss_end, .)
-                0x000005c4                __data_load_start = LOADADDR (.data)
-                0x000005f8                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00800160        0x2 src/joystickReads.o
+                0x00800160                yMovement
+                0x00800161                xMovement
+ COMMON         0x00800162        0x1 src/Timer.o
+                0x00800162                playerTurn
+ COMMON         0x00800163        0x2 src/UART.o
+                0x00800163                USART_ReceiveBuffer
+                0x00800164                USART_TransmitBuffer
+ COMMON         0x00800165      0x242 src/main.o
+                0x00800165                display_rgb
+                0x00800225                p2disp
+                0x00800227                matrizJugador1
+                0x008002e7                matrizJugador2
+                0x008003a7                PROVIDE (__bss_end, .)
+                0x00001046                __data_load_start = LOADADDR (.data)
+                0x0000108a                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800214        0x0
+.noinit         0x008003a7        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800214                _end = .
+                0x008003a7                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -744,6 +855,7 @@ END GROUP
  .comment       0x00000000       0x30 src/ADC.o
                                  0x31 (size before relaxing)
  .comment       0x00000030       0x31 src/cqueue.o
+ .comment       0x00000030       0x31 src/joystickReads.o
  .comment       0x00000030       0x31 src/Timer.o
  .comment       0x00000030       0x31 src/UART.o
  .comment       0x00000030       0x31 src/main.o
@@ -768,7 +880,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x190
+.debug_aranges  0x00000000      0x218
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x38 src/ADC.o
@@ -777,79 +889,87 @@ END GROUP
  .debug_aranges
                 0x00000070       0x20 src/DrvWs2812.o
  .debug_aranges
-                0x00000090       0x30 src/Timer.o
+                0x00000090       0x30 src/joystickReads.o
  .debug_aranges
-                0x000000c0       0x70 src/UART.o
+                0x000000c0       0x28 src/Timer.o
  .debug_aranges
-                0x00000130       0x20 src/wrt_Digit.o
+                0x000000e8       0x70 src/UART.o
  .debug_aranges
-                0x00000150       0x40 src/main.o
+                0x00000158       0x20 src/wrt_Digit.o
+ .debug_aranges
+                0x00000178       0xa0 src/main.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x153c
+.debug_info     0x00000000     0x1a51
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_info    0x000005f4      0x12e src/ADC.o
  .debug_info    0x00000722      0x120 src/cqueue.o
  .debug_info    0x00000842       0x95 src/DrvWs2812.o
- .debug_info    0x000008d7       0xe1 src/Timer.o
- .debug_info    0x000009b8      0x3b5 src/UART.o
- .debug_info    0x00000d6d       0x9e src/wrt_Digit.o
- .debug_info    0x00000e0b      0x731 src/main.o
+ .debug_info    0x000008d7      0x137 src/joystickReads.o
+ .debug_info    0x00000a0e      0x1cd src/Timer.o
+ .debug_info    0x00000bdb      0x3b5 src/UART.o
+ .debug_info    0x00000f90       0x95 src/wrt_Digit.o
+ .debug_info    0x00001025      0xa2c src/main.o
 
-.debug_abbrev   0x00000000      0xc5a
+.debug_abbrev   0x00000000      0xd65
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x5a2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_abbrev  0x000005a2       0xa7 src/ADC.o
  .debug_abbrev  0x00000649       0xba src/cqueue.o
  .debug_abbrev  0x00000703       0x14 src/DrvWs2812.o
- .debug_abbrev  0x00000717       0xae src/Timer.o
- .debug_abbrev  0x000007c5      0x1f4 src/UART.o
- .debug_abbrev  0x000009b9       0x14 src/wrt_Digit.o
- .debug_abbrev  0x000009cd      0x28d src/main.o
+ .debug_abbrev  0x00000717       0x9c src/joystickReads.o
+ .debug_abbrev  0x000007b3       0xe4 src/Timer.o
+ .debug_abbrev  0x00000897      0x1f4 src/UART.o
+ .debug_abbrev  0x00000a8b       0x14 src/wrt_Digit.o
+ .debug_abbrev  0x00000a9f      0x2c6 src/main.o
 
-.debug_line     0x00000000     0x19b4
+.debug_line     0x00000000     0x224d
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x134 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
  .debug_line    0x00000134      0x363 src/ADC.o
  .debug_line    0x00000497       0xe0 src/cqueue.o
  .debug_line    0x00000577      0x1eb src/DrvWs2812.o
- .debug_line    0x00000762      0x4e2 src/Timer.o
- .debug_line    0x00000c44      0x465 src/UART.o
- .debug_line    0x000010a9      0x1f1 src/wrt_Digit.o
- .debug_line    0x0000129a      0x71a src/main.o
+ .debug_line    0x00000762      0x4f2 src/joystickReads.o
+ .debug_line    0x00000c54      0x543 src/Timer.o
+ .debug_line    0x00001197      0x465 src/UART.o
+ .debug_line    0x000015fc      0x1eb src/wrt_Digit.o
+ .debug_line    0x000017e7      0xa66 src/main.o
 
-.debug_frame    0x00000000      0x2d4
+.debug_frame    0x00000000      0x5a4
  *(.debug_frame)
  .debug_frame   0x00000000       0x54 src/ADC.o
  .debug_frame   0x00000054       0x54 src/cqueue.o
- .debug_frame   0x000000a8       0x5c src/Timer.o
- .debug_frame   0x00000104      0x144 src/UART.o
- .debug_frame   0x00000248       0x8c src/main.o
+ .debug_frame   0x000000a8       0x44 src/joystickReads.o
+ .debug_frame   0x000000ec       0x88 src/Timer.o
+ .debug_frame   0x00000174      0x144 src/UART.o
+ .debug_frame   0x000002b8      0x2ec src/main.o
 
-.debug_str      0x00000000    0x113cd
+.debug_str      0x00000000    0x11616
  *(.debug_str)
  .debug_str     0x00000000      0x208 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_str     0x00000208     0x6ea5 src/ADC.o
-                               0x6f9b (size before relaxing)
- .debug_str     0x000070ad       0x76 src/cqueue.o
+ .debug_str     0x00000208     0x6eaf src/ADC.o
+                               0x6fa5 (size before relaxing)
+ .debug_str     0x000070b7       0xd0 src/cqueue.o
                                0x2bc3 (size before relaxing)
- .debug_str     0x00007123     0x9e59 src/Timer.o
-                              0x10a39 (size before relaxing)
- .debug_str     0x00010f7c      0x2eb src/UART.o
+ .debug_str     0x00007187     0x9d7b src/joystickReads.o
+                              0x109ec (size before relaxing)
+ .debug_str     0x00010f02      0x1c9 src/Timer.o
+                              0x10b3e (size before relaxing)
+ .debug_str     0x000110cb      0x2eb src/UART.o
                                0x7220 (size before relaxing)
- .debug_str     0x00011267      0x166 src/main.o
-                              0x10ed3 (size before relaxing)
+ .debug_str     0x000113b6      0x260 src/main.o
+                              0x11030 (size before relaxing)
 
-.debug_loc      0x00000000      0x51e
+.debug_loc      0x00000000      0xc3c
  *(.debug_loc)
  .debug_loc     0x00000000       0x21 src/ADC.o
  .debug_loc     0x00000021       0x38 src/cqueue.o
- .debug_loc     0x00000059       0x49 src/Timer.o
- .debug_loc     0x000000a2      0x26c src/UART.o
- .debug_loc     0x0000030e      0x210 src/main.o
+ .debug_loc     0x00000059       0xcb src/Timer.o
+ .debug_loc     0x00000124      0x26c src/UART.o
+ .debug_loc     0x00000390      0x8ac src/main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -869,15 +989,16 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x100
+.debug_ranges   0x00000000      0x178
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x28 src/ADC.o
  .debug_ranges  0x00000028       0x28 src/cqueue.o
- .debug_ranges  0x00000050       0x20 src/Timer.o
- .debug_ranges  0x00000070       0x60 src/UART.o
- .debug_ranges  0x000000d0       0x30 src/main.o
+ .debug_ranges  0x00000050       0x20 src/joystickReads.o
+ .debug_ranges  0x00000070       0x18 src/Timer.o
+ .debug_ranges  0x00000088       0x60 src/UART.o
+ .debug_ranges  0x000000e8       0x90 src/main.o
 
-.debug_macro    0x00000000     0x6fe9
+.debug_macro    0x00000000     0x7d60
  *(.debug_macro)
  .debug_macro   0x00000000      0xc4b src/ADC.o
  .debug_macro   0x00000c4b       0x10 src/ADC.o
@@ -898,26 +1019,27 @@ END GROUP
  .debug_macro   0x00002b34       0x60 src/ADC.o
  .debug_macro   0x00002b94      0xb98 src/cqueue.o
  .debug_macro   0x0000372c       0x10 src/cqueue.o
- .debug_macro   0x0000373c      0xd29 src/Timer.o
- .debug_macro   0x00004465      0x71d src/Timer.o
- .debug_macro   0x00004b82       0x22 src/Timer.o
- .debug_macro   0x00004ba4      0x16d src/Timer.o
- .debug_macro   0x00004d11       0x35 src/Timer.o
- .debug_macro   0x00004d46       0x66 src/Timer.o
- .debug_macro   0x00004dac       0x43 src/Timer.o
- .debug_macro   0x00004def       0x69 src/Timer.o
- .debug_macro   0x00004e58       0x2b src/Timer.o
- .debug_macro   0x00004e83       0x10 src/Timer.o
- .debug_macro   0x00004e93       0xe2 src/Timer.o
- .debug_macro   0x00004f75       0x40 src/Timer.o
- .debug_macro   0x00004fb5      0x100 src/Timer.o
- .debug_macro   0x000050b5       0x56 src/Timer.o
- .debug_macro   0x0000510b       0x40 src/Timer.o
- .debug_macro   0x0000514b      0x2df src/Timer.o
- .debug_macro   0x0000542a       0x1c src/Timer.o
- .debug_macro   0x00005446       0x58 src/Timer.o
- .debug_macro   0x0000549e      0xca3 src/UART.o
- .debug_macro   0x00006141      0xd48 src/main.o
- .debug_macro   0x00006e89      0x160 src/main.o
+ .debug_macro   0x0000373c      0xd1a src/joystickReads.o
+ .debug_macro   0x00004456      0x71d src/joystickReads.o
+ .debug_macro   0x00004b73       0x22 src/joystickReads.o
+ .debug_macro   0x00004b95      0x16d src/joystickReads.o
+ .debug_macro   0x00004d02       0x35 src/joystickReads.o
+ .debug_macro   0x00004d37       0x66 src/joystickReads.o
+ .debug_macro   0x00004d9d       0x43 src/joystickReads.o
+ .debug_macro   0x00004de0       0x69 src/joystickReads.o
+ .debug_macro   0x00004e49       0x2b src/joystickReads.o
+ .debug_macro   0x00004e74       0x10 src/joystickReads.o
+ .debug_macro   0x00004e84       0xe2 src/joystickReads.o
+ .debug_macro   0x00004f66       0x40 src/joystickReads.o
+ .debug_macro   0x00004fa6      0x100 src/joystickReads.o
+ .debug_macro   0x000050a6       0x56 src/joystickReads.o
+ .debug_macro   0x000050fc       0x40 src/joystickReads.o
+ .debug_macro   0x0000513c      0x2df src/joystickReads.o
+ .debug_macro   0x0000541b       0x1c src/joystickReads.o
+ .debug_macro   0x00005437       0x58 src/joystickReads.o
+ .debug_macro   0x0000548f      0xd78 src/Timer.o
+ .debug_macro   0x00006207      0xca3 src/UART.o
+ .debug_macro   0x00006eaa      0xd56 src/main.o
+ .debug_macro   0x00007c00      0x160 src/main.o
 OUTPUT(GccMatrixWS2812 V3.elf elf32-avr)
 LOAD linker stubs
